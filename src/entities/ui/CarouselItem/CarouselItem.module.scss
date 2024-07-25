@@ -1,0 +1,42 @@
+.component {
+  width: 640px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.img {
+  border-radius: 50%;
+}
+
+.name {
+  font: var(--fw-medium) var(--fs-text) var(--ff);
+  margin-bottom: 24px;
+}
+
+.reviews_desc {
+  display: flex;
+  flex-direction: column;
+}
+
+.text {
+  font: var(--fw-light) italic 18px var(--ff);
+  color: #928F94;
+  position: relative;
+
+  &::before {
+    content: "\201c";
+    position: absolute;
+    top: -2%;
+    left: -5%;
+    font-size: 36px;
+    font-weight: 500;
+
+  }
+  &::after {
+    content: "\201d";
+    position: absolute;
+    font-size: 36px;
+    font-weight: 500;
+  }
+}

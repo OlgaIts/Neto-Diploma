@@ -1,0 +1,41 @@
+.btn {
+  cursor: pointer;
+  font-family: var(--ff);
+  font-size: var(--fs-text);
+  background-color: transparent;
+  border-radius: var(--radius);
+  outline: none;
+  border: none;
+}
+
+.xs {
+  width: 230px;
+  padding: 5px;
+}
+
+.s {
+  width: 222px;
+  padding: 16px;
+}
+
+.m {
+  width: 325px;
+  padding: 16px;
+}
+
+.disabled {
+  background-color: #928f94;
+  color: #fff;
+}
+
+.primary {
+  background-color: #ffa800;
+}
+
+.light {
+  background-color: #fff;
+}
+
+.textTransform {
+  text-transform: uppercase;
+}

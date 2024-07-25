@@ -1,0 +1,28 @@
+.component {
+  font-family: var(--ff);
+  font-size: var(--fs-title);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.dark {
+  color: var(--color-dark);
+}
+
+.light {
+  color: var(--color-light);
+}
+
+.regular {
+  font-weight: var(--fw-regular);
+}
+
+.medium {
+  font-weight: var(--fw-medium);
+}
+
+.bold {
+  font-weight: var(--fw-bold);
+}

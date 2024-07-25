@@ -1,0 +1,43 @@
+.component {
+  background-color: transparent;
+  font-size: var(--fs-text);
+  color: var(--color-light);
+  border: 1px solid var(--color-light);
+  border-radius: var(--radius);
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--bg-focus-btn);
+    border: 1px solid var(--bg-focus-btn);
+    color: var(--bg-footer);
+  }
+
+  &:active {
+    background-color: var(--color-light);
+    color: var(--bg-footer);
+    border: 1px solid var(--color-light);
+  }
+}
+
+.small {
+  padding: 16px;
+}
+
+.big {
+  width: 325px;
+  padding: 16px;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.regular {
+  font-weight: var(--fw-regular);
+}
+
+.bold {
+  font-weight: var(--fw-bold);
+}

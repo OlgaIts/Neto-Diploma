@@ -1,0 +1,17 @@
+{
+  "include": ["./src/**/*"],
+  "compilerOptions": {
+    "module": "es2020",
+    "target": "es2020",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "allowJs": true,
+    "lib": ["dom", "es2015"],
+    "jsx": "react-jsx",
+    "plugins": [{"name": "typescript-plugin-css-modules"}],
+    "types": ["vite-plugin-svgr/client"]
+  }
+}
+
+  
