@@ -3,15 +3,16 @@ import classNames from "classnames";
 import styles from "./Button.module.scss";
 import {Link} from "react-router-dom";
 
-type ButtonSizes = "xs" | "s" | "m";
+type ButtonSizes = "xs" | "s" | "m" | "default";
 type ButtonColors = "primary" | "light";
 
 interface ButtonProps {
   className?: string;
-  disabled?: boolean;
   children?: string;
+  disabled?: boolean;
   size?: ButtonSizes;
   bgColor?: ButtonColors;
+  color: "white" | "black";
   uppercase?: boolean;
   onClick?: () => void;
   tag: "button" | "Link";
@@ -20,10 +21,11 @@ interface ButtonProps {
 
 export const Button = ({
   className,
-  disabled,
   children,
-  size = "m",
-  bgColor,
+  disabled,
+  size = "default",
+  bgColor = "primary",
+  color,
   uppercase,
   onClick,
   tag = "button",
@@ -32,6 +34,8 @@ export const Button = ({
   const buttonStyles = classNames(
     styles.btn,
     styles[size],
+    styles[bgColor],
+    styles[color],
     {
       [styles.disabled]: disabled,
       [styles.uppercase]: uppercase,

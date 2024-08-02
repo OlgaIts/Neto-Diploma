@@ -1,50 +1,27 @@
 import classNames from "classnames";
-import {Title} from "../../shared/ui/Title";
-import {ReviewsCarousel} from "../../widget/ui/ReviewsCarousel";
-import {Footer} from "../../widget/ui/Footer";
-import ComputerIcon from "../../shared/assets/svg/computer.svg?react";
-import BuildingIcon from "../../shared/assets/svg/building-2.svg?react";
-import WorldIcon from "../../shared/assets/svg/world.svg?react";
+import {Title} from "../../../shared/ui/Title";
+import {ReviewsCarousel} from "../../../widget/ui/ReviewsCarousel";
+import {Footer} from "../../../widget/ui/Footer";
+import ComputerIcon from "../../../shared/assets/svg/computer.svg?react";
+import BuildingIcon from "../../../shared/assets/svg/building-2.svg?react";
+import WorldIcon from "../../../shared/assets/svg/world.svg?react";
+import {TransparentButton} from "../../../shared/ui/TransparentButton";
+import {HeaderNav} from "../../../shared/ui/HeaderNav";
 import styles from "./StartPage.module.scss";
-import {TransparentButton} from "../../shared/ui/TransparentButton";
+import {StartPageForm} from "./StartPageForm/StartPageForm";
 
 export const StartPage = () => {
   return (
     <>
       <header className={styles.header}>
-        <div className={styles.logo_wrap}>
-          <div className={styles.container}>
-            <span className={styles.logo}>Лого</span>
-          </div>
-        </div>
-        <nav className={styles.nav}>
-          <div className={styles.container}>
-            <ul className={styles.nav_list}>
-              <li className={styles.nav_item}>
-                <a>О нас</a>
-              </li>
-              <li className={styles.nav_item}>
-                <a>Как это работает</a>
-              </li>
-              <li className={styles.nav_item}>
-                <a>Отзывы</a>
-              </li>
-              <li className={styles.nav_item}>
-                <a>Контакты</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <HeaderNav />
         <div className={styles.container}>
           <div className={styles.title_wrap}>
             <h1 className={styles.title}>
               Вся жизнь - <span>путешествие!</span>
             </h1>
             <div className={styles.form_wrap}>
-              <form action=''>
-                <input type='text' />
-                <button>sss</button>
-              </form>
+              <StartPageForm />
             </div>
           </div>
         </div>

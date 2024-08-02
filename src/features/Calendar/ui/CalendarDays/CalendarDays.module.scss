@@ -1,0 +1,23 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 36px);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 8px;
+  color: #333;
+}
+
+.cellWrapp {
+  padding: 5px;
+  text-align: center;
+}
+
+.other {
+  color: #e6e6e6;
+}
+
+.active {
+  background-color: var(--bg-focus-btn);
+  border: 2px solid var(--bg-accent-color);
+  border-radius: var(--radius);
+  z-index: 99;
+}

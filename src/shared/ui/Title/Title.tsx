@@ -2,7 +2,7 @@ import {ReactNode, memo} from "react";
 import classNames from "classnames";
 import styles from "./Title.module.scss";
 
-type TitleWeight = "regular" | "medium" | "bold";
+type TitleWeight = "light" | "regular" | "medium" | "bold";
 
 interface TitleProps {
   className?: string;

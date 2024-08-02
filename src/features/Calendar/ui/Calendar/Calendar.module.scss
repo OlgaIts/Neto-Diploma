@@ -1,0 +1,23 @@
+.calendar {
+  width: 352px;
+  background-color: #fff;
+  border-radius: 5px;
+  display: grid;
+  place-content: center;
+}
+
+.top {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.arrow_prev {
+  cursor: pointer;
+  transform: rotate(90deg);
+}
+
+.arrow_next {
+  cursor: pointer;
+  transform: rotate(-90deg);
+}

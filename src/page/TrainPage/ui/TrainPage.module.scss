@@ -1,0 +1,69 @@
+.header {
+  min-height: 596px;
+  background-image: url("../../../shared/assets/img/bg-header.png");
+  background-size: cover;
+  background-color: var(--bg-filter);
+  position: relative;
+  z-index: 0;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-inline: 20px;
+}
+
+.stages {
+  height: 98px;
+  display: flex;
+  gap: 70px;
+  background-color: var(--bg-filter);
+  color: var(--color-light);
+}
+
+.stage {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  span {
+    font: var(--fw-medium) var(--fs-title) var(--ff);
+  }
+}
+
+.step {
+  width: 56px;
+  height: 56px;
+  padding: 5px;
+  display: grid;
+  place-content: center;
+  font: var(--fw-medium) 36px var(--ff);
+  border: 3px solid var(--color-light);
+  border-radius: 50%;
+}
+
+.filter {
+  width: 360px;
+  padding: 32px;
+  background-color: var(--bg-filter);
+}
+
+.options_wrapper {
+    display: grid;
+    gap: 34px;
+}
+
+.option {
+  display: flex;
+  span {
+    font: var(--fw-regular) 18px var(--ff);
+    color: var(--color-light);
+  }
+}
+
+.icon {
+  margin-right: 34px;
+}
+
+.switch {
+  margin-left: auto;
+}
