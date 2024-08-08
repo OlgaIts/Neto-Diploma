@@ -1,16 +1,16 @@
-import {RouteProps} from "react-router-dom";
-import {StartPage} from "../../page/StartPage/ui/StartPage";
-import {TrainPage} from "../../page/TrainPage";
+import { RouteProps } from 'react-router-dom';
+import { StartPage } from '@pages/StartPage';
+import { TrainPage } from '@pages/TrainPage';
 
 export enum AppRoutes {
-  HOME = "home",
-  TRAIN = "train",
+  HOME = 'home',
+  TRAIN = 'train',
   //   NOT_FOUND = "not_found",
 }
 
 export const RoutePath: Record<AppRoutes, string> = {
-  [AppRoutes.HOME]: "/",
-  [AppRoutes.TRAIN]: "/train",
+  [AppRoutes.HOME]: '/',
+  [AppRoutes.TRAIN]: '/train',
   //   [AppRoutes.NOT_FOUND]: "*",
 };
 

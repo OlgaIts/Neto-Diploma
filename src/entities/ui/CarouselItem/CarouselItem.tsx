@@ -1,6 +1,6 @@
-import {memo} from "react";
-import classNames from "classnames";
-import styles from "./CarouselItem.module.scss";
+import { memo } from 'react';
+import classNames from 'classnames';
+import styles from './CarouselItem.module.scss';
 
 interface CarouselItemProps {
   className?: string;
@@ -9,13 +9,10 @@ interface CarouselItemProps {
   image: string;
 }
 export const CarouselItem = memo(
-  ({className, text, name, image}: CarouselItemProps) => {
+  ({ className, text, name, image }: CarouselItemProps) => {
     return (
       <div className={classNames(styles.component, className)}>
-        <img
-          src={image}
-          className={styles.img}
-        />
+        <img src={image} className={styles.img} />
         <div className={styles.reviews_desc}>
           <p className={styles.name}>{name}</p>
           <p className={styles.text}>{text}</p>
@@ -24,4 +21,4 @@ export const CarouselItem = memo(
     );
   },
 );
-CarouselItem.displayName = "CarouselItem";
+CarouselItem.displayName = 'CarouselItem';

@@ -1,10 +1,10 @@
-import {ReactNode} from "react";
-import classNames from "classnames";
-import styles from "./Button.module.scss";
-import {Link} from "react-router-dom";
+import { ReactNode } from 'react';
+import classNames from 'classnames';
+import styles from './Button.module.scss';
+import { Link } from 'react-router-dom';
 
-type ButtonSizes = "xs" | "s" | "m" | "default";
-type ButtonColors = "primary" | "light";
+type ButtonSizes = 'xs' | 's' | 'm' | 'default';
+type ButtonColors = 'primary' | 'light';
 
 interface ButtonProps {
   className?: string;
@@ -12,10 +12,10 @@ interface ButtonProps {
   disabled?: boolean;
   size?: ButtonSizes;
   bgColor?: ButtonColors;
-  color: "white" | "black";
+  color: 'white' | 'black';
   uppercase?: boolean;
   onClick?: () => void;
-  tag: "button" | "Link";
+  tag: 'button' | 'Link';
   to?: string;
 }
 
@@ -23,12 +23,12 @@ export const Button = ({
   className,
   children,
   disabled,
-  size = "default",
-  bgColor = "primary",
+  size = 'default',
+  bgColor = 'primary',
   color,
   uppercase,
   onClick,
-  tag = "button",
+  tag = 'button',
   to,
 }: ButtonProps) => {
   const buttonStyles = classNames(
@@ -44,7 +44,7 @@ export const Button = ({
   );
   return (
     <>
-      {tag === "Link" ? (
+      {tag === 'Link' ? (
         <Link className={buttonStyles} to={to as string}>
           {children}
         </Link>

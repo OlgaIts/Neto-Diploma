@@ -1,22 +1,22 @@
 .container {
   max-width: 1440px;
   margin: 0 auto;
-  padding-inline: 20px;
+  padding-inline: var(--gap-s);
 }
 
 .logo_wrap {
-  padding: 8px 0;
+  padding: var(--padding-xs) 0;
   background-color: rgba(0, 0, 0, 0.6);
 }
 
 .logo {
-  font: 900 36px "Roboto", sans-serif;
-  color: #e5e5e5;
+  font: var(--fw-black) var(--fs-lg) var(--ff);
+  color: var(--color-footer);
 }
 
 .nav {
   background-color: var(--bg-header-form);
-  padding: 24px;
+  padding: calc(var(--padding-s) * 1.5);
 }
 
 .nav_list {
@@ -26,7 +26,7 @@
 
 .nav_item {
   color: #fff;
-  font: 300 30px "Roboto", sans-serif;
+  font: var(--fw-light) var(--fs-title) var(--ff);
   cursor: pointer;
   &:hover {
     color: var(--bg-accent-color);

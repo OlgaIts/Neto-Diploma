@@ -3,6 +3,7 @@ module.exports = {
   env: { browser: true, es2020: true },
   extends: [
     'eslint:recommended',
+    'plugin:prettier/recommended',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
@@ -10,7 +11,7 @@ module.exports = {
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  settings: { react: { version: '18.2' } },
+  settings: { react: { version: '18' } },
   plugins: ['react-refresh', '@typescript-eslint'],
   rules: {
     'react/jsx-no-target-blank': 'off',
@@ -18,6 +19,14 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'react/prop-types': 0,
+    'react/prop-types': 'off',
+    'prettier/prettier': [
+      'error',
+      {
+        singleQuote: true,
+        bracketSpacing: true,
+      },
+    ],
+    '@typescript-eslint/no-unused-vars': 'warn',
   },
-}
+};
