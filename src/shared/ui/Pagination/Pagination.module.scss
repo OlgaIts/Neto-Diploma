@@ -1,0 +1,39 @@
+.component {
+  display: flex;
+  gap: 20px;
+
+  i {
+    font-weight: 700;
+  }
+
+  li {
+    cursor: pointer;
+  }
+
+  a {
+    width: 84px;
+    height: 75px;
+    padding: 20px;
+    display: inline-grid;
+    place-content: center;
+    font: var(--fw-bold) var(--fs-title) var(--ff);
+    color: var(--text-dark-gray);
+    border: 1px solid var(--color-light-grey);
+    border-radius: 5px;
+
+    &:hover {
+      border: 1px solid var(--bg-accent-color);
+      color: var(--bg-accent-color);
+    }
+  }
+
+  :global {
+    .selected {
+      a {
+        background-color: var(--bg-accent-color);
+        border: 1px solid var(--bg-accent-color);
+        color: #fff;
+      }
+    }
+  }
+}

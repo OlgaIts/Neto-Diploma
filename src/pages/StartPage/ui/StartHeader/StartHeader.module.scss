@@ -1,0 +1,39 @@
+@use '@app/styles/mixins' as *;
+
+.header {
+  min-height: 100vh;
+  background-image: url('@shared/assets/img/bg.png');
+  background-size: cover;
+  background-color: #9b6909;
+  position: relative;
+  z-index: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+    background-color: #9b6909;
+    z-index: -1;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.title_wrap {
+  padding-top: 238px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.title {
+  font: var(--fw-thin) 72px var(--ff);
+  color: #fff;
+  span {
+    font-weight: var(--fw-bold);
+  }
+}

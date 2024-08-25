@@ -1,33 +1,16 @@
-import classNames from 'classnames';
 import { memo } from 'react';
-import { HeaderNav } from '../../../shared/ui/HeaderNav';
-import { Title } from '../../../shared/ui/Title';
-import { Switch } from '../../../shared/ui/Switch';
-import Coupe from '../../../shared/assets/svg/aside/coupe.svg?react';
-import Berth from '../../../shared/assets/svg/aside/berth.svg?react';
-import Sitting from '../../../shared/assets/svg/aside/Sitting.svg?react';
-import Luxe from '../../../shared/assets/svg/aside/Luxe.svg?react';
-import WiFi from '../../../shared/assets/svg/aside/Wi-Fi.svg?react';
-import Express from '../../../shared/assets/svg/aside/Express.svg?react';
-
+import { Calendar } from '@features/Calendar';
+import { RouteCard } from '@entities/routes';
+import { Title } from '@shared/ui/Title';
+import { Switch } from '@shared/ui/Switch';
+import { Icon } from '@shared/ui/Icon';
+import { Header } from '@widgets/ui/Header';
 import styles from './TrainPage.module.scss';
-import { Calendar } from '../../../features/Calendar';
 
-interface TrainPageProps {
-  className?: string;
-}
-export const TrainPage = memo(({ className }: TrainPageProps) => {
+export const TrainPage = memo(() => {
   return (
-    <>
-      <header className={styles.header}>
-        <HeaderNav />
-        <div className={styles.container}>
-          <form action="">
-            <input type="text" />
-            <button>trainpage</button>
-          </form>
-        </div>
-      </header>
+    <div className={styles.component}>
+      <Header />
 
       <div className={styles.stages}>
         <div className={styles.stage}>
@@ -49,67 +32,68 @@ export const TrainPage = memo(({ className }: TrainPageProps) => {
       </div>
 
       <div className={styles.container}>
-        <main>
+        <main className={styles.main}>
           <aside>
             <section className={styles.filter}>
-              <Title color="light" weight="regular">
+              <Title color='light' weight='regular'>
                 Дата поездки
               </Title>
               <button>30.08.2018</button>
-              <Title color="light" weight="regular">
+              <Title color='light' weight='regular'>
                 Дата возвращения
               </Title>
               <button>09.09.2018</button>
 
               <div className={styles.options_wrapper}>
                 <div className={styles.option}>
-                  <Coupe className={styles.icon} />
+                  <Icon iconName='icon-coupe' color='primary' />
                   <span>Купе</span>
                   <Switch className={styles.switch} />
                 </div>
 
                 <div className={styles.option}>
-                  <Berth className={styles.icon} />
+                  <Icon iconName='icon-berth' color='primary' />
                   <span>Плацкарт </span>
                   <Switch className={styles.switch} />
                 </div>
 
                 <div className={styles.option}>
-                  <Sitting className={styles.icon} />
+                  <Icon iconName='icon-sitting' color='primary' />
                   <span>Сидячий</span>
                   <Switch className={styles.switch} />
                 </div>
 
                 <div className={styles.option}>
-                  <Luxe className={styles.icon} />
+                  <Icon iconName='icon-luxe' color='primary' />
                   <span>Люкс</span>
                   <Switch className={styles.switch} />
                 </div>
 
                 <div className={styles.option}>
-                  <WiFi className={styles.icon} />
+                  <Icon iconName='icon-Wi-Fi' color='primary' />
                   <span>Wi-Fi</span>
                   <Switch className={styles.switch} />
                 </div>
 
                 <div className={styles.option}>
-                  <Express className={styles.icon} />
+                  <Icon iconName='icon-express' color='primary' />
                   <span>Экспресс</span>
                   <Switch className={styles.switch} />
                 </div>
               </div>
-              <Title color="light" weight="regular">
+              <Title color='light' weight='regular'>
                 Стоимость
               </Title>
             </section>
             <section className={styles.latest_view}>последние билеты</section>
+            <Calendar />
           </aside>
           <section>
-            <Calendar />
+            <RouteCard />
           </section>
         </main>
       </div>
-    </>
+    </div>
   );
 });
 TrainPage.displayName = 'TrainPage';

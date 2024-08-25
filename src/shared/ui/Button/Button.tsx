@@ -1,7 +1,6 @@
-import { ReactNode } from 'react';
 import classNames from 'classnames';
-import styles from './Button.module.scss';
 import { Link } from 'react-router-dom';
+import styles from './Button.module.scss';
 
 type ButtonSizes = 'xs' | 's' | 'm' | 'default';
 type ButtonColors = 'primary' | 'light';
@@ -17,6 +16,7 @@ interface ButtonProps {
   onClick?: () => void;
   tag: 'button' | 'Link';
   to?: string;
+  type?: 'button' | 'submit';
 }
 
 export const Button = ({
@@ -30,6 +30,7 @@ export const Button = ({
   onClick,
   tag = 'button',
   to,
+  type,
 }: ButtonProps) => {
   const buttonStyles = classNames(
     styles.btn,
@@ -49,7 +50,7 @@ export const Button = ({
           {children}
         </Link>
       ) : (
-        <button className={buttonStyles} onClick={onClick}>
+        <button className={buttonStyles} onClick={onClick} type={type}>
           {children}
         </button>
       )}

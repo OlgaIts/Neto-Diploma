@@ -1,9 +1,8 @@
-import classNames from 'classnames';
 import { memo } from 'react';
 import moment from 'moment/moment';
 import 'moment/locale/ru';
+import { Icon } from '@shared/ui/Icon';
 import { CalendarDays } from '../CalendarDays/CalendarDays';
-import TriangleArrow from '../../../../shared/assets/svg/triangle.svg?react';
 import styles from './Calendar.module.scss';
 
 interface CalendarProps {
@@ -17,9 +16,17 @@ export const Calendar = memo(({ className }: CalendarProps) => {
   return (
     <div className={styles.calendar}>
       <div className={styles.top}>
-        <TriangleArrow className={styles.arrow_prev} />
+        <Icon
+          iconName={'icon-triangle'}
+          className={styles.arrow_prev}
+          fontSize='14px'
+        />
         <div className={styles.month}>{moment().format('MMMM')}</div>
-        <TriangleArrow className={styles.arrow_next} />
+        <Icon
+          iconName={'icon-triangle'}
+          className={styles.arrow_next}
+          fontSize='14px'
+        />
       </div>
 
       <CalendarDays startDay={startDay} />

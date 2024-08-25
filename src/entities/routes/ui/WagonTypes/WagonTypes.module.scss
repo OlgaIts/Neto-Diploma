@@ -1,0 +1,57 @@
+.component {
+  border-left: 1px dashed var(--color-footer);
+  padding: 36px 24px;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+}
+
+.wagons_types {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.type_wrap {
+  display: grid;
+  grid-template-columns: 86px 22px 1fr;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.type {
+  font: var(--fw-regular) var(--fs-xs) var(--ff);
+  color: var(--bg-filter);
+}
+
+.count {
+  font: var(--fw-medium) var(--fs-xs) var(--ff);
+  color: var(--bg-accent-color);
+}
+
+.price {
+  font: var(--fw-regular) var(--fs-xs) var(--ff);
+  color: var(--text-gray);
+
+  span {
+    margin-left: 3px;
+    font: var(--fw-bold) var(--fs-text) var(--ff);
+    color: var(--bg-footer);
+  }
+
+  i {
+    margin-left: 5px;
+  }
+}
+
+.icons_wrap {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}

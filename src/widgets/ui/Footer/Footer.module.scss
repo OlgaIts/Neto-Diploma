@@ -35,12 +35,6 @@
   align-items: start;
 }
 
-.links_wrapper {
-  margin-top: 30px;
-  display: flex;
-  gap: 48px;
-}
-
 .text {
   margin-top: 28px;
   margin-bottom: 16px;
@@ -76,16 +70,18 @@
   margin-top: 44px;
 }
 
-.social_icon {
-  transition: fill 0.3s ease-in-out;
-  // TODO: цвет не работает, рашеть проблему
-  &:hover {
-    fill: var(--bg-accent-color);
-  }
+.links_wrapper {
+  margin-top: 30px;
+  display: flex;
+  gap: 48px;
 }
 
-.youtube {
-  width: 37px;
+.social_icon {
+  transition: color 0.3s ease-in-out;
+  
+  &:hover {
+    color: var(--bg-accent-color);
+  }
 }
 
 .line {
@@ -111,9 +107,9 @@
 
 .scroller_btn {
   cursor: pointer;
-  transition: stroke 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
 
   &:hover {
-    stroke: var(--bg-accent-color);
+    color: var(--bg-accent-color);
   }
 }

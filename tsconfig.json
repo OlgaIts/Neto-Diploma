@@ -1,16 +1,18 @@
 {
   "include": ["./src/**/*"],
   "compilerOptions": {
-    "module": "es2020",
-    "target": "es2020",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "target": "ESNext",
+    "resolveJsonModule": true,
     "esModuleInterop": true,
+    "moduleResolution": "node",
     "strict": true,
     "allowJs": true,
+    "skipLibCheck": true,
     "lib": ["dom", "es2017"],
     "jsx": "react-jsx",
-    "plugins": [{"name": "typescript-plugin-css-modules"}],
-    "types": ["vite-plugin-svgr/client"],
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "types": ["vite-plugin-svgr/client", "vite/client"],
     "baseUrl": "./src",
     "paths": {
       "@app/*": ["app/*"],
@@ -25,5 +27,3 @@
     }
   }
 }
-
-  

@@ -1,10 +1,5 @@
-.header {
-  min-height: 596px;
-  background-image: url("../../../shared/assets/img/bg-header.png");
-  background-size: cover;
-  background-color: var(--bg-filter);
-  position: relative;
-  z-index: 0;
+.component {
+  background-color: var(--page-bg);
 }
 
 .container {
@@ -48,8 +43,8 @@
 }
 
 .options_wrapper {
-    display: grid;
-    gap: 34px;
+  display: grid;
+  gap: 34px;
 }
 
 .option {
@@ -66,4 +61,9 @@
 
 .switch {
   margin-left: auto;
+}
+
+.main {
+  display: flex;
+  gap: 50px;
 }

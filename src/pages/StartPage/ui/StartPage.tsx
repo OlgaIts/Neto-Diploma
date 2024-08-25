@@ -1,38 +1,24 @@
 import classNames from 'classnames';
 import { Element } from 'react-scroll';
-import { StartPageForm } from './StartPageForm/StartPageForm';
-import { ReviewsCarousel } from '../../../widgets/ui/ReviewsCarousel';
-import { Footer } from '../../../widgets/ui/Footer';
-import { Title } from '../../../shared/ui/Title';
-import { TransparentButton } from '../../../shared/ui/TransparentButton';
-import { HeaderNav } from '../../../shared/ui/HeaderNav';
-import ComputerIcon from '../../../shared/assets/svg/computer.svg?react';
-import BuildingIcon from '../../../shared/assets/svg/building-2.svg?react';
-import WorldIcon from '../../../shared/assets/svg/world.svg?react';
+// import { ReviewsCarousel } from '@entities/reviews';
+import { Footer } from '@widgets/ui/Footer';
+import { Title } from '@shared/ui/Title';
+import { TransparentButton } from '@shared/ui/TransparentButton';
+import { Icon } from '@shared/ui/Icon';
+import { StartHeader } from './StartHeader/StartHeader';
 import styles from './StartPage.module.scss';
+import { ReviewsCarousel } from '@entities/reviews';
 
 export const StartPage = () => {
   return (
     <>
-      <header className={styles.header}>
-        <HeaderNav />
-        <div className={styles.container}>
-          <div className={styles.title_wrap}>
-            <h1 className={styles.title}>
-              Вся жизнь - <span>путешествие!</span>
-            </h1>
-            <div className={styles.form_wrap}>
-              <StartPageForm />
-            </div>
-          </div>
-        </div>
-      </header>
+      <StartHeader />
       <div className={styles.line}></div>
       <main className={styles.main}>
-        <Element name="about">
+        <Element name='about'>
           <section>
             <div className={styles.container}>
-              <Title color="dark" weight="medium" uppercase>
+              <Title color='dark' weight='medium' uppercase>
                 О нас
               </Title>
               <div className={styles.text_wrapper}>
@@ -57,21 +43,25 @@ export const StartPage = () => {
             </div>
           </section>
         </Element>
-        <Element name="how-it-works">
+        <Element name='how-it-works'>
           <section className={styles.about}>
             <div className={styles.container}>
               <div className={styles.section_top}>
-                <Title color="light" weight="medium" uppercase>
+                <Title color='light' weight='medium' uppercase>
                   Как это работает
                 </Title>
-                <TransparentButton tag="button" size="big" weight="bold">
+                <TransparentButton tag='button' size='big' weight='bold'>
                   Узнать больше
                 </TransparentButton>
               </div>
               <div className={styles.benefits_wrapper}>
                 <div className={styles.benefit}>
                   <div className={styles.icon_wrap}>
-                    <ComputerIcon width="76px" height="76px" />
+                    <Icon
+                      iconName={'icon-computer'}
+                      color='accent'
+                      fontSize='76px'
+                    />
                   </div>
                   <p>
                     Удобный заказ <br /> на сайте
@@ -79,7 +69,11 @@ export const StartPage = () => {
                 </div>
                 <div className={styles.benefit}>
                   <div className={styles.icon_wrap}>
-                    <BuildingIcon width="76px" height="76px" />
+                    <Icon
+                      iconName={'icon-building'}
+                      color='accent'
+                      fontSize='76px'
+                    />
                   </div>
                   <p>
                     Нет необходимости <br /> ехать в офис
@@ -87,7 +81,11 @@ export const StartPage = () => {
                 </div>
                 <div className={styles.benefit}>
                   <div className={styles.icon_wrap}>
-                    <WorldIcon width="76px" height="76px" />
+                    <Icon
+                      iconName={'icon-world'}
+                      color='accent'
+                      fontSize='76px'
+                    />
                   </div>
                   <p>
                     Огромный выбор <br /> направлений
@@ -98,11 +96,11 @@ export const StartPage = () => {
           </section>
         </Element>
         <div className={styles.container}>
-          <Element name="reviews">
+          <Element name='reviews'>
             <section>
               <Title
-                color="dark"
-                weight="medium"
+                color='dark'
+                weight='medium'
                 uppercase
                 className={styles.reviews_title}
               >

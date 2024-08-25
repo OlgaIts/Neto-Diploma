@@ -1,0 +1,79 @@
+.component {
+  min-height: 353px;
+  display: grid;
+  grid-template-columns: 197px 1fr;
+  box-shadow: var(--card-shadow);
+}
+.train_wrapper {
+  background-color: var(--bg-route-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.icon_wrap {
+  width: 86px;
+  height: 86px;
+  display: grid;
+  place-content: center;
+  border: 2px solid var(--color-light);
+  border-radius: var(--radius-round);
+}
+
+.train_namber {
+  font: var(--fw-bold) var(--fs-text) var(--ff);
+}
+
+//
+.info {
+  display: flex;
+  border: 1px solid var(--color-light-grey);
+  border-left: none;
+  background-color: var(--color-light);
+}
+
+.routes_wrap {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 66px;
+}
+
+.route {
+  display: flex;
+  gap: 40px;
+}
+
+.route_direction,
+.trevel_time {
+  display: flex;
+  flex-direction: column;
+}
+
+.time {
+  font: var(--fw-bold) var(--fs-text) var(--ff);
+}
+
+.city {
+  font: var(--fw-regular) var(--fs-sm) var(--ff);
+  color: var(--bg-header-form);
+}
+
+.station {
+  color: var(--text-gray);
+}
+
+.trevel_time {
+  align-items: center;
+  span {
+    font: var(--fw-regular) var(--fs-sm) var(--ff);
+    color: var(--color-light-grey);
+  }
+}
+
+.icon {
+  transform: rotate(-180deg);
+}

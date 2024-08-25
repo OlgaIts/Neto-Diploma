@@ -12,10 +12,12 @@
 .default {
   width: fit-content;
   padding: 16px 24px;
+
   &:hover {
     color: var(--bg-accent-color);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
+
   &:active {
     background-color: var(--bg-accent-color);
     color: var(--bg-header-form);
@@ -40,10 +42,12 @@
 
 .primary {
   background-color: var(--bg-accent-color);
+  border: 1px solid var(--bg-accent-color);
 
   &:hover {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
+
   &:active {
     background-color: var(--color-light);
     color: var(--bg-accent-color);
@@ -55,10 +59,12 @@
 .light {
   background-color: #fff;
   border: 1px solid var(--bg-header-form);
+
   &:hover {
     color: var(--bg-accent-color);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
+
   &:active {
     background-color: var(--bg-accent-color);
     color: var(--bg-header-form);
