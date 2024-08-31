@@ -1,32 +1,29 @@
-import classNames from 'classnames';
 import { ChangeEvent, memo, useEffect, useState } from 'react';
-import { Datalist } from '@shared/ui/Datalist';
+import { Datalist, DatalistProps } from '@shared/ui/Datalist';
 import { services } from '@entities/cities/model/services/services';
 import { City } from '@entities/cities/model/types/city';
-import {
-  FieldValues,
-  RegisterOptions,
-  UseFormRegisterReturn,
-} from 'react-hook-form';
+import { UseFormRegister } from 'react-hook-form';
+import { TicketFormState } from '@features/TicketForm/model/slice/ticketFormSlice';
 import styles from './CitySelect.module.scss';
 
-interface CitySelectProps<T extends string> {
-  className?: string;
-  name: T;
+interface CitySelectProps<T extends string> extends Partial<DatalistProps> {
+  name: keyof TicketFormState;
   register: (
-    name: T,
-    options?: RegisterOptions<FieldValues, T>,
-  ) => UseFormRegisterReturn<T>;
+    name: keyof TicketFormState,
+  ) => ReturnType<UseFormRegister<TicketFormState>>;
   cityName: string;
+  onCitySelect: (city: { id: string; name: string }) => void;
 }
 export const CitySelect = memo(
   <T extends string>({
-    className,
     name,
     register,
     cityName,
+    placeholder,
+    onCitySelect,
   }: CitySelectProps<T>) => {
-    const [cities, setCities] = useState([]);
+    const [cities, setCities] = useState<{ id: string; value: string }[]>([]);
+    const [inputValue, setInputValue] = useState(cityName); // состояние для хранения введенного значения
 
     const getCities = async (value: string) => {
       const result = await services.getCities(value);
@@ -44,8 +41,34 @@ export const CitySelect = memo(
       }
     }, [cityName]);
 
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+      const { value } = event.target;
+      setInputValue(value);
+      getCities(value);
+    };
+
+    const handleCitySelect = (event: ChangeEvent<HTMLInputElement>) => {
+      const selectedCity = cities.find(
+        (city) => city.value === event.target.value,
+      );
+      if (selectedCity) {
+        setInputValue(selectedCity.value);
+        onCitySelect({ id: selectedCity.id, name: selectedCity.value });
+      }
+    };
+
     return (
-      <Datalist data={cities} listId={`${name}_cities`} {...register(name)}  />
+      <Datalist
+        data={cities}
+        listId={`${name}_cities`}
+        {...register(name)}
+        placeholder={placeholder}
+        value={inputValue}
+        onChange={(e) => {
+          handleInputChange(e);
+          handleCitySelect(e);
+        }}
+      />
     );
   },
 );

@@ -1,4 +1,9 @@
+.calendar {
+  font-size: var(--fs-xs);
+}
+
 .input {
+  position: relative;
   width: 325px;
   padding: var(--gap-s);
   font: var(--fw-regular) var(--fs-sm) var(--ff);
@@ -11,4 +16,11 @@
 .input::placeholder {
   font: var(--fw-regular) var(--fs-sm) var(--ff);
   color: var(--color-footer);
+}
+
+.icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
 }

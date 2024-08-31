@@ -1,7 +1,5 @@
 import classNames from 'classnames';
 import { Element } from 'react-scroll';
-// import { ReviewsCarousel } from '@entities/reviews';
-import { Footer } from '@widgets/ui/Footer';
 import { Title } from '@shared/ui/Title';
 import { TransparentButton } from '@shared/ui/TransparentButton';
 import { Icon } from '@shared/ui/Icon';
@@ -111,7 +109,6 @@ export const StartPage = () => {
           </Element>
         </div>
       </main>
-      <Footer />
     </>
   );
 };

@@ -1,20 +1,21 @@
 import classNames from 'classnames';
 import { ChangeEvent, ForwardedRef, forwardRef, memo } from 'react';
-import styles from './Datalist.module.scss';
 import { FieldValues } from 'react-hook-form';
+import styles from './Datalist.module.scss';
 
 export interface DatalistOption {
   value: string;
   id: string;
 }
 
-interface DatalistProps {
+export interface DatalistProps {
   className?: string;
   data: DatalistOption[];
   listId: string;
   name: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  
+  placeholder?: string;
+  value: string
 }
 
 export const Datalist = memo(
@@ -22,18 +23,22 @@ export const Datalist = memo(
     props: DatalistProps,
     ref: ForwardedRef<HTMLInputElement | null>,
   ) {
-    const { onChange, listId, className, data, name } = props;
-    // memo(
-    //   ({ data, className, listId, inputId, onChange, ...props }: DatalistProps) => {
+    const { onChange, listId, className, data, name, placeholder, value } = props;
+    const handleChange = (e: any) => {
+      onChange(e);
+    };
+
     return (
       <>
         <input
-          onChange={onChange}
+          onChange={handleChange}
           className={classNames(styles.input, className)}
           list={listId}
           id={name}
           name={name}
           ref={ref}
+          placeholder={placeholder}
+          value={value}
         />
         <datalist id={listId}>
           {data.map((item) => (
@@ -45,18 +50,3 @@ export const Datalist = memo(
   }),
 );
 Datalist.displayName = 'Datalist';
-
-{
-  /* <form>
-  <label for="my-browser">Выберите браузер из списка:</label>
-  <input type="text" list="browsers" id="my-browser" name="my-browser">
-  <datalist id="browsers">
-    <option value="Chrome">
-    <option value="Firefox">
-    <option value="Yandex Browser">
-    <option value="Opera">
-    <option value="Safari">
-    <option value="Microsoft Edge">
-  </datalist>
-<form></form> */
-}

@@ -7,6 +7,7 @@ import { Icon } from '@shared/ui/Icon';
 import { Header } from '@widgets/ui/Header';
 import styles from './TrainPage.module.scss';
 
+
 export const TrainPage = memo(() => {
   return (
     <div className={styles.component}>

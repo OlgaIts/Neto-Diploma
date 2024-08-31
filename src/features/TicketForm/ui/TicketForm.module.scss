@@ -1,0 +1,41 @@
+.form {
+  padding: calc(var(--gap-m) * 2) var(--padding-m) calc(var(--gap-s) * 3);
+  background-color: rgba(41, 41, 41, 0.8);
+}
+
+.form_flex {
+  padding: var(--padding-m) var(--padding-s);
+  display: flex;
+  gap: var(--padding-m);
+
+  .input_wrapper {
+    gap: var(--padding-xs);
+  }
+  .btn {
+    margin-top: 48px;
+  }
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+.box {
+  margin-bottom: 60px;
+}
+
+.input_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.btn {
+  margin-top: 90px;
+  margin-left: auto;
+}
+
+.icon {
+  cursor: pointer;
+}

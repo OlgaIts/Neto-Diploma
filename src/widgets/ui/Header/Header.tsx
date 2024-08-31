@@ -1,13 +1,9 @@
-import classNames from 'classnames';
 import { memo } from 'react';
 import styles from './Header.module.scss';
 import { HeaderNav } from '@shared/ui/HeaderNav';
-import { TicketForm } from '@widgets/ui/TicketForm';
+import { TicketForm } from '@features/TicketForm';
 
-interface HeaderProps {
-  className?: string;
-}
-export const Header = memo(({ className }: HeaderProps) => {
+export const Header = memo(() => {
   return (
     <header className={styles.header}>
       <HeaderNav />

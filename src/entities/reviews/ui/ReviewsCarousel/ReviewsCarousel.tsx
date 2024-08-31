@@ -29,7 +29,7 @@ export const ReviewsCarousel = memo(() => {
           <CarouselItem
             image={
               new URL(
-                `../../../shared/assets/img/reviews/${item.image}.jpg`,
+                `../../../../shared/assets/img/reviews/${item.image}.jpg`,
                 import.meta.url,
               ).href
             }
