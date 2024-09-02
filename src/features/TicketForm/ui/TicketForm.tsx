@@ -32,14 +32,11 @@ export const TicketForm = memo(() => {
   const dispatch = useAppDispatch();
 
   const handleFromCitySelect = (city: { id: string; name: string }) => {
-    console.log('handleFromCitySelect', city);
-    console.log(register);
     dispatch(setFromCity(city));
     setValue('from', city);
   };
 
   const handleToCitySelect = (city: { id: string; name: string }) => {
-    console.log('handleToCitySelect', city);
     dispatch(setToCity(city));
     setValue('to', city);
   };

@@ -1,4 +1,4 @@
-import { ForwardRefRenderFunction, forwardRef, memo, useState } from 'react';
+import { ForwardRefRenderFunction, forwardRef, memo } from 'react';
 import classNames from 'classnames';
 import DatePicker from 'react-datepicker';
 import { Icon } from '../Icon';
@@ -40,7 +40,6 @@ const ForwardedCustomInput = forwardRef(CustomInput);
 
 export const CustomDatePicker = memo(
   ({ className, selected, onChange }: CustomDatePickerProps) => {
-
 
     return (
       <DatePicker

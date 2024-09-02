@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { ticketFormReducer } from '@features/TicketForm';
+import { routesReducer } from '@entities/routes';
 
 const rootReducer = combineReducers({
   ticketForm: ticketFormReducer,
+  routes: routesReducer,
 });
 
 export const store = configureStore({

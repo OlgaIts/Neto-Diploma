@@ -1,10 +1,11 @@
 import { useForm } from 'react-hook-form';
+import { RouteServices, setCount, setRoutes } from '@entities/routes';
+import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
 import {
   TicketFormState,
   initialState,
   setTicketForm,
 } from '../model/slice/ticketFormSlice';
-import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
 
 export const useTicketForm = () => {
   const { register, handleSubmit, setValue, watch } = useForm({
@@ -16,11 +17,19 @@ export const useTicketForm = () => {
   const departureDate = watch('departureDate');
   const returnDate = watch('returnDate');
 
-  const onSubmit = (data: TicketFormState) => {
+  const onSubmit = async (data: TicketFormState) => {
     dispatch(setTicketForm(data));
+    if (data.from && data.to) {
+      const response = await RouteServices.getRoutes({
+        from_city_id: data.from.id,
+        to_city_id: data.to.id,
+        date_start: data.departureDate.split('T')[0],
+        date_end: data.returnDate.split('T')[0],
+      });
 
-    // запрос GET https://students.netoservices.ru/fe-diplom/routes
-    // поиск направлений
+      dispatch(setRoutes(response.items));
+      dispatch(setCount(response.total_count));
+    }
   };
 
   return {
