@@ -50,7 +50,6 @@ export const CustomDatePicker = memo(
         onChange={onChange}
         dateFormat='dd.MM.yyyy'
         className={classNames(styles.datepicker, className)}
-        calendarClassName={styles.calendar}
       />
     );
   },

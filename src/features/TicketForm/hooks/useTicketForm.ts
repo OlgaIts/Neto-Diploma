@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { RouteServices, setCount, setRoutes } from '@entities/routes';
 import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
@@ -16,6 +17,7 @@ export const useTicketForm = () => {
   const toCity = watch('to');
   const departureDate = watch('departureDate');
   const returnDate = watch('returnDate');
+  const navigate = useNavigate();
 
   const onSubmit = async (data: TicketFormState) => {
     dispatch(setTicketForm(data));
@@ -29,6 +31,7 @@ export const useTicketForm = () => {
 
       dispatch(setRoutes(response.items));
       dispatch(setCount(response.total_count));
+      // navigate('./train')
     }
   };
 
