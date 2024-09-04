@@ -10,6 +10,13 @@
   --bg-route-card: #e4e0e9;
   --page-bg: #f7f5f9;
 
+  //color
+  --color-dark: #000;
+  --color-light: #fff;
+  --color-footer: #e5e5e5;
+  --text-dark-gray: #928f94;
+  --color-light-grey: #c4c4c4;
+
   //font-size
   --fs-xs: 16px;
   --fs-sm: 18px;
@@ -30,13 +37,6 @@
   //font-family
   --ff: 'Roboto', sans-serif;
 
-  //color
-  --color-dark: #000;
-  --color-light: #fff;
-  --color-footer: #e5e5e5;
-  --text-dark-gray: #928f94;
-  --color-light-grey: #c4c4c4;
-
   //padding
   --padding-xs: 8px;
   --padding-s: 16px;
@@ -49,6 +49,7 @@
 
   // border-radius
   --radius: 5px;
+  --radius-slider: 8px;
   --radius-round: 50%;
 
   // box-shadow

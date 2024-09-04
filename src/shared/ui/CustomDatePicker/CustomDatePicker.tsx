@@ -7,20 +7,25 @@ import styles from './CustomDatePicker.module.scss';
 
 interface CustomDatePickerProps {
   className?: string;
-  selected: Date | null;
-  onChange: (date: Date | null) => void;
+  selected?: Date | null;
+  onChange?: (date: Date | null) => void;
 }
 
 interface CustomInputProps {
   value: string;
   onClick: () => void;
+  className?: string;
 }
 
 const CustomInput: ForwardRefRenderFunction<
   HTMLDivElement,
   CustomInputProps
-> = ({ value, onClick }, ref) => (
-  <div className='custom-input-container' onClick={onClick} ref={ref}>
+> = ({ value, onClick, className }, ref) => (
+  <div
+    className={classNames('custom-input-container', className)}
+    onClick={onClick}
+    ref={ref}
+  >
     <input
       className={styles.input}
       value={value}
@@ -40,7 +45,6 @@ const ForwardedCustomInput = forwardRef(CustomInput);
 
 export const CustomDatePicker = memo(
   ({ className, selected, onChange }: CustomDatePickerProps) => {
-
     return (
       <DatePicker
         locale='ru'

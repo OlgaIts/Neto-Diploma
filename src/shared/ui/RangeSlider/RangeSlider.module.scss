@@ -1,0 +1,66 @@
+.component {
+  position: relative;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.track {
+  position: absolute;
+  height: 100%;
+  background-color: var(--bg-accent-color);
+  border-radius: var(--radius-slider);
+}
+
+.input {
+  margin: 0;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  appearance: none;
+  pointer-events: none;
+}
+
+.input[type='range']::-webkit-slider-thumb {
+  height: 24px;
+  width: 24px;
+  border-radius: var(--radius-round);
+  background: var(--color-light);
+  pointer-events: auto;
+  appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.input[type='range']::-moz-range-thumb {
+  height: 24px;
+  width: 24px;
+  border-radius: var(--radius-round);
+  background: var(--color-light);
+  pointer-events: auto;
+  appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.wrapper {
+  position: absolute;
+  pointer-events: none;
+}
+
+.tooltip {
+  color: var(--color-light);
+  //   bottom: 0;
+  //   white-space: nowrap;
+}
+
+.min_tooltip {
+  transform: translateY(200%);
+  z-index: 10;
+}
+
+.max_tooltip {
+  transform: translateY(200%);
+  z-index: 10;
+}

@@ -25,10 +25,6 @@
   transform: translateY(-50%);
 }
 
-
-
-
-
 :global(.react-datepicker) {
   font: 400 20px var(--ff);
   border: none;
@@ -96,7 +92,6 @@
   color: var(--color-dark);
 }
 
-
 :global(.react-datepicker__navigation--previous) {
   left: 20px;
   top: 20px;
@@ -110,6 +105,7 @@
 :global(.react-datepicker__navigation-icon::before) {
   border-color: var(--color-dark);
 }
+
 :global(.react-datepicker__navigation:hover *::before) {
   border-color: var(--bg-accent-color);
 }
