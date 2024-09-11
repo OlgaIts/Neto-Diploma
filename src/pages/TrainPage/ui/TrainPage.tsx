@@ -1,10 +1,16 @@
 import { memo } from 'react';
-import { RouteCard } from '@entities/routes';
+import { RouteCard, getRoutesData } from '@entities/routes';
 import { Header } from '@widgets/ui/Header';
+import { LastTickets } from '@entities/lastRoutes';
+import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
+import { Pagination } from '@shared/ui/Pagination';
 import { Filters } from './Filters/Filters';
+import { MainFilters } from './MainFilters/MainFilters';
 import styles from './TrainPage.module.scss';
 
 export const TrainPage = memo(() => {
+  const RoutesData = useAppSelector(getRoutesData);
+
   return (
     <div className={styles.component}>
       <Header />
@@ -27,14 +33,26 @@ export const TrainPage = memo(() => {
           <span>Проверка</span>
         </div>
       </div>
+
       <div className={styles.container}>
         <main className={styles.main}>
           <aside>
             <Filters />
-            <section className={styles.latest_view}>последние билеты</section>
+            <section className={styles.latest_view}>
+              <LastTickets />
+            </section>
           </aside>
           <section>
-            <RouteCard />
+            <MainFilters className={styles.main_filter} />
+
+            <ul className={styles.route_list}>
+              {RoutesData.map((item) => (
+                <li key={item.departure.train._id}>
+                  <RouteCard item={item} />
+                </li>
+              ))}
+            </ul>
+            <Pagination className={styles.pagination} />
           </section>
         </main>
       </div>

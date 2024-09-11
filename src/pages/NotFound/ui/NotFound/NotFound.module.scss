@@ -1,0 +1,40 @@
+.component {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url('@shared/assets/img/not-found.jpg');
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  z-index: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-dark);
+    opacity: 0.7;
+    z-index: -1;
+  }
+}
+
+.content {
+  font: var(--fw-black) 300px var(--ff);
+  color: var(--color-footer);
+}
+
+.title {
+  text-align: center;
+  font: var(--fw-medium) 50px var(--ff);
+  color: var(--color-footer);
+
+  span {
+    font: var(--fw-black) 80px var(--ff);
+  }
+}
+
+.btn {
+  margin-top: calc(var(--margin-xl) * 4);
+}

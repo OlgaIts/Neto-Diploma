@@ -1,6 +1,5 @@
-import classNames from 'classnames';
 import { ChangeEvent, ForwardedRef, forwardRef, memo } from 'react';
-import { FieldValues } from 'react-hook-form';
+import classNames from 'classnames';
 import styles from './Datalist.module.scss';
 
 export interface DatalistOption {
@@ -15,16 +14,17 @@ export interface DatalistProps {
   name: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
-  value: string
+  value: string;
 }
 
 export const Datalist = memo(
-  forwardRef(function Datalist<T extends FieldValues>(
+  forwardRef(function Datalist(
     props: DatalistProps,
     ref: ForwardedRef<HTMLInputElement | null>,
   ) {
-    const { onChange, listId, className, data, name, placeholder, value } = props;
-    const handleChange = (e: any) => {
+    const { onChange, listId, className, data, name, placeholder, value } =
+      props;
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
       onChange(e);
     };
 
@@ -49,4 +49,5 @@ export const Datalist = memo(
     );
   }),
 );
+
 Datalist.displayName = 'Datalist';

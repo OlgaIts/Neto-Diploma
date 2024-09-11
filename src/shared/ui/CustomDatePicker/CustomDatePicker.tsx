@@ -29,13 +29,13 @@ const CustomInput: ForwardRefRenderFunction<
     <input
       className={styles.input}
       value={value}
-      placeholder='ДД/ММ/ГГ'
+      placeholder="ДД/ММ/ГГ"
       readOnly
     />
     <Icon
       iconName={'icon-calendar'}
-      color='primary'
-      fontSize='22px'
+      color="primary"
+      fontSize="22px"
       className={styles.icon}
     />
   </div>
@@ -47,12 +47,12 @@ export const CustomDatePicker = memo(
   ({ className, selected, onChange }: CustomDatePickerProps) => {
     return (
       <DatePicker
-        locale='ru'
-        customInput={<ForwardedCustomInput value='' onClick={() => {}} />}
+        locale="ru"
+        customInput={<ForwardedCustomInput value="" onClick={() => {}} />}
         calendarStartDay={1}
         selected={selected}
         onChange={onChange}
-        dateFormat='dd.MM.yyyy'
+        dateFormat="dd.MM.yyyy"
         className={classNames(styles.datepicker, className)}
       />
     );

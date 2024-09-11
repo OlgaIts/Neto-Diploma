@@ -4,7 +4,13 @@ import iconStyles from '../../assets/iconStyle.module.scss';
 import styles from './Icon.module.scss';
 
 export type IconName = keyof typeof styles;
-export type IconColor = 'primary' | 'accent' | 'white' | 'grey' | 'dark' | 'dark_gray';
+export type IconColor =
+  | 'primary'
+  | 'accent'
+  | 'white'
+  | 'grey'
+  | 'dark'
+  | 'dark_gray';
 
 interface IconProps {
   children?: ReactNode | string;

@@ -1,9 +1,13 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { routeConfig } from './router/routerConfig';
 import { Footer } from '@widgets/ui/Footer';
 import './styles/index.scss';
 
 function App() {
+  const location = useLocation();
+  const allPaths = Object.values(routeConfig).map(({ path }) => path);
+  const isPathValid = allPaths.includes(location.pathname);
+ 
   return (
     <>
       <Routes>
@@ -11,7 +15,7 @@ function App() {
           <Route element={element} path={path} key={path} />
         ))}
       </Routes>
-      <Footer />
+      {isPathValid ? <Footer /> : null}
     </>
   );
 }

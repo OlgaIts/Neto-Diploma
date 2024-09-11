@@ -9,13 +9,14 @@ import {
 } from 'react';
 import classNames from 'classnames';
 import styles from './RangeSlider.module.scss';
+import useDebounce from '@shared/lib/hooks/useDebounce';
 
 interface RangeSliderProps {
   className?: string;
   showTooltip?: boolean;
   max: number;
   min: number;
-  onChange?: Dispatch<SetStateAction<number[]>>;
+  onChange: Dispatch<SetStateAction<number[]>>;
   step: number;
   value: number[];
   height: string;
@@ -57,19 +58,21 @@ export const RangeSlider = memo(
       };
     }, [rangeValues, min, max]);
 
+    const debaunceHandleChange = useDebounce(onChange, 1500);
+
     const handleChange = useCallback(
       (type: 'min' | 'max') => (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = Number(e.target.value);
         if (type === 'min' && value <= rangeValues.maxValue) {
           setRangeValues((prev) => ({ ...prev, minValue: value }));
-          onChange?.([value, rangeValues.maxValue]);
+          debaunceHandleChange?.([value, rangeValues.maxValue]);
         }
         if (type === 'max' && value >= rangeValues.minValue) {
           setRangeValues((prev) => ({ ...prev, maxValue: value }));
-          onChange?.([rangeValues.minValue, value]);
+          debaunceHandleChange?.([rangeValues.minValue, value]);
         }
       },
-      [rangeValues, onChange],
+      [rangeValues, debaunceHandleChange],
     );
 
     return (
@@ -80,8 +83,8 @@ export const RangeSlider = memo(
         <div className={styles.track} style={trackStyles.track} />
         <input
           className={classNames(styles.input, styles.input_min)}
-          type='range'
-          name='min'
+          type="range"
+          name="min"
           max={max}
           min={min}
           step={step}
@@ -96,8 +99,8 @@ export const RangeSlider = memo(
         />
         <input
           className={classNames(styles.input, styles.input_max)}
-          type='range'
-          name='max'
+          type="range"
+          name="max"
           max={max}
           min={min}
           step={step}

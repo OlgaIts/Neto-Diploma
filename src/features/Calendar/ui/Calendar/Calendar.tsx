@@ -19,13 +19,13 @@ export const Calendar = memo(({ className }: CalendarProps) => {
         <Icon
           iconName={'icon-triangle'}
           className={styles.arrow_prev}
-          fontSize='14px'
+          fontSize="14px"
         />
         <div className={styles.month}>{moment().format('MMMM')}</div>
         <Icon
           iconName={'icon-triangle'}
           className={styles.arrow_next}
-          fontSize='14px'
+          fontSize="14px"
         />
       </div>
 

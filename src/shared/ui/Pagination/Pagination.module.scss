@@ -1,9 +1,9 @@
 .component {
   display: flex;
-  gap: 20px;
+  gap: var(--gap-sm);
 
   i {
-    font-weight: 700;
+    font-weight: var(--fw-bold);
   }
 
   li {
@@ -11,15 +11,15 @@
   }
 
   a {
+    padding: var(--margin-md);
     width: 84px;
     height: 75px;
-    padding: 20px;
     display: inline-grid;
     place-content: center;
     font: var(--fw-bold) var(--fs-title) var(--ff);
     color: var(--text-dark-gray);
     border: 1px solid var(--color-light-grey);
-    border-radius: 5px;
+    border-radius: var(--radius);
 
     &:hover {
       border: 1px solid var(--bg-accent-color);
@@ -32,7 +32,7 @@
       a {
         background-color: var(--bg-accent-color);
         border: 1px solid var(--bg-accent-color);
-        color: #fff;
+        color: var(--color-light);
       }
     }
   }

@@ -1,7 +1,7 @@
 .container {
   max-width: 1440px;
   margin: 0 auto;
-  padding-inline: var(--gap-s);
+  padding-inline: var(--gap-sm);
 }
 
 .logo_wrap {
@@ -16,7 +16,7 @@
 
 .nav {
   background-color: var(--bg-header-form);
-  padding: calc(var(--padding-s) * 1.5);
+  padding: calc(var(--padding-sm) * 1.5);
 }
 
 .nav_list {
@@ -28,6 +28,7 @@
   color: #fff;
   font: var(--fw-light) var(--fs-title) var(--ff);
   cursor: pointer;
+  
   &:hover {
     color: var(--bg-accent-color);
   }

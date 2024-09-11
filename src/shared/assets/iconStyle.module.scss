@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'chillTodo';
-  src:  url('fonts/chillTodo.eot?o0ap0u');
-  src:  url('fonts/chillTodo.eot?o0ap0u#iefix') format('embedded-opentype'),
-    url('fonts/chillTodo.ttf?o0ap0u') format('truetype'),
-    url('fonts/chillTodo.woff?o0ap0u') format('woff'),
-    url('fonts/chillTodo.svg?o0ap0u#chillTodo') format('svg');
+  src:  url('fonts/chillTodo.eot?l80leg');
+  src:  url('fonts/chillTodo.eot?l80leg#iefix') format('embedded-opentype'),
+    url('fonts/chillTodo.ttf?l80leg') format('truetype'),
+    url('fonts/chillTodo.woff?l80leg') format('woff'),
+    url('fonts/chillTodo.svg?l80leg#chillTodo') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,56 +25,26 @@ i {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-arrow-fat-left:before {
+  content: "\e923";
+}
+.icon-arrow-fat-right:before {
+  content: "\e922";
+}
 .icon-arrow-loop:before {
   content: "\e928";
-}
-.icon-chevron-left:before {
-  content: "\e90e";
-}
-.icon-chevron-right:before {
-  content: "\e927";
-}
-.icon-ruble:before {
-  content: "\e905";
 }
 .icon-arrow-thin:before {
   content: "\e900";
 }
-.icon-star:before {
-  content: "\e901";
-}
-.icon-caffee:before {
-  content: "\e902";
-}
-.icon-wagons:before {
-  content: "\e903";
-}
-.icon-ticket:before {
-  content: "\e904";
-  color: #ffb628;
-}
-.icon-linens:before {
-  content: "\e906";
-}
-.icon-conditioner:before {
-  content: "\e907";
-}
-.icon-clock:before {
-  content: "\e908";
-}
-.icon-person:before {
-  content: "\e909";
-}
-.icon-conductor:before {
-  content: "\e90a";
-  color: #ffb628;
-}
-.icon-two-tickets:before {
-  content: "\e90b";
-  color: #fdc354;
+.icon-berth:before {
+  content: "\e924";
 }
 .icon-building:before {
   content: "\e90c";
+}
+.icon-caffee:before {
+  content: "\e902";
 }
 .icon-calendar:before {
   content: "\e90d";
@@ -82,8 +52,24 @@ i {
 .icon-chevron-circle:before {
   content: "\e90f";
 }
+.icon-chevron-left:before {
+  content: "\e90e";
+}
+.icon-chevron-right:before {
+  content: "\e927";
+}
+.icon-clock:before {
+  content: "\e908";
+}
 .icon-computer:before {
   content: "\e910";
+}
+.icon-conditioner:before {
+  content: "\e907";
+}
+.icon-conductor:before {
+  content: "\e90a";
+  color: #ffb628;
 }
 .icon-coupe:before {
   content: "\e911";
@@ -100,6 +86,9 @@ i {
 .icon-google:before {
   content: "\e915";
 }
+.icon-linens:before {
+  content: "\e906";
+}
 .icon-linkedin:before {
   content: "\e916";
 }
@@ -112,8 +101,14 @@ i {
 .icon-minus:before {
   content: "\e919";
 }
+.icon-person:before {
+  content: "\e909";
+}
 .icon-plus:before {
   content: "\e91a";
+}
+.icon-ruble:before {
+  content: "\e905";
 }
 .icon-sitting:before {
   content: "\e91b";
@@ -121,8 +116,15 @@ i {
 .icon-skype:before {
   content: "\e91c";
 }
+.icon-star:before {
+  content: "\e901";
+}
 .icon-tel:before {
   content: "\e91d";
+}
+.icon-ticket:before {
+  content: "\e904";
+  color: #ffb628;
 }
 .icon-train:before {
   content: "\e91e";
@@ -133,18 +135,19 @@ i {
 .icon-twitter:before {
   content: "\e920";
 }
-.icon-Wi-Fi:before {
+.icon-two-tickets:before {
+  content: "\e90b";
+  color: #fdc354;
+}
+.icon-wagons:before {
+  content: "\e903";
+}
+.icon-wi-fi:before {
   content: "\e921";
-}
-.icon-arrow-fat:before {
-  content: "\e922";
-}
-.icon-berth:before {
-  content: "\e924";
-}
-.icon-youtube:before {
-  content: "\e925";
 }
 .icon-world:before {
   content: "\e926";
+}
+.icon-youtube:before {
+  content: "\e925";
 }

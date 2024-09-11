@@ -1,0 +1,16 @@
+.component {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  padding-bottom: var(--margin-sm);
+  display: block;
+  font: var(--fw-regular) var(--fs-text) var(--ff);
+  color: var(--color-footer);
+}
+
+.slider {
+  border: 1px solid var(--color-light-grey);
+  border-radius: var(--radius-slider);
+}

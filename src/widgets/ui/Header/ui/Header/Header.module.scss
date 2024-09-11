@@ -1,0 +1,18 @@
+@use '@app/styles/mixins' as *;
+
+.header {
+  min-height: 596px;
+  background-image: url('@shared/assets/img/bg-header.png');
+  background-size: cover;
+  background-color: var(--bg-filter);
+  position: relative;
+  z-index: 0;
+}
+
+.container {
+  @include container;
+}
+
+.form {
+  margin-top: 110px;
+}

@@ -1,0 +1,41 @@
+.header {
+  padding-bottom: var(--padding-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title_wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--padding-sm);
+}
+
+.icon_wrapper {
+  height: 26px;
+  padding: 0 9px;
+  display: grid;
+  place-content: center;
+  background-color: var(--bg-accent-color);
+  border-radius: var(--radius);
+}
+
+.open_btn {
+  padding: 3px;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-content: center;
+  background-color: transparent;
+  border: 2px solid var(--color-light);
+  border-radius: var(--radius);
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    border: 2px solid var(--bg-hover-btn);
+    i {
+      color: var(--bg-hover-btn);
+    }
+  }
+}

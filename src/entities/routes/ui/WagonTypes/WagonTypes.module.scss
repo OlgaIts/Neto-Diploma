@@ -1,27 +1,29 @@
 .component {
+  width: 100%;
   border-left: 1px dashed var(--color-footer);
-  padding: 36px 24px;
+  padding: var(--padding-lg) var(--padding-md);
 }
 .content {
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-  gap: 32px;
+  gap: var(--padding-lg);
 }
 
 .wagons_types {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 20px;
+  // align-items: flex-end;
+  gap: var(--gap-sm);
 }
 
 .type_wrap {
   display: grid;
-  grid-template-columns: 86px 22px 1fr;
+  grid-template-columns: 80px 32px 1fr;
   align-items: baseline;
-  gap: 16px;
+  gap: var(--padding-sm);
 }
 
 .type {
@@ -30,11 +32,15 @@
 }
 
 .count {
+  position: relative;
   font: var(--fw-medium) var(--fs-xs) var(--ff);
   color: var(--bg-accent-color);
+  cursor: pointer;
 }
 
 .price {
+  justify-self: end;
+  text-wrap: nowrap;
   font: var(--fw-regular) var(--fs-xs) var(--ff);
   color: var(--text-gray);
 
@@ -45,13 +51,54 @@
   }
 
   i {
-    margin-left: 5px;
+    margin-left: var(--margin-xs);
   }
 }
 
 .icons_wrap {
-  margin-bottom: 20px;
+  margin-bottom: var(--margin-md);
   display: flex;
   justify-content: flex-end;
-  gap: 20px;
+  gap: var(--gap-sm);
+}
+
+.tooltip {
+  position: absolute;
+  margin-top: 2.3%;
+  margin-left: -18px;
+  padding: var(--padding-md) var(--padding-lg);
+  display: grid;
+  gap: var(--gap-sm);
+  background-color: var(--bg-tooltip);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  z-index: 10;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 45%;
+    transform: translate(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent var(--bg-tooltip) transparent;
+  }
+}
+
+.wrapper {
+  display: flex;
+  align-items: baseline;
+
+  .count {
+    margin-left: var(--margin-md);
+    cursor: default;
+  }
+}
+
+.tooptip_price {
+  margin-right: 4px;
+  margin-left: var(--margin-xl);
+  font: var(--fw-bold) var(--fs-text) var(--ff);
+  color: var(--bg-footer);
 }

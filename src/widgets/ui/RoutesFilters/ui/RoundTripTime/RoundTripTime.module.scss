@@ -1,0 +1,14 @@
+.component {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+}
+
+.filter {
+  margin-top: var(--padding-lg);
+  margin-bottom: calc(var(--padding-lg) * 2);
+
+  label {
+    margin-left: auto;
+  }
+}

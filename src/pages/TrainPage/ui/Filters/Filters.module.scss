@@ -1,6 +1,6 @@
 .component {
+  margin-bottom: 88px;
   width: 360px;
-  //   padding: 32px;
   background-color: var(--bg-filter);
 }
 
@@ -29,21 +29,9 @@
 }
 
 .options_wrapper {
+  padding-left: 64px;
   display: grid;
-  gap: 34px;
-}
-
-.option {
-  display: flex;
-
-  span {
-    font: var(--fw-regular) 18px var(--ff);
-    color: var(--color-light);
-  }
-}
-
-.last_child {
-  margin-bottom: 24px;
+  gap: 32px;
 }
 
 .icon {
@@ -55,7 +43,7 @@
 }
 
 .cost {
-  padding-bottom: 40px;
+  padding-bottom: 64px;
 }
 
 .wrapper {

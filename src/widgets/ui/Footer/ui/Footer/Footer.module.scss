@@ -1,0 +1,114 @@
+.footer {
+  background-color: var(--bg-footer);
+  color: var(--color-light);
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-inline: var(--gap-sm);
+}
+
+.section_wrapper {
+  display: flex;
+  justify-content: space-around;
+  padding-block: calc(var(--margin-sm) * 5);
+  color: var(--color-footer);
+  font: var(--fw-regular) var(--fs-text) var(--ff);
+}
+
+.content {
+  margin-top: var(--margin-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--margin-lg);
+}
+
+.wrapper {
+  display: flex;
+  gap: var(--padding-lg);
+  align-items: center;
+}
+
+.map_wrapper {
+  align-items: start;
+}
+
+.text {
+  margin-top: 28px;
+  margin-bottom: var(--padding-sm);
+  font: var(--fw-regular) var(--fs-text) var(--ff);
+  color: var(--color-footer);
+}
+
+.form {
+  margin-bottom: 44px;
+  display: flex;
+  gap: var(--padding-lg);
+}
+
+.input {
+  width: 447px;
+  padding: var(--padding-md);
+  border: 1px solid var(--color-light);
+  border-radius: var(--radius);
+  outline: none;
+
+  &::placeholder {
+    font-size: var(--fs-text);
+    font-family: var(--ff);
+    color: var(--color-footer);
+  }
+
+  &:focus {
+    border: 1px solid var(--bg-accent-color);
+  }
+}
+
+.subscribe_section {
+  margin-top: calc(var(--padding-md) * 2);
+}
+
+.links_wrapper {
+  margin-top: var(--margin-lg);
+  display: flex;
+  gap: calc(var(--padding-md) * 2);
+}
+
+.social_icon {
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: var(--bg-accent-color);
+  }
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-footer);
+}
+
+.footer_bottom {
+  padding: var(--padding-lg) 0 var(--margin-xl) 0;
+  display: flex;
+  justify-content: space-between;
+  p {
+    font: var(--fw-light) var(--fs-text) var(--ff);
+    color: var(--color-footer);
+  }
+}
+
+.logo {
+  font: var(--fw-black) var(--fs-lg) var(--ff);
+  color: var(--color-footer);
+}
+
+.scroller_btn {
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: var(--bg-accent-color);
+  }
+}

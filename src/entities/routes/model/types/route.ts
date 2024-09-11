@@ -24,8 +24,10 @@ interface BaseRoute {
   min_price: number;
   available_seats: number;
   available_seats_info: {
-    second: number;
-    third: number;
+    fourth?: number;
+    third?: number;
+    second?: number;
+    first?: number;
   };
 }
 

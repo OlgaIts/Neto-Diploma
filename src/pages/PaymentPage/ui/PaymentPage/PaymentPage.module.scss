@@ -1,0 +1,26 @@
+.component {
+  background-color: var(--page-bg);
+}
+
+.container {
+  max-width: 1440px;
+  margin: 96px auto 0 auto;
+  padding-inline: 20px;
+}
+
+.main {
+  display: flex;
+  gap: 50px;
+}
+
+.section {
+  box-shadow: var(--card-shadow);
+}
+
+.title_wrapper {
+
+  padding: 35px;
+  background-color: #f9f9f9;
+  
+
+}

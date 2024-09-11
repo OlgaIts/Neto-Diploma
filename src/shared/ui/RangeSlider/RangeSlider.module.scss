@@ -1,7 +1,7 @@
 .component {
   position: relative;
   width: 100%;
-  margin: 10px 0;
+  margin: var(--margin-sm) 0;
 }
 
 .track {
@@ -56,11 +56,11 @@
 }
 
 .min_tooltip {
-  transform: translateY(200%);
+  transform: translateY(180%);
   z-index: 10;
 }
 
 .max_tooltip {
-  transform: translateY(200%);
+  transform: translateY(180%);
   z-index: 10;
 }

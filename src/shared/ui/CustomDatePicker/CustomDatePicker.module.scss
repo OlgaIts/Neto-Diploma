@@ -5,7 +5,7 @@
 .input {
   position: relative;
   width: 325px;
-  padding: var(--gap-s);
+  padding: var(--gap-sm);
   font: var(--fw-regular) var(--fs-sm) var(--ff);
   color: var(--bg-header-form);
   border-radius: 3px;
@@ -26,14 +26,14 @@
 }
 
 :global(.react-datepicker) {
-  font: 400 20px var(--ff);
+  font: var(--fw-regular) var(--fs-md) var(--ff);
   border: none;
 }
 
 :global(.react-datepicker__month-container) {
   width: 330px;
   box-shadow: var(--shadow);
-  border-radius: 5px;
+  border-radius: var(--radius);
 }
 
 :global(.react-datepicker__header) {
@@ -51,12 +51,12 @@
 :global(.react-datepicker__current-month) {
   display: grid;
   place-content: center;
-  font: 600 24px var(--ff);
+  font: var(--fw-medium) var(--fs-text) var(--ff);
   text-transform: capitalize;
 }
 
 :global(.react-datepicker__day) {
-  margin: 8px;
+  margin: var(--padding-xs);
   line-height: normal;
 }
 

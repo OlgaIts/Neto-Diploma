@@ -40,3 +40,18 @@
   display: flex;
   gap: 50px;
 }
+
+.route_list {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.main_filter {
+  margin-bottom: 48px;
+}
+
+.pagination {
+  margin-top: 144px;
+  margin-bottom: 192px;
+}

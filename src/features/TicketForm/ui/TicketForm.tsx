@@ -15,7 +15,11 @@ import styles from './TicketForm.module.scss';
 
 registerLocale('ru', ru);
 
-export const TicketForm = memo(() => {
+interface TicketFormProps {
+  className?: string;
+}
+
+export const TicketForm = memo(({ className }: TicketFormProps) => {
   const location = useLocation();
   const isMainPage = location.pathname === '/';
   const {
@@ -49,7 +53,11 @@ export const TicketForm = memo(() => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className={classNames(styles.form, !isMainPage ? styles.form_flex : '')}
+      className={classNames(
+        styles.form,
+        className,
+        !isMainPage ? styles.form_flex : '',
+      )}
     >
       <div className={styles.box}>
         <Title color='light' weight='light' className={styles.title}>

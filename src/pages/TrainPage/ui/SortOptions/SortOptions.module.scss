@@ -1,0 +1,18 @@
+.option {
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    font: var(--fw-regular) var(--fs-sm) var(--ff);
+    color: var(--color-light);
+  }
+}
+
+.wrapper {
+  display: flex;
+  gap: calc(var(--padding-sm) * 2);
+}
+
+.last_child {
+  margin-bottom: var(--padding-md);
+}
