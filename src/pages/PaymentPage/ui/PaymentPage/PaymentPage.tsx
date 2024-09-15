@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import classNames from 'classnames';
 import styles from './PaymentPage.module.scss';
-import { Header } from '@widgets/ui/Header';
-import { Filters } from '@pages/TrainPage/ui/Filters/Filters';
+import { Header } from '@widgets/Header';
+
 import { Title } from '@shared/ui/Title';
 
 interface PaymentPageProps {
@@ -14,18 +14,16 @@ export const PaymentPage = memo(({ className }: PaymentPageProps) => {
       <Header />
       <div className={styles.container}>
         <main className={styles.main}>
-          <aside>
-            <Filters />
-          </aside>
+          <aside></aside>
           <section className={styles.section}>
             <div className={styles.title_wrapper}>
-              <Title color="dark" weight="regular">
+              <Title color='dark' weight='regular'>
                 Персональные данные
               </Title>
             </div>
-            <form action="">
-              <label htmlFor="">Фамилия</label>
-              <input type="text" />
+            <form action=''>
+              <label htmlFor=''>Фамилия</label>
+              <input type='text' />
             </form>
           </section>
         </main>

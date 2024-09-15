@@ -1,24 +1,16 @@
 import { url } from '@shared/consts';
 import { Route } from '../types/route';
+import { RouteFilters } from '../types/filters';
 
 interface ResponseData {
   items: Route[];
   total_count: number;
 }
 
-interface RouteRequestData {
+export interface RouteRequestData
+  extends Omit<Partial<RouteFilters>, 'from_city_id' | 'to_city_id'> {
   from_city_id: string;
   to_city_id: string;
-  date_start?: string;
-  date_end?: string; //в формате YYYY-MM-DD; например 2030-03-01
-  start_departure_hour_from?: number;
-  start_departure_hour_to?: number;
-  start_arrival_hour_from?: number;
-  start_arrival_hour_to?: number;
-  end_departure_hour_from?: number;
-  end_departure_hour_to?: number;
-  end_arrival_hour_from?: number;
-  end_arrival_hour_to?: number;
 }
 
 export const services = {

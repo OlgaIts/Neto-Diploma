@@ -1,0 +1,27 @@
+.stages {
+  height: 98px;
+  display: flex;
+  gap: 70px;
+  background-color: var(--bg-filter);
+  color: var(--color-light);
+}
+
+.stage {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  span {
+    font: var(--fw-medium) var(--fs-title) var(--ff);
+  }
+}
+
+.step {
+  width: 56px;
+  height: 56px;
+  padding: 5px;
+  display: grid;
+  place-content: center;
+  font: var(--fw-medium) 36px var(--ff);
+  border: 3px solid var(--color-light);
+  border-radius: 50%;
+}

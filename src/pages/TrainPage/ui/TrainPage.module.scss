@@ -8,50 +8,7 @@
   padding-inline: 20px;
 }
 
-.stages {
-  height: 98px;
-  display: flex;
-  gap: 70px;
-  background-color: var(--bg-filter);
-  color: var(--color-light);
-}
-
-.stage {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  span {
-    font: var(--fw-medium) var(--fs-title) var(--ff);
-  }
-}
-
-.step {
-  width: 56px;
-  height: 56px;
-  padding: 5px;
-  display: grid;
-  place-content: center;
-  font: var(--fw-medium) 36px var(--ff);
-  border: 3px solid var(--color-light);
-  border-radius: 50%;
-}
-
 .main {
   display: flex;
   gap: 50px;
-}
-
-.route_list {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-}
-
-.main_filter {
-  margin-bottom: 48px;
-}
-
-.pagination {
-  margin-top: 144px;
-  margin-bottom: 192px;
 }

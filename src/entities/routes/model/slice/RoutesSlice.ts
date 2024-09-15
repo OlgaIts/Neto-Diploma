@@ -1,14 +1,17 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Route } from '../types/route';
+import { RouteFilters } from '../types/filters';
 
 interface RoutesState {
   routes: Route[];
   totalCount: number;
+  routeFilters: Partial<RouteFilters>;
 }
 
 const initialState: RoutesState = {
   routes: [],
   totalCount: 0,
+  routeFilters: {},
 };
 
 const routesSlice = createSlice({
@@ -22,8 +25,11 @@ const routesSlice = createSlice({
     setCount: (state, action: PayloadAction<number>) => {
       state.totalCount = action.payload;
     },
+    setRouteFilters: (state, action: PayloadAction<Partial<RouteFilters>>) => {
+      state.routeFilters = { ...state.routeFilters, ...action.payload };
+    },
   },
 });
 
-export const { setRoutes, setCount } = routesSlice.actions;
+export const { setRoutes, setCount, setRouteFilters } = routesSlice.actions;
 export const routesReducer = routesSlice.reducer;

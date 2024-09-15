@@ -1,5 +1,5 @@
+export { useGetRoutes } from './hooks/useGetRoutes';
+export { RouteCardList } from './ui/RouteCardList/RouteCardList';
 export { RouteCard } from './ui/RouteCard/RouteCard';
-export { getRoutesData } from './model/selectors/selector';
-export { routesReducer, setRoutes, setCount } from './model/slice/RoutesSlice';
-export { services as RouteServices } from './model/services/services';
+export { routesReducer, setRouteFilters } from './model/slice/RoutesSlice';
 export { type Route } from './model/types/route';

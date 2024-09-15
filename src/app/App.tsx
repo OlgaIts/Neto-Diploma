@@ -1,13 +1,13 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { routeConfig } from './router/routerConfig';
-import { Footer } from '@widgets/ui/Footer';
+import { Footer } from '@widgets/Footer';
 import './styles/index.scss';
 
 function App() {
   const location = useLocation();
   const allPaths = Object.values(routeConfig).map(({ path }) => path);
   const isPathValid = allPaths.includes(location.pathname);
- 
+
   return (
     <>
       <Routes>
