@@ -12,10 +12,11 @@
 }
 
 .icon_wrapper {
+  padding: 0 var(--padding-xs);
+  width: 32px;
   height: 26px;
-  padding: 0 9px;
-  display: grid;
-  place-content: center;
+  display: flex;
+  align-items: center;
   background-color: var(--bg-accent-color);
   border-radius: var(--radius);
 }
@@ -38,8 +39,4 @@
       color: var(--bg-hover-btn);
     }
   }
-}
-
-.icon {
-  margin-right: 34px;
 }

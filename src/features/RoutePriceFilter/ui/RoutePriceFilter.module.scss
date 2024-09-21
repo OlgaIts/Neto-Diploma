@@ -1,5 +1,5 @@
 .wrapper {
-  margin-bottom: 5px;
+  margin-bottom: var(--margin-xs);
   display: flex;
   justify-content: space-between;
   font: var(--fw-regular) var(--fs-sm) var(--ff);
@@ -12,5 +12,5 @@
 }
 
 .title {
-  margin-bottom: 10px;
+  margin-bottom: var(--margin-sm);
 }

@@ -1,11 +1,7 @@
 import { memo, useCallback } from 'react';
 import { TimeSlider } from '@shared/ui/TimeSlider';
-import { getTicketFormData } from '@features/TicketForm';
 import { setRouteFilters } from '@entities/routes';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '@shared/lib/hooks/useReduxHooks';
+import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
 import {
   RouteDirection,
   TimeRange,
@@ -17,7 +13,6 @@ interface RoundTripTimeProps {
 }
 
 export const RoundTripTime = memo(({ routeDirection }: RoundTripTimeProps) => {
-  // const ticketFormData = useAppSelector(getTicketFormData);
   const dispatch = useAppDispatch();
 
   const getRoutes = useCallback(
@@ -26,21 +21,7 @@ export const RoundTripTime = memo(({ routeDirection }: RoundTripTimeProps) => {
         [timeRange.start]: range[0],
         [timeRange.end]: range[1],
       };
-
       dispatch(setRouteFilters(timeFilter));
-
-      // const startRangeTime = range[0];
-      // const endRangeTime = range[1];
-      // if (ticketFormData.from && ticketFormData.to) {
-      //   services.getRoutes({
-      //     from_city_id: ticketFormData.from.id,
-      //     to_city_id: ticketFormData.to.id,
-      //     date_start: ticketFormData.departureDate.split('T')[0],
-      //     date_end: ticketFormData.returnDate.split('T')[0],
-      //     start_departure_hour_from: startRangeTime,
-      //     end_departure_hour_from: endRangeTime,
-      //   });
-      // }
     },
     [],
   );
@@ -56,4 +37,5 @@ export const RoundTripTime = memo(({ routeDirection }: RoundTripTimeProps) => {
     </div>
   );
 });
+
 RoundTripTime.displayName = 'RoundTripTime';

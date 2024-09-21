@@ -40,7 +40,7 @@ export const Datalist = memo(
           placeholder={placeholder}
           value={value}
         />
-        <datalist id={listId}>
+        <datalist id={listId} className={styles.datalist}>
           {data.map((item) => (
             <option value={item.value} key={item.id} />
           ))}

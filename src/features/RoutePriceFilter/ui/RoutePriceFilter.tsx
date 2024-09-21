@@ -1,10 +1,25 @@
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { Title } from '@shared/ui/Title';
 import { RangeSlider } from '@shared/ui/RangeSlider';
+import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
+import { setRouteFilters } from '@entities/routes';
 import styles from './RoutePriceFilter.module.scss';
 
 export const RoutePriceFilter = memo(() => {
-  const [range, setRange] = useState([0, 24]);
+  const [range, setRange] = useState([0, 7000]);
+  const dispatch = useAppDispatch();
+
+  const getRoutes = (priceRange: number[]) => {
+    const priceFilter = {
+      price_from: priceRange[0],
+      price_to: priceRange[1],
+    };
+    dispatch(setRouteFilters(priceFilter));
+  };
+
+  useEffect(() => {
+    getRoutes(range);
+  }, [range]);
 
   return (
     <>
@@ -17,14 +32,15 @@ export const RoutePriceFilter = memo(() => {
       </div>
       <RangeSlider
         height={'19px'}
-        max={24}
+        max={7000}
         min={0}
         onChange={setRange}
-        step={1}
+        step={100}
         value={range}
         className={styles.slider}
       />
     </>
   );
 });
+
 RoutePriceFilter.displayName = 'RoutePriceFilter';

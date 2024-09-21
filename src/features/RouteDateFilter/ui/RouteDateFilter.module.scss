@@ -1,13 +1,14 @@
 .title {
-  margin-bottom: 10px;
+  margin-bottom: var(--margin-sm);
 }
 
 .date_picker {
   input {
     width: 295px;
-    padding: 10px;
+    padding: var(--margin-sm);
   }
 }
+
 :global(.react-datepicker__input-container) {
-  margin-bottom: 32px;
+  margin-bottom: var(--padding-lg);
 }

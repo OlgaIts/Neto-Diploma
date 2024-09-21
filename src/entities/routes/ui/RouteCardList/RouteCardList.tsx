@@ -5,8 +5,11 @@ import { RouteCard } from '../RouteCard/RouteCard';
 import styles from './RouteCardList.module.scss';
 
 export const RouteCardList = memo(() => {
-
   const RoutesData = useAppSelector(getRoutesData);
+  if (!RoutesData) {
+    return null;
+  }
+
   return (
     <ul className={styles.route_list}>
       {RoutesData.map((item) => (

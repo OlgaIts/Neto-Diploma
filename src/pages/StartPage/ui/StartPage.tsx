@@ -3,9 +3,9 @@ import { Element } from 'react-scroll';
 import { Title } from '@shared/ui/Title';
 import { TransparentButton } from '@shared/ui/TransparentButton';
 import { Icon } from '@shared/ui/Icon';
+import { ReviewsCarousel } from '@entities/reviews';
 import { StartHeader } from './StartHeader/StartHeader';
 import styles from './StartPage.module.scss';
-import { ReviewsCarousel } from '@entities/reviews';
 
 export const StartPage = () => {
   return (

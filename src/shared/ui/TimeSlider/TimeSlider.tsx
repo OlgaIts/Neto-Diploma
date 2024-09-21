@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import { memo, useEffect, useState } from 'react';
+import classNames from 'classnames';
 import { RangeSlider } from '@shared/ui/RangeSlider';
 import styles from './TimeSlider.module.scss';
 
@@ -8,17 +8,25 @@ interface TimeSliderProps {
   label?: string;
   func: (data: number[]) => void;
 }
+
 export const TimeSlider = memo(
   ({ className, label, func }: TimeSliderProps) => {
-    const [range, setRange] = useState([0, 24]);
-    // TODO: formatTime collback 21:00
+    const [range, setRange] = useState<[number, number]>([0, 24]);
+
+    const formatTime = (value: number): string => {
+      const hours = value < 10 ? `0${value}` : value;
+      return `${hours}:00`;
+    };
+
+    const handleRangeChange = (newRange: [number, number]) => {
+      setRange(newRange);
+    };
 
     useEffect(() => {
       func?.(range);
     }, [range]);
 
     return (
-      //TODO: задать label туда и обратно дабавить возможность добавить сюда просп
       <div className={classNames(styles.component, className)}>
         <label htmlFor='' className={styles.label}>
           {label}
@@ -30,7 +38,8 @@ export const TimeSlider = memo(
           step={1}
           value={range}
           className={styles.slider}
-          onChange={setRange}
+          onChange={handleRangeChange}
+          formatValue={(value) => formatTime(value)}
         />
       </div>
     );

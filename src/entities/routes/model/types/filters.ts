@@ -1,3 +1,5 @@
+export type RouteSortType = 'date' | 'price_min' | 'duration';
+
 export interface RouteFilters {
   from_city_id: string;
   to_city_id: string;
@@ -24,5 +26,5 @@ export interface RouteFilters {
   price_to: number;
   limit: number;
   offset: number;
-  sort: 'date' | 'price' | 'duration';
+  sort: RouteSortType;
 }

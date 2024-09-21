@@ -27,9 +27,19 @@
   font: var(--fw-bold) var(--fs-text) var(--ff);
 }
 
-//
+.train_route {
+  text-transform: capitalize;
+  color: var(--bg-header-form);
+
+  p {
+    i {
+      margin-left: var(--margin-xs);
+      vertical-align: middle;
+    }
+  }
+}
+
 .info {
-  // width: 100%;
   display: grid;
   grid-template-columns: 2fr 1fr;
   border: 1px solid var(--color-light-grey);

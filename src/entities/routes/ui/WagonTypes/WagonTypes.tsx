@@ -4,21 +4,23 @@ import { Icon } from '@shared/ui/Icon';
 import { Button } from '@shared/ui/Button';
 import { useClickOutside } from '@shared/lib/hooks/useClickOutside';
 import { Route } from '@entities/routes/model/types/route';
+import { Tooltip } from '../Tooltip/Tooltip';
 import styles from './WagonTypes.module.scss';
 
 interface WagonTypesProps {
   className?: string;
   item: Route;
 }
+
 export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
-  const [openTooltipIndex, setOpenTooltipIndex] = useState<number | null>(null);
+  const [openTooltipIndex, setOpenTooltipIndex] = useState<string | null>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
 
-  const toggleTooltip = (index: number): void => {
-    if (openTooltipIndex === index) {
+  const toggleTooltip = (id: string): void => {
+    if (openTooltipIndex === id) {
       setOpenTooltipIndex(null);
     } else {
-      setOpenTooltipIndex(index);
+      setOpenTooltipIndex(id);
     }
   };
 
@@ -37,10 +39,16 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
             <li className={styles.type_wrap}>
               <span className={styles.type}>Сидячий</span>
               <div
+                ref={tooltipRef}
                 className={styles.count}
-                // onClick={() => toggleTooltip()}
+                onClick={() => toggleTooltip(item.departure.train._id)}
               >
-                {item.available_seats_info.third || 0}
+                <span className={styles.seats}>
+                  {item.available_seats_info.fourth || 0}
+                </span>
+                {openTooltipIndex === item.departure.train._id && (
+                  <Tooltip ref={tooltipRef} />
+                )}
               </div>
               <p className={styles.price}>
                 от
@@ -49,7 +57,7 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
                     item.departure.price_info.fourth?.top_price,
                   ).toLocaleString('ru-RU')}
                 </span>
-                <Icon iconName={'icon-ruble'} fontSize="22px" />
+                <Icon iconName={'icon-ruble'} fontSize='22px' />
               </p>
             </li>
           )}
@@ -59,7 +67,7 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
               <span className={styles.type}>Плацкарт</span>
               <div
                 className={styles.count}
-                // onClick={() => toggleTooltip()}
+                onClick={() => toggleTooltip(item.departure.train._id)}
               >
                 {item.available_seats_info.third || 0}
               </div>
@@ -70,7 +78,7 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
                     item.departure.price_info.third?.top_price,
                   ).toLocaleString('ru-RU')}
                 </span>
-                <Icon iconName={'icon-ruble'} fontSize="22px" />
+                <Icon iconName={'icon-ruble'} fontSize='22px' />
               </p>
             </li>
           )}
@@ -80,7 +88,7 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
               <span className={styles.type}>Купе</span>
               <div
                 className={styles.count}
-                // onClick={() => toggleTooltip()}
+                onClick={() => toggleTooltip(item.departure.train._id)}
               >
                 {item.available_seats_info.second || 0}
               </div>
@@ -91,7 +99,7 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
                     item.departure.price_info.second?.top_price,
                   ).toLocaleString('ru-RU')}
                 </span>
-                <Icon iconName={'icon-ruble'} fontSize="22px" />
+                <Icon iconName={'icon-ruble'} fontSize='22px' />
               </p>
             </li>
           )}
@@ -101,7 +109,7 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
               <span className={styles.type}>Люкс</span>
               <div
                 className={styles.count}
-                // onClick={() => toggleTooltip(index)}
+                onClick={() => toggleTooltip(item.departure.train._id)}
               >
                 {item.available_seats_info.first || 0}
               </div>
@@ -109,80 +117,23 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
                 от
                 <span>
                   {Number(
-                    item.departure.price_info.first?.top_price?.toLocaleString(
-                      'ru-RU',
-                    ),
-                  )}
+                    item.departure.price_info.first?.bottom_price,
+                  ).toLocaleString('ru-RU')}
                 </span>
-                <Icon iconName={'icon-ruble'} fontSize="22px" />
+                <Icon iconName={'icon-ruble'} fontSize='22px' />
               </p>
             </li>
           )}
-          {/* {item.have_first_class && (
-            <li className={styles.type_wrap}>
-              <span className={styles.type}>Люкс</span>
-              <div
-                className={styles.count}
-                // onClick={() => toggleTooltip(index)}
-              >
-                88
-              </div>
-              <p className={styles.price}>
-                от <span>1 920</span>
-                <Icon iconName={'icon-ruble'} fontSize='22px' />
-              </p>
-            </li>
-          )} */}
-
-          {/* {[...Array(4)].map((item, index) => (
-            <li className={styles.type_wrap} key={index}>
-              <span className={styles.type}>Плацкарт</span>
-              <div
-                className={styles.count}
-                onClick={() => toggleTooltip(index)}
-              >
-                88
-              </div> */}
-
-          {/* {openTooltipIndex === index && (
-                <div ref={tooltipRef} className={styles.tooltip}>
-                  <div className={styles.wrapper}>
-                    <span>верхние</span>
-                    <p className={styles.count}>20</p>
-                    <p className={styles.tooptip_price}>2 920</p>
-                    <Icon
-                      iconName={'icon-ruble'}
-                      color='dark_gray'
-                      fontSize='20px'
-                    />
-                  </div>
-
-                  <div className={styles.wrapper}>
-                    <span>нижние</span>
-                    <p className={styles.count}>7</p>
-                    <p className={styles.tooptip_price}>3 450</p>
-                    <Icon
-                      iconName={'icon-ruble'}
-                      color='dark_gray'
-                      fontSize='20px'
-                    />
-                  </div>
-                </div>
-              )} */}
-          {/* <p className={styles.price}>
-                от <span>1 920</span>
-                <Icon iconName={'icon-ruble'} fontSize='22px' />
-              </p>
-            </li>
-          ))} */}
         </ul>
         <div className={styles.info}>
           <div className={styles.icons_wrap}>
-            <Icon iconName={'icon-wi-fi'} color="grey" fontSize="24px" />
-            <Icon iconName={'icon-express'} color="grey" fontSize="24px" />
-            <Icon iconName={'icon-caffee'} color="grey" fontSize="24px" />
+            {/* TODO: стилизовать (подсвечивать) иконки.  map?*/}
+            <Icon iconName={'icon-wi-fi'} color='grey' fontSize='24px' />
+            <Icon iconName={'icon-express'} color='grey' fontSize='24px' />
+            <Icon iconName={'icon-caffee'} color='grey' fontSize='24px' />
           </div>
-          <Button color="white" tag="button" bgColor="primary" size="xs">
+          {/* TODO: в фичи  переход на страницу seats*/}
+          <Button color='white' tag='button' bgColor='primary' size='xs'>
             Выбрать места
           </Button>
         </div>

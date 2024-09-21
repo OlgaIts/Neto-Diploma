@@ -110,7 +110,6 @@ export const TicketForm = memo(({ className }: TicketFormProps) => {
         </div>
         <Button
           tag='button'
-          // TODO: navigate to='/train'
           color='black'
           bgColor='primary'
           uppercase
@@ -124,4 +123,5 @@ export const TicketForm = memo(({ className }: TicketFormProps) => {
     </form>
   );
 });
+
 TicketForm.displayName = 'TicketForm';

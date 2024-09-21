@@ -10,7 +10,7 @@ import styles from './RoutesFilters.module.scss';
 export const RoutesFilters = memo(() => {
   return (
     <section className={styles.component}>
-      <article className={classNames(styles.input_wrapper, styles.article)}>
+      <article className={styles.article}>
         <RouteDateFilter />
       </article>
 
@@ -22,12 +22,20 @@ export const RoutesFilters = memo(() => {
         <RoutePriceFilter />
       </article>
 
-      <article className={classNames(styles.there, styles.article)}>
-        <RouteTimeFilter title='Туда' type='departure' />
+      <article className={styles.article}>
+        <RouteTimeFilter
+          title='Туда'
+          type='departure'
+          iconName='icon-arrow-fat-right'
+        />
       </article>
 
-      <article className={classNames(styles.back, styles.article)}>
-        <RouteTimeFilter title='Обратно' type='arrival' />
+      <article className={styles.article}>
+        <RouteTimeFilter
+          title='Обратно'
+          type='arrival'
+          iconName='icon-arrow-fat-left'
+        />
       </article>
     </section>
   );

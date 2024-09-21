@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import moment from 'moment';
 import 'moment/locale/ru';
 import { Icon } from '@shared/ui/Icon';
-import { WagonTypes } from '../WagonTypes/WagonTypes';
 import { Route } from '@entities/routes/model/types/route';
+import { WagonTypes } from '../WagonTypes/WagonTypes';
 import styles from './RouteCard.module.scss';
 interface RouteCardProps {
   className?: string;
@@ -12,7 +12,6 @@ interface RouteCardProps {
 }
 
 export const RouteCard = memo(({ className, item }: RouteCardProps) => {
-  //TODO: исправить время
   const formatDatetime = (time: number) => {
     return moment(time).locale('ru').format('HH:mm');
   };
@@ -26,14 +25,10 @@ export const RouteCard = memo(({ className, item }: RouteCardProps) => {
         <span className={styles.train_name}>{item.departure.train.name}</span>
         <div className={styles.train_route}>
           <p>
-            Адлер
-            <Icon iconName={'icon-arrow-thin'} color='grey' />
-          </p>
-          <p>
-            Москва
+            {item.departure.from.city.name}
             <Icon iconName={'icon-arrow-thin'} color='dark' />
           </p>
-          <p>Санкт-Петербург</p>
+          <p>{item.departure.to.city.name}</p>
         </div>
       </div>
 
@@ -69,26 +64,39 @@ export const RouteCard = memo(({ className, item }: RouteCardProps) => {
               </span>
             </div>
           </div>
-          {/* <div className={styles.route}>
-            <div className={styles.route_direction}>
-              <span className={styles.time}>00:10</span>
-              <span className={styles.city}>Москва</span>
-              <span className={styles.station}>Курский вокзал</span>
+
+          {item.arrival && (
+            <div className={styles.route}>
+              <div className={styles.route_direction}>
+                <span className={styles.time}>{item.arrival?.to.datetime}</span>
+                <span className={styles.city}>
+                  {item.arrival?.to.city.name}
+                </span>
+                <span className={styles.station}>
+                  {item.arrival?.to.railway_station_name} вокзал
+                </span>
+              </div>
+              <div className={styles.trevel_time}>
+                <span>{item.arrival?.duration}</span>
+                <Icon
+                  iconName={'icon-arrow-fat-left'}
+                  color='accent'
+                  fontSize='30px'
+                />
+              </div>
+              <div className={styles.route_direction}>
+                <span className={styles.time}>
+                  {item.arrival?.from.datetime}
+                </span>
+                <span className={styles.city}>
+                  {item.arrival?.from.city.name}
+                </span>
+                <span className={styles.station}>
+                  {item.arrival?.from.railway_station_name} вокзал
+                </span>
+              </div>
             </div>
-            <div className={styles.trevel_time}>
-              <span>9 : 42</span>
-              <Icon
-                iconName={'icon-arrow-fat-left'}
-                color='accent'
-                fontSize='30px'
-              />
-            </div>
-            <div className={styles.route_direction}>
-              <span className={styles.time}>09:52</span>
-              <span className={styles.city}>Санкт-Петербург</span>
-              <span className={styles.station}>Ладожский вокзал</span>
-            </div>
-          </div> */}
+          )}
         </div>
 
         <WagonTypes item={item} />

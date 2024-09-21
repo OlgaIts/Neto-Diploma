@@ -10,10 +10,11 @@ interface RouteTimeFilterProps {
   className?: string;
   type: keyof typeof timeFiltersQueryParams;
   title: string;
+  iconName: string
 }
 
 export const RouteTimeFilter = memo(
-  ({ className, type, title }: RouteTimeFilterProps) => {
+  ({ className, type, title, iconName }: RouteTimeFilterProps) => {
     const [open, setOpen] = useState(false);
 
     return (
@@ -22,7 +23,7 @@ export const RouteTimeFilter = memo(
           <div className={styles.title_wrapper}>
             <div className={styles.icon_wrapper}>
               <Icon
-                iconName={'icon-arrow-fat-right'}
+                iconName={iconName}
                 color='dark'
                 fontSize='16px'
                 className={styles.icon}
@@ -43,7 +44,6 @@ export const RouteTimeFilter = memo(
             )}
           </button>
         </header>
-        {/* {open && <TimeSlider func={getRoutes} />} */}
         {open && (
           <RoundTripTime routeDirection={timeFiltersQueryParams[type]} />
         )}

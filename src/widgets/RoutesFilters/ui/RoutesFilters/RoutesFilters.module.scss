@@ -5,7 +5,7 @@
 }
 
 .article {
-  padding: 32px;
+  padding: var(--padding-lg);
   padding-bottom: 0;
   border-bottom: 1px solid var(--color-footer);
 
@@ -15,11 +15,11 @@
 }
 
 .options_wrapper {
-  padding-left: 64px;
+  padding-left: calc(var(--padding-lg) * 2);
   display: grid;
-  gap: 32px;
+  gap: var(--padding-lg);
 }
 
 .cost {
-  padding-bottom: 64px;
+  padding-bottom: calc(var(--padding-lg) * 2);
 }

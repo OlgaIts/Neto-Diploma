@@ -1,5 +1,6 @@
 .component {
   display: flex;
+  justify-content: end;
   gap: var(--gap-sm);
 
   i {
