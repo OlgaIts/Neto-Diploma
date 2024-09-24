@@ -31,12 +31,16 @@ const options = {
     iconName: 'icon-express',
     label: 'Экспресс',
   },
+  have_air_conditioning: {
+    iconName: 'icon-conditioner',
+    label: 'Кондиционер',
+  },
 };
 
 export const RouteAmenitiesFilter = memo(() => {
   const dispatch = useAppDispatch();
   const ref = useRef(null);
-  
+
   const inClick = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(setRouteFilters({ [e.target.name]: e.target.checked }));
   };

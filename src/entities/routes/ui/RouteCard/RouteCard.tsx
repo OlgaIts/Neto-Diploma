@@ -68,7 +68,9 @@ export const RouteCard = memo(({ className, item }: RouteCardProps) => {
           {item.arrival && (
             <div className={styles.route}>
               <div className={styles.route_direction}>
-                <span className={styles.time}>{item.arrival?.to.datetime}</span>
+                <span className={styles.time}>
+                  {formatDatetime(item.arrival?.to.datetime)}
+                </span>
                 <span className={styles.city}>
                   {item.arrival?.to.city.name}
                 </span>
@@ -77,7 +79,7 @@ export const RouteCard = memo(({ className, item }: RouteCardProps) => {
                 </span>
               </div>
               <div className={styles.trevel_time}>
-                <span>{item.arrival?.duration}</span>
+                <span>{formatDatetime(item.arrival?.duration)}</span>
                 <Icon
                   iconName={'icon-arrow-fat-left'}
                   color='accent'
@@ -86,7 +88,7 @@ export const RouteCard = memo(({ className, item }: RouteCardProps) => {
               </div>
               <div className={styles.route_direction}>
                 <span className={styles.time}>
-                  {item.arrival?.from.datetime}
+                  {formatDatetime(item.arrival?.from.datetime)}
                 </span>
                 <span className={styles.city}>
                   {item.arrival?.from.city.name}

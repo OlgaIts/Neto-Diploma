@@ -10,6 +10,7 @@ export const RoutesTicketsPanel = memo(() => {
     <>
       <RouteMainFilters className={styles.main_filter} />
       <RouteCardList />
+      {/* //TODO:  центрировать */}
       <RoutePagination className={styles.pagination} />
     </>
   );

@@ -49,7 +49,7 @@ export const RouteDateFilter = memo(() => {
       </Title>
       <CustomDatePicker
         className={styles.date_picker}
-        onChange={onDateChange('date_end_arrival')}
+        onChange={onDateChange('date_end')}
         selected={dateEnd ? parseDate(dateEnd) : null}
       />
     </>

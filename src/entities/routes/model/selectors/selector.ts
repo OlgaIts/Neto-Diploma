@@ -26,10 +26,10 @@ export const getRouteDateStart = (state: RootState) => {
 };
 
 // export const getRouteDateEnd = (state: RootState) =>
-//   state.routes.routeFilters.date_end_arrival;
+//   state.routes.routeFilters.date_end;
 
 export const getRouteDateEnd = (state: RootState) => {
-  const dateEndArrival = state.routes.routeFilters.date_end_arrival;
+  const dateEndArrival = state.routes.routeFilters.date_end;
   if (!dateEndArrival) {
     return undefined;
   }

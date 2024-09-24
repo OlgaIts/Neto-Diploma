@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
 import { getRoutesData } from '../../model/selectors/selector';
 import { RouteCard } from '../RouteCard/RouteCard';
@@ -13,7 +14,7 @@ export const RouteCardList = memo(() => {
   return (
     <ul className={styles.route_list}>
       {RoutesData.map((item) => (
-        <li key={item.departure.train._id}>
+        <li key={uuidv4()}>
           <RouteCard item={item} />
         </li>
       ))}

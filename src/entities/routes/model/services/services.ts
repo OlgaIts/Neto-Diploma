@@ -1,6 +1,6 @@
 import { url } from '@shared/consts';
-import { Route } from '../types/route';
-import { RouteFilters } from '../types/filters';
+import { type Route } from '../types/route';
+import { type RouteFilters } from '../types/filters';
 
 interface ResponseData {
   items: Route[];

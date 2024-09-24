@@ -1,9 +1,8 @@
 import { memo } from 'react';
 import classNames from 'classnames';
-import styles from './PaymentPage.module.scss';
 import { Header } from '@widgets/Header';
-
 import { Title } from '@shared/ui/Title';
+import styles from './PaymentPage.module.scss';
 
 interface PaymentPageProps {
   className?: string;

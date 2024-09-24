@@ -34,7 +34,7 @@ export const useTicketForm = () => {
           from_city_id: data.from.id,
           to_city_id: data.to.id,
           date_start: data.departureDate.split('T')[0],
-          date_end_arrival: data.returnDate.split('T')[0],
+          date_end: data.returnDate.split('T')[0],
         }),
       );
 

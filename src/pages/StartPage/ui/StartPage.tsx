@@ -13,10 +13,10 @@ export const StartPage = () => {
       <StartHeader />
       <div className={styles.line}></div>
       <main className={styles.main}>
-        <Element name="about">
+        <Element name='about'>
           <section>
             <div className={styles.container}>
-              <Title color="dark" weight="medium" uppercase>
+              <Title color='dark' weight='medium' uppercase>
                 О нас
               </Title>
               <div className={styles.text_wrapper}>
@@ -41,14 +41,14 @@ export const StartPage = () => {
             </div>
           </section>
         </Element>
-        <Element name="how-it-works">
+        <Element name='how-it-works'>
           <section className={styles.about}>
             <div className={styles.container}>
               <div className={styles.section_top}>
-                <Title color="light" weight="medium" uppercase>
+                <Title color='light' weight='medium' uppercase>
                   Как это работает
                 </Title>
-                <TransparentButton tag="button" size="big" weight="bold">
+                <TransparentButton tag='button' size='big' weight='bold'>
                   Узнать больше
                 </TransparentButton>
               </div>
@@ -57,8 +57,8 @@ export const StartPage = () => {
                   <div className={styles.icon_wrap}>
                     <Icon
                       iconName={'icon-computer'}
-                      color="accent"
-                      fontSize="76px"
+                      color='accent'
+                      fontSize='76px'
                     />
                   </div>
                   <p>
@@ -69,8 +69,8 @@ export const StartPage = () => {
                   <div className={styles.icon_wrap}>
                     <Icon
                       iconName={'icon-building'}
-                      color="accent"
-                      fontSize="76px"
+                      color='accent'
+                      fontSize='76px'
                     />
                   </div>
                   <p>
@@ -81,8 +81,8 @@ export const StartPage = () => {
                   <div className={styles.icon_wrap}>
                     <Icon
                       iconName={'icon-world'}
-                      color="accent"
-                      fontSize="76px"
+                      color='accent'
+                      fontSize='76px'
                     />
                   </div>
                   <p>
@@ -94,11 +94,11 @@ export const StartPage = () => {
           </section>
         </Element>
         <div className={styles.container}>
-          <Element name="reviews">
+          <Element name='reviews'>
             <section>
               <Title
-                color="dark"
-                weight="medium"
+                color='dark'
+                weight='medium'
                 uppercase
                 className={styles.reviews_title}
               >

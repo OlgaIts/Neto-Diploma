@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
-import { RouteRequestData } from '../model/services/services';
-import { RouteFilters } from '../model/types/filters';
-import { services as RouteServices } from '../model/services/services';
-import { getRouteFilter } from '../model/selectors/selector';
-import { setCount, setRoutes } from '../model/slice/RoutesSlice';
 import {
   useAppDispatch,
   useAppSelector,
 } from '@shared/lib/hooks/useReduxHooks';
+import { RouteRequestData } from '../model/services/services';
+import { services as RouteServices } from '../model/services/services';
+import { getRouteFilter } from '../model/selectors/selector';
+import { setCount, setRoutes } from '../model/slice/RoutesSlice';
+import { type RouteFilters } from '../model/types/filters';
 
 export const useGetRoutes = () => {
   const routeFilters = useAppSelector(getRouteFilter);
@@ -31,8 +31,4 @@ export const useGetRoutes = () => {
   useEffect(() => {
     getRoutes(routeFilters);
   }, [routeFilters]);
-
-  return { getRoutes };
 };
-
-//useGetSeade() все параметры  в слайс запрос по аналогии

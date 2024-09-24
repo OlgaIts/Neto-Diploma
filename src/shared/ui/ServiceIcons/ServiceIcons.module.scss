@@ -1,0 +1,63 @@
+.component {
+  display: flex;
+  gap: 16px;
+}
+
+.wrapper {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-content: center;
+  border: 1px solid var(--bg-header-form);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--bg-accent-color);
+  }
+}
+
+.active {
+  background-color: var(--bg-accent-color);
+  border: 1px solid var(--bg-accent-color);
+
+  i {
+    color: #fff;
+  }
+}
+
+.included {
+  background-color: var(--bg-hover-btn);
+  border: 1px solid var(--bg-hover-btn);
+
+  i {
+    color: var(--text-dark-gray);
+  }
+}
+
+.tooltip {
+  position: absolute;
+  padding: 8px 20px;
+  top: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--bg-tooltip);
+  color: var(--bg-header-form);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  white-space: nowrap;
+  z-index: 10;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent var(--bg-tooltip) transparent;
+  }
+}

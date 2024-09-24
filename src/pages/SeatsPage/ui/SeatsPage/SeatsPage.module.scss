@@ -1,0 +1,22 @@
+.component {
+  background-color: var(--page-bg);
+}
+
+.container {
+  max-width: 1440px;
+  margin: 96px auto 0 auto;
+  padding-inline: 20px;
+}
+
+.main {
+  display: flex;
+  gap: 82px;
+}
+
+.section {
+  width: 100%;
+}
+
+.title {
+  margin-bottom: 48px;
+}

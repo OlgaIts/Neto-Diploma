@@ -21,7 +21,5 @@ axios - для выполнения HTTP-запросов
 подключен иконочный шрифт
 https://icomoon.io/app/#/select
 
-
-
 ? установить ?
 https://usehooks-ts.com/react-hook/use-on-click-outside - библиотека кастомных куков
