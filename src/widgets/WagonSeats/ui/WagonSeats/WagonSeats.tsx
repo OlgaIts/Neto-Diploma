@@ -6,6 +6,8 @@ import { Icon } from '@shared/ui/Icon';
 import { Button } from '@shared/ui/Button';
 import { ServiceIcons } from '@shared/ui/ServiceIcons';
 import { type WagonType, wagonType } from '@entities/routes';
+import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
+import { getDepartureSeats } from '@entities/seats/model/selectors/selector';
 import styles from './WagonSeats.module.scss';
 
 interface WagonSeatsProps {
@@ -13,10 +15,11 @@ interface WagonSeatsProps {
 }
 
 export const WagonSeats = memo(({ className }: WagonSeatsProps) => {
+  const seats = useAppSelector(getDepartureSeats);
+  console.log(seats);
+
   return (
-
     <section className={styles.component}>
-
       <article className={styles.article}>
         <div className={styles.btn_wrapper}>
           <div className={styles.icon_wrapper}>
@@ -90,10 +93,10 @@ export const WagonSeats = memo(({ className }: WagonSeatsProps) => {
         <Title color='dark' weight='bold'>
           Количество билетов
         </Title>
-        <form>
-          <input type='text' />
-          <input type='text' />
-          <input type='text' />
+        <form className={styles.form}>
+          <input type='text' className={styles.input} />
+          <input type='text' className={styles.input} />
+          <input type='text' className={styles.input} />
         </form>
       </article>
 
@@ -103,16 +106,14 @@ export const WagonSeats = memo(({ className }: WagonSeatsProps) => {
         </Title>
 
         <ul className={styles.seats_type_list}>
-          {Object.keys(wagonType).map((key) => (
+          {Object.tsKeys(wagonType).map((key) => (
             <li key={uuidv4()} className={styles.seats_item}>
               <Icon
-                iconName={wagonType[key as keyof WagonType].iconName}
+                iconName={wagonType[key].iconName}
                 fontSize='50px'
                 color='grey'
               />
-              <p className={styles.type}>
-                {wagonType[key as keyof WagonType].label}
-              </p>
+              <p className={styles.type}>{wagonType[key].label}</p>
             </li>
           ))}
         </ul>
@@ -163,7 +164,6 @@ export const WagonSeats = memo(({ className }: WagonSeatsProps) => {
               Обслуживание <span>фпк</span>
             </p>
             <ServiceIcons />
-
           </div>
         </div>
       </div>

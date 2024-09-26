@@ -5,8 +5,9 @@ import { ProgressSteps } from '@shared/ui/ProgressSteps';
 import { RoutesFilters } from '@widgets/RoutesFilters';
 import { useGetSeats } from '@entities/seats/hooks/useGetSeats';
 import { WagonSeats } from '@widgets/WagonSeats';
-import styles from './SeatsPage.module.scss';
 import { Title } from '@shared/ui/Title';
+import { Button } from '@shared/ui/Button';
+import styles from './SeatsPage.module.scss';
 
 interface SeatsPageProps {
   className?: string;
@@ -14,6 +15,7 @@ interface SeatsPageProps {
 
 export const SeatsPage = memo(({ className }: SeatsPageProps) => {
   useGetSeats();
+
   return (
     <div className={classNames(styles.component, className)}>
       <Header />
@@ -35,6 +37,15 @@ export const SeatsPage = memo(({ className }: SeatsPageProps) => {
             <WagonSeats />
           </section>
         </main>
+        <Button
+          tag='button'
+          size='s'
+          uppercase
+          color='white'
+          className={styles.btn}
+        >
+          Далее
+        </Button>
       </div>
     </div>
   );

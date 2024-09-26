@@ -3,6 +3,7 @@ import { StartPage } from '@pages/StartPage';
 import { TrainPage } from '@pages/TrainPage';
 import { PaymentPage } from '@pages/PaymentPage';
 import { SeatsPage } from '@pages/SeatsPage';
+import { PassengerPage } from '@pages/PassengerPage';
 import { NotFound } from '@pages/NotFound';
 
 export enum AppRoutes {
@@ -10,6 +11,7 @@ export enum AppRoutes {
   TRAIN = 'train',
   PAYMENT = 'payment',
   SEATS = 'seats',
+  PASSENGER = 'passenger',
   NOT_FOUND = 'not_found',
 }
 
@@ -18,6 +20,7 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.TRAIN]: '/train',
   [AppRoutes.PAYMENT]: '/payment',
   [AppRoutes.SEATS]: '/seats',
+  [AppRoutes.PASSENGER]: '/passenger',
   [AppRoutes.NOT_FOUND]: '*',
 };
 
@@ -37,6 +40,10 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
   [AppRoutes.SEATS]: {
     element: <SeatsPage />,
     path: RoutePath.seats,
+  },
+  [AppRoutes.PASSENGER]: {
+    element: <PassengerPage />,
+    path: RoutePath.passenger,
   },
   [AppRoutes.NOT_FOUND]: {
     element: <NotFound />,

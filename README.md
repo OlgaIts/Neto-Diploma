@@ -6,20 +6,15 @@
 
 #### Установлены пакеты:
 
-react-alice-carousel - карусель отзывов на главной странице
-react-scroll - для улучшения функциональности прокрутки
-react-paginate - пагинация
-react-datepicker - календарь
-
-classnames - для динамического управления классами CSS
-moment - для работы с датами и временем
-uuid - для генерации уникальных идентификаторов
-react-hook-form - для управления состоянием форм
-vite-plugin-svgr - для преобразования SVG в компоненты React
+react-alice-carousel - карусель отзывов на главной странице \
+react-scroll - для улучшения функциональности прокрутки \
+react-paginate - пагинация \
+react-datepicker - календарь \
+classnames - для динамического управления классами CSS \
+moment - для работы с датами и временем \
+uuid - для генерации уникальных идентификаторов \
+react-hook-form - для управления состоянием форм \
 axios - для выполнения HTTP-запросов
 
 подключен иконочный шрифт
 https://icomoon.io/app/#/select
-
-? установить ?
-https://usehooks-ts.com/react-hook/use-on-click-outside - библиотека кастомных куков

@@ -41,6 +41,11 @@
   color: var(--bg-accent-color);
 }
 
+.price_wrapper {
+  display: flex;
+  gap: 8px;
+}
+
 .price {
   margin-right: 4px;
   margin-left: var(--margin-xl);

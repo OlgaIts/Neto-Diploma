@@ -1,0 +1,57 @@
+.component {
+  background-color: var(--page-bg);
+}
+
+.container {
+  max-width: 1440px;
+  margin: 96px auto 0 auto;
+  padding-inline: 20px;
+}
+
+.main {
+  display: flex;
+  gap: 50px;
+}
+
+.section {
+  width: 100%;
+}
+
+.add_wrapper {
+  padding: 32px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: var(--card-shadow);
+}
+
+.add_icon,
+.passenger_icon {
+  cursor: pointer;
+}
+
+//
+.passenger_header {
+  padding: 32px 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-passenger);
+}
+
+.icon_wrapper {
+  padding: var(--margin-xs);
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-content: center;
+  border: 2px solid var(--bg-accent-color);
+  border-radius: var(--radius-round);
+}
+
+.title_wrapper {
+  display: flex;
+  gap: 16px;
+}

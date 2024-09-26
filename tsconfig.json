@@ -12,7 +12,7 @@
     "lib": ["dom", "es2017"],
     "jsx": "react-jsx",
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
-    "types": ["vite-plugin-svgr/client", "vite/client"],
+    "types": ["vite/client"],
     "baseUrl": "./src",
     "paths": {
       "@app/*": ["app/*"],

@@ -47,15 +47,15 @@ export const RouteAmenitiesFilter = memo(() => {
 
   return (
     <>
-      {Object.keys(options).map((key) => (
+      {Object.tsKeys(options).map((key) => (
         <div className={styles.option} key={key}>
           <div className={styles.wrapper}>
             <Icon
-              iconName={options[key as keyof typeof options].iconName}
+              iconName={options[key].iconName}
               color='primary'
               fontSize='24px'
             />
-            <span>{options[key as keyof typeof options].label}</span>
+            <span>{options[key].label}</span>
           </div>
           <Switch
             className={styles.switch}

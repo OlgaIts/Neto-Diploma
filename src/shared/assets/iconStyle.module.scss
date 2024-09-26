@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'chillTodo';
-  src:  url('fonts/chillTodo.eot?l80leg');
-  src:  url('fonts/chillTodo.eot?l80leg#iefix') format('embedded-opentype'),
-    url('fonts/chillTodo.ttf?l80leg') format('truetype'),
-    url('fonts/chillTodo.woff?l80leg') format('woff'),
-    url('fonts/chillTodo.svg?l80leg#chillTodo') format('svg');
+  src:  url('fonts/chillTodo.eot?8ouqnr');
+  src:  url('fonts/chillTodo.eot?8ouqnr#iefix') format('embedded-opentype'),
+    url('fonts/chillTodo.ttf?8ouqnr') format('truetype'),
+    url('fonts/chillTodo.woff?8ouqnr') format('woff'),
+    url('fonts/chillTodo.svg?8ouqnr#chillTodo') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,9 @@ i {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-close:before {
+  content: "\e929";
+}
 .icon-arrow-fat-left:before {
   content: "\e923";
 }

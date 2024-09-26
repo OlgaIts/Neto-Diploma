@@ -10,8 +10,6 @@ import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
 import { setArrival, setDeparture } from '@entities/seats';
 import { Tooltip } from '../Tooltip/Tooltip';
 import { wagonType } from '../../model/consts/wagonType';
-import { type BaseRoute } from '@shared/types';
-import { type WagonType } from '../../model/types/wagonType';
 import styles from './WagonTypes.module.scss';
 
 interface WagonTypesProps {
@@ -27,11 +25,11 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const toggleTooltip = (id: string): void => {
-    if (openTooltipIndex === id) {
+  const toggleTooltip = (id: string, key: string): void => {
+    if (openTooltipIndex === `${id} ${key}`) {
       setOpenTooltipIndex(null);
     } else {
-      setOpenTooltipIndex(id);
+      setOpenTooltipIndex(`${id} ${key}`);
     }
   };
 
@@ -49,38 +47,33 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
     // сделать диспатч setSeatsFilters и в него передать RuteFilters *(часть) где есть  have wifi, have_first_class и тд, фильтры с боку (6 фильтров)
   }, [item]);
 
-//TODO: типы в Object.keys
   return (
     <section className={classNames(styles.component, className)}>
       <div className={styles.content}>
         <ul className={styles.wagons_types}>
-          {Object.keys(item.available_seats_info)
+          {Object.tsKeys(item.available_seats_info)
             .reverse()
             .map((key) => (
               <li className={styles.type_wrap} key={uuidv4()}>
-                <span className={styles.type}>
-                  {wagonType[key as keyof WagonType].label}
-                </span>
+                <span className={styles.type}>{wagonType[key].label}</span>
                 <div
+                  ref={tooltipRef}
                   className={styles.count}
-                  onClick={() => toggleTooltip(item.departure.train._id)}
+                  onClick={() => toggleTooltip(item.departure.train._id, key)}
                 >
                   <span className={styles.seats}>
-                    {item.available_seats_info[
-                      key as keyof BaseRoute['available_seats_info']
-                    ] || 0}
+                    {item.available_seats_info[key] || 0}
                   </span>
-                  {openTooltipIndex === item.departure.train._id && (
-                    <Tooltip item={item}/>
+                  {openTooltipIndex ===
+                    `${item.departure.train._id} ${key}` && (
+                    <Tooltip item={item} seatsClass={key} />
                   )}
                 </div>
                 <p className={styles.price}>
                   от
                   <span>
                     {Number(
-                      item.departure.price_info[
-                        key as keyof BaseRoute['available_seats_info']
-                      ]?.top_price,
+                      item.departure.price_info[key]?.top_price,
                     ).toLocaleString('ru-RU')}
                   </span>
                   <Icon iconName={'icon-ruble'} fontSize='22px' />
@@ -91,7 +84,7 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
         <div className={styles.info}>
           <ul className={styles.icons_wrap}>
             {icons.map((icon) => (
-              <li>
+              <li key={icon}>
                 <Icon iconName={icon} color='grey' fontSize='24px' />
               </li>
             ))}

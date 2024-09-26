@@ -27,7 +27,8 @@ export const CitySelect = memo(
 
     const getCities = async (value: string) => {
       const result = await services.getCities(value);
-      const data = result || [];
+      // const data = result || [];
+      const data = Array.isArray(result) ? result : [];
       const citiesData = data.map((item: City) => ({
         id: item._id,
         value: item.name,

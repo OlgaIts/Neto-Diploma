@@ -95,6 +95,23 @@
 }
 
 //
+.form {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.input {
+  width: 240px;
+  padding: 16px;
+  font: 400 18px var(--ff);
+  color: var(--bg-header-form);
+  border: 1px solid var(--text-dark-gray);
+  border-radius: var(--radius);
+  outline: none;
+}
+
+//
 .article {
   min-height: 330px;
   padding: var(--padding-lg) var(--margin-md);

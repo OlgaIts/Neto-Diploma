@@ -7,34 +7,33 @@ import styles from './Tooltip.module.scss';
 interface TooltipProps {
   className?: string;
   ref?: RefObject<HTMLDivElement>;
+  seatsClass: string;
   item: Route;
 }
+// TODO: вынести, будет переиспользоваться
+const seatsLabels: { [key: string]: string } = {
+  top_price: 'верхние',
+  bottom_price: 'нижние',
+  side_price: 'боковые',
+};
+//TODO: типизировать по человечески
+export const Tooltip = memo(
+  ({ className, ref, seatsClass, item }: TooltipProps) => {
+    const prices = item.departure.price_info[seatsClass];
 
-export const Tooltip = memo(({ className, ref, item }: TooltipProps) => {
-  //TODO: доделать подсказку
-  return (
-    <div ref={ref} className={classNames(styles.tooltip, className)}>
-      <div className={styles.wrapper}>
-        <p className={styles.desc}>верхние</p>
-        <p className={styles.count}>7</p>
-        <p className={styles.price}>2 920</p>
-        <Icon iconName={'icon-ruble'} color='dark_gray' fontSize='20px' />
+    return (
+      <div ref={ref} className={classNames(styles.tooltip, className)}>
+        {Object.keys(prices).map((priceKey) => (
+          <div className={styles.wrapper} key={priceKey}>
+            <p className={styles.desc}>{seatsLabels[priceKey]}</p>
+            <div className={styles.price_wrapper}>
+              <p className={styles.price}>{prices[priceKey]}</p>
+              <Icon iconName={'icon-ruble'} color='dark_gray' fontSize='20px' />
+            </div>
+          </div>
+        ))}
       </div>
-
-      <div className={styles.wrapper}>
-        <p className={styles.desc}>нижние</p>
-        <p className={styles.count}>77</p>
-        <p className={styles.price}>3 450</p>
-        <Icon iconName={'icon-ruble'} color='dark_gray' fontSize='20px' />
-      </div>
-
-      <div className={styles.wrapper}>
-        <p className={styles.desc}>боковые</p>
-        <p className={styles.count}>83</p>
-        <p className={styles.price}>3 450</p>
-        <Icon iconName={'icon-ruble'} color='dark_gray' fontSize='20px' />
-      </div>
-    </div>
-  );
-});
+    );
+  },
+);
 Tooltip.displayName = 'Tooltip';

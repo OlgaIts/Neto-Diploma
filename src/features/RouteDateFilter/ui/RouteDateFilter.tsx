@@ -1,7 +1,6 @@
 import { memo, useCallback } from 'react';
 import { Title } from '@shared/ui/Title';
 import { CustomDatePicker } from '@shared/ui/CustomDatePicker';
-import styles from './RouteDateFilter.module.scss';
 import {
   useAppDispatch,
   useAppSelector,
@@ -11,6 +10,7 @@ import {
   getRouteDateEnd,
   getRouteDateStart,
 } from '@entities/routes/model/selectors/selector';
+import styles from './RouteDateFilter.module.scss';
 
 export const RouteDateFilter = memo(() => {
   const dispatch = useAppDispatch();
