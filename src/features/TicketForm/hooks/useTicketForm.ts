@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { setRouteFilters } from '@entities/routes';
 import {
   getRouteDateEnd,
   getRouteDateStart,
-} from '@entities/routes/model/selectors/selector';
+  setRouteFilters,
+} from '@entities/routes';
 import {
   useAppDispatch,
   useAppSelector,
@@ -13,19 +13,18 @@ import {
 import { TicketFormState, initialState } from '../model/slice/ticketFormSlice';
 
 export const useTicketForm = () => {
+  const dispatch = useAppDispatch();
+  const dateStart = useAppSelector(getRouteDateStart); // следит за изменением поля date_start в фильтре редакса
+  const dateEnd = useAppSelector(getRouteDateEnd);
+  const location = useLocation();
+  const navigate = useNavigate();
   const { register, handleSubmit, setValue, watch } = useForm({
     defaultValues: initialState,
   });
-  const dispatch = useAppDispatch();
   const fromCity = watch('from');
   const toCity = watch('to');
   const departureDate = watch('departureDate');
   const returnDate = watch('returnDate');
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  const dateStart = useAppSelector(getRouteDateStart); // следит за изменением поля date_start в фильтре редакса
-  const dateEnd = useAppSelector(getRouteDateEnd);
 
   const onSubmit = async (data: TicketFormState) => {
     if (data.from && data.to) {

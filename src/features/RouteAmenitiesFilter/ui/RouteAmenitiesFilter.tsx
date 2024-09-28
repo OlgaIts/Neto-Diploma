@@ -1,47 +1,20 @@
 import { ChangeEvent, memo, useRef } from 'react';
-import classNames from 'classnames';
 import { Icon } from '@shared/ui/Icon';
 import { Switch } from '@shared/ui/Switch';
-import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
-import { setRouteFilters } from '@entities/routes';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '@shared/lib/hooks/useReduxHooks';
+import { getRouteFilter, setRouteFilters } from '@entities/routes';
+import { options } from '../consts/filterConfig';
 import styles from './RouteAmenitiesFilter.module.scss';
-
-const options = {
-  have_second_class: {
-    iconName: 'icon-coupe',
-    label: 'Купе',
-  },
-  have_third_class: {
-    iconName: 'icon-berth',
-    label: 'Плацкарт',
-  },
-  have_fourth_class: {
-    iconName: 'icon-sitting',
-    label: 'Сидячий',
-  },
-  have_first_class: {
-    iconName: 'icon-luxe',
-    label: 'Люкс',
-  },
-  have_wifi: {
-    iconName: 'icon-wi-fi',
-    label: 'Wi-Fi',
-  },
-  is_express: {
-    iconName: 'icon-express',
-    label: 'Экспресс',
-  },
-  have_air_conditioning: {
-    iconName: 'icon-conditioner',
-    label: 'Кондиционер',
-  },
-};
 
 export const RouteAmenitiesFilter = memo(() => {
   const dispatch = useAppDispatch();
   const ref = useRef(null);
+  const routeFilters = useAppSelector(getRouteFilter);
 
-  const inClick = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeFilters = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(setRouteFilters({ [e.target.name]: e.target.checked }));
   };
 
@@ -59,9 +32,10 @@ export const RouteAmenitiesFilter = memo(() => {
           </div>
           <Switch
             className={styles.switch}
-            onChange={inClick}
+            onChange={handleChangeFilters}
             name={key}
             ref={ref}
+            checked={Boolean(routeFilters[key])}
           />
         </div>
       ))}

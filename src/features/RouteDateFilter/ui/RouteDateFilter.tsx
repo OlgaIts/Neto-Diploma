@@ -5,11 +5,11 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '@shared/lib/hooks/useReduxHooks';
-import { setRouteFilters } from '@entities/routes';
 import {
   getRouteDateEnd,
   getRouteDateStart,
-} from '@entities/routes/model/selectors/selector';
+  setRouteFilters,
+} from '@entities/routes';
 import styles from './RouteDateFilter.module.scss';
 
 export const RouteDateFilter = memo(() => {

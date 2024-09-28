@@ -10,7 +10,7 @@ interface RouteTimeFilterProps {
   className?: string;
   type: keyof typeof timeFiltersQueryParams;
   title: string;
-  iconName: string
+  iconName: string;
 }
 
 export const RouteTimeFilter = memo(

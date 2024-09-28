@@ -1,7 +1,7 @@
 .container {
   max-width: 1440px;
   margin: 0 auto;
-  padding-inline: 20px;
+  padding-inline: var(--margin-md);
 }
 
 //loader
@@ -12,22 +12,6 @@
 
 .main {
   margin-top: 150px;
-}
-
-.text_wrapper {
-  margin-bottom: 124px;
-  margin-top: 30px;
-  border-left: 9px solid var(--bg-accent-color);
-}
-
-.text {
-  margin-bottom: 24px;
-  padding-left: 16px;
-  font: var(--fw-regular) var(--fs-text) var(--ff);
-}
-
-.text_bold {
-  font-weight: var(--fw-bold);
 }
 
 .about {
@@ -47,42 +31,6 @@
     background-color: var(--bg-accent-color);
     z-index: -1;
   }
-}
-.section_top {
-  margin-bottom: 108px;
-  padding-top: 70px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.benefits_wrapper {
-  display: flex;
-  justify-content: center;
-  gap: 140px;
-}
-
-.benefit {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  p {
-    font: var(--fw-regular) var(--fs-text) var(--ff);
-    color: var(--color-light);
-    text-align: center;
-  }
-}
-
-.icon_wrap {
-  width: 134px;
-  height: 134px;
-  display: grid;
-  place-content: center;
-  outline: 14px solid rgba(229, 229, 229, 0.2);
-  background-color: var(--color-light);
-  border-radius: 50%;
-  margin-bottom: 34px;
 }
 
 // reviews

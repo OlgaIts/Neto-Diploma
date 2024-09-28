@@ -15,7 +15,6 @@
 .wagons_types {
   display: flex;
   flex-direction: column;
-  // align-items: flex-end;
   gap: var(--gap-sm);
 }
 
@@ -58,9 +57,7 @@
   }
 }
 
-.icons_wrap {
+.service_icons {
   margin-bottom: var(--margin-md);
-  display: flex;
   justify-content: flex-end;
-  gap: var(--gap-sm);
 }

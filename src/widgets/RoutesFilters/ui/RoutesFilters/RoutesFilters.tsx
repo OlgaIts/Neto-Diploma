@@ -7,9 +7,15 @@ import { RouteTimeFilter } from '@features/RouteTimeFilter';
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from './RoutesFilters.module.scss';
 
-export const RoutesFilters = memo(() => {
+interface RoutesFiltersProps {
+  disabled?: boolean;
+}
+
+export const RoutesFilters = memo(({ disabled }: RoutesFiltersProps) => {
   return (
-    <section className={styles.component}>
+    <section
+      className={classNames(styles.component, disabled ? styles.backdrop : '')}
+    >
       <article className={styles.article}>
         <RouteDateFilter />
       </article>

@@ -6,6 +6,7 @@ interface SwitchProps {
   className?: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   name: string;
+  checked?: boolean;
 }
 
 export const Switch = memo(
@@ -13,7 +14,7 @@ export const Switch = memo(
     props: SwitchProps,
     ref: ForwardedRef<HTMLInputElement | null>,
   ) {
-    const { onChange, className, name } = props;
+    const { onChange, className, name, checked } = props;
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
       onChange(e);
     };
@@ -26,6 +27,7 @@ export const Switch = memo(
           onChange={handleChange}
           name={name}
           ref={ref}
+          checked={checked}
         />
         <span className={styles.slider}></span>
       </label>

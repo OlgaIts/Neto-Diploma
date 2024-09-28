@@ -5,16 +5,12 @@ import { Title } from '@shared/ui/Title';
 import { Icon } from '@shared/ui/Icon';
 import { Button } from '@shared/ui/Button';
 import { ServiceIcons } from '@shared/ui/ServiceIcons';
-import { type WagonType, wagonType } from '@entities/routes';
+import { wagonType } from '@entities/routes';
 import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
-import { getDepartureSeats } from '@entities/seats/model/selectors/selector';
+import { getDepartureSeats } from '@entities/seats';
 import styles from './WagonSeats.module.scss';
 
-interface WagonSeatsProps {
-  className?: string;
-}
-
-export const WagonSeats = memo(({ className }: WagonSeatsProps) => {
+export const WagonSeats = memo(() => {
   const seats = useAppSelector(getDepartureSeats);
   console.log(seats);
 
@@ -40,14 +36,6 @@ export const WagonSeats = memo(({ className }: WagonSeatsProps) => {
               <Icon iconName={'icon-train'} color='accent' fontSize='16px' />
             </div>
             <div className={styles.route}>
-              {/* <span className={styles.train_name}>{item.departure.train.name}</span>
-        <div className={styles.train_route}>
-          <p>
-            {item.departure.from.city.name}
-            <Icon iconName={'icon-arrow-thin'} color='dark' />
-          </p>
-          <p>{item.departure.to.city.name}</p>
-        </div> */}
               <p className={styles.train_name}>12345</p>
               <p>
                 Moskau

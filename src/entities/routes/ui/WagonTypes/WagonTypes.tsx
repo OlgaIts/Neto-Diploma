@@ -5,11 +5,17 @@ import classNames from 'classnames';
 import { Icon } from '@shared/ui/Icon';
 import { Button } from '@shared/ui/Button';
 import { useClickOutside } from '@shared/lib/hooks/useClickOutside';
-import { Route } from '@entities/routes/model/types/route';
-import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
+import { type Route } from '@entities/routes/model/types/route';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '@shared/lib/hooks/useReduxHooks';
 import { setArrival, setDeparture } from '@entities/seats';
+import { setSavedRouteFilters } from '@entities/seats/model/slice/seatsSlice';
+import { getRouteFilter } from '@entities/routes/model/selectors/selector';
 import { Tooltip } from '../Tooltip/Tooltip';
 import { wagonType } from '../../model/consts/wagonType';
+import { RouteCardServiceIcons } from '../RouteCardServiceIcons/RouteCardServiceIcons';
 import styles from './WagonTypes.module.scss';
 
 interface WagonTypesProps {
@@ -17,12 +23,11 @@ interface WagonTypesProps {
   item: Route;
 }
 
-const icons = ['icon-wi-fi', 'icon-express', 'icon-caffee'];
-
 export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
   const [openTooltipIndex, setOpenTooltipIndex] = useState<string | null>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const dispatch = useAppDispatch();
+  const filters = useAppSelector(getRouteFilter);
   const navigate = useNavigate();
 
   const toggleTooltip = (id: string, key: string): void => {
@@ -43,8 +48,8 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
     if (item.arrival) {
       dispatch(setArrival(item.arrival));
     }
+    dispatch(setSavedRouteFilters(filters));
     navigate('/seats');
-    // сделать диспатч setSeatsFilters и в него передать RuteFilters *(часть) где есть  have wifi, have_first_class и тд, фильтры с боку (6 фильтров)
   }, [item]);
 
   return (
@@ -82,13 +87,7 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
             ))}
         </ul>
         <div className={styles.info}>
-          <ul className={styles.icons_wrap}>
-            {icons.map((icon) => (
-              <li key={icon}>
-                <Icon iconName={icon} color='grey' fontSize='24px' />
-              </li>
-            ))}
-          </ul>
+          <RouteCardServiceIcons className={styles.service_icons} />
           <Button
             color='white'
             tag='button'

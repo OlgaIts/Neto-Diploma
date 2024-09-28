@@ -1,7 +1,8 @@
 import { memo } from 'react';
 import classNames from 'classnames';
 import { Icon } from '@shared/ui/Icon';
-import { Route } from '@entities/routes';
+import { RouteCardServiceIcons } from '@entities/routes';
+import { type Route } from '../../../routes/model/types/route';
 import styles from './LastTicketCard.module.scss';
 
 interface LastTicketCardProps {
@@ -24,18 +25,13 @@ export const LastTicketCard = memo(({ item }: LastTicketCardProps) => {
       </div>
 
       <div className={styles.box}>
-        <div className={styles.icon_wrapper}>
-          <Icon iconName={'icon-wi-fi'} color="primary" fontSize="24px" />
-          <Icon iconName={'icon-express'} color="primary" fontSize="24px" />
-          <Icon iconName={'icon-caffee'} color="primary" fontSize="24px" />
-        </div>
-
+        <RouteCardServiceIcons />
         <div className={styles.price_wrapper}>
           <span>от</span>
           <span className={styles.price}>
             {Number(item.min_price).toLocaleString('ru-RU')}
           </span>
-          <Icon iconName={'icon-ruble'} color="dark_gray" fontSize="28px" />
+          <Icon iconName={'icon-ruble'} color='dark_gray' fontSize='28px' />
         </div>
       </div>
     </li>

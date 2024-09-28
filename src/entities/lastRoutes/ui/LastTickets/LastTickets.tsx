@@ -2,7 +2,7 @@ import { memo } from 'react';
 import classNames from 'classnames';
 import { Route } from '@entities/routes';
 import { Title } from '@shared/ui/Title';
-import { useGetLastRoute } from '@entities/lastRoutes/model/hooks/useGetLastRoute';
+import { useGetLastRoute } from '../../model/hooks/useGetLastRoute';
 import { LastTicketCard } from '../LastTicketCard/LastTicketCard';
 import styles from './LastTickets.module.scss';
 

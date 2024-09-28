@@ -23,3 +23,7 @@
 .cost {
   padding-bottom: calc(var(--padding-lg) * 2);
 }
+
+.backdrop {
+  pointer-events: none;
+}

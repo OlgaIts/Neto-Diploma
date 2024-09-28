@@ -1,10 +1,10 @@
 import { ChangeEvent, memo, useEffect, useState } from 'react';
-import { Datalist, DatalistProps } from '@shared/ui/Datalist';
-import { services } from '@entities/cities/model/services/services';
-import { City } from '@entities/cities/model/types/city';
 import { UseFormRegister } from 'react-hook-form';
+import { Datalist, DatalistProps } from '@shared/ui/Datalist';
+// code-review: проверь по архитектурным правилам
 import { TicketFormState } from '@features/TicketForm/model/slice/ticketFormSlice';
-import styles from './CitySelect.module.scss';
+import { services } from '../../model/services/services';
+import { type City } from '../../model/types/city';
 
 interface CitySelectProps<T extends string> extends Partial<DatalistProps> {
   name: keyof TicketFormState;

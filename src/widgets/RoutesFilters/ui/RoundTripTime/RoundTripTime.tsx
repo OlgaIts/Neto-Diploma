@@ -2,10 +2,7 @@ import { memo, useCallback } from 'react';
 import { TimeSlider } from '@shared/ui/TimeSlider';
 import { setRouteFilters } from '@entities/routes';
 import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
-import {
-  RouteDirection,
-  TimeRange,
-} from '@features/RouteTimeFilter/consts/timeFiltersQueryParams';
+import { RouteDirection, TimeRange } from '@features/RouteTimeFilter';
 import styles from './RoundTripTime.module.scss';
 
 interface RoundTripTimeProps {

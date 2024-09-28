@@ -1,0 +1,18 @@
+.limit {
+  width: 230px;
+}
+
+.limit_type {
+  display: inline-block;
+  margin-right: var(--margin-sm);
+  cursor: pointer;
+
+  &:first-child {
+    margin-left: var(--margin-sm);
+  }
+}
+
+.active {
+  cursor: pointer;
+  color: var(--bg-header-form);
+}

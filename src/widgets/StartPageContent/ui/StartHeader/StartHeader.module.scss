@@ -27,11 +27,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 40px;
+  gap: var(--gap-md);
 }
 
 .title {
-  font: var(--fw-thin) 72px var(--ff);
+  font: var(--fw-thin) var(--fs-xl) var(--ff);
   color: #fff;
   span {
     font-weight: var(--fw-bold);

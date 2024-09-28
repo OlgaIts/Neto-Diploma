@@ -1,0 +1,15 @@
+.text_wrapper {
+  margin-bottom: 124px;
+  margin-top: var(--margin-lg);
+  border-left: 9px solid var(--bg-accent-color);
+}
+
+.text {
+  margin-bottom: var(--padding-md);
+  padding-left: var(--padding-sm);
+  font: var(--fw-regular) var(--fs-text) var(--ff);
+}
+
+.text_bold {
+  font-weight: var(--fw-bold);
+}

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { Header } from '@widgets/Header';
 import { ProgressSteps } from '@shared/ui/ProgressSteps';
 import { RoutesFilters } from '@widgets/RoutesFilters';
-import { useGetSeats } from '@entities/seats/hooks/useGetSeats';
+import { useGetSeats } from '@entities/seats';
 import { WagonSeats } from '@widgets/WagonSeats';
 import { Title } from '@shared/ui/Title';
 import { Button } from '@shared/ui/Button';
@@ -23,7 +23,7 @@ export const SeatsPage = memo(({ className }: SeatsPageProps) => {
       <div className={styles.container}>
         <main className={styles.main}>
           <aside>
-            <RoutesFilters />
+            <RoutesFilters disabled />
           </aside>
           <section className={styles.section}>
             <Title

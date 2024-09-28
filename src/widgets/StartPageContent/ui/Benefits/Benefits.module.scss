@@ -1,0 +1,36 @@
+.section_top {
+  margin-bottom: 108px;
+  padding-top: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.benefits_wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 140px;
+}
+
+.benefit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    font: var(--fw-regular) var(--fs-text) var(--ff);
+    color: var(--color-light);
+    text-align: center;
+  }
+}
+
+.icon_wrap {
+  width: 134px;
+  height: 134px;
+  display: grid;
+  place-content: center;
+  outline: 14px solid rgba(229, 229, 229, 0.2);
+  background-color: var(--color-light);
+  border-radius: var(--radius-round);
+  margin-bottom: var(--padding-lg);
+}

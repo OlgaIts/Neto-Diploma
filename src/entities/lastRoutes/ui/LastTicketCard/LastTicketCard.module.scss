@@ -18,11 +18,11 @@
 .station {
   font: var(--fw-regular) var(--fs-md) var(--ff);
   color: var(--bg-header-form);
- 
+
   div {
     text-transform: capitalize;
   }
- 
+
   span {
     margin-top: var(--padding-xs);
     width: 75%;
@@ -34,11 +34,6 @@
 
 .station_to {
   text-align: right;
-}
-
-.icon_wrapper {
-  display: flex;
-  gap: var(--gap-sm);
 }
 
 .price_wrapper {

@@ -32,22 +32,22 @@
 }
 
 .desc {
-  font: 400 16px var(--ff);
+  font: var(--fw-regular) var(--fs-xs) var(--ff);
 }
 
 .count {
-  margin-left: 24px;
+  margin-left: var(--padding-md);
   font: var(--fw-medium) var(--fs-xs) var(--ff);
   color: var(--bg-accent-color);
 }
 
 .price_wrapper {
   display: flex;
-  gap: 8px;
+  align-items: baseline;
+  gap: 4px;
 }
 
 .price {
-  margin-right: 4px;
   margin-left: var(--margin-xl);
   font: var(--fw-bold) var(--fs-text) var(--ff);
   color: var(--bg-footer);

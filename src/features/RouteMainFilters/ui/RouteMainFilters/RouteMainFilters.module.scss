@@ -1,0 +1,7 @@
+.component {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--margin-xxl);
+  font: var(--fw-regular) var(--fs-sm) var(--ff);
+  color: var(--text-dark-gray);
+}

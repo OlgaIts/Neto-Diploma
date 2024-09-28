@@ -8,3 +8,6 @@ export const getDepartureSeats = (state: RootState) =>
   state.seats.departureSeats;
 
 export const getArrivalSeats = (state: RootState) => state.seats.arrivalSeats;
+
+export const getSavedRouteFilters = (state: RootState) =>
+  state.seats.seatsFilters;
