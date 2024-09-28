@@ -8,6 +8,7 @@ import { ServiceIcons } from '@shared/ui/ServiceIcons';
 import { wagonType } from '@entities/routes';
 import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
 import { getDepartureSeats } from '@entities/seats';
+import { SeatsTicketType } from '@features/SeatsTicketType';
 import styles from './WagonSeats.module.scss';
 
 export const WagonSeats = memo(() => {
@@ -78,14 +79,7 @@ export const WagonSeats = memo(() => {
       </article>
 
       <article className={styles.article}>
-        <Title color='dark' weight='bold'>
-          Количество билетов
-        </Title>
-        <form className={styles.form}>
-          <input type='text' className={styles.input} />
-          <input type='text' className={styles.input} />
-          <input type='text' className={styles.input} />
-        </form>
+        <SeatsTicketType />
       </article>
 
       <section className={styles.section}>

@@ -1,0 +1,53 @@
+.component {
+  position: relative;
+  width: 240px;
+}
+
+.input {
+  padding: var(--padding-sm);
+  width: 100%;
+  font: var(--fw-regular) var(--fs-sm) var(--ff);
+  color: var(--bg-header-form);
+  border: 1px solid var(--text-dark-gray);
+  border-radius: var(--radius);
+  outline: none;
+  cursor: pointer;
+}
+
+.inputOpen {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.list {
+  position: absolute;
+  padding: var(--padding-xs);
+  width: 100%;
+  max-height: 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-light);
+  font: var(--fw-regular) var(--fs-text) var(--ff);
+  color: var(--bg-header-form);
+  border: 1px solid var(--text-dark-gray);
+  border-top: none;
+  border-bottom-right-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  overflow: hidden;
+  z-index: 1;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.listOpen {
+  max-height: 100px;
+}
+
+.item {
+  padding: var(--margin-sm) var(--padding-sm);
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--bg-focus-btn);
+  }
+}
