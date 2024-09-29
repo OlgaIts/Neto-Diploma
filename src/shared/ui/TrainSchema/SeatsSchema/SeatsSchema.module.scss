@@ -1,0 +1,23 @@
+.svg {
+  cursor: pointer;
+  rect {
+    fill: var(--bg-tooltip);
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      stroke: var(--bg-accent-color);
+    }
+  }
+}
+
+.active {
+  rect {
+    stroke: var(--bg-accent-color);
+  }
+}
+
+.unavailable {
+  rect {
+    fill: var(--color-footer);
+  }
+}

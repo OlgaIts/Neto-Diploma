@@ -1,0 +1,73 @@
+.route_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  background-color: var(--bg-route-wrapper);
+}
+
+.box {
+  border-right: 1px solid var(--color-light);
+  display: flex;
+}
+
+.train_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--padding-md);
+}
+
+.route {
+  p {
+    i {
+      margin-left: var(--margin-xs);
+      vertical-align: middle;
+    }
+  }
+}
+
+.train_name {
+  margin-bottom: var(--margin-xs);
+  font: var(--fw-bold) var(--fs-text) var(--ff);
+  color: var(--bg-header-form);
+}
+
+.citys {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  .time {
+    padding-top: var(--padding-sm);
+    font: var(--fw-bold) var(--fs-text) var(--ff);
+  }
+
+  .city_name {
+    text-transform: capitalize;
+    font: var(--fw-regular) var(--fs-sm) var(--ff);
+    color: var(--bg-header-form);
+  }
+
+  .station {
+    padding-bottom: var(--padding-sm);
+    color: var(--text-dark-gray);
+  }
+}
+
+.time_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-xs);
+  font: var(--fw-regular) var(--fs-sm) var(--ff);
+}
+
+.icon_train_wrapper {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-content: center;
+  border: 2px solid var(--bg-accent-color);
+  border-radius: var(--radius-round);
+}

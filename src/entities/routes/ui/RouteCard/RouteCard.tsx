@@ -1,9 +1,8 @@
 import { memo } from 'react';
 import classNames from 'classnames';
-import moment from 'moment';
-import 'moment/locale/ru';
 import { Icon } from '@shared/ui/Icon';
 import { Route } from '@entities/routes/model/types/route';
+import { formatDatetime } from '@shared/lib/helpers/formatDatetime';
 import { WagonTypes } from '../WagonTypes/WagonTypes';
 import styles from './RouteCard.module.scss';
 interface RouteCardProps {
@@ -12,10 +11,6 @@ interface RouteCardProps {
 }
 
 export const RouteCard = memo(({ className, item }: RouteCardProps) => {
-  const formatDatetime = (time: number) => {
-    return moment(time).locale('ru').format('HH:mm');
-  };
-
   return (
     <div className={classNames(styles.component, className)}>
       <div className={styles.train_wrapper}>
