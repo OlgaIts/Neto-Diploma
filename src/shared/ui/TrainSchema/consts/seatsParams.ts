@@ -27,7 +27,7 @@ const secondSeatsSizes = {
 const thirdSeadsSizes = {
   startX: 133,
   width: 25,
-  height: 33,
+  height: 31,
   sideWidth: 42,
   sideHeight: 22,
 };
@@ -111,7 +111,7 @@ export const ThirdClassSeatsParams: SeatsParams = {
     height: thirdSeadsSizes.height,
   },
   row2: {
-    y: 59,
+    y: 61,
     gap: getThirdClassGap,
     seats: Array.from({ length: seatsInRow }, (v, i) => i * 2 + 1),
     width: thirdSeadsSizes.width,

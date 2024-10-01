@@ -5,10 +5,11 @@ import styles from './SeatsTicketTypeInput.module.scss';
 
 interface SeatsTicketTypeInputProps {
   label: string;
+  onSelect: (index: number) => void;
 }
 
 export const SeatsTicketTypeInput = memo(
-  ({ label }: SeatsTicketTypeInputProps) => {
+  ({ label, onSelect }: SeatsTicketTypeInputProps) => {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState('');
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -18,6 +19,7 @@ export const SeatsTicketTypeInput = memo(
       setValue(`${label} - ${index + 1}`);
       setSelectedIndex(index);
       setOpen(false);
+      onSelect(index);
     };
 
     useClickOutside({
@@ -46,7 +48,6 @@ export const SeatsTicketTypeInput = memo(
       return '';
     };
 
-    //TODO: сделать слайс для инпутов
     return (
       <div ref={dropdownRef} className={styles.component}>
         <input

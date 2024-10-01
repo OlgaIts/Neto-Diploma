@@ -9,15 +9,11 @@ import { Title } from '@shared/ui/Title';
 import { Button } from '@shared/ui/Button';
 import styles from './SeatsPage.module.scss';
 
-interface SeatsPageProps {
-  className?: string;
-}
-
-export const SeatsPage = memo(({ className }: SeatsPageProps) => {
+export const SeatsPage = memo(() => {
   useGetSeats();
 
   return (
-    <div className={classNames(styles.component, className)}>
+    <div className={classNames(styles.component)}>
       <Header />
       <ProgressSteps />
       <div className={styles.container}>
