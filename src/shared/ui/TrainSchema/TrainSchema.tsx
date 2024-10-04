@@ -49,7 +49,7 @@ export const TrainSchema = memo(({ wagonClass }: TrainSchemaProps) => {
     <div className={styles.component}>
       <Component />
       <div className={styles.schema}>
-        <SeatsSchema params={SchemaComponents[wagonClass].params} />
+        <SeatsSchema params={SchemaComponents[wagonClass].params} wagonNumber={12}/>
       </div>
     </div>
   );

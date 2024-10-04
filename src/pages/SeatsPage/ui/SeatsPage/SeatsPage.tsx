@@ -30,18 +30,21 @@ export const SeatsPage = memo(() => {
             >
               Выбор мест
             </Title>
-            <WagonSeats />
+
+            <WagonSeats direction='departure' />
+            <WagonSeats direction='arrival' />
+
+            <Button
+              tag='button'
+              size='s'
+              uppercase
+              color='white'
+              className={styles.btn}
+            >
+              Далее
+            </Button>
           </section>
         </main>
-        <Button
-          tag='button'
-          size='s'
-          uppercase
-          color='white'
-          className={styles.btn}
-        >
-          Далее
-        </Button>
       </div>
     </div>
   );

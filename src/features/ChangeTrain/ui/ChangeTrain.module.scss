@@ -1,0 +1,14 @@
+.btn_wrapper {
+  padding: var(--padding-lg) var(--margin-md);
+  display: flex;
+  gap: var(--gap-xs);
+}
+
+.icon_wrapper {
+  width: 76px;
+  height: 60px;
+  display: grid;
+  place-content: center;
+  background-color: var(--bg-accent-color);
+  border-radius: var(--radius);
+}

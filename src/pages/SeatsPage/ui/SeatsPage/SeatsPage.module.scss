@@ -15,11 +15,11 @@
 
 .section {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
-.title {
-  margin-bottom: 48px;
-}
 .btn {
   margin-left: auto;
 }

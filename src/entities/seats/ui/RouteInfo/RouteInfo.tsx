@@ -4,13 +4,20 @@ import classNames from 'classnames';
 import { Icon } from '@shared/ui/Icon';
 import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
 import { formatDatetime } from '@shared/lib/helpers/formatDatetime';
-import { getArrivalInfo, getDepartureInfo } from '@entities/seats';
+import {
+  getArrivalInfo,
+  getDepartureInfo,
+} from '../../model/selectors/selector';
 import styles from './RouteInfo.module.scss';
 
-export const RouteInfo = memo(() => {
-  //TODO: достать выше.... cделать компонент переиспользуемым
-  const departure = useAppSelector(getDepartureInfo);
-  const arrival = useAppSelector(getArrivalInfo);
+interface RouteInfoProps {
+  direction: 'departure' | 'arrival';
+}
+
+export const RouteInfo = memo(({ direction }: RouteInfoProps) => {
+  const isDeparture = direction === 'departure';
+  const getRouteInfo = isDeparture ? getDepartureInfo : getArrivalInfo;
+  const routeInfo = useAppSelector(getRouteInfo);
 
   const TimeDisplay = (timeInSeconds: number = 0) => {
     const time = moment.unix(timeInSeconds);
@@ -32,14 +39,14 @@ export const RouteInfo = memo(() => {
           <Icon iconName={'icon-train'} color='accent' fontSize='16px' />
         </div>
         <div className={styles.route}>
-          <p className={styles.train_name}>{departure?.train.name}</p>
+          <p className={styles.train_name}>{routeInfo?.train.name}</p>
           <p>
-            {departure?.from.city.name}
+            {routeInfo?.from.city.name}
             <span>
               <Icon iconName={'icon-arrow-thin'} color='dark' />
             </span>
           </p>
-          <p>{departure?.to.city.name}</p>
+          <p>{routeInfo?.to.city.name}</p>
         </div>
       </div>
 
@@ -47,11 +54,11 @@ export const RouteInfo = memo(() => {
         <div className={styles.citys}>
           <div>
             <p className={styles.time}>
-              {formatDatetime(departure?.from.datetime)}
+              {formatDatetime(routeInfo?.from.datetime)}
             </p>
-            <p className={styles.city_name}>{departure?.from.city.name}</p>
+            <p className={styles.city_name}>{routeInfo?.from.city.name}</p>
             <p className={styles.station}>
-              {departure?.from.railway_station_name} вокзал
+              {routeInfo?.from.railway_station_name} вокзал
             </p>
           </div>
           <Icon
@@ -61,11 +68,11 @@ export const RouteInfo = memo(() => {
           />
           <div>
             <p className={styles.time}>
-              {formatDatetime(departure?.to.datetime)}
+              {formatDatetime(routeInfo?.to.datetime)}
             </p>
-            <p className={styles.city_name}>{departure?.to.city.name}</p>
+            <p className={styles.city_name}>{routeInfo?.to.city.name}</p>
             <p className={styles.station}>
-              {departure?.to.railway_station_name} вокзал
+              {routeInfo?.to.railway_station_name} вокзал
             </p>
           </div>
         </div>
@@ -73,7 +80,7 @@ export const RouteInfo = memo(() => {
 
       <div className={styles.time_wrapper}>
         <Icon iconName={'icon-clock'} fontSize='30px' color='accent' />
-        {TimeDisplay(departure?.duration)}
+        {TimeDisplay(routeInfo?.duration)}
       </div>
     </div>
   );

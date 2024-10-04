@@ -1,0 +1,29 @@
+.seats_type_list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--margin-xxl);
+  color: var(--text-dark-gray);
+}
+
+.seats_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+
+  p {
+    margin-top: var(--margin-md);
+    font: var(--fw-regular) var(--fs-text) var(--ff);
+  }
+  &:hover {
+    color: var(--bg-accent-color);
+    i {
+      color: var(--bg-accent-color);
+    }
+  }
+}
+
+.text_active {
+  color: var(--bg-accent-color);
+}

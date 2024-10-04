@@ -6,6 +6,7 @@ import { TripDetails } from '@widgets/TripDetails';
 import { Icon } from '@shared/ui/Icon';
 import { Title } from '@shared/ui/Title';
 import styles from './PassengerPage.module.scss';
+import { AddPassengerForm } from './AddPassengerForm/AddPassengerForm';
 
 interface PassengerPageProps {
   className?: string;
@@ -34,8 +35,8 @@ export const PassengerPage = memo(({ className }: PassengerPageProps) => {
                 color='accent'
               />
             </div>
-
-            <div className={styles.passenger}>
+            <AddPassengerForm />
+            {/* <div className={styles.passenger}>
               <header className={styles.passenger_header}>
                 <div className={styles.title_wrapper}>
                   <div className={styles.icon_wrapper}>
@@ -56,7 +57,7 @@ export const PassengerPage = memo(({ className }: PassengerPageProps) => {
                   className={styles.passenger_icon}
                 />
               </header>
-            </div>
+            </div> */}
           </section>
         </main>
       </div>

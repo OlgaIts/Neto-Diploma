@@ -1,0 +1,50 @@
+.gender {
+  margin-bottom: 16px;
+  display: block;
+  color: var(--text-dark-gray);
+}
+
+.switch {
+  position: relative;
+  padding: var(--padding-xs);
+  width: 204px;
+  height: 50px;
+  border: 1px solid var(--text-dark-gray);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.input {
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  opacity: 0;
+  border: 0;
+  overflow: hidden;
+}
+
+.label {
+  position: relative;
+  padding-inline: var(--padding-lg);
+  font: var(--fw-black) var(--fs-title)/1.1 var(--ff);
+  color: var(--color-dark);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.switch .switch_button {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0%;
+  background-color: var(--bg-accent-color);
+  z-index: 1;
+  transition: all 0.6s ease-out;
+}
+
+.switch input:last-of-type:checked ~ .switch_button {
+  left: 50%;
+}

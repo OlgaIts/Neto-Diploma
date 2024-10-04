@@ -5,9 +5,10 @@ import styles from './SeatsSchema.module.scss';
 
 interface SeatsSchemaProps {
   params: SeatsParams;
+  wagonNumber: number;
 }
 
-export const SeatsSchema = memo(({ params }: SeatsSchemaProps) => {
+export const SeatsSchema = memo(({ params, wagonNumber }: SeatsSchemaProps) => {
   return (
     <svg
       width='908'
@@ -17,6 +18,28 @@ export const SeatsSchema = memo(({ params }: SeatsSchemaProps) => {
       xmlns='http://www.w3.org/2000/svg'
       preserveAspectRatio='xMaxYMin'
     >
+      <svg x='41' y='2' width='33' height='24'>
+        <rect
+          x='0'
+          y='0'
+          width='33'
+          height='24'
+          stroke='#999999'
+          strokeWidth='1'
+          fill='#333333'
+        ></rect>
+        <text
+          opacity='1'
+          fill='#ffffff'
+          x='50%'
+          y='54%'
+          fontSize={12}
+          textAnchor='middle'
+          dy={'0.3em'}
+        >
+          {wagonNumber}
+        </text>
+      </svg>
       {Object.tsKeys(params).map((row) => {
         const { gap, seats, y, width, height } = params[row];
         return (

@@ -1,37 +1,36 @@
-import { memo, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { memo } from 'react';
 import { Title } from '@shared/ui/Title';
 import { Icon } from '@shared/ui/Icon';
-import { Button } from '@shared/ui/Button';
 import { ServiceIcons } from '@shared/ui/ServiceIcons';
-import { type WagonType, wagonType } from '@entities/routes';
 import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
-import { getDepartureSeats } from '@entities/seats';
+import { RouteInfo, getArrivalSeats, getDepartureSeats } from '@entities/seats';
 import { SeatsTicketType } from '@features/SeatsTicketType';
 import { TrainSchema } from '@shared/ui/TrainSchema';
-import { RouteInfo } from '@entities/RouteInfo';
+import { ChangeTrain } from '@features/ChangeTrain';
+import { SelectWagonType } from '@features/SelectWagonType';
 import styles from './WagonSeats.module.scss';
 
-export const WagonSeats = memo(() => {
-  const [wagonClass, setWagonClass] = useState<keyof WagonType>('fourth');
-  const seats = useAppSelector(getDepartureSeats);
+interface WagonSeatsProps {
+  direction: 'departure' | 'arrival';
+}
 
+export const WagonSeats = memo(({ direction }: WagonSeatsProps) => {
+  const isDeparture = direction === 'departure';
+  const getSeats = isDeparture ? getDepartureSeats : getArrivalSeats;
+  const seats = useAppSelector(getSeats);
+
+  // if (!seats) {
+  //   return null;
+  // }
+
+  //TODO: вёрстка
   return (
     <section className={styles.component}>
-      <div className={styles.btn_wrapper}>
-        <div className={styles.icon_wrapper}>
-          <Icon
-            iconName={'icon-arrow-fat-right'}
-            color='white'
-            fontSize='30px'
-          />
-        </div>
-        <Button color='black' bgColor='light' tag='Link' to='/train' size='m'>
-          Выбрать другой поезд
-        </Button>
-      </div>
-
-      <RouteInfo />
+      <ChangeTrain
+        className={!isDeparture && styles.change_train}
+        iconName={isDeparture ? 'icon-arrow-fat-right' : 'icon-arrow-fat-left'}
+      />
+      <RouteInfo direction={direction} />
 
       <article className={styles.article}>
         <SeatsTicketType />
@@ -41,23 +40,7 @@ export const WagonSeats = memo(() => {
         <Title color='dark' weight='bold' className={styles.section_title}>
           Тип вагона
         </Title>
-
-        <ul className={styles.seats_type_list}>
-          {Object.tsKeys(wagonType).map((key) => (
-            <li
-              key={uuidv4()}
-              className={styles.seats_item}
-              onClick={() => setWagonClass(key)}
-            >
-              <Icon
-                iconName={wagonType[key].iconName}
-                fontSize='50px'
-                color='grey'
-              />
-              <p className={styles.type}>{wagonType[key].label}</p>
-            </li>
-          ))}
-        </ul>
+        <SelectWagonType />
       </section>
 
       <div className={styles.wagons}>
@@ -109,7 +92,7 @@ export const WagonSeats = memo(() => {
         </div>
       </div>
       <div className={styles.schema}>
-        <TrainSchema wagonClass={wagonClass} />
+        {/* <TrainSchema wagonClass={wagonClass} /> */}
       </div>
     </section>
   );
