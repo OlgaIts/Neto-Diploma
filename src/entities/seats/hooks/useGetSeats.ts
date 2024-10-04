@@ -7,7 +7,7 @@ import {
   getArrivalInfo,
   getDepartureInfo,
   getSavedRouteFilters,
-} from '../model/selectors/selector';
+} from '../model/selectors/seatsSelector';
 import { services } from '../model/services/services';
 import { setSeats } from '../model/slice/seatsSlice';
 

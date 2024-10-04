@@ -1,18 +1,24 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { Direction } from '@shared/types/direction';
-import { type Seats } from '../types/seats';
 import { RouteFilters } from '@entities/routes';
+import { WagonClass } from '@shared/ui/TrainSchema';
+//TODO: относительные пути внутри слайса 
+import { generateSeats } from '@entities/seats/lib/generateSeats';
+import { type Seats } from '../types/seats';
+export interface NormalizedSeats extends Omit<Seats, 'seats'> {
+  seats: Record<number, boolean>;
+}
 
 interface SeatsState {
   departureInfo: Direction | null;
   arrivalInfo: Direction | null;
-  departureSeats: Seats | null;
-  arrivalSeats: Seats | null;
+  departureSeats: Record<WagonClass, NormalizedSeats[]> | null;
+  arrivalSeats: Record<WagonClass, NormalizedSeats[]> | null;
   seatsFilters: Partial<RouteFilters>;
 }
 
 interface SeatsPayload {
-  seats: Seats;
+  seats: Seats[];
   direction: 'departure' | 'arrival';
 }
 
@@ -36,7 +42,7 @@ const seatsSlice = createSlice({
     },
     setSeats: (state, action: PayloadAction<SeatsPayload>) => {
       const { direction, seats } = action.payload;
-      state[`${direction}Seats`] = seats;
+      state[`${direction}Seats`] = generateSeats(seats);
     },
     setSavedRouteFilters: (
       state,

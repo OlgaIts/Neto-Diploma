@@ -2,6 +2,7 @@ import { memo, useState } from 'react';
 import classNames from 'classnames';
 import { Icon } from '@shared/ui/Icon';
 import { Title } from '@shared/ui/Title';
+//TODO: рефактор архитектуры
 import { RoundTripTime } from '@widgets/RoutesFilters';
 import { timeFiltersQueryParams } from '../consts/timeFiltersQueryParams';
 import styles from './RouteTimeFilter.module.scss';

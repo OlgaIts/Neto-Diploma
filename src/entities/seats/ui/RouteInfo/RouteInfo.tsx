@@ -7,7 +7,7 @@ import { formatDatetime } from '@shared/lib/helpers/formatDatetime';
 import {
   getArrivalInfo,
   getDepartureInfo,
-} from '../../model/selectors/selector';
+} from '../../model/selectors/seatsSelector';
 import styles from './RouteInfo.module.scss';
 
 interface RouteInfoProps {

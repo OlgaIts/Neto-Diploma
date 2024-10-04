@@ -20,7 +20,7 @@ export {
   getDepartureInfo,
   getArrivalInfo,
   getSavedRouteFilters,
-} from './model/selectors/selector';
+} from './model/selectors/seatsSelector';
 export {
   seatsReducer,
   setDeparture,

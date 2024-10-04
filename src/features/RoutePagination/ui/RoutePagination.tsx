@@ -16,10 +16,12 @@ interface RoutePaginationProps {
 }
 
 export const RoutePagination = memo(({ className }: RoutePaginationProps) => {
+  const dispatch = useAppDispatch();
+
   const limit = useAppSelector(getLimit);
   const totalCount = useAppSelector(getTotalCount);
   const offset = useAppSelector(getOffset);
-  const dispatch = useAppDispatch();
+  
   const pageCount = Math.ceil(totalCount / limit);
   const forcePage = (offset || 0) / limit;
 

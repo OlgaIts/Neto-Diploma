@@ -12,7 +12,7 @@ import {
   ThirdClassSeatsParams,
 } from './consts/seatsParams';
 
-type WagonClass = 'first' | 'second' | 'third' | 'fourth';
+export type WagonClass = 'first' | 'second' | 'third' | 'fourth';
 
 interface TrainSchemaProps {
   wagonClass: WagonClass;
