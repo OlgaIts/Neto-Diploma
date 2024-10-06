@@ -1,22 +1,47 @@
 //TODO: перенести сюда seatsTicketTypeSlice
 
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { type Direction } from '@shared/types';
+import { WagonClass } from '@shared/ui/TrainSchema';
+
+interface DirectionTicketInfo {
+  wagonClass: WagonClass | null;
+  coachNumber: number | null;
+  seats: Record<number, number> | null; // первый number(ключ) - номер сиденья, второй - значение(ценa)
+}
 
 interface TicketTypeState {
   adultCount: number;
   childCount: number;
   childWithoutSeatCount: number;
-  wagonClass: string | null;
+  departureTicket: DirectionTicketInfo;
+  arrivalTicket: DirectionTicketInfo;
 }
 
+const initialTicketState: DirectionTicketInfo = {
+  wagonClass: null,
+  coachNumber: null,
+  seats: null,
+};
+
+interface WagonClassPayload {
+  direction: Direction;
+  wagonClass: WagonClass;
+}
+
+interface CoachNumberPayload {
+  direction: Direction;
+  coachNumber: number;
+}
 const initialState: TicketTypeState = {
   adultCount: 0,
   childCount: 0,
   childWithoutSeatCount: 0,
-  wagonClass: null,
+  departureTicket: initialTicketState,
+  arrivalTicket: initialTicketState,
 };
 
-const seatsTicketTypeSlice = createSlice({
+const seatsTicketInfoSlice = createSlice({
   name: 'ticketType',
   initialState,
   reducers: {
@@ -29,8 +54,13 @@ const seatsTicketTypeSlice = createSlice({
     setChildWithoutSeatCount(state, action: PayloadAction<number>) {
       state.childWithoutSeatCount = action.payload;
     },
-    setWagonClass(state, action: PayloadAction<string>) {
-      state.wagonClass = action.payload;
+    setWagonClass(state, action: PayloadAction<WagonClassPayload>) {
+      const { wagonClass, direction } = action.payload;
+      state[`${direction}Ticket`].wagonClass = wagonClass;
+    },
+    setCoachNumber(state, action: PayloadAction<CoachNumberPayload>) {
+      const { coachNumber, direction } = action.payload;
+      state[`${direction}Ticket`].coachNumber = coachNumber;
     },
   },
 });
@@ -40,5 +70,6 @@ export const {
   setChildCount,
   setChildWithoutSeatCount,
   setWagonClass,
-} = seatsTicketTypeSlice.actions;
-export const seatsTicketTypeReducer = seatsTicketTypeSlice.reducer;
+  setCoachNumber,
+} = seatsTicketInfoSlice.actions;
+export const seatsTicketInfoReducer = seatsTicketInfoSlice.reducer;

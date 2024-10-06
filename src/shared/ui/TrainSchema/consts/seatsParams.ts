@@ -38,6 +38,26 @@ const fourthSeatsSizes = {
   height: 19,
 };
 
+export const firstClassSeats = {
+  bottom: Array.from({ length: seatsInRow }, (v, i) => i + 1),
+};
+
+export const secondClassSeats = {
+  bottom: Array.from({ length: seatsInRow }, (v, i) => 2 * (i + 1)),
+  top: Array.from({ length: seatsInRow }, (v, i) => 2 * i + 1),
+};
+
+export const thridClassSeats = {
+  bottom: Array.from({ length: seatsInRow }, (v, i) => i * 2 + 2),
+  top: Array.from({ length: seatsInRow }, (v, i) => i * 2 + 1),
+  side: Array.from({ length: seatsInRow }, (v, i) => i * 1 + 33),
+};
+
+export const fourthClassSeats = {
+  bottom: Array.from({ length: 30 }, (v, i) => i + 32),
+  top: Array.from({ length: 32 }, (v, i) => i + 1),
+};
+
 const getRoomSeatsGap = (seatIndex: number) => {
   const startX = 133;
   if (seatIndex === 0) {
@@ -73,7 +93,7 @@ export const FirstClassSeatsParams: SeatsParams = {
   row1: {
     y: 30,
     gap: getRoomSeatsGap,
-    seats: Array.from({ length: seatsInRow }, (v, i) => i + 1),
+    seats: firstClassSeats.bottom,
     width: firstSeatsSizes.width,
     height: firstSeatsSizes.height,
   },
@@ -83,14 +103,14 @@ export const SecondClassSeatsParams: SeatsParams = {
   row1: {
     y: 30,
     gap: getRoomSeatsGap,
-    seats: Array.from({ length: seatsInRow }, (v, i) => 2 * (i + 1)),
+    seats: secondClassSeats.bottom,
     width: secondSeatsSizes.width,
     height: secondSeatsSizes.height,
   },
   row2: {
     y: 59,
     gap: getRoomSeatsGap,
-    seats: Array.from({ length: seatsInRow }, (v, i) => 2 * i + 1),
+    seats: secondClassSeats.top,
     width: secondSeatsSizes.width,
     height: secondSeatsSizes.height,
   },
@@ -100,21 +120,21 @@ export const ThirdClassSeatsParams: SeatsParams = {
   row1: {
     y: 30,
     gap: getRoomSeatsGap,
-    seats: Array.from({ length: seatsInRow }, (v, i) => i * 2 + 2),
+    seats: thridClassSeats.bottom,
     width: thirdSeadsSizes.width,
     height: thirdSeadsSizes.height,
   },
   row2: {
     y: 61,
     gap: getRoomSeatsGap,
-    seats: Array.from({ length: seatsInRow }, (v, i) => i * 2 + 1),
+    seats: thridClassSeats.top,
     width: thirdSeadsSizes.width,
     height: thirdSeadsSizes.height,
   },
   row3: {
     y: 116,
     gap: getSideSeatsGap,
-    seats: Array.from({ length: seatsInRow }, (v, i) => i * 1 + 33),
+    seats: thridClassSeats.side,
     width: thirdSeadsSizes.sideWidth,
     height: thirdSeadsSizes.sideHeight,
   },

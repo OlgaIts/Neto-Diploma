@@ -13,7 +13,6 @@
   border-bottom: 1px dashed var(--color-footer);
 }
 
-//
 .section {
   padding: var(--padding-lg) var(--margin-md);
 }
@@ -22,38 +21,8 @@
   margin-bottom: var(--padding-lg);
 }
 
-//
-.wagons {
-  color: var(--bg-header-form);
-}
-
-.wagon {
-  padding: var(--margin-sm) var(--padding-sm) var(--margin-sm) var(--padding-lg);
-  display: flex;
-  background-color: var(--bg-hover-btn);
-  justify-content: space-between;
-}
-
-.number_wrapper {
-  background-color: var(--bg-hover-btn);
-  display: grid;
-  place-content: center;
-
-  p {
-    text-align: center;
-  }
-}
-
-.number {
-  font: var(--fw-bold) var(--fs-xl) var(--ff);
-}
-
-.seats_options {
-  display: grid;
-  grid-template-columns: 190px 1fr 1fr 1fr;
-}
-
 .schema {
+  padding-inline: var(--margin-md);
   position: relative;
 }
 

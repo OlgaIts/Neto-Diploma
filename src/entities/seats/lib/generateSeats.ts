@@ -1,5 +1,10 @@
-import { WagonClass } from '@shared/ui/TrainSchema';
+import {
+  WagonClass,
+  secondClassSeats,
+  thridClassSeats,
+} from '@shared/ui/TrainSchema';
 import { Seats } from '../model/types/seats';
+import { type SpecificPlace } from '../model/slice/seatsSlice';
 
 const countSeatsByClass = {
   first: 18,
@@ -7,42 +12,70 @@ const countSeatsByClass = {
   third: 48,
   fourth: 62,
 };
+
 const randomInteger = (min: number, max: number) => {
   let rand = min + Math.random() * (max + 1 - min);
   return Math.floor(rand);
 };
+
 interface SeatsState extends Omit<Seats, 'seats'> {
-  seats: Record<number, boolean>;
+  seats: Record<number, SpecificPlace>;
 }
-/*
-  [{coach: Coach, seats: Seats}, {coach: Coach, seats: Seats},{coach: Coach, seats: Seats},{coach: Coach, seats: Seats}]
-  {
-    first: [{coach: Coachs, seats: SeatsState}]
+
+const getSeatPlacement = (wagonClass: WagonClass, seatNumber: number) => {
+  let isBottom;
+  let isTop;
+  switch (wagonClass) {
+    case 'first':
+      isBottom = true;
+      break;
+    case 'second':
+      isBottom = secondClassSeats.bottom.includes(seatNumber);
+      isTop = !isBottom;
+      break;
+    case 'third':
+      isBottom = thridClassSeats.bottom.includes(seatNumber);
+      isTop = thridClassSeats.top.includes(seatNumber);
+      break;
   }
-*/
+  if (isBottom) {
+    return 'bottom';
+  }
+  if (isTop) {
+    return 'top';
+  }
+  return 'side';
+};
+
 export const generateSeats = (seatsInfo: Seats[]) => {
   const availableCoachNumbers = Array.from(
     { length: 15 },
     (v, index) => index + 1,
-  ); // [1,2,3,4,5,6....,15]
+  );
+
   const updatedInfo = seatsInfo.reduce(
     (acc: Record<WagonClass, SeatsState[]>, info: Seats) => {
       const countAvailableSeats = info.coach.available_seats;
       const wagonClass = info.coach.class_type;
+      const seatsPlacementInfo = { top: 0, bottom: 0, side: 0 };
       const allSeats = Array.from(
         { length: countSeatsByClass[wagonClass] },
         (v, index) => index + 1,
-      ); // [1,2,3,4]
-      const availableSeats: Record<number, boolean> = {};
+      );
+      const availableSeats: Record<number, SpecificPlace> = {};
       for (let i = 1; i <= countAvailableSeats; i++) {
         const randomSeatIndex = randomInteger(0, allSeats.length - 1);
         const seat = allSeats.splice(randomSeatIndex, 1)[0];
-        availableSeats[seat] = true; // { 5: true }
+        const seatPlacement = getSeatPlacement(wagonClass, seat);
+        availableSeats[seat] = { available: true, placement: seatPlacement };
+        seatsPlacementInfo[seatPlacement] += 1;
       }
+
       const randomCoachIndex = randomInteger(
         0,
         availableCoachNumbers.length - 1,
       );
+      info.coach.seatsCount = seatsPlacementInfo;
       info.coach.coachNumber = availableCoachNumbers.splice(
         randomCoachIndex,
         1,
@@ -56,16 +89,6 @@ export const generateSeats = (seatsInfo: Seats[]) => {
     },
     {} as Record<WagonClass, SeatsState[]>,
   );
-  console.log(updatedInfo);
+
   return updatedInfo;
 };
-/* const departureInfo = {
-  first: [ {coach, seats}, {coach, seats}],
-  second: [ {coach, seats}, {coach, seats}],
-} 
-делаем клик на кнопку -> нажали Люкс -> wagonClass = "first"
-  через селектор получили выбранный класс вагона
-  затем бы забираем массив вагонов тоже через селектор, передав туда этот класс
-  const coaches = departureInfo['first'] => [...]
-  conaches.map(coach => coach.)
- */

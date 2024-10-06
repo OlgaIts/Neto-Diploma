@@ -31,7 +31,7 @@ export interface BaseRoute {
   };
 }
 
-export interface Direction extends BaseRoute {
+export interface DirectionDetails extends BaseRoute {
   _id: string;
   duration: number;
   train: {
@@ -49,3 +49,5 @@ export interface Direction extends BaseRoute {
     fourth?: SeatsPrice;
   };
 }
+
+export type Direction = 'departure' | 'arrival';

@@ -3,7 +3,12 @@ interface Seat {
   available: boolean;
 }
 
-interface Coach {
+interface SeatsCount {
+  top: number;
+  bottom: number;
+  side: number;
+}
+export interface Coach {
   _id: string;
   name: string;
   class_type: 'first' | 'second' | 'third' | 'fourth';
@@ -24,6 +29,7 @@ interface Coach {
   train: string;
   available_seats: number;
   coachNumber?: number;
+  seatsCount?: SeatsCount;
 }
 export interface Seats {
   coach: Coach;

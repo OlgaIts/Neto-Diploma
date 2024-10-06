@@ -10,13 +10,19 @@ interface ServiceIconsProps {
 interface Options {
   name: string;
   tooltip: string;
+  condition: string;
 }
 
 const options: Options[] = [
-  { name: 'icon-conditioner', tooltip: 'кондиционер' },
-  { name: 'icon-wi-fi', tooltip: 'Wi-Fi' },
-  { name: 'icon-linens', tooltip: 'белье' },
-  { name: 'icon-caffee', tooltip: 'питание' },
+  {
+    name: 'icon-conditioner',
+    tooltip: 'кондиционер',
+    condition: 'have_air_conditioning',
+  },
+  { name: 'icon-wi-fi', tooltip: 'Wi-Fi', condition: 'have_wifi' },
+  { name: 'icon-linens', tooltip: 'белье', condition: 'is_linens_included' }, // linens_price
+  //have_coffee: true
+  { name: 'icon-caffee', tooltip: 'питание', condition: 'is_linens_included' },
 ];
 
 export const ServiceIcons = memo(({ className }: ServiceIconsProps) => {

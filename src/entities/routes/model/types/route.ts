@@ -1,6 +1,6 @@
-import { BaseRoute, Direction } from '@shared/types';
+import { BaseRoute, DirectionDetails } from '@shared/types';
 
 export interface Route extends BaseRoute {
-  departure: Direction;
-  arrival?: Direction;
+  departure: DirectionDetails;
+  arrival?: DirectionDetails;
 }

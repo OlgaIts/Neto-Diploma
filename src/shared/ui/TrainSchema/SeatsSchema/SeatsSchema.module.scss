@@ -1,10 +1,13 @@
 .svg {
   cursor: pointer;
+
   rect {
     fill: var(--bg-tooltip);
     transition: all 0.3s ease-in-out;
+  }
 
-    &:hover {
+  &:hover {
+    rect {
       stroke: var(--bg-accent-color);
     }
   }

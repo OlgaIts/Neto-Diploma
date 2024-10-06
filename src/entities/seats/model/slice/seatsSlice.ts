@@ -1,17 +1,21 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { Direction } from '@shared/types/direction';
+import { type Direction, DirectionDetails } from '@shared/types/direction';
 import { RouteFilters } from '@entities/routes';
 import { WagonClass } from '@shared/ui/TrainSchema';
-//TODO: относительные пути внутри слайса 
-import { generateSeats } from '@entities/seats/lib/generateSeats';
+import { generateSeats } from '../../lib/generateSeats';
 import { type Seats } from '../types/seats';
+
+export interface SpecificPlace {
+  available: boolean;
+  placement: 'bottom' | 'top' | 'side';
+}
 export interface NormalizedSeats extends Omit<Seats, 'seats'> {
-  seats: Record<number, boolean>;
+  seats: Record<number, SpecificPlace>;
 }
 
 interface SeatsState {
-  departureInfo: Direction | null;
-  arrivalInfo: Direction | null;
+  departureInfo: DirectionDetails | null;
+  arrivalInfo: DirectionDetails | null;
   departureSeats: Record<WagonClass, NormalizedSeats[]> | null;
   arrivalSeats: Record<WagonClass, NormalizedSeats[]> | null;
   seatsFilters: Partial<RouteFilters>;
@@ -19,7 +23,7 @@ interface SeatsState {
 
 interface SeatsPayload {
   seats: Seats[];
-  direction: 'departure' | 'arrival';
+  direction: Direction;
 }
 
 const initialState: SeatsState = {
@@ -34,10 +38,10 @@ const seatsSlice = createSlice({
   name: 'seats',
   initialState,
   reducers: {
-    setDeparture: (state, action: PayloadAction<Direction>) => {
+    setDeparture: (state, action: PayloadAction<DirectionDetails>) => {
       state.departureInfo = action.payload;
     },
-    setArrival: (state, action: PayloadAction<Direction>) => {
+    setArrival: (state, action: PayloadAction<DirectionDetails>) => {
       state.arrivalInfo = action.payload;
     },
     setSeats: (state, action: PayloadAction<SeatsPayload>) => {

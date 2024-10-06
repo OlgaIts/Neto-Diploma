@@ -4,7 +4,7 @@
 
 .line {
   stroke: var(--bg-accent-color);
-  stroke-width: 10;
+  // strokewidth: 10;
   stroke-dasharray: 100;
   stroke-dashoffset: 100;
   animation: line 3s forwards;

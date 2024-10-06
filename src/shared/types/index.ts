@@ -1,1 +1,5 @@
-export { type Direction, type BaseRoute } from './direction';
+export {
+  type DirectionDetails,
+  type BaseRoute,
+  type Direction,
+} from './direction';

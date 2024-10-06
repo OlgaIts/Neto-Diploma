@@ -1,4 +1,5 @@
-export { seatsTicketTypeReducer } from './model/slice/ticketInfoSlice';
+export { useGetCoachInfo } from './hooks/useGetCoachInfo';
+export { CoachInfo } from './ui/CoachInfo/CoachInfo';
 export { SeatsTicketTypeInput } from './ui/SeatsTicketTypeInput/SeatsTicketTypeInput';
 export { RouteInfo } from './ui/RouteInfo/RouteInfo';
 export { useGetSeats } from './hooks/useGetSeats';
@@ -7,12 +8,15 @@ export {
   setChildCount,
   setChildWithoutSeatCount,
   setWagonClass,
+  setCoachNumber,
+  seatsTicketInfoReducer,
 } from './model/slice/ticketInfoSlice';
 export {
   getAdultCount,
   getChildCount,
   getChilddWithoutSeatCount,
-  getWagonClass,
+  getArrivalTicket,
+  getDepartureTicket,
 } from './model/selectors/ticketInfoSelector';
 export {
   getDepartureSeats,
@@ -25,4 +29,5 @@ export {
   seatsReducer,
   setDeparture,
   setArrival,
+  type SpecificPlace,
 } from './model/slice/seatsSlice';

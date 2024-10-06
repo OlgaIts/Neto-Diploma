@@ -9,38 +9,38 @@ export const FirstClassSchema = memo(() => {
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
     >
-      <g clip-path='url(#clip0_41585_807)'>
+      <g clipPath='url(#clip0_41585_807)'>
         <path
           d='M835 92V28H130.967V92M835 115V140H130.967H129'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <path
           d='M838 92V25H128.106V92M838 115V143H128.106H105'
           stroke='#D9D9D9'
-          stroke-width='2'
+          strokeWidth='2'
         />
         <path
           d='M128 92V25H11.8154C5.28993 25 0 30.4652 0 37.2069V130.793C0 137.534 5.28993 143 11.8154 143H128H91.5692'
           stroke='#D9D9D9'
-          stroke-width='2'
+          strokeWidth='2'
         />
-        <path d='M41 25V142' stroke='#D9D9D9' stroke-width='2' />
-        <path d='M129 88H89' stroke='#D9D9D9' stroke-width='2' />
+        <path d='M41 25V142' stroke='#D9D9D9' strokeWidth='2' />
+        <path d='M129 88H89' stroke='#D9D9D9' strokeWidth='2' />
         <path
           d='M41.4902 61.1279L89.4902 88.1279'
           stroke='#D9D9D9'
-          stroke-width='2'
+          strokeWidth='2'
         />
-        <path d='M41 60V94' stroke='#999999' stroke-width='2' />
-        <path d='M1 60V100' stroke='#999999' stroke-width='2' />
+        <path d='M41 60V94' stroke='#999999' strokeWidth='2' />
+        <path d='M1 60V100' stroke='#999999' strokeWidth='2' />
         <path
           d='M41.5298 93.1523L73.5298 113.152'
           stroke='#D9D9D9'
-          stroke-width='2'
+          strokeWidth='2'
         />
-        <path d='M73 112V142' stroke='#D9D9D9' stroke-width='2' />
-        <path d='M74 25V79' stroke='#D9D9D9' stroke-width='2' />
+        <path d='M73 112V142' stroke='#D9D9D9' strokeWidth='2' />
+        <path d='M74 25V79' stroke='#D9D9D9' strokeWidth='2' />
         <mask
           id='mask0_41585_807'
           maskUnits='userSpaceOnUse'
@@ -105,14 +105,14 @@ export const FirstClassSchema = memo(() => {
           d='M57.4925 39.3721C57.2435 39.3721 57.0415 39.5741 57.0415 39.8231V52.1756C57.0415 52.4246 57.2435 52.6266 57.4925 52.6266C57.7415 52.6266 57.9435 52.4246 57.9435 52.1756V39.8231C57.9435 39.5741 57.7415 39.3721 57.4925 39.3721Z'
           fill='#999999'
         />
-        <path d='M32 22H16V28H32V22Z' stroke='#999999' stroke-width='2' />
-        <path d='M32 140H16V146H32V140Z' stroke='#999999' stroke-width='2' />
+        <path d='M32 22H16V28H32V22Z' stroke='#999999' strokeWidth='2' />
+        <path d='M32 140H16V146H32V140Z' stroke='#999999' strokeWidth='2' />
         <path
           d='M838 143H895.171C901.704 143 907 137.532 907 130.79C907 95.9245 907 72.0755 907 37.2098C907 30.4681 901.704 25 895.171 25H838V92'
           stroke='#D9D9D9'
-          stroke-width='2'
+          strokeWidth='2'
         />
-        <path d='M871 25V142' stroke='#D9D9D9' stroke-width='2' />
+        <path d='M871 25V142' stroke='#D9D9D9' strokeWidth='2' />
         <path
           d='M851.583 35.8286C849.867 35.8286 849.843 35.8286 848.415 35.8286C847.651 35.8286 847.026 36.4506 847.022 37.2151L847 41.5411C846.998 41.8661 847.26 42.1311 847.586 42.1331C847.587 42.1331 847.588 42.1331 847.589 42.1331C847.913 42.1331 848.176 41.8716 848.178 41.5471L848.199 37.2211V37.2196C848.2 37.1556 848.253 37.1036 848.317 37.1041C848.381 37.1046 848.433 37.1566 848.433 37.2211V47.1196C848.433 47.5096 848.75 47.8261 849.14 47.8261C849.53 47.8261 849.846 47.5096 849.846 47.1196V41.4716H850.151V47.1196C850.151 47.5096 850.468 47.8261 850.858 47.8261C851.248 47.8261 851.564 47.5096 851.564 47.1196C851.564 37.7791 851.552 43.1206 851.551 37.2296C851.551 37.1631 851.604 37.1091 851.67 37.1061C851.736 37.1031 851.792 37.1536 851.798 37.2196L851.794 41.5431C851.793 41.8681 852.057 42.1321 852.382 42.1326C852.707 42.1326 852.971 41.8691 852.972 41.5441L852.976 37.2181C852.976 37.2171 852.976 37.2156 852.976 37.2146C852.972 36.4501 852.347 35.8281 851.582 35.8281L851.583 35.8286Z'
           fill='#999999'
@@ -136,9 +136,9 @@ export const FirstClassSchema = memo(() => {
         <path
           d='M838.39 86.207L851.39 76.207'
           stroke='#D9D9D9'
-          stroke-width='2'
+          strokeWidth='2'
         />
-        <path d='M851 77V61' stroke='#D9D9D9' stroke-width='2' />
+        <path d='M851 77V61' stroke='#D9D9D9' strokeWidth='2' />
         <path
           d='M858.834 133.311L859.328 122.844H860.044C860.337 122.844 860.574 122.601 860.574 122.307C860.574 122.014 860.337 121.763 860.044 121.763H856.915V120.689C856.915 119.666 856.221 119 855.119 119H852.441C851.339 119 850.651 119.666 850.651 120.689V121.763H847.537C847.251 121.763 847 122.014 847 122.307C847 122.601 847.251 122.844 847.537 122.844H848.253L848.747 133.318C848.797 134.349 849.477 135 850.508 135H857.073C858.097 135 858.784 134.341 858.834 133.311ZM851.797 120.761C851.797 120.353 852.098 120.067 852.527 120.067H855.04C855.476 120.067 855.777 120.353 855.777 120.761V121.763H851.797V120.761ZM850.616 133.926C850.2 133.926 849.893 133.611 849.871 133.196L849.37 122.844H858.183L857.71 133.196C857.689 133.618 857.388 133.926 856.966 133.926H850.616ZM855.913 132.666C856.149 132.666 856.328 132.473 856.336 132.201L856.55 124.641C856.557 124.369 856.371 124.169 856.128 124.169C855.906 124.169 855.72 124.376 855.713 124.634L855.498 132.201C855.491 132.459 855.67 132.666 855.913 132.666ZM851.668 132.666C851.911 132.666 852.09 132.459 852.083 132.201L851.868 124.634C851.861 124.376 851.668 124.169 851.446 124.169C851.203 124.169 851.024 124.369 851.031 124.641L851.253 132.201C851.26 132.473 851.432 132.666 851.668 132.666ZM854.224 132.201V124.634C854.224 124.376 854.03 124.169 853.794 124.169C853.558 124.169 853.357 124.376 853.357 124.634V132.201C853.357 132.459 853.558 132.666 853.794 132.666C854.023 132.666 854.224 132.459 854.224 132.201Z'
           fill='#999999'
@@ -163,17 +163,17 @@ export const FirstClassSchema = memo(() => {
           d='M893.655 85.3417C892.92 84.6071 892.065 84.0302 891.112 83.6271C890.125 83.2114 889.077 83 887.998 83C886.92 83 885.871 83.2114 884.884 83.6289C883.931 84.032 883.076 84.6089 882.342 85.3435C881.607 86.0781 881.032 86.931 880.629 87.8842C880.211 88.8714 880 89.9196 880 90.9983C880 92.0769 880.211 93.1251 880.629 94.1123C881.032 95.0655 881.609 95.9201 882.344 96.6547C883.078 97.3893 883.933 97.9663 884.886 98.3694C885.873 98.7869 886.92 98.9983 888 98.9983C889.08 98.9983 890.127 98.7869 891.114 98.3694C892.067 97.9663 892.922 97.3893 893.656 96.6547C894.391 95.9201 894.968 95.0655 895.371 94.1123C895.789 93.125 896 92.0787 896 90.9983C896 89.9178 895.789 88.8714 895.371 87.8842C894.964 86.931 894.389 86.0763 893.655 85.3417ZM887.998 97.0256C886.387 97.0256 884.873 96.3985 883.736 95.2608C882.598 94.123 881.971 92.609 881.971 90.9983C881.971 89.7207 882.365 88.5059 883.096 87.49L891.508 95.9022C890.49 96.6315 889.276 97.0256 887.998 97.0256ZM892.9 94.5064L884.49 86.0961C885.506 85.365 886.723 84.9709 887.998 84.9709C889.609 84.9709 891.123 85.5979 892.261 86.7357C893.398 87.8734 894.026 89.3874 894.026 90.9983C894.026 92.2757 893.631 93.4905 892.9 94.5064Z'
           fill='#999999'
         />
-        <path d='M850 60H871' stroke='#D9D9D9' stroke-width='2' />
-        <path d='M871 61V82' stroke='#999999' stroke-width='2' />
-        <path d='M128 115V142' stroke='#D9D9D9' stroke-width='2' />
-        <path d='M131 115L131 138' stroke='#999999' stroke-width='4' />
+        <path d='M850 60H871' stroke='#D9D9D9' strokeWidth='2' />
+        <path d='M871 61V82' stroke='#999999' strokeWidth='2' />
+        <path d='M128 115V142' stroke='#D9D9D9' strokeWidth='2' />
+        <path d='M131 115L131 138' stroke='#999999' strokeWidth='4' />
         <line
           x1='219'
           y1='115'
           x2='219'
           y2='138'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='133'
@@ -181,7 +181,7 @@ export const FirstClassSchema = memo(() => {
           x2='158'
           y2='90'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='192'
@@ -189,7 +189,7 @@ export const FirstClassSchema = memo(() => {
           x2='217'
           y2='90'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='221'
@@ -197,7 +197,7 @@ export const FirstClassSchema = memo(() => {
           x2='246'
           y2='90'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='280'
@@ -205,7 +205,7 @@ export const FirstClassSchema = memo(() => {
           x2='305'
           y2='90'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='309'
@@ -213,7 +213,7 @@ export const FirstClassSchema = memo(() => {
           x2='334'
           y2='90'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='368'
@@ -221,7 +221,7 @@ export const FirstClassSchema = memo(() => {
           x2='393'
           y2='90'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='397'
@@ -229,7 +229,7 @@ export const FirstClassSchema = memo(() => {
           x2='422'
           y2='90'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='456'
@@ -237,7 +237,7 @@ export const FirstClassSchema = memo(() => {
           x2='481'
           y2='90'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='485'
@@ -245,7 +245,7 @@ export const FirstClassSchema = memo(() => {
           x2='510'
           y2='90'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='544'
@@ -253,7 +253,7 @@ export const FirstClassSchema = memo(() => {
           x2='569'
           y2='90'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='573'
@@ -261,7 +261,7 @@ export const FirstClassSchema = memo(() => {
           x2='598'
           y2='90'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='632'
@@ -269,7 +269,7 @@ export const FirstClassSchema = memo(() => {
           x2='657'
           y2='90'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='661'
@@ -277,7 +277,7 @@ export const FirstClassSchema = memo(() => {
           x2='686'
           y2='90'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='720'
@@ -285,7 +285,7 @@ export const FirstClassSchema = memo(() => {
           x2='745'
           y2='90'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='749'
@@ -293,7 +293,7 @@ export const FirstClassSchema = memo(() => {
           x2='774'
           y2='90'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='808'
@@ -301,7 +301,7 @@ export const FirstClassSchema = memo(() => {
           x2='833'
           y2='90'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='307'
@@ -309,7 +309,7 @@ export const FirstClassSchema = memo(() => {
           x2='307'
           y2='138'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='395'
@@ -317,7 +317,7 @@ export const FirstClassSchema = memo(() => {
           x2='395'
           y2='138'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='483'
@@ -325,7 +325,7 @@ export const FirstClassSchema = memo(() => {
           x2='483'
           y2='138'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='571'
@@ -333,7 +333,7 @@ export const FirstClassSchema = memo(() => {
           x2='571'
           y2='138'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='659'
@@ -341,7 +341,7 @@ export const FirstClassSchema = memo(() => {
           x2='659'
           y2='138'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='747'
@@ -349,7 +349,7 @@ export const FirstClassSchema = memo(() => {
           x2='747'
           y2='138'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='219'
@@ -357,7 +357,7 @@ export const FirstClassSchema = memo(() => {
           x2='219'
           y2='92'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='307'
@@ -365,7 +365,7 @@ export const FirstClassSchema = memo(() => {
           x2='307'
           y2='92'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='395'
@@ -373,7 +373,7 @@ export const FirstClassSchema = memo(() => {
           x2='395'
           y2='92'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='483'
@@ -381,7 +381,7 @@ export const FirstClassSchema = memo(() => {
           x2='483'
           y2='92'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='571'
@@ -389,7 +389,7 @@ export const FirstClassSchema = memo(() => {
           x2='571'
           y2='92'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='659'
@@ -397,7 +397,7 @@ export const FirstClassSchema = memo(() => {
           x2='659'
           y2='92'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line
           x1='747'
@@ -405,7 +405,7 @@ export const FirstClassSchema = memo(() => {
           x2='747'
           y2='92'
           stroke='#999999'
-          stroke-width='4'
+          strokeWidth='4'
         />
         <line x1='133' y1='124.5' x2='217' y2='124.5' stroke='#D9D9D9' />
         <line x1='221' y1='124.5' x2='305' y2='124.5' stroke='#D9D9D9' />

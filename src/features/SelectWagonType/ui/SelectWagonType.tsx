@@ -2,19 +2,19 @@ import { memo } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { wagonType } from '@entities/routes';
 import { Icon } from '@shared/ui/Icon';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '@shared/lib/hooks/useReduxHooks';
-import { getWagonClass, setWagonClass } from '@entities/seats';
+import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
+import { setWagonClass, useGetCoachInfo } from '@entities/seats';
+import { type Direction } from '@shared/types';
 import styles from './SelectWagonType.module.scss';
 
 interface SelectWagonTypeProps {
-  className?: string;
+  direction: Direction;
 }
-export const SelectWagonType = memo(() => {
-  const wagonClass = useAppSelector(getWagonClass);
+
+export const SelectWagonType = memo(({ direction }: SelectWagonTypeProps) => {
   const dispatch = useAppDispatch();
+
+  const { wagonClass } = useGetCoachInfo(direction);
 
   return (
     <ul className={styles.seats_type_list}>
@@ -22,7 +22,9 @@ export const SelectWagonType = memo(() => {
         <li
           key={uuidv4()}
           className={styles.seats_item}
-          onClick={() => dispatch(setWagonClass(key))}
+          onClick={() =>
+            dispatch(setWagonClass({ direction, wagonClass: key }))
+          }
         >
           <Icon
             iconName={wagonType[key].iconName}

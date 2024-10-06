@@ -1,0 +1,46 @@
+.wagons {
+  color: var(--bg-header-form);
+}
+
+.wagon {
+  padding: var(--margin-sm) var(--padding-sm) var(--margin-sm) var(--padding-lg);
+  display: flex;
+  background-color: var(--bg-hover-btn);
+  justify-content: space-between;
+}
+
+.title {
+  font: var(--fw-regular) var(--fs-sm) var(--ff);
+}
+
+.coach {
+  padding-left: var(--margin-sm);
+  font: var(--fw-bold) var(--fs-text) var(--ff);
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: var(--color-light);
+  }
+}
+
+.active {
+  color: var(--color-light);
+}
+
+.seats_options {
+  padding-bottom: var(--margin-xl);
+  display: grid;
+  grid-template-columns: 190px 1fr 1fr 1fr;
+}
+
+.info_text {
+  padding-block: var(--margin-md);
+  text-align: center;
+  font: var(--fw-regular) var(--fs-text) var(--ff);
+}
+
+.schema_wrapper {
+  display: grid;
+  place-content: center;
+}
