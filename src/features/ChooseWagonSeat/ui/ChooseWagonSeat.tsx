@@ -1,9 +1,13 @@
 import { memo, useEffect } from 'react';
 import classNames from 'classnames';
 import { Seats } from '@entities/seats/model/types/seats';
-import { TrainSchema } from '@shared/ui/TrainSchema';
 import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
-import { CoachInfo, setCoachNumber, useGetCoachInfo } from '@entities/seats';
+import {
+  CoachInfo,
+  TrainSchema,
+  setCoachNumber,
+  useGetCoachInfo,
+} from '@entities/seats';
 import { type Direction } from '@shared/types';
 import styles from './ChooseWagonSeat.module.scss';
 
@@ -64,7 +68,6 @@ export const ChooseWagonSeat = memo(({ direction }: ChooseWagonSeatProps) => {
 
       <div className={styles.seats_options}>
         <CoachInfo direction={direction} />
-        {/* //TODO: TrainSchema in entitias -> seats */}
       </div>
       <div className={styles.schema_wrapper}>
         <TrainSchema wagonClass={wagonClass} wagonNumber={wagonNumber} />

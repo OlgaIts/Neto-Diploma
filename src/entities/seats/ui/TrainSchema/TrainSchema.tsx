@@ -1,15 +1,15 @@
 import { MemoExoticComponent, memo } from 'react';
-import { SeatsSchema } from './SeatsSchema/SeatsSchema';
+import { SeatsSchema } from '@shared/ui/WagonClassSchemes/SeatsSchema/SeatsSchema';
+import { FirstClassSchema } from '@shared/ui/WagonClassSchemes';
+import { ThirdClassSchema } from '@shared/ui/WagonClassSchemes';
+import { FourthClassSchema } from '@shared/ui/WagonClassSchemes';
 import {
   FirstClassSeatsParams,
   FourthClassSeatsParams,
   SeatsParams,
   SecondClassSeatsParams,
   ThirdClassSeatsParams,
-} from './consts/seatsParams';
-import { FirstClassSchema } from '.';
-import { ThirdClassSchema } from '.';
-import { FourthClassSchema } from '.';
+} from '@shared/ui/WagonClassSchemes/consts/seatsParams';
 import styles from './TrainSchema.module.scss';
 
 export type WagonClass = 'first' | 'second' | 'third' | 'fourth';

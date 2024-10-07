@@ -2,7 +2,7 @@
 
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { type Direction } from '@shared/types';
-import { WagonClass } from '@shared/ui/TrainSchema';
+import { WagonClass } from '@shared/ui/WagonClassSchemes';
 
 interface DirectionTicketInfo {
   wagonClass: WagonClass | null;

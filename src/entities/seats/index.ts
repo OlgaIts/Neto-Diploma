@@ -1,3 +1,4 @@
+export { TrainSchema, type WagonClass } from './ui/TrainSchema/TrainSchema';
 export { useGetCoachInfo } from './hooks/useGetCoachInfo';
 export { CoachInfo } from './ui/CoachInfo/CoachInfo';
 export { SeatsTicketTypeInput } from './ui/SeatsTicketTypeInput/SeatsTicketTypeInput';

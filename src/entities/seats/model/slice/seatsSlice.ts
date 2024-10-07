@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { type Direction, DirectionDetails } from '@shared/types/direction';
 import { RouteFilters } from '@entities/routes';
-import { WagonClass } from '@shared/ui/TrainSchema';
+import { WagonClass } from '@shared/ui/WagonClassSchemes';
 import { generateSeats } from '../../lib/generateSeats';
 import { type Seats } from '../types/seats';
 

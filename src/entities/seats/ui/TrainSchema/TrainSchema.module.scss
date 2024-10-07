@@ -1,6 +1,6 @@
 .component {
   position: relative;
-  padding-bottom: 30px;
+  padding-bottom: var(--margin-lg);
 }
 
 .schema {

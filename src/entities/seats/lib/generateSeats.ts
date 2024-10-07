@@ -2,7 +2,7 @@ import {
   WagonClass,
   secondClassSeats,
   thridClassSeats,
-} from '@shared/ui/TrainSchema';
+} from '@shared/ui/WagonClassSchemes';
 import { Seats } from '../model/types/seats';
 import { type SpecificPlace } from '../model/slice/seatsSlice';
 
