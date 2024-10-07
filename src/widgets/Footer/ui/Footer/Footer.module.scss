@@ -1,12 +1,12 @@
+@use '@app/styles/mixins' as *;
+
 .footer {
   background-color: var(--bg-footer);
   color: var(--color-light);
 }
 
 .container {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding-inline: var(--gap-sm);
+  @include container;
 }
 
 .section_wrapper {
@@ -28,10 +28,6 @@
   display: flex;
   gap: var(--padding-lg);
   align-items: center;
-}
-
-.map_wrapper {
-  align-items: start;
 }
 
 .text {
