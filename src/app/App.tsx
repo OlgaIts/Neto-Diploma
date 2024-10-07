@@ -1,21 +1,21 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
-import { routeConfig } from './router/routerConfig';
-import { Footer } from '@widgets/Footer';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { mainRouter } from './router/mainRouter';
 import './styles/index.scss';
 
 function App() {
-  const location = useLocation();
-  const allPaths = Object.values(routeConfig).map(({ path }) => path);
-  const isPathValid = allPaths.includes(location.pathname);
+  // const location = useLocation();
+  // const allPaths = Object.values(routeConfig).map(({ path }) => path);
+  // const isPathValid = allPaths.includes(location.pathname);
 
   return (
     <>
-      <Routes>
+      {/* <Routes>
         {Object.values(routeConfig).map(({ path, element }) => (
           <Route element={element} path={path} key={path} />
         ))}
-      </Routes>
-      {isPathValid ? <Footer /> : null}
+      </Routes> */}
+      <RouterProvider router={createBrowserRouter(mainRouter())} />
+      {/* {isPathValid && <Footer />} */}
     </>
   );
 }
