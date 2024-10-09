@@ -1,15 +1,28 @@
+@use '@app/styles/mixins' as *;
+.component {
+  background-color: var(--bg-filter);
+  overflow: hidden;
+}
+
+.container {
+  @include container;
+}
+
 .stages {
   height: 98px;
   display: flex;
-  gap: 70px;
-  background-color: var(--bg-filter);
+  justify-content: space-between;
+  gap: 50px;
   color: var(--color-light);
 }
 
 .stage {
+  position: relative;
+  width: 25%;
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 24px;
+
   span {
     font: var(--fw-medium) var(--fs-title) var(--ff);
   }
@@ -25,3 +38,21 @@
   border: 3px solid var(--color-light);
   border-radius: 50%;
 }
+
+.arrow {
+  width: 70px;
+  height: 70px;
+  // border: 2px solid #fff;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+  transform: rotate(45deg);
+}
+
+// .step_1 {
+// }
+// .step_2 {
+// }
+// .step_3 {
+// }
+// .step_4 {
+// }

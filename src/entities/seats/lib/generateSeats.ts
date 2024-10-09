@@ -1,10 +1,13 @@
 import {
-  WagonClass,
   secondClassSeats,
   thridClassSeats,
 } from '@shared/ui/WagonClassSchemes';
+import {
+  NormalizedCoachData,
+  type SpecificPlace,
+} from '../model/slice/seatsSlice';
 import { Seats } from '../model/types/seats';
-import { type SpecificPlace } from '../model/slice/seatsSlice';
+import { type WagonClass } from '../model/types/wagonClass';
 
 const countSeatsByClass = {
   first: 18,
@@ -18,33 +21,20 @@ const randomInteger = (min: number, max: number) => {
   return Math.floor(rand);
 };
 
-interface SeatsState extends Omit<Seats, 'seats'> {
-  seats: Record<number, SpecificPlace>;
-}
-
-const getSeatPlacement = (wagonClass: WagonClass, seatNumber: number) => {
-  let isBottom;
-  let isTop;
-  switch (wagonClass) {
-    case 'first':
-      isBottom = true;
-      break;
-    case 'second':
-      isBottom = secondClassSeats.bottom.includes(seatNumber);
-      isTop = !isBottom;
-      break;
-    case 'third':
-      isBottom = thridClassSeats.bottom.includes(seatNumber);
-      isTop = thridClassSeats.top.includes(seatNumber);
-      break;
-  }
-  if (isBottom) {
-    return 'bottom';
-  }
-  if (isTop) {
-    return 'top';
-  }
-  return 'side';
+const seatPlacementFunctions: Record<
+  WagonClass,
+  (seatNumber: number) => 'top' | 'bottom' | 'side' | null
+> = {
+  first: () => null,
+  second: (seatNumber) =>
+    secondClassSeats.bottom.includes(seatNumber) ? 'bottom' : 'top',
+  third: (seatNumber) =>
+    thridClassSeats.bottom.includes(seatNumber)
+      ? 'bottom'
+      : thridClassSeats.top.includes(seatNumber)
+        ? 'top'
+        : 'side',
+  fourth: () => null,
 };
 
 export const generateSeats = (seatsInfo: Seats[]) => {
@@ -54,40 +44,82 @@ export const generateSeats = (seatsInfo: Seats[]) => {
   );
 
   const updatedInfo = seatsInfo.reduce(
-    (acc: Record<WagonClass, SeatsState[]>, info: Seats) => {
-      const countAvailableSeats = info.coach.available_seats;
-      const wagonClass = info.coach.class_type;
-      const seatsPlacementInfo = { top: 0, bottom: 0, side: 0 };
+    (acc: Record<WagonClass, NormalizedCoachData[]>, info: Seats) => {
+      const {
+        _id,
+        bottom_price,
+        class_type,
+        have_air_conditioning,
+        is_linens_included,
+        linens_price,
+        price,
+        top_price,
+        wifi_price,
+        have_wifi,
+        side_price,
+        available_seats,
+      } = info.coach;
+
       const allSeats = Array.from(
-        { length: countSeatsByClass[wagonClass] },
+        { length: countSeatsByClass[class_type] },
         (v, index) => index + 1,
       );
+      const seatsCount = { top: 0, bottom: 0, side: 0, total: available_seats };
       const availableSeats: Record<number, SpecificPlace> = {};
-      for (let i = 1; i <= countAvailableSeats; i++) {
+      for (let i = 1; i <= available_seats; i++) {
         const randomSeatIndex = randomInteger(0, allSeats.length - 1);
         const seat = allSeats.splice(randomSeatIndex, 1)[0];
-        const seatPlacement = getSeatPlacement(wagonClass, seat);
+        const seatPlacement =
+          seatPlacementFunctions[class_type](randomSeatIndex);
         availableSeats[seat] = { available: true, placement: seatPlacement };
-        seatsPlacementInfo[seatPlacement] += 1;
+        if (seatPlacement) {
+          seatsCount[seatPlacement] += 1;
+        }
       }
 
       const randomCoachIndex = randomInteger(
         0,
         availableCoachNumbers.length - 1,
       );
-      info.coach.seatsCount = seatsPlacementInfo;
-      info.coach.coachNumber = availableCoachNumbers.splice(
-        randomCoachIndex,
-        1,
-      )[0];
-      if (!acc[wagonClass]) {
-        acc[wagonClass] = [{ coach: info.coach, seats: availableSeats }];
+      const coachNumber = availableCoachNumbers.splice(randomCoachIndex, 1)[0];
+
+      const coach = {
+        _id,
+        coachNumber,
+        seatsCount,
+        bottom_price:
+          class_type !== 'first' && class_type !== 'fourth' ? bottom_price : 0,
+        price: class_type === 'fourth' ? bottom_price : price,
+        have_air_conditioning,
+        have_wifi,
+        is_linens_included,
+        linens_price,
+        side_price:
+          class_type !== 'first' &&
+          class_type !== 'fourth' &&
+          class_type !== 'second'
+            ? side_price
+            : 0,
+        top_price:
+          class_type !== 'first' && class_type !== 'fourth' ? top_price : 0,
+        wifi_price,
+      };
+
+      if (!acc[class_type]) {
+        acc[class_type] = [
+          {
+            coach,
+            seats: availableSeats,
+          },
+        ];
         return acc;
       }
-      acc[wagonClass].push({ coach: info.coach, seats: availableSeats });
+
+      acc[class_type].push({ coach, seats: availableSeats });
+
       return acc;
     },
-    {} as Record<WagonClass, SeatsState[]>,
+    {} as Record<WagonClass, NormalizedCoachData[]>,
   );
 
   return updatedInfo;

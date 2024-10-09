@@ -8,6 +8,7 @@ import {
   setCoachNumber,
   useGetCoachInfo,
 } from '@entities/seats';
+import { addZero } from '@shared/lib/helpers/addZero';
 import { type Direction } from '@shared/types';
 import styles from './ChooseWagonSeat.module.scss';
 
@@ -59,7 +60,7 @@ export const ChooseWagonSeat = memo(({ direction }: ChooseWagonSeatProps) => {
               key={coach._id}
               onClick={() => saveWagonNumber(coach.coachNumber, direction)}
             >
-              {coach.coachNumber}
+              {addZero(coach.coachNumber)}
             </span>
           ))}
         </p>

@@ -10,9 +10,8 @@ import {
   SecondClassSeatsParams,
   ThirdClassSeatsParams,
 } from '@shared/ui/WagonClassSchemes/consts/seatsParams';
+import { type WagonClass } from '../../model/types/wagonClass';
 import styles from './TrainSchema.module.scss';
-
-export type WagonClass = 'first' | 'second' | 'third' | 'fourth';
 
 interface TrainSchemaProps {
   wagonClass: WagonClass;

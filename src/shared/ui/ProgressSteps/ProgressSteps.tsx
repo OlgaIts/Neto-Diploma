@@ -2,29 +2,45 @@ import { memo } from 'react';
 import classNames from 'classnames';
 import styles from './ProgressSteps.module.scss';
 
+type Step = '1' | '2' | '3' | '4';
+const stages = [
+  {
+    title: 'Билеты',
+    step: 1,
+  },
+  {
+    title: 'Пассажиры',
+    step: 2,
+  },
+  {
+    title: 'Оплата',
+    step: 3,
+  },
+  {
+    title: 'Проверка',
+    step: 4,
+  },
+];
+
 interface ProgressStepsProps {
   className?: string;
+  step?: Step;
 }
-export const ProgressSteps = memo(({ className }: ProgressStepsProps) => {
+export const ProgressSteps = memo(({ className, step }: ProgressStepsProps) => {
   return (
-    <div className={styles.stages}>
-      <div className={styles.stage}>
-        <div className={styles.step}>1</div>
-        <span>Билеты</span>
+    <section className={styles.component}>
+      <div className={styles.container}>
+        <ul className={styles.stages}>
+          {stages.map((item) => (
+            <li className={styles.stage} key={item.title}>
+              <div className={styles.step}>{item.step}</div>
+              <span>{item.title}</span>
+              <div className={styles.arrow}></div>
+            </li>
+          ))}
+        </ul>
       </div>
-      <div className={styles.stage}>
-        <div className={styles.step}>2</div>
-        <span>Пассажиры</span>
-      </div>
-      <div className={styles.stage}>
-        <div className={styles.step}>3</div>
-        <span>Оплата</span>
-      </div>
-      <div className={styles.stage}>
-        <div className={styles.step}>4</div>
-        <span>Проверка</span>
-      </div>
-    </div>
+    </section>
   );
 });
 ProgressSteps.displayName = 'ProgressSteps';

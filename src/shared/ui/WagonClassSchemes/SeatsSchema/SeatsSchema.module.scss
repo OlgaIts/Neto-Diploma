@@ -1,15 +1,10 @@
 .svg {
-  cursor: pointer;
+cursor: default;
 
   rect {
-    fill: var(--bg-tooltip);
+    fill: var(--color-footer);
     transition: all 0.3s ease-in-out;
-  }
-
-  &:hover {
-    rect {
-      stroke: var(--bg-accent-color);
-    }
+    pointer-events: none;
   }
 }
 
@@ -19,8 +14,14 @@
   }
 }
 
-.unavailable {
+.ailable {
+  cursor: pointer;
   rect {
-    fill: var(--color-footer);
+    fill: var(--bg-tooltip);
+  }
+  &:hover {
+    rect {
+      stroke: var(--bg-accent-color);
+    }
   }
 }

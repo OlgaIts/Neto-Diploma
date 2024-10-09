@@ -1,5 +1,5 @@
 import { url } from '@shared/consts';
-import { SeatsFilters } from '../types/seatsFilters';
+import { type SeatsFilters } from '../types/seatsFilters';
 import { type Seats } from '../types/seats';
 
 interface SeatsRequestData {
@@ -8,7 +8,7 @@ interface SeatsRequestData {
 }
 
 export const services = {
-  getSeats: async (data: SeatsRequestData): Promise<Seats> => {
+  getSeats: async (data: SeatsRequestData): Promise<Seats[]> => {
     const queryParams = Object.keys(data.filters)
       .map((key) => {
         const dataKey = key as keyof SeatsFilters;

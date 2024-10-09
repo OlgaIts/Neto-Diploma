@@ -1,14 +1,16 @@
+@use '@app/styles/mixins' as *;
+
 .component {
   background-color: var(--page-bg);
 }
 
 .container {
-  max-width: 1440px;
-  margin: 96px auto 0 auto;
-  padding-inline: 20px;
+  @include container;
+  padding-top: 96px;
 }
 
 .main {
+  padding-bottom: 120px;
   display: flex;
   gap: 82px;
 }
@@ -17,7 +19,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: var(--padding-lg);
 }
 
 .btn {
