@@ -1,0 +1,26 @@
+.component {
+  padding-block: var(--margin-lg);
+  border-top: var( --dashed);
+  border-bottom: var( --dashed);
+}
+
+.wrapper {
+  padding-inline: var(--padding-lg);
+  display: flex;
+  gap: var(--padding-md);
+}
+
+.label {
+  margin-bottom: var(--padding-sm);
+  display: block;
+  color: var(--text-dark-gray);
+}
+
+.pass {
+  width: 350px;
+}
+
+.pass_wrapper {
+  display: flex;
+  gap: var(--padding-md);
+}

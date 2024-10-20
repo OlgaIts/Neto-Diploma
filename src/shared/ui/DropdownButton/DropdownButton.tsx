@@ -1,23 +1,39 @@
 import { memo, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import classNames from 'classnames';
-import styles from './DropdownButton.module.scss';
 import { Icon } from '../Icon';
+import styles from './DropdownButton.module.scss';
 
 interface DropdownButtonProps {
   className?: string;
   label?: string;
   id?: string;
   list: string[];
+  onSelect?: (value: string) => void;
+  onChange?: (value: string) => void;
 }
 export const DropdownButton = memo(
-  ({ className, label, id, list }: DropdownButtonProps) => {
+  ({ className, label, id, list, onSelect, onChange }: DropdownButtonProps) => {
     const [openModal, setOpenModal] = useState(false);
     const [value, setValue] = useState(list[0]);
 
+    // const handleSelect = (index: number) => {
+    //   setValue(list[index]);
+    //   setOpenModal(false);
+    //   if (onSelect) {
+    //     onSelect(list[index]);
+    //   }
+    // };
     const handleSelect = (index: number) => {
-      setValue(list[index]);
+      const selectedValue = list[index];
+      setValue(selectedValue);
       setOpenModal(false);
+      if (onSelect) {
+        onSelect(selectedValue);
+      }
+      if (onChange) {
+        onChange(selectedValue);
+      }
     };
 
     return (
@@ -35,6 +51,7 @@ export const DropdownButton = memo(
           onClick={() => setOpenModal(!openModal)}
           readOnly
           value={value}
+          onChange={() => onChange && onChange(value)}
         />
         <Icon
           className={classNames(styles.icon, openModal ? styles.icon_open : '')}

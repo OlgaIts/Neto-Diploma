@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import classNames from 'classnames';
 import { Header } from '@widgets/Header';
-import { ProgressSteps } from '@shared/ui/ProgressSteps';
+import { ArrivalWagonSeats, DepartureWagonSeats } from '@widgets/WagonSeats';
 import { RoutesFilters } from '@widgets/RoutesFilters';
 import { useGetSeats } from '@entities/seats';
-import { WagonSeats } from '@widgets/WagonSeats';
+import { ProgressSteps } from '@shared/ui/ProgressSteps';
 import { Title } from '@shared/ui/Title';
 import { Button } from '@shared/ui/Button';
 import styles from './SeatsPage.module.scss';
@@ -31,11 +31,12 @@ export const SeatsPage = memo(() => {
               Выбор мест
             </Title>
 
-            <WagonSeats direction='departure' />
-            <WagonSeats direction='arrival' />
+            <DepartureWagonSeats />
+            <ArrivalWagonSeats />
 
             <Button
-              tag='button'
+              tag='Link'
+              to='/passenger'
               size='s'
               uppercase
               color='white'

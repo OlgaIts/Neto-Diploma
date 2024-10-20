@@ -12,7 +12,7 @@ interface WagonSeatsProps {
   direction: Direction;
 }
 
-export const WagonSeats = memo(({ direction }: WagonSeatsProps) => {
+const WagonSeats = memo(({ direction }: WagonSeatsProps) => {
   const isDeparture = direction === 'departure';
 
   return (
@@ -39,3 +39,11 @@ export const WagonSeats = memo(({ direction }: WagonSeatsProps) => {
   );
 });
 WagonSeats.displayName = 'WagonSeats';
+
+export const ArrivalWagonSeats = () => {
+  return <WagonSeats direction='arrival' />;
+};
+
+export const DepartureWagonSeats = () => {
+  return <WagonSeats direction='departure' />;
+};

@@ -5,8 +5,8 @@ import { ProgressSteps } from '@shared/ui/ProgressSteps';
 import { TripDetails } from '@widgets/TripDetails';
 import { Icon } from '@shared/ui/Icon';
 import { Title } from '@shared/ui/Title';
-import styles from './PassengerPage.module.scss';
 import { AddPassengerForm } from './AddPassengerForm/AddPassengerForm';
+import styles from './PassengerPage.module.scss';
 
 interface PassengerPageProps {
   className?: string;
@@ -36,28 +36,6 @@ export const PassengerPage = memo(({ className }: PassengerPageProps) => {
               />
             </div>
             <AddPassengerForm />
-            {/* <div className={styles.passenger}>
-              <header className={styles.passenger_header}>
-                <div className={styles.title_wrapper}>
-                  <div className={styles.icon_wrapper}>
-                    <Icon
-                      iconName={'icon-plus'}
-                      color='accent'
-                      fontSize='16px'
-                    />
-                  </div>
-                  <Title color='dark' weight='regular'>
-                    Пассажир <span>1</span>
-                  </Title>
-                </div>
-                <Icon
-                  iconName={'icon-close'}
-                  fontSize='12px'
-                  color='grey'
-                  className={styles.passenger_icon}
-                />
-              </header>
-            </div> */}
           </section>
         </main>
       </div>

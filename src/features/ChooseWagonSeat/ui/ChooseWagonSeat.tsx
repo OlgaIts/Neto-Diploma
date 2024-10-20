@@ -1,14 +1,21 @@
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import classNames from 'classnames';
-import { Seats } from '@entities/seats/model/types/seats';
-import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
+import { type Seats } from '@entities/seats/model/types/seats';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '@shared/lib/hooks/useReduxHooks';
 import {
   CoachInfo,
   TrainSchema,
-  setCoachNumber,
-  useGetCoachInfo,
+  getCurrentWagonInfo,
+  getCurrentWagonSeats,
+  getWagonClass,
+  getWagonList,
+  setDirectionInfo,
 } from '@entities/seats';
 import { addZero } from '@shared/lib/helpers/addZero';
+import { Icon } from '@shared/ui/Icon';
 import { type Direction } from '@shared/types';
 import styles from './ChooseWagonSeat.module.scss';
 
@@ -19,29 +26,27 @@ interface ChooseWagonSeatProps {
 }
 
 export const ChooseWagonSeat = memo(({ direction }: ChooseWagonSeatProps) => {
-  const { currentSeats, wagonClass, wagonNumber } = useGetCoachInfo(direction);
   const dispatch = useAppDispatch();
-
+  const wagonInfo = useAppSelector(getCurrentWagonInfo(direction));
+  const wagonClass = useAppSelector(getWagonClass(direction));
+  const wagonList = useAppSelector(getWagonList(direction));
+  const wagonSeats = useAppSelector(getCurrentWagonSeats(direction));
   const saveWagonNumber = (
-    number: number | undefined,
     direction: Direction,
+    number?: number | undefined,
   ) => {
-    number && dispatch(setCoachNumber({ coachNumber: number, direction }));
+    if (wagonClass) {
+      dispatch(
+        setDirectionInfo({ direction, coachNumber: number, wagonClass }),
+      );
+    }
   };
 
-  // хуки нельзя использовать после условий
-  useEffect(() => {
-    if (currentSeats) {
-      const defaultCoachNumber = currentSeats[0].coach.coachNumber;
-      saveWagonNumber(defaultCoachNumber, direction);
-    }
-  }, [currentSeats]);
-
-  if (!wagonClass || !wagonNumber) {
+  if (!wagonClass) {
     return null;
   }
 
-  if (!currentSeats) {
+  if (!wagonList || !wagonInfo?.wagonNumber) {
     return (
       <p className={styles.info_text}>
         В этом поезде нет вагона данного класса
@@ -54,13 +59,13 @@ export const ChooseWagonSeat = memo(({ direction }: ChooseWagonSeatProps) => {
       <div className={styles.wagon}>
         <p className={styles.title}>
           Вагоны
-          {currentSeats.map(({ coach }) => (
+          {wagonList.map((key) => (
             <span
               className={classNames(styles.coach)}
-              key={coach._id}
-              onClick={() => saveWagonNumber(coach.coachNumber, direction)}
+              key={key}
+              onClick={() => saveWagonNumber(direction, key)}
             >
-              {addZero(coach.coachNumber)}
+              {addZero(key)}
             </span>
           ))}
         </p>
@@ -71,7 +76,16 @@ export const ChooseWagonSeat = memo(({ direction }: ChooseWagonSeatProps) => {
         <CoachInfo direction={direction} />
       </div>
       <div className={styles.schema_wrapper}>
-        <TrainSchema wagonClass={wagonClass} wagonNumber={wagonNumber} />
+        <TrainSchema
+          wagonClass={wagonClass}
+          wagonNumber={wagonInfo?.wagonNumber}
+          seats={wagonSeats}
+        />
+      </div>
+
+      <div className={styles.price_wrapper}>
+        <span className={styles.price}></span>
+        <Icon iconName={'icon-ruble'} fontSize='20px' color='grey' />
       </div>
     </div>
   );

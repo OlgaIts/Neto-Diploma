@@ -1,0 +1,17 @@
+.label {
+  margin-bottom: var(--padding-sm);
+  display: block;
+  color: var(--text-dark-gray);
+}
+
+.input {
+  padding: var(--margin-sm) var(--padding-sm);
+  font: var(--fw-regular) var(--fs-md) var(--ff);
+  border: 1px solid var(--text-dark-gray);
+  border-radius: var(--radius);
+  outline: none;
+
+  &:focus {
+    border: 1px solid var(--bg-accent-color);
+  }
+}

@@ -1,3 +1,4 @@
+export { SeatsSchema } from './SeatsSchema/SeatsSchema';
 export {
   firstClassSeats,
   secondClassSeats,

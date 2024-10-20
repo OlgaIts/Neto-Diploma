@@ -1,16 +1,22 @@
+export {
+  getCurrentWagonInfo,
+  getCurrentServicesInfo,
+  getWagonList,
+  getWagonClass,
+  getCurrentWagonSeats,
+} from './model/selectors/currentWagonInfoSelector';
+export { setDirectionInfo } from './model/slice/currentDirectionInfo';
 export { ServiceIcons } from './ui/ServiceIcons/ServiceIcons';
 export { TrainSchema } from './ui/TrainSchema/TrainSchema';
-export { useGetCoachInfo } from './hooks/useGetCoachInfo';
 export { CoachInfo } from './ui/CoachInfo/CoachInfo';
 export { SeatsTicketTypeInput } from './ui/SeatsTicketTypeInput/SeatsTicketTypeInput';
 export { RouteInfo } from './ui/RouteInfo/RouteInfo';
 export { useGetSeats } from './hooks/useGetSeats';
+export { type WagonClass } from './model/types/wagonClass';
 export {
   setAdultCount,
   setChildCount,
   setChildWithoutSeatCount,
-  setWagonClass,
-  setCoachNumber,
   seatsTicketInfoReducer,
 } from './model/slice/ticketInfoSlice';
 export {
@@ -31,6 +37,5 @@ export {
   seatsReducer,
   setDeparture,
   setArrival,
-  type SpecificPlace,
 } from './model/slice/seatsSlice';
-export { type WagonClass } from './model/types/wagonClass';
+export { type Seats } from './model/types/seats';

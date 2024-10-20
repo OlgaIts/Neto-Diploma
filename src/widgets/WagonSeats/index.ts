@@ -1,1 +1,4 @@
-export { WagonSeats } from './ui/WagonSeats/WagonSeats';
+export {
+  ArrivalWagonSeats,
+  DepartureWagonSeats,
+} from './ui/WagonSeats/WagonSeats';

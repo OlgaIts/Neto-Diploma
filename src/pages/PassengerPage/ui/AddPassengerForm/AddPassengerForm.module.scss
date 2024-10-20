@@ -8,7 +8,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: var(--bg-passenger);
-  border-bottom: 1px dashed var(--text-dark-gray);
+  border-bottom: var(--dashed);
 }
 
 .title_wrapper {
@@ -33,51 +33,4 @@
 
 .passenger_icon {
   cursor: pointer;
-}
-
-.section {
-  background-color: #fff;
-  padding: var(--margin-xl) var(--padding-lg);
-}
-
-.name_wrapper {
-  margin-bottom: var(--margin-xxl);
-  margin-top: 70px;
-  display: flex;
-  gap: var(--padding-md);
-}
-
-.wrapper {
-  display: flex;
-  align-items: center;
-  gap: var(--padding-md);
-}
-
-.label {
-  margin-bottom: var(--padding-sm);
-  display: block;
-  color: var(--text-dark-gray);
-}
-
-.input {
-  padding: var(--margin-sm) var(--padding-sm);
-  font: var(--fw-regular) var(--fs-md) var(--ff);
-  border: 1px solid var(--text-dark-gray);
-  border-radius: var(--radius);
-  outline: none;
-
-  &:focus {
-    border: 1px solid var(--bg-accent-color);
-  }
-}
-
-.mobility_wrapper {
-  margin-top: var(--margin-xxl);
-  display: flex;
-  align-items: center;
-  gap: var(--gap-sm);
-}
-
-.pass {
-  width: 400px;
 }

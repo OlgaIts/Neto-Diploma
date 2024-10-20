@@ -1,27 +1,71 @@
 @use '@app/styles/mixins' as *;
+
 .component {
   background-color: var(--bg-filter);
   overflow: hidden;
+  position: relative;
 }
 
 .container {
   @include container;
+
 }
 
 .stages {
+  position: relative;
   height: 98px;
-  display: flex;
-  justify-content: space-between;
-  gap: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: calc(var(--gap-xs) * 3);
   color: var(--color-light);
+  z-index: 99;
 }
 
 .stage {
   position: relative;
-  width: 25%;
+
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: var(--padding-md);
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    width: 104px;
+    height: 104px;
+    border-top: 1px solid var(--color-light);
+    border-right: 1px solid var(--color-light);
+    transform: rotate(45deg);
+  }
+
+  // &::before {
+  //   content: '';
+  //   position: absolute;
+  //   // left: -200%;
+  //   // width: 300%;
+  //   height: 100%;
+  //   background-color: var(--bg-accent-color);
+  //   z-index: -1;
+
+  //   clip-path: polygon(
+  //     0 0,
+  //     calc(100% - 47px) 0,
+  //     100% 50%,
+  //     calc(100% - 47px) 100%,
+  //     0 100%
+  //   );
+  // }
+
+  // &:nth-child(1)::before {
+  //   left: -300%;
+  //   width: 400%;
+  // }
+
+  // &:nth-child(2)::before {
+  //   left: -500%;
+  //   width: 600%;
+  // }
 
   span {
     font: var(--fw-medium) var(--fs-title) var(--ff);
@@ -39,20 +83,46 @@
   border-radius: 50%;
 }
 
-.arrow {
-  width: 70px;
-  height: 70px;
-  // border: 2px solid #fff;
-  border-top: 1px solid #fff;
-  border-right: 1px solid #fff;
-  transform: rotate(45deg);
+.title {
+  width: 170px;
 }
 
-// .step_1 {
+// .stage:nth-child(1) {
+//   position: relative;
+//   z-index: 99;
+
+//   &::before {
+//     content: '';
+//     position: absolute;
+//     left: -200%;
+//     width: 300%;
+//     height: 100%;
+//     background-color: var(--bg-accent-color);
+//     z-index: -1;
+
+//     clip-path: polygon(
+//       0 0,
+//       calc(100% - 47px) 0,
+//       100% 50%,
+//       calc(100% - 47px) 100%,
+//       0 100%
+//     );
+//   }
 // }
-// .step_2 {
-// }
-// .step_3 {
-// }
-// .step_4 {
-// }
+.mask {
+  position: absolute;
+  top: 0;
+  left: -10px;
+  width: 25%;
+  height: 98px;
+  background-color: var(--bg-accent-color);
+  z-index: 1;
+
+  clip-path: polygon(
+    0 0,
+    calc(100% - 47px) 0,
+    100% 50%,
+    calc(100% - 47px) 100%,
+    0 100%
+  );
+}

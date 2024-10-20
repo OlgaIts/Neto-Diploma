@@ -2,8 +2,9 @@ import { memo } from 'react';
 import { Icon } from '@shared/ui/Icon';
 import { addZero } from '@shared/lib/helpers/addZero';
 import { type Direction } from '@shared/types';
-import { useGetCoachInfo } from '../../hooks/useGetCoachInfo';
 import { ServiceIcons } from '../ServiceIcons/ServiceIcons';
+import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
+import { getCurrentWagonInfo } from '@entities/seats/model/selectors/currentWagonInfoSelector';
 import styles from './CoachInfo.module.scss';
 
 interface CoachInfoProps {
@@ -11,35 +12,31 @@ interface CoachInfoProps {
 }
 
 export const CoachInfo = memo(({ direction }: CoachInfoProps) => {
-  const { currentSeats, currentWagonSeats, wagonClass, wagonNumber } =
-    useGetCoachInfo(direction);
-  //TODO: переделать
+  const currentInfo = useAppSelector(getCurrentWagonInfo(direction));
 
   return (
     <>
       <div className={styles.number_wrapper}>
-        <div className={styles.number}>
-          {addZero(currentWagonSeats?.coach.coachNumber)}
-        </div>
+        <div className={styles.number}>{addZero(currentInfo?.wagonNumber)}</div>
         <p>вагон</p>
       </div>
       <div className={styles.wrapper}>
         <p className={styles.subtitle}>
-          Места <span>{currentWagonSeats?.coach.available_seats}</span>
+          Места <span>{currentInfo?.available_seats}</span>
         </p>
-        {currentWagonSeats?.coach.seatsCount?.top !== 0 && (
+        {currentInfo?.top !== 0 && (
           <p className={styles.coach_type}>
-            Верхние <span>{currentWagonSeats?.coach.seatsCount?.top}</span>
+            Верхние <span>{currentInfo?.top}</span>
           </p>
         )}
-        {currentWagonSeats?.coach.seatsCount?.bottom !== 0 && (
+        {currentInfo?.bottom !== 0 && (
           <p className={styles.coach_type}>
-            Нижние <span>{currentWagonSeats?.coach.seatsCount?.bottom}</span>
+            Нижние <span>{currentInfo?.bottom}</span>
           </p>
         )}
-        {currentWagonSeats?.coach.seatsCount?.side !== 0 && (
+        {currentInfo?.side !== 0 && (
           <p className={styles.coach_type}>
-            Боковые <span>{currentWagonSeats?.coach.seatsCount?.side}</span>
+            Боковые <span>{currentInfo?.side}</span>
           </p>
         )}
       </div>
@@ -47,26 +44,22 @@ export const CoachInfo = memo(({ direction }: CoachInfoProps) => {
       <div className={styles.wrapper}>
         <p className={styles.subtitle}>Стоимость</p>
 
-        {currentWagonSeats?.coach.seatsCount?.top !== 0 && (
+        {currentInfo?.top !== 0 && (
           <p className={styles.coach_price}>
-            {Number(currentWagonSeats?.coach.top_price).toLocaleString('ru-RU')}
+            {Number(currentInfo?.top_price).toLocaleString('ru-RU')}
             <Icon iconName={'icon-ruble'} color='dark_gray' fontSize='18px' />
           </p>
         )}
-        {currentWagonSeats?.coach.seatsCount?.bottom !== 0 && (
+        {currentInfo?.bottom !== 0 && (
           <p className={styles.coach_price}>
-            {Number(currentWagonSeats?.coach.bottom_price).toLocaleString(
-              'ru-RU',
-            )}
+            {Number(currentInfo?.bottom_price).toLocaleString('ru-RU')}
             <Icon iconName={'icon-ruble'} color='dark_gray' fontSize='18px' />
           </p>
         )}
 
-        {currentWagonSeats?.coach.seatsCount?.side !== 0 && (
+        {currentInfo?.side !== 0 && (
           <p className={styles.coach_price}>
-            {Number(currentWagonSeats?.coach.side_price).toLocaleString(
-              'ru-RU',
-            )}
+            {Number(currentInfo?.side_price).toLocaleString('ru-RU')}
             <Icon iconName={'icon-ruble'} color='dark_gray' fontSize='18px' />
           </p>
         )}

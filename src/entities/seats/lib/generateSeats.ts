@@ -4,10 +4,10 @@ import {
 } from '@shared/ui/WagonClassSchemes';
 import {
   NormalizedCoachData,
-  type SpecificPlace,
 } from '../model/slice/seatsSlice';
 import { Seats } from '../model/types/seats';
 import { type WagonClass } from '../model/types/wagonClass';
+import { type SpecificPlace } from '@shared/types';
 
 const countSeatsByClass = {
   first: 18,
@@ -44,7 +44,10 @@ export const generateSeats = (seatsInfo: Seats[]) => {
   );
 
   const updatedInfo = seatsInfo.reduce(
-    (acc: Record<WagonClass, NormalizedCoachData[]>, info: Seats) => {
+    (
+      acc: Record<WagonClass, Record<number, NormalizedCoachData>>,
+      info: Seats,
+    ) => {
       const {
         _id,
         bottom_price,
@@ -103,23 +106,18 @@ export const generateSeats = (seatsInfo: Seats[]) => {
         top_price:
           class_type !== 'first' && class_type !== 'fourth' ? top_price : 0,
         wifi_price,
+        available_seats,
       };
 
       if (!acc[class_type]) {
-        acc[class_type] = [
-          {
-            coach,
-            seats: availableSeats,
-          },
-        ];
-        return acc;
+        acc[class_type] = {};
       }
 
-      acc[class_type].push({ coach, seats: availableSeats });
+      acc[class_type][coachNumber] = { coach, seats: availableSeats };
 
       return acc;
     },
-    {} as Record<WagonClass, NormalizedCoachData[]>,
+    {} as Record<WagonClass, Record<number, NormalizedCoachData>>,
   );
 
   return updatedInfo;

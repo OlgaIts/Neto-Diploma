@@ -2,7 +2,7 @@ import { memo } from 'react';
 import classNames from 'classnames';
 import styles from './ProgressSteps.module.scss';
 
-type Step = '1' | '2' | '3' | '4';
+type Step = 'step_1' | 'step_2' | 'step_3' | 'step_1';
 const stages = [
   {
     title: 'Билеты',
@@ -32,13 +32,13 @@ export const ProgressSteps = memo(({ className, step }: ProgressStepsProps) => {
       <div className={styles.container}>
         <ul className={styles.stages}>
           {stages.map((item) => (
-            <li className={styles.stage} key={item.title}>
+            <li className={classNames(styles.stage)} key={item.title}>
               <div className={styles.step}>{item.step}</div>
-              <span>{item.title}</span>
-              <div className={styles.arrow}></div>
+              <span className={styles.title}>{item.title}</span>
             </li>
           ))}
         </ul>
+        <div className={styles.mask}></div>
       </div>
     </section>
   );

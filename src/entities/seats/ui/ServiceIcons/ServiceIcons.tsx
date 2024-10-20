@@ -1,10 +1,12 @@
 import { memo, useState } from 'react';
 import classNames from 'classnames';
-import { Icon } from '../../../../shared/ui/Icon';
-import styles from './ServiceIcons.module.scss';
-import { useGetCoachInfo } from '@entities/seats';
+
+import { Icon } from '@shared/ui/Icon';
 import { type Direction } from '@shared/types';
-import { type CoachStateInfo } from '../../model/slice/seatsSlice';
+import { type Options } from '../../model/types/serviceOptions';
+import styles from './ServiceIcons.module.scss';
+import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
+import { getCurrentServicesInfo } from '@entities/seats/model/selectors/currentWagonInfoSelector';
 
 interface Conditions {
   have_air_conditioning?: boolean;
@@ -12,42 +14,6 @@ interface Conditions {
   have_wifi?: boolean;
   is_linens_included?: boolean;
 }
-
-interface Options {
-  name: string;
-  tooltip: string;
-  included: (coachInfo: CoachStateInfo) => boolean;
-  active?: boolean;
-  disabled: (coachInfo: CoachStateInfo) => boolean;
-}
-
-const options: Record<string, Options> = {
-  conditioner: {
-    name: 'icon-conditioner',
-    tooltip: 'кондиционер',
-    included: (coachInfo) => !!coachInfo.have_air_conditioning,
-    disabled: (coachInfo) => !coachInfo.have_air_conditioning,
-  },
-  'wi-fi': {
-    name: 'icon-wi-fi',
-    tooltip: 'Wi-Fi',
-    included: () => false,
-    disabled: (coachInfo) => !coachInfo.have_wifi && !coachInfo.wifi_price,
-  },
-  linens: {
-    name: 'icon-linens',
-    tooltip: 'белье',
-    included: (coachInfo) => !!coachInfo.is_linens_included,
-    disabled: (coachInfo) =>
-      !coachInfo.is_linens_included && !coachInfo.linens_price,
-  },
-  caffee: {
-    name: 'icon-caffee',
-    tooltip: 'питание',
-    included: (coachInfo) => !!coachInfo.is_linens_included,
-    disabled: (coachInfo) => !coachInfo.is_linens_included,
-  },
-};
 
 interface ServiceIconsProps extends Conditions {
   className?: string;
@@ -57,32 +23,38 @@ interface ServiceIconsProps extends Conditions {
 export const ServiceIcons = memo(
   ({ className, direction }: ServiceIconsProps) => {
     const [openTooltip, setOpenTooltip] = useState<string | null>(null);
-    const [services, setServices] = useState(options);
-    const { currentWagonSeats } = useGetCoachInfo(direction);
+    // const [services, setServices] = useState(serviceOptions);
+    // const coach = currentWagonSeats?.coach;
+//TODO: дописать
 
-    const coach = currentWagonSeats?.coach;
+    const services = useAppSelector(getCurrentServicesInfo(direction));
 
-    const selectOption = (key: keyof Options) => {
-      setServices((prev) => ({
-        ...prev,
-        [key]: {
-          ...prev[key],
-          active: !prev[key].active,
-        },
-      }));
-    };
+    // const selectOption = (key: keyof Options) => {
+    //   setServices((prev) => ({
+    //     ...prev,
+    //     [key]: {
+    //       ...prev[key],
+    //       active: !prev[key].active,
+    //     },
+    //   }));
+    // };
 
+    if (!services) {
+      return null;
+    }
     return (
       <div className={classNames(styles.component, className)}>
         {Object.tsKeys(services).map((key) => (
           <div
-            // TODO: переписать условие и всё будет работать
-            onClick={() =>
-              !services[key].disabled && selectOption(key as keyof Options)
-            }
+            // onClick={() =>
+            //   coach &&
+            //   !services[key].disabled(coach) &&
+            //   selectOption(key as keyof Options)
+            // }
             className={classNames(styles.wrapper, {
-              [styles.included]: coach && services[key].included(coach),
+              [styles.included]: services[key].included,
               [styles.active]: services[key].active,
+              [styles.disabled]: services[key].disabled,
             })}
             key={services[key].name}
             onMouseEnter={() => setOpenTooltip(services[key].name)}

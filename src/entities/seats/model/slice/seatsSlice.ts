@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { type Direction, DirectionDetails } from '@shared/types/direction';
+import { type SpecificPlace } from '@shared/types';
 import { RouteFilters } from '@entities/routes';
 import { generateSeats } from '../../lib/generateSeats';
 import { type WagonClass } from '../types/wagonClass';
@@ -22,6 +23,7 @@ export interface CoachStateInfo {
   wifi_price?: number;
   is_linens_included?: boolean;
   coachNumber: number;
+  available_seats: number;
   seatsCount: {
     top?: number;
     bottom?: number;
@@ -29,16 +31,14 @@ export interface CoachStateInfo {
   };
 }
 
-export interface SpecificPlace {
-  available: boolean;
-  placement: 'bottom' | 'top' | 'side' | null;
-}
-
 interface SeatsState {
   departureInfo: DirectionDetails | null;
   arrivalInfo: DirectionDetails | null;
-  departureSeats: Record<WagonClass, NormalizedCoachData[]> | null;
-  arrivalSeats: Record<WagonClass, NormalizedCoachData[]> | null;
+  departureSeats: Record<
+    WagonClass,
+    Record<number, NormalizedCoachData>
+  > | null;
+  arrivalSeats: Record<WagonClass, Record<number, NormalizedCoachData>> | null;
   seatsFilters: Partial<RouteFilters>;
 }
 
@@ -46,6 +46,11 @@ interface SeatsPayload {
   seats: Seats[];
   direction: Direction;
 }
+
+// interface CoachNumberPayload {
+//   direction: Direction;
+//   coachNumber: number;
+// }
 
 const initialState: SeatsState = {
   departureInfo: null,

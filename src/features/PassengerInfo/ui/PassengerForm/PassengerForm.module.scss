@@ -1,0 +1,39 @@
+.section {
+  background-color: #fff;
+  padding-bottom: 40px;
+  margin-bottom: 30px;
+}
+
+.select_gender {
+  padding: var(--margin-xl) var(--padding-lg);
+}
+
+.form {
+  padding-inline: 32px;
+  padding-bottom: 40px;
+}
+
+.name_wrapper {
+  margin-bottom: var(--margin-xxl);
+  display: flex;
+  gap: var(--padding-md);
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--padding-md);
+}
+
+.mobility_wrapper {
+  margin-top: var(--margin-xxl);
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+}
+
+.btn {
+  margin-left: auto;
+  margin-top: 40px;
+  margin-right: 24px;
+}
