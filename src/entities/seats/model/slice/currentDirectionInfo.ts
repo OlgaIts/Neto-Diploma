@@ -2,6 +2,7 @@ import { AppDispatch, RootState } from '@app/providers/StoreProvider/store';
 import { createSlice } from '@reduxjs/toolkit';
 import { type SpecificPlace, type Direction } from '@shared/types';
 import { type PayloadActionDirection } from '@shared/types/directionPayload';
+import { saveServicesPrice } from './ticketInfoSlice';
 import { type Options } from '../types/serviceOptions';
 import { type WagonClass } from '../types/wagonClass';
 
@@ -33,6 +34,8 @@ const initialState: CurrentDirectionInfoState = {
   arrival: null,
 };
 
+type ServicePayload = Record<string, Options>;
+
 const currentWagonInfoSlice = createSlice({
   name: 'currentWagonInfo',
   initialState,
@@ -45,6 +48,14 @@ const currentWagonInfoSlice = createSlice({
       const { direction, data: wagonClass } = action.payload;
       state[direction] = { wagonClass };
     },
+    updateServiceState(state, action: PayloadActionDirection<ServicePayload>) {
+      const { data: serviceState, direction } = action.payload;
+      if (!state[direction]) {
+        return;
+      }
+      const prevState = state[direction].services;
+      state[direction].services = { ...prevState, ...serviceState };
+    },
   },
 });
 
@@ -54,8 +65,11 @@ interface SetDirection {
   wagonClass: WagonClass;
 }
 
-export const { setCurrentWagonInfo, clearCurrentWagonInfo } =
-  currentWagonInfoSlice.actions;
+export const {
+  setCurrentWagonInfo,
+  clearCurrentWagonInfo,
+  updateServiceState,
+} = currentWagonInfoSlice.actions;
 
 export const setDirectionInfo =
   ({ direction, coachNumber, wagonClass }: SetDirection) =>
@@ -100,12 +114,14 @@ export const setDirectionInfo =
                 tooltip: 'Wi-Fi',
                 included: false,
                 disabled: !coach.have_wifi && !coach.wifi_price,
+                price: coach.wifi_price,
               },
               linens: {
                 name: 'icon-linens',
                 tooltip: 'белье',
                 included: !!coach.is_linens_included,
                 disabled: !coach.is_linens_included && !coach.linens_price,
+                price: coach.linens_price,
               },
               caffee: {
                 name: 'icon-caffee',
@@ -119,6 +135,45 @@ export const setDirectionInfo =
         }),
       );
     }
+  };
+
+interface SetService {
+  service: string;
+  direction: Direction;
+}
+
+export const updateService =
+  ({ direction, service }: SetService) =>
+  (dispatch: AppDispatch, getState: () => RootState) => {
+    const currentInfo = getState().currentWagonInfo[direction];
+    const currentService = currentInfo?.services?.[service];
+
+    if (
+      !currentService ||
+      !['wifi', 'lineans'].includes(service) ||
+      !currentService.price
+    ) {
+      return;
+    }
+
+    const booleanActive = !currentService.active;
+    const updatedService: Options = {
+      ...currentService,
+      active: booleanActive,
+    };
+
+    dispatch(
+      updateServiceState({ direction, data: { [service]: updatedService } }),
+    );
+
+    dispatch(
+      saveServicesPrice({
+        direction,
+        data: {
+          [service]: booleanActive ? currentService.price : 0,
+        },
+      }),
+    );
   };
 
 export const currentWagonInfoReducer = currentWagonInfoSlice.reducer;

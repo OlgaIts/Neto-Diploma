@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { Title } from '@shared/ui/Title';
 import {
   useAppDispatch,
@@ -14,26 +14,42 @@ import {
   setChildWithoutSeatCount,
 } from '@entities/seats';
 import styles from './SeatsTicketType.module.scss';
+import { Direction } from '@shared/types';
 
-export const SeatsTicketType = memo(() => {
+interface SeatsTicketTypeProps {
+  direction: Direction;
+}
+
+export const SeatsTicketType = memo(({ direction }: SeatsTicketTypeProps) => {
   const dispatch = useAppDispatch();
-  const adult = useAppSelector(getAdultCount);
-  const child = useAppSelector(getChildCount);
-  const childdWithoutSeat = useAppSelector(getChilddWithoutSeatCount);
+  const adult = useAppSelector(getAdultCount(direction));
+  const child = useAppSelector(getChildCount(direction));
+  const childdWithoutSeat = useAppSelector(
+    getChilddWithoutSeatCount(direction),
+  );
 
-  const handleAdultCount = (index: number) => {
-    dispatch(setAdultCount(index + 1));
-  };
+  const handleAdultCount = useCallback(
+    (index: number) => {
+      dispatch(setAdultCount({ data: index + 1, direction }));
+    },
+    [direction],
+  );
 
-  const handleChildCount = (index: number) => {
-    dispatch(setChildCount(index + 1));
-  };
+  const handleChildCount = useCallback(
+    (index: number) => {
+      dispatch(setChildCount({ data: index + 1, direction }));
+    },
+    [direction],
+  );
 
-  const handleChildWithoutSeatCount = (index: number) => {
-    dispatch(setChildWithoutSeatCount(index + 1));
-  };
+  const handleChildWithoutSeatCount = useCallback(
+    (index: number) => {
+      dispatch(setChildWithoutSeatCount({ data: index + 1, direction }));
+    },
+    [direction],
+  );
 
-  const getHintMessage = (value: number, type: string) => {
+  const getHintMessage = useCallback((value: number, type: string) => {
     if (value === 0) return '';
 
     if (type === 'Взрослых') {
@@ -52,7 +68,7 @@ export const SeatsTicketType = memo(() => {
     }
 
     return '';
-  };
+  }, []);
 
   return (
     <>

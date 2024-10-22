@@ -1,11 +1,15 @@
 import { RootState } from '@app/providers/StoreProvider/store';
+import { Direction } from '@shared/types';
 
-export const getAdultCount = (state: RootState) => state.ticketInfo.adultCount;
+export const getAdultCount = (direction: Direction) => (state: RootState) =>
+  state.ticketInfo[`${direction}Ticket`].adultCount;
 
-export const getChildCount = (state: RootState) => state.ticketInfo.childCount;
+export const getChildCount = (direction: Direction) => (state: RootState) =>
+  state.ticketInfo[`${direction}Ticket`].childCount;
 
-export const getChilddWithoutSeatCount = (state: RootState) =>
-  state.ticketInfo.childWithoutSeatCount;
+export const getChilddWithoutSeatCount =
+  (direction: Direction) => (state: RootState) =>
+    state.ticketInfo[`${direction}Ticket`].childWithoutSeatCount;
 
 export const getDepartureTicket = (state: RootState) =>
   state.ticketInfo.departureTicket;

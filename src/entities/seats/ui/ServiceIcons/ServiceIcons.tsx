@@ -1,12 +1,14 @@
 import { memo, useState } from 'react';
 import classNames from 'classnames';
-
 import { Icon } from '@shared/ui/Icon';
 import { type Direction } from '@shared/types';
-import { type Options } from '../../model/types/serviceOptions';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '@shared/lib/hooks/useReduxHooks';
+import { getCurrentServicesInfo } from '../../model/selectors/currentWagonInfoSelector';
+import { updateService } from '../../model/slice/currentDirectionInfo';
 import styles from './ServiceIcons.module.scss';
-import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
-import { getCurrentServicesInfo } from '@entities/seats/model/selectors/currentWagonInfoSelector';
 
 interface Conditions {
   have_air_conditioning?: boolean;
@@ -23,34 +25,22 @@ interface ServiceIconsProps extends Conditions {
 export const ServiceIcons = memo(
   ({ className, direction }: ServiceIconsProps) => {
     const [openTooltip, setOpenTooltip] = useState<string | null>(null);
-    // const [services, setServices] = useState(serviceOptions);
-    // const coach = currentWagonSeats?.coach;
-//TODO: дописать
-
     const services = useAppSelector(getCurrentServicesInfo(direction));
+    const dispatch = useAppDispatch();
 
-    // const selectOption = (key: keyof Options) => {
-    //   setServices((prev) => ({
-    //     ...prev,
-    //     [key]: {
-    //       ...prev[key],
-    //       active: !prev[key].active,
-    //     },
-    //   }));
-    // };
+    const selectOption = (key: string) => {
+      dispatch(updateService({ direction, service: key }));
+    };
 
     if (!services) {
       return null;
     }
+    //TODO: доделать
     return (
       <div className={classNames(styles.component, className)}>
         {Object.tsKeys(services).map((key) => (
           <div
-            // onClick={() =>
-            //   coach &&
-            //   !services[key].disabled(coach) &&
-            //   selectOption(key as keyof Options)
-            // }
+            onClick={() => selectOption(key)}
             className={classNames(styles.wrapper, {
               [styles.included]: services[key].included,
               [styles.active]: services[key].active,

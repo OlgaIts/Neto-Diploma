@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import iconStyles from '../../assets/iconStyle.module.scss';
 import styles from './Icon.module.scss';
 
-export type IconName = keyof typeof styles;
+export type IconName = keyof typeof iconStyles;
 export type IconColor =
   | 'primary'
   | 'accent'
