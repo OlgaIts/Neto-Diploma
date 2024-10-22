@@ -1,7 +1,10 @@
 import { memo } from 'react';
 import classNames from 'classnames';
-import styles from './TripDetails.module.scss';
+import { TripFilters } from '@features/TripFilters';
 import { Title } from '@shared/ui/Title';
+import { TripDetailFilters } from '@features/TripFilters/ui/TripDetailFilters/TripDetailFilters';
+import styles from './TripDetails.module.scss';
+import { TotalFilter } from '@features/TripFilters/ui/TotalFilter/TotalFilter';
 
 interface TripDetailsProps {
   className?: string;
@@ -12,9 +15,18 @@ export const TripDetails = memo(({ className }: TripDetailsProps) => {
       <Title weight='medium' color='light' uppercase className={styles.title}>
         Детали поездки
       </Title>
-      <article className={styles.article}>cvxvcxv</article>
-      <article className={styles.article}>cvxvcxv</article>
-      <article className={styles.article}>cvxvcxv</article>
+      <article className={styles.article}>
+        <TripFilters title='Туда' iconName='icon-arrow-fat-right' />
+      </article>
+      <article className={styles.article}>
+        <TripFilters title='Обратно' iconName='icon-arrow-fat-left' />
+      </article>
+      <article className={styles.article}>
+        <TripDetailFilters title='Туда' iconName='icon-arrow-fat-right' />
+      </article>
+      <article>
+        <TotalFilter />
+      </article>
     </section>
   );
 });

@@ -1,0 +1,25 @@
+.title_wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: var(--padding-sm);
+  margin-top: var(--padding-lg);
+  margin-bottom: var(--padding-lg);
+}
+
+.wrapper {
+  margin-bottom: var(--margin-md);
+  display: flex;
+  justify-content: space-between;
+  font: var(--fw-regular) var(--fs-sm) var(--ff);
+  color: var(--color-footer);
+}
+
+.seats {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.wagon {
+  font: var(--fw-bold) var(--fs-text) var(--ff);
+}

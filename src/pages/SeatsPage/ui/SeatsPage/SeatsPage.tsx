@@ -22,12 +22,7 @@ export const SeatsPage = memo(() => {
             <RoutesFilters disabled />
           </aside>
           <section className={styles.section}>
-            <Title
-              color='dark'
-              weight='medium'
-              uppercase
-              className={styles.title}
-            >
+            <Title color='dark' weight='medium' uppercase>
               Выбор мест
             </Title>
 

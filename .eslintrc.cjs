@@ -25,8 +25,10 @@ module.exports = {
       {
         singleQuote: true,
         bracketSpacing: true,
+        jsxSingleQuote: true,
       },
     ],
+    quotes: ['error', 'single', { avoidEscape: true }],
     '@typescript-eslint/no-unused-vars': 'warn',
   },
 };

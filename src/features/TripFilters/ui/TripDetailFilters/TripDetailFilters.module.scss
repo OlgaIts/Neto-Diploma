@@ -1,0 +1,43 @@
+.component {
+  font: var(--fw-regular) var(--fs-sm) var(--ff);
+  color: var(--color-footer);
+  padding-bottom: 30px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.train_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.time_wrapper {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.trip_time {
+  text-align: center;
+}
+
+.train_number {
+  font: var(--fw-bold) var(--fs-text) var(--ff);
+  color: var(--color-light);
+}
+
+.train_name {
+  font: var(--fw-bold) var(--fs-xs) var(--ff);
+  color: var(--color-light);
+}
+
+.subtitle {
+  color: var(--text-dark-gray);
+  font: var(--fw-regular) var(--fs-xs) var(--ff);
+}
+
+//

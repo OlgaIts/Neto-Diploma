@@ -21,6 +21,11 @@
   border-radius: var(--radius);
 }
 
+.date {
+  font: var(--fw-regular) var(--fs-xs) var(--ff);
+  color: var(--color-light);
+}
+
 .open_btn {
   padding: 3px;
   width: 24px;

@@ -1,0 +1,12 @@
+.component {
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.price {
+  padding-right: var(--margin-xs);
+  font: var(--fw-bold) calc(var(--fs-text) * 2) var(--ff);
+  color: var(--bg-accent-color);
+}
