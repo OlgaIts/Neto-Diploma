@@ -1,0 +1,117 @@
+.component {
+  position: relative;
+  margin-top: -150px;
+  width: 100%;
+  box-shadow: var(--card-shadow);
+  z-index: 99;
+}
+
+.header {
+  padding: var(--margin-xl) calc(var(--margin-xl) * 2) var(--margin-lg)
+    calc(var(--margin-xl) * 2);
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-light);
+}
+
+.order {
+  font: var(--fw-bold) var(--fs-lg) var(--ff);
+  color: var(--bg-filter);
+}
+
+.price_wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: var(--gap-xs);
+  font: var(--fw-regular) var(--fs-lg) var(--ff);
+  color: var(--text-dark-gray);
+
+  span {
+    font-weight: var(--fw-bold);
+    color: var(--bg-filter);
+  }
+}
+
+//
+.section {
+  padding-top: var(--margin-xxl);
+  padding-bottom: var(--margin-xl);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: calc(var(--margin-lg) * 3);
+  background-color: #f4f3f6;
+}
+
+.wrapper {
+  display: grid;
+  justify-items: center;
+  gap: var(--margin-lg);
+}
+
+.icon_wrapper {
+  width: 130px;
+  outline: 14px solid var(--color-light);
+  border-radius: var(--radius-round);
+}
+
+.text {
+  width: 180px;
+  text-align: center;
+  font: var(--fw-regular) var(--fs-sm) var(--ff);
+
+  span {
+    font-weight: var(--fw-medium);
+  }
+}
+
+//
+
+.main_section {
+  padding: 95px 205px 130px 205px;
+  background-color: var(--color-light);
+
+  .name {
+    margin-bottom: var(--margin-xxl);
+    font: var(--fw-bold) var(--fs-lg) var(--ff);
+  }
+
+  p {
+    font: var(--fw-regular) var(--fs-text) var(--ff);
+    color: var(--bg-header-form);
+  }
+
+  .thanks_text {
+    margin-top: calc(var(--margin-lg) * 3);
+    font-weight: var(--fw-bold);
+  }
+}
+
+//
+.footer {
+  padding: 40px 80px 30px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-accent-color);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: var(--margin-lg);
+
+  p {
+    font: var(--fw-regular) var(--fs-text) var(--ff);
+    color: var(--bg-header-form);
+  }
+}
+
+.btn {
+  border: 1px solid var(--color-dark);
+
+  &:hover {
+    border: 1px solid var(--color-light);
+    background-color: var(--color-light);
+  }
+}

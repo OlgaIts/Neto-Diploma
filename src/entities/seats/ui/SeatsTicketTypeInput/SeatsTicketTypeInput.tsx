@@ -8,10 +8,11 @@ interface SeatsTicketTypeInputProps {
   onSelect: (index: number) => void;
   value: string;
   text?: string;
+  disabled?: boolean;
 }
 
 export const SeatsTicketTypeInput = memo(
-  ({ value, label, onSelect, text }: SeatsTicketTypeInputProps) => {
+  ({ value, label, onSelect, text, disabled }: SeatsTicketTypeInputProps) => {
     const [open, setOpen] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const dropdownRef = useRef(null);
@@ -30,7 +31,12 @@ export const SeatsTicketTypeInput = memo(
     return (
       <div ref={dropdownRef} className={styles.component}>
         <input
-          className={classNames(styles.input, open ? styles.inputOpen : '')}
+          // className={classNames(styles.input, open ? styles.inputOpen : '')}
+          className={classNames(
+            styles.input,
+            open ? styles.inputOpen : '',
+            disabled ? styles.disabled : '',
+          )}
           type='text'
           placeholder={label}
           value={value}
@@ -45,7 +51,7 @@ export const SeatsTicketTypeInput = memo(
                 key={index}
                 onClick={() => handleSelect(index)}
               >
-                <span>{index + 1}</span>
+                <span>{index}</span>
               </li>
             ))}
           </ul>

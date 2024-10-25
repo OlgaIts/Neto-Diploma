@@ -1,0 +1,22 @@
+.component {
+  padding: 32px;
+  min-width: 30vw;
+  min-height: 30vh;
+  background-color: var(--page-bg);
+  display: grid;
+  place-content: center;
+  text-align: center;
+
+  .text {
+    padding-bottom: var(--margin-lg);
+    font: var(--fw-bold) var(--fs-title) var(--ff);
+  }
+
+  .text_3 {
+    padding-top: var(--margin-xxl);
+  }
+}
+
+.icon {
+  margin-top: var(--padding-sm);
+}

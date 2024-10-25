@@ -1,0 +1,80 @@
+.modal {
+  position: fixed;
+  padding-inline: var(--margin-sm);
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 1;
+  pointer-events: none;
+  z-index: 10;
+  transition: opacity 0.4s ease-in-out;
+  animation-duration: 0.4s;
+}
+
+.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal.hide {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.modal_content {
+  position: relative;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+.close_btn {
+  position: absolute;
+  top: -26px;
+  right: 0px;
+  color: var(--color-light);
+  cursor: pointer;
+  z-index: 99;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: var(--bg-accent-color);
+  }
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOutScale {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+.active .modal_content {
+  animation-name: fadeInScale;
+}
+
+.modal.hide .modal_content {
+  animation-name: fadeOutScale;
+}

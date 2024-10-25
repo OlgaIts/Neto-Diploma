@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { Header } from '@widgets/Header';
 import { Title } from '@shared/ui/Title';
 import styles from './PaymentPage.module.scss';
+import { TripDetails } from '@widgets/TripDetails';
 
 interface PaymentPageProps {
   className?: string;
@@ -13,17 +14,17 @@ export const PaymentPage = memo(({ className }: PaymentPageProps) => {
       <Header />
       <div className={styles.container}>
         <main className={styles.main}>
-          <aside></aside>
+          <aside>
+            <TripDetails />
+          </aside>
+
           <section className={styles.section}>
             <div className={styles.title_wrapper}>
               <Title color='dark' weight='regular'>
                 Персональные данные
               </Title>
             </div>
-            <form action=''>
-              <label htmlFor=''>Фамилия</label>
-              <input type='text' />
-            </form>
+            <form action=''></form>
           </section>
         </main>
       </div>

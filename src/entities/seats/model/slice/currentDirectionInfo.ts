@@ -148,11 +148,15 @@ export const updateService =
     const currentInfo = getState().currentWagonInfo[direction];
     const currentService = currentInfo?.services?.[service];
 
-    if (
-      !currentService ||
-      !['wifi', 'lineans'].includes(service) ||
-      !currentService.price
-    ) {
+    if (!currentService || !['wi-fi', 'linens'].includes(service)) {
+      return;
+    }
+
+    const wagonNumber = currentInfo.wagonNumber;
+    const price = currentService.price;
+    console.log(wagonNumber);
+    console.log(price);
+    if (!price || !wagonNumber) {
       return;
     }
 
@@ -171,6 +175,7 @@ export const updateService =
         direction,
         data: {
           [service]: booleanActive ? currentService.price : 0,
+          wagonNumber,
         },
       }),
     );

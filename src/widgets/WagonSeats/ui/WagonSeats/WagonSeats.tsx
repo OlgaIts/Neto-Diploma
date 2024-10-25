@@ -18,7 +18,7 @@ const WagonSeats = memo(({ direction }: WagonSeatsProps) => {
   return (
     <section className={styles.component}>
       <ChangeTrain
-        className={!isDeparture ? styles.change_train: ''}
+        className={!isDeparture ? styles.change_train : ''}
         iconName={isDeparture ? 'icon-arrow-fat-right' : 'icon-arrow-fat-left'}
       />
       <RouteInfo direction={direction} />

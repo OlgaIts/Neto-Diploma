@@ -1,0 +1,14 @@
+.list {
+  display: flex;
+  gap: var(--gap-sm);
+  cursor: pointer;
+}
+
+.selected {
+  fill: var(--color-light);
+}
+
+.hovered {
+  fill: var(--color-light);
+  transition: all 0.3s ease-in-out;
+}

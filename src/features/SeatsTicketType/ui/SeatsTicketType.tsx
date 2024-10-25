@@ -13,8 +13,8 @@ import {
   setChildCount,
   setChildWithoutSeatCount,
 } from '@entities/seats';
+import { type Direction } from '@shared/types';
 import styles from './SeatsTicketType.module.scss';
-import { Direction } from '@shared/types';
 
 interface SeatsTicketTypeProps {
   direction: Direction;
@@ -28,47 +28,77 @@ export const SeatsTicketType = memo(({ direction }: SeatsTicketTypeProps) => {
     getChilddWithoutSeatCount(direction),
   );
 
+  const maxPassengers = 4;
+
   const handleAdultCount = useCallback(
     (index: number) => {
-      dispatch(setAdultCount({ data: index + 1, direction }));
+      const newAdultCount = index;
+      const totalPassengers = newAdultCount + child;
+
+      if (totalPassengers > maxPassengers) {
+        const adjustedAdultCount = maxPassengers - child;
+        dispatch(setAdultCount({ data: adjustedAdultCount, direction }));
+      } else {
+        dispatch(setAdultCount({ data: newAdultCount, direction }));
+      }
     },
-    [direction],
+    [child, direction],
   );
 
   const handleChildCount = useCallback(
     (index: number) => {
-      dispatch(setChildCount({ data: index + 1, direction }));
+      const newChildCount = index;
+      const totalPassengers = adult + newChildCount;
+
+      if (totalPassengers > maxPassengers) {
+        const adjustedChildCount = maxPassengers - adult;
+        dispatch(setChildCount({ data: adjustedChildCount, direction }));
+      } else {
+        dispatch(setChildCount({ data: newChildCount, direction }));
+      }
+
+      if (newChildCount + adult > maxPassengers) {
+        const remainingAdults = maxPassengers - newChildCount;
+        dispatch(setAdultCount({ data: remainingAdults, direction }));
+      }
     },
-    [direction],
+    [adult, direction],
   );
 
   const handleChildWithoutSeatCount = useCallback(
     (index: number) => {
-      dispatch(setChildWithoutSeatCount({ data: index + 1, direction }));
+      if (adult === 0) return;
+
+      const newChildWithoutSeatCount = index;
+      dispatch(
+        setChildWithoutSeatCount({ data: newChildWithoutSeatCount, direction }),
+      );
     },
-    [direction],
+    [adult, direction],
   );
 
-  const getHintMessage = useCallback((value: number, type: string) => {
-    if (value === 0) return '';
+  const getHintMessage = useCallback(
+    (value: number, type: string) => {
+      if (value === 0) return '';
 
-    if (type === 'Взрослых') {
-      const passengers = 5 - value;
-      //TODO: придумать что-то другое за место 'Лимит исчерпан'
-      if (passengers === 0) return 'Лимит исчерпан';
-      const conjugation = passengers === 1 ? 'пассажира' : 'пассажиров';
-      return `Можно добавить еще ${passengers} ${conjugation}`;
-    }
+      const passengersLeft = maxPassengers - adult - child;
 
-    if (type === 'Детских') {
-      const children = 5 - value;
-      if (children === 0) return 'Лимит исчерпан';
-      const conjugation = children === 1 ? 'ребёнка' : 'детей';
-      return `Можно добавить еще ${children} ${conjugation} до 10 лет. Свое место в вагоне, как у взрослых, но дешевле в среднем на 50-65%.`;
-    }
+      if (type === 'Взрослых') {
+        if (passengersLeft === 0) return 'Лимит исчерпан';
+        const conjugation = passengersLeft === 1 ? 'пассажира' : 'пассажиров';
+        return `Можно добавить еще ${passengersLeft} ${conjugation}`;
+      }
 
-    return '';
-  }, []);
+      if (type === 'Детских') {
+        if (passengersLeft === 0) return 'Лимит исчерпан';
+        const conjugation = passengersLeft === 1 ? 'ребёнка' : 'детей';
+        return `Можно добавить еще ${passengersLeft} ${conjugation} до 10 лет.`;
+      }
+
+      return '';
+    },
+    [adult, child],
+  );
 
   return (
     <>
@@ -86,12 +116,19 @@ export const SeatsTicketType = memo(({ direction }: SeatsTicketTypeProps) => {
           label='Детских'
           onSelect={handleChildCount}
           value={`Детских - ${child}`}
-          text={getHintMessage(adult, 'Детских')}
+          text={
+            adult === 0
+              ? 'Выберите хотя бы один взрослый билет'
+              : getHintMessage(child, 'Детских')
+          } //
+          disabled={adult === 0}
         />
         <SeatsTicketTypeInput
           label='Детских «без места»'
           onSelect={handleChildWithoutSeatCount}
           value={`Детских «без места» - ${childdWithoutSeat}`}
+          text={adult === 0 ? 'Выберите хотя бы один взрослый билет' : ''}
+          disabled={adult === 0}
         />
       </div>
     </>

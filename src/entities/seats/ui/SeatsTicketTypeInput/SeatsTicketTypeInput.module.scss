@@ -57,3 +57,7 @@
   color: var(--text-dark-gray);
   line-height: 1.5;
 }
+
+.disabled {
+  pointer-events: none;
+}

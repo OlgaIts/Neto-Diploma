@@ -3,27 +3,28 @@ import { createSlice } from '@reduxjs/toolkit';
 import { type WagonClass } from '../types/wagonClass';
 
 export interface Services {
-  wifi: number;
-  lineans: number;
+  'wi-fi': number;
+  linens: number;
   total: number;
 }
 
-type ServicePayload = Partial<Services>;
+interface ServicePayload extends Partial<Services> {
+  wagonNumber: number;
+}
 
-type Tickets = Record<number, number>;
+interface CoachTicketInfo {
+  coachNumber: number;
+  tickets: Record<number, number>; //седушка и цена
+  totalPrice: number;
+  services: Services;
+  wagonClass: WagonClass | null;
+}
+
 interface DirectionTicketInfo {
   adultCount: number;
   childCount: number;
   childWithoutSeatCount: number;
-  wagonClass: WagonClass | null;
-  coachNumber: number | null;
-  seats: Record<number, number> | null; // первый number(ключ) - номер сиденья, второй - значение(ценa)
-  services: Services | null;
-
-  // coaches: Record<
-  //   number,
-  //   { services: Services; tickets: Tickets; price: number }
-  // >;
+  coaches: Record<number, CoachTicketInfo>;
   // choosenAdult: number;
   // choosenChild: number;
 }
@@ -33,14 +34,17 @@ interface TicketTypeState {
   arrivalTicket: DirectionTicketInfo;
 }
 
+const initialServiceState = {
+  'wi-fi': 0,
+  linens: 0,
+  total: 0,
+};
+
 const initialTicketState: DirectionTicketInfo = {
   adultCount: 0,
   childCount: 0,
   childWithoutSeatCount: 0,
-  wagonClass: null,
-  coachNumber: null,
-  seats: null,
-  services: null,
+  coaches: {},
 };
 
 const initialState: TicketTypeState = {
@@ -65,19 +69,24 @@ const seatsTicketInfoSlice = createSlice({
       state[`${direction}Ticket`].childWithoutSeatCount = childWithoutSeatCount;
     },
     saveServicesPrice(state, action: PayloadActionDirection<ServicePayload>) {
-      const { data: dataServicePrice, direction } = action.payload;
-      const prevState = state[`${direction}Ticket`].services;
+      const { data, direction } = action.payload;
+      const { wagonNumber, ...servicesPrice } = data;
 
-      if (!prevState) {
-        return;
+      if (!state[`${direction}Ticket`].coaches?.[wagonNumber]) {
+        state[`${direction}Ticket`].coaches[wagonNumber] = {
+          coachNumber: wagonNumber,
+          services: initialServiceState,
+          tickets: {},
+          totalPrice: 0,
+          wagonClass: 'first',
+        };
       }
+      const prevState =
+        state[`${direction}Ticket`].coaches?.[wagonNumber]?.services;
 
-      state[`${direction}Ticket`].services = {
+      state[`${direction}Ticket`].coaches[wagonNumber].services = {
         ...prevState,
-        // ...dataServicePrice,
-        wifi: dataServicePrice.wifi ?? prevState.wifi,
-        lineans: dataServicePrice.lineans ?? prevState.lineans,
-        total: dataServicePrice.total ?? prevState.total,
+        ...servicesPrice,
       };
     },
   },

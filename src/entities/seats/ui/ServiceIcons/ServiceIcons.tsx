@@ -35,6 +35,9 @@ export const ServiceIcons = memo(
     if (!services) {
       return null;
     }
+
+    // console.log(['wifi', 'lineans'].includes('wifi'));
+
     //TODO: доделать
     return (
       <div className={classNames(styles.component, className)}>
