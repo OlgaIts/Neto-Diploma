@@ -42,7 +42,7 @@ export const SeatsTicketType = memo(({ direction }: SeatsTicketTypeProps) => {
         dispatch(setAdultCount({ data: newAdultCount, direction }));
       }
     },
-    [child, direction],
+    [child, direction, dispatch],
   );
 
   const handleChildCount = useCallback(
@@ -62,7 +62,7 @@ export const SeatsTicketType = memo(({ direction }: SeatsTicketTypeProps) => {
         dispatch(setAdultCount({ data: remainingAdults, direction }));
       }
     },
-    [adult, direction],
+    [adult, direction, dispatch],
   );
 
   const handleChildWithoutSeatCount = useCallback(
@@ -74,7 +74,7 @@ export const SeatsTicketType = memo(({ direction }: SeatsTicketTypeProps) => {
         setChildWithoutSeatCount({ data: newChildWithoutSeatCount, direction }),
       );
     },
-    [adult, direction],
+    [adult, direction, dispatch],
   );
 
   const getHintMessage = useCallback(
