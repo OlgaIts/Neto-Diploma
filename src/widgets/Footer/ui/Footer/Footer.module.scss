@@ -1,4 +1,4 @@
-@use '@app/styles/mixins' as *;
+@use '@app/styles/_mixins' as mixins;
 
 .footer {
   background-color: var(--bg-footer);
@@ -6,7 +6,7 @@
 }
 
 .container {
-  @include container;
+  @include mixins.container;
 }
 
 .section_wrapper {

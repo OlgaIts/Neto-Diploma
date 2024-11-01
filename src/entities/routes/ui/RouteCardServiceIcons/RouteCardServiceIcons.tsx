@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import classNames from 'classnames';
-import styles from './RouteCardServiceIcons.module.scss';
 import { Icon } from '@shared/ui/Icon';
+import styles from './RouteCardServiceIcons.module.scss';
 
 interface RouteCardServiceIconsProps {
   className?: string;

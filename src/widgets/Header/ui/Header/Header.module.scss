@@ -1,4 +1,4 @@
-@use '@app/styles/mixins' as *;
+@use '@app/styles/_mixins' as mixins;
 
 .header {
   min-height: 596px;
@@ -10,7 +10,7 @@
 }
 
 .container {
-  @include container;
+  @include mixins.container;
 }
 
 .form {

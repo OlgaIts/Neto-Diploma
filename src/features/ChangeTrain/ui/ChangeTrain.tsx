@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import classNames from 'classnames';
-import styles from './ChangeTrain.module.scss';
 import { Icon } from '@shared/ui/Icon';
 import { Button } from '@shared/ui/Button';
+import styles from './ChangeTrain.module.scss';
 
 interface ChangeTrainProps {
   className?: string;
@@ -22,4 +22,3 @@ export const ChangeTrain = memo(({ className, iconName }: ChangeTrainProps) => {
   );
 });
 ChangeTrain.displayName = 'ChangeTrain';
-

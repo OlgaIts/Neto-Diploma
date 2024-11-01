@@ -10,7 +10,12 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '@shared/lib/hooks/useReduxHooks';
-import { setArrival, setDeparture } from '@entities/seats';
+import {
+  clearCurrentInfoState,
+  clearTicketState,
+  setArrival,
+  setDeparture,
+} from '@entities/seats';
 import { setSavedRouteFilters } from '@entities/seats/model/slice/seatsSlice';
 import { getRouteFilter } from '@entities/routes/model/selectors/selector';
 import { Tooltip } from '../Tooltip/Tooltip';
@@ -24,10 +29,10 @@ interface WagonTypesProps {
 }
 
 export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
-  const [openTooltipIndex, setOpenTooltipIndex] = useState<string | null>(null);
-  const tooltipRef = useRef<HTMLDivElement>(null);
   const dispatch = useAppDispatch();
   const filters = useAppSelector(getRouteFilter);
+  const [openTooltipIndex, setOpenTooltipIndex] = useState<string | null>(null);
+  const tooltipRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
   const toggleTooltip = (id: string, key: string): void => {
@@ -49,6 +54,8 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
       dispatch(setArrival(item.arrival));
     }
     dispatch(setSavedRouteFilters(filters));
+    dispatch(clearCurrentInfoState());
+    dispatch(clearTicketState());
     navigate('/seats');
   }, [item]);
 
@@ -86,7 +93,7 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
               </li>
             ))}
         </ul>
-        <div className={styles.info}>
+        <div>
           <RouteCardServiceIcons className={styles.service_icons} />
           <Button
             color='white'

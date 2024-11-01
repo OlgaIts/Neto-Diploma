@@ -1,0 +1,44 @@
+.card {
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  border-right: var(--dashed);
+
+  &:nth-child(n) {
+    border-bottom: var(--dashed);
+  }
+
+  &:last-child {
+    padding-bottom: 80px;
+    border-bottom: none;
+  }
+}
+
+.type {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.icon_wrapper {
+  width: 68px;
+  height: 68px;
+  display: grid;
+  place-content: center;
+  background-color: var(--bg-accent-color);
+  border-radius: 50%;
+}
+
+.desc {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-dark-gray);
+}
+
+.name {
+  padding-bottom: 5px;
+  color: var(--bg-header-form);
+}

@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import { TripFilters } from '@features/TripFilters';
 import { Title } from '@shared/ui/Title';
 import { TripDetailFilters } from '@features/TripFilters/ui/TripDetailFilters/TripDetailFilters';
-import styles from './TripDetails.module.scss';
 import { TotalFilter } from '@features/TripFilters/ui/TotalFilter/TotalFilter';
+import styles from './TripDetails.module.scss';
 
 interface TripDetailsProps {
   className?: string;

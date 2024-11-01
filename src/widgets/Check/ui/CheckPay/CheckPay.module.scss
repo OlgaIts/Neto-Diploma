@@ -1,0 +1,27 @@
+.component {
+  background-color: var(--color-light);
+  box-shadow: var(--shadow);
+  font: var(--fw-regular) var(--fs-sm) var(--ff);
+}
+
+.title_wrapper {
+  padding: var(--padding-lg);
+  border-bottom: 1px solid var(--text-dark-gray);
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  font: var(--fw-regular) var(--fs-text) var(--ff);
+}
+
+.method {
+  padding: var(--padding-lg);
+  padding-bottom: calc(var(--margin-lg) * 2);
+  border-right: var(--dashed);
+}
+
+.btn {
+  padding: var(--padding-md);
+  align-self: end;
+}

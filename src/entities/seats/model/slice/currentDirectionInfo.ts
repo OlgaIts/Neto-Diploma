@@ -1,8 +1,8 @@
 import { AppDispatch, RootState } from '@app/providers/StoreProvider/store';
 import { createSlice } from '@reduxjs/toolkit';
+import { saveSeatPrice, saveServicesPrice } from './ticketInfoSlice';
 import { type SpecificPlace, type Direction } from '@shared/types';
 import { type PayloadActionDirection } from '@shared/types/directionPayload';
-import { saveServicesPrice } from './ticketInfoSlice';
 import { type Options } from '../types/serviceOptions';
 import { type WagonClass } from '../types/wagonClass';
 
@@ -35,6 +35,10 @@ const initialState: CurrentDirectionInfoState = {
 };
 
 type ServicePayload = Record<string, Options>;
+interface UpdateSeatStatePayload {
+  seatNumber: number;
+  isActive: boolean;
+}
 
 const currentWagonInfoSlice = createSlice({
   name: 'currentWagonInfo',
@@ -56,6 +60,23 @@ const currentWagonInfoSlice = createSlice({
       const prevState = state[direction].services;
       state[direction].services = { ...prevState, ...serviceState };
     },
+    updateSeatState(
+      state,
+      action: PayloadActionDirection<UpdateSeatStatePayload>,
+    ) {
+      const { data, direction } = action.payload;
+      if (!state[direction] || !state[direction].seats) {
+        return;
+      }
+      const { seatNumber, isActive } = data;
+      state[direction].seats[seatNumber].active = isActive;
+    },
+    clearCurrentInfoState(state) {
+      state.arrival = null;
+      state.departure = null;
+      state.arrivalWagonClass = undefined;
+      state.departureWagonClass = undefined;
+    },
   },
 });
 
@@ -69,15 +90,27 @@ export const {
   setCurrentWagonInfo,
   clearCurrentWagonInfo,
   updateServiceState,
+  updateSeatState,
+  clearCurrentInfoState,
 } = currentWagonInfoSlice.actions;
 
 export const setDirectionInfo =
   ({ direction, coachNumber, wagonClass }: SetDirection) =>
   (dispatch: AppDispatch, getState: () => RootState) => {
     const seatsData = getState().seats;
+    const ticketData = getState().ticketInfo;
+    const ticketServices =
+      coachNumber &&
+      ticketData[`${direction}Ticket`]?.coaches?.[coachNumber]?.services;
+
+    const ticketSeats =
+      coachNumber &&
+      ticketData[`${direction}Ticket`]?.coaches?.[coachNumber]?.tickets;
+
     if (!seatsData) {
       return;
     }
+
     const currentWagonsData = seatsData[`${direction}Seats`]?.[wagonClass];
     if (!currentWagonsData) {
       dispatch(clearCurrentWagonInfo({ direction, data: wagonClass }));
@@ -87,6 +120,7 @@ export const setDirectionInfo =
     const currentSeats = currentWagonsData[wagonNumber];
     if (currentSeats) {
       const { coach, seats } = currentSeats;
+
       dispatch(
         setCurrentWagonInfo({
           direction,
@@ -115,6 +149,7 @@ export const setDirectionInfo =
                 included: false,
                 disabled: !coach.have_wifi && !coach.wifi_price,
                 price: coach.wifi_price,
+                active: !!(ticketServices && ticketServices['wi-fi']),
               },
               linens: {
                 name: 'icon-linens',
@@ -122,6 +157,7 @@ export const setDirectionInfo =
                 included: !!coach.is_linens_included,
                 disabled: !coach.is_linens_included && !coach.linens_price,
                 price: coach.linens_price,
+                active: !!(ticketServices && ticketServices.linens),
               },
               caffee: {
                 name: 'icon-caffee',
@@ -134,6 +170,17 @@ export const setDirectionInfo =
           },
         }),
       );
+      ticketSeats &&
+        Object.tsKeys(ticketSeats).map((seatNumber) => {
+          if (ticketSeats?.[seatNumber]) {
+            dispatch(
+              updateSeatState({
+                direction,
+                data: { isActive: true, seatNumber },
+              }),
+            );
+          }
+        });
     }
   };
 
@@ -154,8 +201,7 @@ export const updateService =
 
     const wagonNumber = currentInfo.wagonNumber;
     const price = currentService.price;
-    console.log(wagonNumber);
-    console.log(price);
+
     if (!price || !wagonNumber) {
       return;
     }
@@ -181,11 +227,56 @@ export const updateService =
     );
   };
 
+interface updateSeat {
+  seatNumber: number;
+  direction: Direction;
+}
+
+export const updateSeat =
+  ({ direction, seatNumber }: updateSeat) =>
+  (dispatch: AppDispatch, getState: () => RootState) => {
+    const currentInfo = getState().currentWagonInfo[direction];
+    const wagonNumber = currentInfo?.wagonNumber;
+    const seatPlacement = currentInfo?.seats?.[seatNumber].placement;
+    const wagonClass = currentInfo?.wagonClass;
+
+    if (!wagonNumber || !wagonClass) {
+      return;
+    }
+
+    const onePersonsClassesPrice =
+      ['first', 'fourth'].includes(wagonClass) && currentInfo.price;
+    const recentsClassesPrice =
+      seatPlacement && currentInfo[`${seatPlacement}_price`];
+    const seatPrice = onePersonsClassesPrice || recentsClassesPrice;
+
+    if (!seatPrice) {
+      return;
+    }
+
+    const newSeatActiveState = !currentInfo?.seats?.[seatNumber].active;
+
+    dispatch(
+      saveSeatPrice({
+        direction,
+        data: {
+          wagonNumber,
+          seat: { [seatNumber]: newSeatActiveState ? seatPrice : 0 },
+        },
+      }),
+    );
+    dispatch(
+      updateSeatState({
+        direction,
+        data: { isActive: newSeatActiveState, seatNumber },
+      }),
+    );
+  };
+
 export const currentWagonInfoReducer = currentWagonInfoSlice.reducer;
 
-// тут появятся 2 селектора, перерабатывать их данные и отправлять в редюсер.
-
 /*
+
 
   priceServices: ...
   priceSeats: 3200 + 3400 + (2600)*0.6 = 8000

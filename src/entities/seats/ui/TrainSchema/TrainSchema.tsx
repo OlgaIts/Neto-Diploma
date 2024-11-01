@@ -17,6 +17,7 @@ interface TrainSchemaProps {
   wagonClass: WagonClass;
   wagonNumber: number;
   seats?: Record<number, SpecificPlace>;
+  onClick?: (seatNumber: number) => void;
 }
 
 interface SchemaComponents {
@@ -44,7 +45,7 @@ const SchemaComponents: Record<WagonClass, SchemaComponents> = {
 };
 
 export const TrainSchema = memo(
-  ({ wagonClass, wagonNumber, seats }: TrainSchemaProps) => {
+  ({ wagonClass, wagonNumber, seats, onClick }: TrainSchemaProps) => {
     const Component = SchemaComponents[wagonClass].schema;
 
     return (
@@ -55,6 +56,7 @@ export const TrainSchema = memo(
             params={SchemaComponents[wagonClass].params}
             wagonNumber={wagonNumber}
             seats={seats}
+            onClick={onClick}
           />
         </div>
       </div>

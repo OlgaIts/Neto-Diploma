@@ -1,0 +1,32 @@
+.component {
+  background-color: var(--color-light);
+  box-shadow: var(--shadow);
+  font: var(--fw-regular) var(--fs-sm) var(--ff);
+}
+
+.title_wrapper {
+  padding: var(--padding-lg);
+  border-bottom: 1px solid var(--text-dark-gray);
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+.total {
+  padding: var(--padding-md);
+  align-self: end;
+}
+
+.price_wrapper {
+  padding-bottom: var(--margin-lg);
+  display: flex;
+  justify-content: space-between;
+  font: var(--fw-regular) var(--fs-title) var(--ff);
+}
+
+.price {
+  padding-right: var(--margin-xs);
+  font-weight: var(--fw-bold);
+}

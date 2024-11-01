@@ -24,9 +24,9 @@ interface ServiceIconsProps extends Conditions {
 
 export const ServiceIcons = memo(
   ({ className, direction }: ServiceIconsProps) => {
-    const [openTooltip, setOpenTooltip] = useState<string | null>(null);
-    const services = useAppSelector(getCurrentServicesInfo(direction));
     const dispatch = useAppDispatch();
+    const services = useAppSelector(getCurrentServicesInfo(direction));
+    const [openTooltip, setOpenTooltip] = useState<string | null>(null);
 
     const selectOption = (key: string) => {
       dispatch(updateService({ direction, service: key }));
@@ -36,9 +36,6 @@ export const ServiceIcons = memo(
       return null;
     }
 
-    // console.log(['wifi', 'lineans'].includes('wifi'));
-
-    //TODO: доделать
     return (
       <div className={classNames(styles.component, className)}>
         {Object.tsKeys(services).map((key) => (

@@ -4,5 +4,5 @@ export interface Options {
   active?: boolean;
   included: boolean;
   disabled: boolean;
-  price?: number
+  price?: number;
 }

@@ -46,3 +46,17 @@
   display: grid;
   place-content: center;
 }
+
+.price_wrapper {
+  padding-right: var(--margin-xxl);
+  padding-bottom: var(--padding-lg);
+  display: flex;
+  justify-content: end;
+  align-items: baseline;
+  gap: var(--margin-xs);
+}
+
+.price {
+  font: var(--fw-bold) var(--fs-text) var(--ff);
+  color: var(--bg-accent-color);
+}

@@ -1,4 +1,4 @@
-@use '@app/styles/mixins' as *;
+@use '@app/styles/_mixins' as mixins;
 
 .component {
   background-color: var(--bg-filter);
@@ -7,8 +7,7 @@
 }
 
 .container {
-  @include container;
-
+  @include mixins.container;
 }
 
 .stages {

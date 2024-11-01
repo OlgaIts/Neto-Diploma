@@ -16,3 +16,7 @@ export const getDepartureTicket = (state: RootState) =>
 
 export const getArrivalTicket = (state: RootState) =>
   state.ticketInfo.arrivalTicket;
+
+export const getTotalTicketPrice =
+  (direction: Direction) => (state: RootState) =>
+    state.ticketInfo[`${direction}Ticket`].totalPrice;

@@ -1,0 +1,22 @@
+@use '@app/styles/_mixins' as mixins;
+
+.component {
+  background-color: var(--page-bg);
+}
+
+.container {
+  @include mixins.container;
+  padding-top: calc(var(--padding-lg) * 3);
+}
+
+.main {
+  padding-bottom: calc(var(--margin-xl) * 3);
+  display: flex;
+  gap: var(--margin-xxl);
+}
+
+.section {
+  width: 100%;
+  display: grid;
+  gap: var(--margin-lg);
+}

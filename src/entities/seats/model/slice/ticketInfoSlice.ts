@@ -12,10 +12,14 @@ interface ServicePayload extends Partial<Services> {
   wagonNumber: number;
 }
 
+interface SeatPricePayload {
+  wagonNumber: number;
+  seat: Record<number, number>;
+}
+
 interface CoachTicketInfo {
   coachNumber: number;
   tickets: Record<number, number>; //седушка и цена
-  totalPrice: number;
   services: Services;
   wagonClass: WagonClass | null;
 }
@@ -25,6 +29,7 @@ interface DirectionTicketInfo {
   childCount: number;
   childWithoutSeatCount: number;
   coaches: Record<number, CoachTicketInfo>;
+  totalPrice: number;
   // choosenAdult: number;
   // choosenChild: number;
 }
@@ -45,6 +50,7 @@ const initialTicketState: DirectionTicketInfo = {
   childCount: 0,
   childWithoutSeatCount: 0,
   coaches: {},
+  totalPrice: 0,
 };
 
 const initialState: TicketTypeState = {
@@ -77,7 +83,6 @@ const seatsTicketInfoSlice = createSlice({
           coachNumber: wagonNumber,
           services: initialServiceState,
           tickets: {},
-          totalPrice: 0,
           wagonClass: 'first',
         };
       }
@@ -88,6 +93,41 @@ const seatsTicketInfoSlice = createSlice({
         ...prevState,
         ...servicesPrice,
       };
+
+      state[`${direction}Ticket`].coaches[wagonNumber].services.total =
+        state[`${direction}Ticket`].coaches[wagonNumber].services['wi-fi'] +
+        state[`${direction}Ticket`].coaches[wagonNumber].services.linens;
+
+      state[`${direction}Ticket`].totalPrice = getTotalPrice(
+        state[`${direction}Ticket`].coaches,
+      );
+    },
+    saveSeatPrice(state, action: PayloadActionDirection<SeatPricePayload>) {
+      const { data, direction } = action.payload;
+      const { seat, wagonNumber } = data;
+
+      if (!state[`${direction}Ticket`].coaches?.[wagonNumber]) {
+        state[`${direction}Ticket`].coaches[wagonNumber] = {
+          coachNumber: wagonNumber,
+          services: initialServiceState,
+          tickets: {},
+          wagonClass: 'first',
+        };
+      }
+
+      const prevState =
+        state[`${direction}Ticket`].coaches[wagonNumber].tickets;
+      state[`${direction}Ticket`].coaches[wagonNumber].tickets = {
+        ...prevState,
+        ...seat,
+      };
+      state[`${direction}Ticket`].totalPrice = getTotalPrice(
+        state[`${direction}Ticket`].coaches,
+      );
+    },
+    clearTicketState(state) {
+      state.arrivalTicket = initialTicketState;
+      state.departureTicket = initialTicketState;
     },
   },
 });
@@ -97,5 +137,15 @@ export const {
   setChildCount,
   setChildWithoutSeatCount,
   saveServicesPrice,
+  saveSeatPrice,
+  clearTicketState,
 } = seatsTicketInfoSlice.actions;
 export const seatsTicketInfoReducer = seatsTicketInfoSlice.reducer;
+
+const getTotalPrice = (coaches: Record<number, CoachTicketInfo>) =>
+  Object.tsValues(coaches).reduce((acc, { services, tickets }) => {
+    Object.tsValues(tickets).forEach((price) => {
+      acc += services.total + price;
+    });
+    return acc;
+  }, 0);

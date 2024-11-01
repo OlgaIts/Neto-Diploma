@@ -46,7 +46,7 @@ export const Button = ({
   return (
     <>
       {tag === 'Link' ? (
-        <Link className={buttonStyles} to={to as string}>
+        <Link className={buttonStyles} to={to as string} onClick={onClick}>
           {children}
         </Link>
       ) : (

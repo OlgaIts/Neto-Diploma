@@ -1,6 +1,5 @@
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import classNames from 'classnames';
-import { type Seats } from '@entities/seats/model/types/seats';
 import {
   useAppDispatch,
   useAppSelector,
@@ -10,9 +9,12 @@ import {
   TrainSchema,
   getCurrentWagonInfo,
   getCurrentWagonSeats,
+  getTotalTicketPrice,
   getWagonClass,
   getWagonList,
   setDirectionInfo,
+  updateSeat,
+  type Seats,
 } from '@entities/seats';
 import { addZero } from '@shared/lib/helpers/addZero';
 import { Icon } from '@shared/ui/Icon';
@@ -31,6 +33,8 @@ export const ChooseWagonSeat = memo(({ direction }: ChooseWagonSeatProps) => {
   const wagonClass = useAppSelector(getWagonClass(direction));
   const wagonList = useAppSelector(getWagonList(direction));
   const wagonSeats = useAppSelector(getCurrentWagonSeats(direction));
+  const totalPrice = useAppSelector(getTotalTicketPrice(direction));
+
   const saveWagonNumber = (
     direction: Direction,
     number?: number | undefined,
@@ -41,6 +45,13 @@ export const ChooseWagonSeat = memo(({ direction }: ChooseWagonSeatProps) => {
       );
     }
   };
+
+  const selectSeat = useCallback(
+    (seatNumber: number) => {
+      dispatch(updateSeat({ direction, seatNumber }));
+    },
+    [direction, dispatch],
+  );
 
   if (!wagonClass) {
     return null;
@@ -77,6 +88,7 @@ export const ChooseWagonSeat = memo(({ direction }: ChooseWagonSeatProps) => {
       </div>
       <div className={styles.schema_wrapper}>
         <TrainSchema
+          onClick={selectSeat}
           wagonClass={wagonClass}
           wagonNumber={wagonInfo?.wagonNumber}
           seats={wagonSeats}
@@ -84,8 +96,10 @@ export const ChooseWagonSeat = memo(({ direction }: ChooseWagonSeatProps) => {
       </div>
 
       <div className={styles.price_wrapper}>
-        <span className={styles.price}></span>
-        <Icon iconName={'icon-ruble'} fontSize='20px' color='grey' />
+        <span className={styles.price}>
+          {Number(totalPrice).toLocaleString('ru-RU')}
+        </span>
+        <Icon iconName={'icon-ruble'} fontSize='18px' color='dark_gray' />
       </div>
     </div>
   );
