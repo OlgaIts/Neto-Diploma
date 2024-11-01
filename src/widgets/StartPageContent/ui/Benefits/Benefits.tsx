@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Title } from '@shared/ui/Title';
 import { Icon } from '@shared/ui/Icon';
-import { TransparentButton } from '@shared/ui/TransparentButton';
+import { Button } from '@shared/ui/Button';
 import styles from './Benefits.module.scss';
 
 export const Benefits = memo(() => {
@@ -11,9 +11,15 @@ export const Benefits = memo(() => {
         <Title color='light' weight='medium' uppercase>
           Как это работает
         </Title>
-        <TransparentButton tag='button' size='big' weight='bold'>
+        <Button
+          tag='button'
+          size='m'
+          color='white'
+          bgColor='primary'
+          className={styles.btn}
+        >
           Узнать больше
-        </TransparentButton>
+        </Button>
       </div>
       <div className={styles.benefits_wrapper}>
         <div className={styles.benefit}>
