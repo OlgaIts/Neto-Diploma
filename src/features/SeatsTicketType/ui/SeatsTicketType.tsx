@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { Title } from '@shared/ui/Title';
 import {
   useAppDispatch,
@@ -15,6 +15,8 @@ import {
 } from '@entities/seats';
 import { type Direction } from '@shared/types';
 import styles from './SeatsTicketType.module.scss';
+import { Icon } from '@shared/ui/Icon';
+import classNames from 'classnames';
 
 interface SeatsTicketTypeProps {
   direction: Direction;
@@ -27,6 +29,7 @@ export const SeatsTicketType = memo(({ direction }: SeatsTicketTypeProps) => {
   const childdWithoutSeat = useAppSelector(
     getChilddWithoutSeatCount(direction),
   );
+  const [openTooltip, setOpenTooltip] = useState(false);
 
   const maxPassengers = 4;
 
@@ -102,9 +105,31 @@ export const SeatsTicketType = memo(({ direction }: SeatsTicketTypeProps) => {
 
   return (
     <>
-      <Title color='dark' weight='bold'>
-        Количество билетов
-      </Title>
+      <div className={styles.title_wrapper}>
+        <Title color='dark' weight='bold'>
+          Количество билетов
+        </Title>
+        <div
+          className={styles.icon}
+          onMouseEnter={() => setOpenTooltip(true)}
+          onMouseLeave={() => setOpenTooltip(false)}
+        >
+          <Icon iconName='icon-question' color='dark_gray' fontSize='10px' />
+        </div>
+        {openTooltip && (
+          <div
+            className={classNames(
+              styles.tooltip,
+              openTooltip ? styles.active_tooltip : '',
+            )}
+          >
+            <p className={styles.text}>
+              По правилам РЖД в одном заказе может быть не более 4-х пассажиров,
+              включая детских «без места».
+            </p>
+          </div>
+        )}
+      </div>
       <div className={styles.input_wrapper}>
         <SeatsTicketTypeInput
           label='Взрослых'
