@@ -45,6 +45,12 @@ const initialServiceState = {
   total: 0,
 };
 
+export type PersonName = 'adult' | 'child' | 'childWithoutSeat';
+interface PersonCountPayload {
+  value: number;
+  name: PersonName;
+}
+
 const initialTicketState: DirectionTicketInfo = {
   adultCount: 0,
   childCount: 0,
@@ -62,17 +68,10 @@ const seatsTicketInfoSlice = createSlice({
   name: 'ticketType',
   initialState,
   reducers: {
-    setAdultCount(state, action: PayloadActionDirection<number>) {
-      const { data: adultCount, direction } = action.payload;
-      state[`${direction}Ticket`].adultCount = adultCount;
-    },
-    setChildCount(state, action: PayloadActionDirection<number>) {
-      const { data: childCount, direction } = action.payload;
-      state[`${direction}Ticket`].childCount = childCount;
-    },
-    setChildWithoutSeatCount(state, action: PayloadActionDirection<number>) {
-      const { data: childWithoutSeatCount, direction } = action.payload;
-      state[`${direction}Ticket`].childWithoutSeatCount = childWithoutSeatCount;
+    setPersonCount(state, action: PayloadActionDirection<PersonCountPayload>) {
+      const { data: personCount, direction } = action.payload;
+      const { name, value } = personCount;
+      state[`${direction}Ticket`][`${name}Count`] = value;
     },
     saveServicesPrice(state, action: PayloadActionDirection<ServicePayload>) {
       const { data, direction } = action.payload;
@@ -133,12 +132,10 @@ const seatsTicketInfoSlice = createSlice({
 });
 
 export const {
-  setAdultCount,
-  setChildCount,
-  setChildWithoutSeatCount,
   saveServicesPrice,
   saveSeatPrice,
   clearTicketState,
+  setPersonCount,
 } = seatsTicketInfoSlice.actions;
 export const seatsTicketInfoReducer = seatsTicketInfoSlice.reducer;
 

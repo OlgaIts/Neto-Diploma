@@ -20,9 +20,6 @@ export { useGetSeats } from './hooks/useGetSeats';
 export { type WagonClass } from './model/types/wagonClass';
 export { type Seats } from './model/types/seats';
 export {
-  setAdultCount,
-  setChildCount,
-  setChildWithoutSeatCount,
   seatsTicketInfoReducer,
   saveServicesPrice,
   saveSeatPrice,

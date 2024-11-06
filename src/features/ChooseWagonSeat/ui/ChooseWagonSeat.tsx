@@ -20,6 +20,7 @@ import { addZero } from '@shared/lib/helpers/addZero';
 import { Icon } from '@shared/ui/Icon';
 import { type Direction } from '@shared/types';
 import styles from './ChooseWagonSeat.module.scss';
+import { getTotalPersonCount } from '@entities/seats/model/selectors/ticketInfoSelector';
 
 interface ChooseWagonSeatProps {
   className?: string;
@@ -34,6 +35,7 @@ export const ChooseWagonSeat = memo(({ direction }: ChooseWagonSeatProps) => {
   const wagonList = useAppSelector(getWagonList(direction));
   const wagonSeats = useAppSelector(getCurrentWagonSeats(direction));
   const totalPrice = useAppSelector(getTotalTicketPrice(direction));
+  const totalPersonCount = useAppSelector(getTotalPersonCount(direction));
 
   const saveWagonNumber = (
     direction: Direction,

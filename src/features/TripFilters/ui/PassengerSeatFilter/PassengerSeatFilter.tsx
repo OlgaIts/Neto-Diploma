@@ -17,25 +17,27 @@ export const PassengerSeatFilter = memo(
             Места
           </Title>
         </div>
-
-        <div className={styles.wrapper}>
-          <p>Тип вагона</p>
-          <span>купе</span>
-        </div>
-
-        <div className={styles.wrapper}>
-          <p>Номер вагона</p>
-          <span className={styles.wagon}>08</span>
-        </div>
-
-        <div className={styles.wrapper}>
-          <p>Места</p>
-          <div className={styles.seats}>
-            <span>верхнее 12</span>
-            <span>нижнее 45</span>
-            <span>боковое 55</span>
+        {}
+        <>
+          <div className={styles.wrapper}>
+            <p>Тип вагона</p>
+            <span>купе</span>
           </div>
-        </div>
+
+          <div className={styles.wrapper}>
+            <p>Номер вагона</p>
+            <span className={styles.wagon}>08</span>
+          </div>
+
+          <div className={styles.wrapper}>
+            <p>Места</p>
+            <div className={styles.seats}>
+              <span>верхнее 12</span>
+              <span>нижнее 45</span>
+              <span>боковое 55</span>
+            </div>
+          </div>
+        </>
       </div>
     );
   },

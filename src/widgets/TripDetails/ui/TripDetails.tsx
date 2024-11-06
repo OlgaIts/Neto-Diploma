@@ -15,12 +15,12 @@ export const TripDetails = memo(({ className }: TripDetailsProps) => {
       <Title weight='medium' color='light' uppercase className={styles.title}>
         Детали поездки
       </Title>
-      <article className={styles.article}>
+      {/* <article className={styles.article}>
         <TripFilters title='Туда' iconName='icon-arrow-fat-right' />
       </article>
       <article className={styles.article}>
         <TripFilters title='Обратно' iconName='icon-arrow-fat-left' />
-      </article>
+      </article> */}
       <article className={styles.article}>
         <TripDetailFilters title='Туда' iconName='icon-arrow-fat-right' />
       </article>
