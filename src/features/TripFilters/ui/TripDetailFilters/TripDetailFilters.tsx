@@ -5,27 +5,38 @@ import { Icon } from '@shared/ui/Icon';
 import { PassengerFilter } from '../PassengerFilter/PassengerFilter';
 import { PassengerSeatFilter } from '../PassengerSeatFilter/PassengerSeatFilter';
 import styles from './TripDetailFilters.module.scss';
+import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
+import { getArrivalInfo, getDepartureInfo } from '@entities/seats';
+import { type Direction } from '@shared/types';
+import { formatDate } from '@shared/lib/helpers/formatDate';
 
 interface TripDetailFiltersProps {
   className?: string;
   title?: string;
   iconName?: string;
+  direction: Direction;
 }
-
+//TODO: TropDetailsSidebar
 export const TripDetailFilters = memo(
-  ({ className, iconName, title }: TripDetailFiltersProps) => {
+  ({ className, iconName, title, direction }: TripDetailFiltersProps) => {
+    const isDeparture = direction === 'departure';
+    const getRouteInfo = isDeparture ? getDepartureInfo : getArrivalInfo;
+    const routeInfo = useAppSelector(getRouteInfo);
+
     return (
       <div className={classNames(className)}>
         <DirectionFilterHeader
           iconName={iconName}
           title={title}
-          date='30.08.2024'
+          date={formatDate(Number(routeInfo?.from.datetime))}
         >
           <div className={styles.component}>
             <div className={styles.wrapper}>
               <div className={styles.train_wrapper}>
                 <span>№ Поезда</span>
-                <span className={styles.train_number}>116С</span>
+                <span className={styles.train_number}>
+                  {routeInfo?.train.name}
+                </span>
               </div>
               <div className={styles.train_wrapper}>
                 <span>Название</span>

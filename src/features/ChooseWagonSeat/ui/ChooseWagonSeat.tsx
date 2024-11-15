@@ -20,7 +20,10 @@ import { addZero } from '@shared/lib/helpers/addZero';
 import { Icon } from '@shared/ui/Icon';
 import { type Direction } from '@shared/types';
 import styles from './ChooseWagonSeat.module.scss';
-import { getTotalPersonCount } from '@entities/seats/model/selectors/ticketInfoSelector';
+import {
+  getSeatCount,
+  getSeatsLimit,
+} from '@entities/seats/model/selectors/ticketInfoSelector';
 
 interface ChooseWagonSeatProps {
   className?: string;
@@ -35,7 +38,8 @@ export const ChooseWagonSeat = memo(({ direction }: ChooseWagonSeatProps) => {
   const wagonList = useAppSelector(getWagonList(direction));
   const wagonSeats = useAppSelector(getCurrentWagonSeats(direction));
   const totalPrice = useAppSelector(getTotalTicketPrice(direction));
-  const totalPersonCount = useAppSelector(getTotalPersonCount(direction));
+  const seatsLimit = useAppSelector(getSeatsLimit(direction));
+  const SeatCount = useAppSelector(getSeatCount(direction));
 
   const saveWagonNumber = (
     direction: Direction,
@@ -90,11 +94,17 @@ export const ChooseWagonSeat = memo(({ direction }: ChooseWagonSeatProps) => {
       </div>
       <div className={styles.schema_wrapper}>
         <TrainSchema
+          disabled={seatsLimit === SeatCount}
           onClick={selectSeat}
           wagonClass={wagonClass}
           wagonNumber={wagonInfo?.wagonNumber}
           seats={wagonSeats}
         />
+      </div>
+
+      <div className={styles.seat_count}>
+        Количество выбранных мест:
+        <span className={styles.count}>{SeatCount}</span>
       </div>
 
       <div className={styles.price_wrapper}>

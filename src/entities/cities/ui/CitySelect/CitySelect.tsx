@@ -1,7 +1,7 @@
 import { ChangeEvent, memo, useEffect, useState } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { Datalist, DatalistProps } from '@shared/ui/Datalist';
-// code-review: проверь по архитектурным правилам
+// TODO: проверь по архитектурным правилам
 import { TicketFormState } from '@features/TicketForm/model/slice/ticketFormSlice';
 import { services } from '../../model/services/services';
 import { type City } from '../../model/types/city';

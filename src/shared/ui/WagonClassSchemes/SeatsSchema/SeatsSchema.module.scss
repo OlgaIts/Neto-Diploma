@@ -1,20 +1,39 @@
-.svg {
+.available.disabled {
+  rect {
+    // fill: var(--color-light-grey);
+    fill: #e0e0e0;
+  }
+  text {
+    fill: #979797;
+  }
+}
+
+.not_available {
   cursor: default;
   pointer-events: none;
 
   rect {
-    fill: var(--color-light-grey);
+    fill: #888888;
     transition: all 0.3s ease-in-out;
   }
-  
+
   text {
     fill: var(--color-light);
   }
 }
 
-.active {
+.active,
+.active.disabled {
+  cursor: pointer;
+  pointer-events: all;
   rect {
     stroke: var(--bg-accent-color);
+    // fill: #dfdfdf;
+    fill: #fdf3df;
+  }
+
+  text {
+    fill: var(--bg-header-form);
   }
 }
 
@@ -36,4 +55,7 @@
       stroke: var(--bg-accent-color);
     }
   }
+}
+.disabled {
+  pointer-events: none;
 }

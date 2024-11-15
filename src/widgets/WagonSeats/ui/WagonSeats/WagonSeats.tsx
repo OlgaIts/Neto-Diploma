@@ -1,10 +1,11 @@
 import { memo } from 'react';
-import { Title } from '@shared/ui/Title';
-import { RouteInfo } from '@entities/seats';
 import { SeatsTicketType } from '@features/SeatsTicketType';
 import { ChangeTrain } from '@features/ChangeTrain';
 import { SelectWagonType } from '@features/SelectWagonType';
 import { ChooseWagonSeat } from '@features/ChooseWagonSeat';
+import { getSeatsInfo, RouteInfo } from '@entities/seats';
+import { Title } from '@shared/ui/Title';
+import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
 import { type Direction } from '@shared/types';
 import styles from './WagonSeats.module.scss';
 
@@ -14,6 +15,11 @@ interface WagonSeatsProps {
 
 const WagonSeats = memo(({ direction }: WagonSeatsProps) => {
   const isDeparture = direction === 'departure';
+
+  const seatsInfo = useAppSelector(getSeatsInfo(direction));
+  if (!seatsInfo) {
+    return null;
+  }
 
   return (
     <section className={styles.component}>

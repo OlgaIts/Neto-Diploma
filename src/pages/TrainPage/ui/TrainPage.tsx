@@ -15,7 +15,7 @@ export const TrainPage = memo(() => {
         <main className={styles.main}>
           <aside>
             <RoutesFilters />
-            <section className={styles.latest_view}>
+            <section>
               <LastTickets />
             </section>
           </aside>

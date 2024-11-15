@@ -30,8 +30,7 @@ interface DirectionTicketInfo {
   childWithoutSeatCount: number;
   coaches: Record<number, CoachTicketInfo>;
   totalPrice: number;
-  // choosenAdult: number;
-  // choosenChild: number;
+  totalSeatsCount: number;
 }
 
 interface TicketTypeState {
@@ -57,6 +56,7 @@ const initialTicketState: DirectionTicketInfo = {
   childWithoutSeatCount: 0,
   coaches: {},
   totalPrice: 0,
+  totalSeatsCount: 0,
 };
 
 const initialState: TicketTypeState = {
@@ -97,9 +97,8 @@ const seatsTicketInfoSlice = createSlice({
         state[`${direction}Ticket`].coaches[wagonNumber].services['wi-fi'] +
         state[`${direction}Ticket`].coaches[wagonNumber].services.linens;
 
-      state[`${direction}Ticket`].totalPrice = getTotalPrice(
-        state[`${direction}Ticket`].coaches,
-      );
+      const { totalPrice } = getTotalInfo(state[`${direction}Ticket`].coaches);
+      state[`${direction}Ticket`].totalPrice = totalPrice;
     },
     saveSeatPrice(state, action: PayloadActionDirection<SeatPricePayload>) {
       const { data, direction } = action.payload;
@@ -116,13 +115,24 @@ const seatsTicketInfoSlice = createSlice({
 
       const prevState =
         state[`${direction}Ticket`].coaches[wagonNumber].tickets;
-      state[`${direction}Ticket`].coaches[wagonNumber].tickets = {
-        ...prevState,
-        ...seat,
-      };
-      state[`${direction}Ticket`].totalPrice = getTotalPrice(
+
+      const updatedState = { ...prevState };
+
+      Object.tsKeys(seat).forEach((key) => {
+        if (seat[key] === 0) {
+          delete updatedState[key];
+        } else {
+          updatedState[key] = seat[key];
+        }
+      });
+
+      state[`${direction}Ticket`].coaches[wagonNumber].tickets = updatedState;
+
+      const { totalPrice, seatsCount } = getTotalInfo(
         state[`${direction}Ticket`].coaches,
       );
+      state[`${direction}Ticket`].totalPrice = totalPrice;
+      state[`${direction}Ticket`].totalSeatsCount = seatsCount;
     },
     clearTicketState(state) {
       state.arrivalTicket = initialTicketState;
@@ -139,10 +149,15 @@ export const {
 } = seatsTicketInfoSlice.actions;
 export const seatsTicketInfoReducer = seatsTicketInfoSlice.reducer;
 
-const getTotalPrice = (coaches: Record<number, CoachTicketInfo>) =>
-  Object.tsValues(coaches).reduce((acc, { services, tickets }) => {
-    Object.tsValues(tickets).forEach((price) => {
-      acc += services.total + price;
-    });
-    return acc;
-  }, 0);
+const getTotalInfo = (coaches: Record<number, CoachTicketInfo>) =>
+  Object.tsValues(coaches).reduce(
+    (acc, { services, tickets }) => {
+      Object.tsValues(tickets).forEach((price) => {
+        acc.totalPrice += services.total + price;
+        acc.seatsCount += 1;
+      });
+
+      return acc;
+    },
+    { totalPrice: 0, seatsCount: 0 },
+  );

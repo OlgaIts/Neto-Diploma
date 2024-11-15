@@ -1,6 +1,12 @@
 import { AppDispatch, RootState } from '@app/providers/StoreProvider/store';
 import { createSlice } from '@reduxjs/toolkit';
-import { saveSeatPrice, saveServicesPrice } from './ticketInfoSlice';
+import {
+  clearTicketState,
+  PersonName,
+  saveSeatPrice,
+  saveServicesPrice,
+  setPersonCount,
+} from './ticketInfoSlice';
 import { type SpecificPlace, type Direction } from '@shared/types';
 import { type PayloadActionDirection } from '@shared/types/directionPayload';
 import { type Options } from '../types/serviceOptions';
@@ -77,6 +83,15 @@ const currentWagonInfoSlice = createSlice({
       state.arrivalWagonClass = undefined;
       state.departureWagonClass = undefined;
     },
+    clearActiveSeats(state, action: PayloadActionDirection<number[]>) {
+      const { data: seats, direction } = action.payload;
+      seats.forEach((seatNumber: number) => {
+        if (!state[direction]?.seats) {
+          return;
+        }
+        state[direction].seats[seatNumber].active = false;
+      });
+    },
   },
 });
 
@@ -92,6 +107,7 @@ export const {
   updateServiceState,
   updateSeatState,
   clearCurrentInfoState,
+  clearActiveSeats,
 } = currentWagonInfoSlice.actions;
 
 export const setDirectionInfo =
@@ -273,6 +289,37 @@ export const updateSeat =
     );
   };
 
+interface ChangePersonCount {
+  personCount: number;
+  passengerCategory: PersonName;
+  direction: Direction;
+}
+
+export const changePersonCount =
+  ({ direction, personCount, passengerCategory }: ChangePersonCount) =>
+  (dispatch: AppDispatch, getState: () => RootState) => {
+    const { coaches } = getState().ticketInfo[`${direction}Ticket`];
+    const currentCoach = getState().currentWagonInfo[direction]?.wagonNumber;
+
+    if (currentCoach && coaches[currentCoach]) {
+      const { tickets } = coaches[currentCoach];
+      tickets &&
+        Object.tsKeys(tickets).length &&
+        dispatch(clearActiveSeats({ direction, data: Object.tsKeys(tickets) }));
+      dispatch(clearTicketState());
+    }
+
+    dispatch(
+      setPersonCount({
+        data: {
+          value: Number(personCount),
+          name: passengerCategory,
+        },
+        direction,
+      }),
+    );
+  };
+
 export const currentWagonInfoReducer = currentWagonInfoSlice.reducer;
 
 /*
@@ -318,19 +365,6 @@ export const currentWagonInfoReducer = currentWagonInfoSlice.reducer;
     }
   }
 
-  Цена: Object.keys(ticketsInfo.coaches).reduce((totalPrice, coach) => totalPrice+= coach.price, 0)
+)
 
-  slice seats -> для рендера информации номер выбранного вагона хранить здесь 
-    wagonNumber
-
-  slice ticketInfo -> {
-    coaches: {
-      1: {
-        services: {}
-        tickets: {}
-        price:  
-      }
-    },
-  
-  }
 */

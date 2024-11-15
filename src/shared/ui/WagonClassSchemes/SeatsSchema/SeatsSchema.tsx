@@ -10,6 +10,7 @@ export interface SeatsSchemaProps {
   wagonNumber: number;
   seats?: Record<number, SpecificPlace>;
   onClick?: (seatNumber: number) => void;
+  disabled?: boolean;
 }
 
 export const SeatsSchema = memo(
@@ -18,6 +19,7 @@ export const SeatsSchema = memo(
     wagonNumber,
     seats: availableSeats,
     onClick,
+    disabled = false,
   }: SeatsSchemaProps) => {
     return (
       <svg
@@ -63,12 +65,15 @@ export const SeatsSchema = memo(
                       y={y}
                       width={width}
                       height={height}
-                      className={classNames(styles.svg, {
+                      className={classNames(styles.default, {
                         [styles.available]: availableSeats?.[seat],
                         [styles.active]: availableSeats?.[seat]?.active,
+                        [styles.not_available]: !availableSeats?.[seat],
+                        [styles.disabled]: disabled,
                       })}
                       onClick={() => onClick?.(seat)}
                     >
+                      verfügbar
                       <rect
                         x='0'
                         y='0'

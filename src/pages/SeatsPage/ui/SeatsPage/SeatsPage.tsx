@@ -3,10 +3,10 @@ import classNames from 'classnames';
 import { Header } from '@widgets/Header';
 import { ArrivalWagonSeats, DepartureWagonSeats } from '@widgets/WagonSeats';
 import { RoutesFilters } from '@widgets/RoutesFilters';
+import { PassengerPageLink } from '@features/PassengerPageLink/insex';
 import { useGetSeats } from '@entities/seats';
 import { ProgressSteps } from '@shared/ui/ProgressSteps';
 import { Title } from '@shared/ui/Title';
-import { Button } from '@shared/ui/Button';
 import styles from './SeatsPage.module.scss';
 
 export const SeatsPage = memo(() => {
@@ -29,16 +29,7 @@ export const SeatsPage = memo(() => {
             <DepartureWagonSeats />
             <ArrivalWagonSeats />
 
-            <Button
-              tag='Link'
-              to='/passenger'
-              size='s'
-              uppercase
-              color='white'
-              className={styles.btn}
-            >
-              Далее
-            </Button>
+            <PassengerPageLink />
           </section>
         </main>
       </div>

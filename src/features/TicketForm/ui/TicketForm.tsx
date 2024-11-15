@@ -19,6 +19,8 @@ interface TicketFormProps {
   className?: string;
 }
 
+//TODO: поставить from и to 23 часа, либо, если from === 0 и to === 24, то не отправлять эти гет параметры, то есть вообще не отправлять! Либо косяк на бэкe, что там до 23, а на фронте до 24 (на фронте уходит 24)
+
 export const TicketForm = memo(({ className }: TicketFormProps) => {
   const location = useLocation();
   const isMainPage = location.pathname === '/';

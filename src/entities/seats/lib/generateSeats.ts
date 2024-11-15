@@ -2,9 +2,7 @@ import {
   secondClassSeats,
   thridClassSeats,
 } from '@shared/ui/WagonClassSchemes';
-import {
-  NormalizedCoachData,
-} from '../model/slice/seatsSlice';
+import { NormalizedCoachData } from '../model/slice/seatsSlice';
 import { Seats } from '../model/types/seats';
 import { type WagonClass } from '../model/types/wagonClass';
 import { type SpecificPlace } from '@shared/types';
@@ -17,7 +15,7 @@ const countSeatsByClass = {
 };
 
 const randomInteger = (min: number, max: number) => {
-  let rand = min + Math.random() * (max + 1 - min);
+  const rand = min + Math.random() * (max + 1 - min);
   return Math.floor(rand);
 };
 

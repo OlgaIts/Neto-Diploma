@@ -82,7 +82,7 @@ export const SeatsTicketType = memo(({ direction }: SeatsTicketTypeProps) => {
         <RadioGroup
           options={options.childWithoutSeat}
           name='childWithoutSeat'
-          title='Детский «без места»'
+          title='Младенец «без места»'
           value={childdWithoutSeat.toString()}
           onChange={handleChange}
           iconName='icon-person-baby'

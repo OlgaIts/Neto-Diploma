@@ -56,7 +56,19 @@
   gap: var(--margin-xs);
 }
 
-.price {
+.price,
+.count {
   font: var(--fw-bold) var(--fs-text) var(--ff);
   color: var(--bg-accent-color);
+}
+
+.seat_count {
+  padding: 0 50px 16px 0;
+  display: flex;
+  justify-content: end;
+  font: var(--fw-regular) var(--fs-text) var(--ff);
+}
+
+.count {
+  padding-left: 10px;
 }

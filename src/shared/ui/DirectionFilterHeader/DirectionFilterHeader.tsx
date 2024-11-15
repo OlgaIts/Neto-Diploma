@@ -10,7 +10,7 @@ interface DirectionFilterHeaderProps {
   children: ReactNode;
   title?: string;
   iconName?: string;
-  date?: string;
+  date?: number | string;
 }
 
 export const DirectionFilterHeader = memo(

@@ -1,18 +1,16 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { type Direction } from '@shared/types';
 import {
+  changePersonCount,
   getAdultCount,
   getChildCount,
   getChilddWithoutSeatCount,
+  type PersonName,
 } from '@entities/seats';
 import {
   useAppDispatch,
   useAppSelector,
 } from '@shared/lib/hooks/useReduxHooks';
-import {
-  PersonName,
-  setPersonCount,
-} from '@entities/seats/model/slice/ticketInfoSlice';
 import {
   adultOptions,
   childOptions,
@@ -38,9 +36,10 @@ export const usePersonCount = ({ direction }: { direction: Direction }) => {
 
     if (['adult', 'child', 'childWithoutSeat'].includes(name)) {
       dispatch(
-        setPersonCount({
-          data: { value: Number(value), name: name as PersonName },
+        changePersonCount({
           direction,
+          personCount: Number(value),
+          passengerCategory: name as PersonName,
         }),
       );
     }

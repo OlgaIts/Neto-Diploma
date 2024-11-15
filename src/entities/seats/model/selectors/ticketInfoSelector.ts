@@ -21,8 +21,9 @@ export const getTotalTicketPrice =
   (direction: Direction) => (state: RootState) =>
     state.ticketInfo[`${direction}Ticket`].totalPrice;
 
-export const getTotalPersonCount =
-  (direction: Direction) => (state: RootState) =>
-    state.ticketInfo[`${direction}Ticket`].childCount +
-    state.ticketInfo[`${direction}Ticket`].adultCount +
-    state.ticketInfo[`${direction}Ticket`].childWithoutSeatCount;
+export const getSeatsLimit = (direction: Direction) => (state: RootState) =>
+  state.ticketInfo[`${direction}Ticket`].childCount +
+  state.ticketInfo[`${direction}Ticket`].adultCount;
+
+export const getSeatCount = (direction: Direction) => (state: RootState) =>
+  state.ticketInfo[`${direction}Ticket`].totalSeatsCount;

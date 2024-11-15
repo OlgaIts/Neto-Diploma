@@ -83,6 +83,8 @@
 .disabled {
   background-color: #928f94;
   color: #fff;
+  border: 1px solid #928f94;
+  pointer-events: none;
 }
 
 .uppercase {

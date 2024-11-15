@@ -12,10 +12,10 @@ import { services } from '../model/services/services';
 import { setSeats } from '../model/slice/seatsSlice';
 
 export const useGetSeats = () => {
+  const dispatch = useAppDispatch();
   const departureInfo = useAppSelector(getDepartureInfo);
   const arrivalInfo = useAppSelector(getArrivalInfo);
   const seatsFilters = useAppSelector(getSavedRouteFilters);
-  const dispatch = useAppDispatch();
 
   const getSeats = async (id: string, direction: 'departure' | 'arrival') => {
     const response = await services.getSeats({ id, filters: seatsFilters });
