@@ -5,6 +5,7 @@ import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
 import { RouteDirection, TimeRange } from '@features/RouteTimeFilter';
 import styles from './RoundTripTime.module.scss';
 
+const excludeValues = [0, 24];
 interface RoundTripTimeProps {
   routeDirection: RouteDirection;
 }
@@ -15,12 +16,13 @@ export const RoundTripTime = memo(({ routeDirection }: RoundTripTimeProps) => {
   const getRoutes = useCallback(
     (timeRange: TimeRange) => (range: number[]) => {
       const timeFilter = {
-        [timeRange.start]: range[0],
-        [timeRange.end]: range[1],
+        [timeRange.start]: !excludeValues.includes(range[0]) && range[0],
+        [timeRange.end]: !excludeValues.includes(range[1]) && range[1],
       };
+
       dispatch(setRouteFilters(timeFilter));
     },
-    [],
+    [dispatch],
   );
 
   return (

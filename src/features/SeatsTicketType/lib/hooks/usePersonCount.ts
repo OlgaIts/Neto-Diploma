@@ -1,34 +1,39 @@
 import { ChangeEvent, useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import { type Direction } from '@shared/types';
 import {
   changePersonCount,
   getAdultCount,
   getChildCount,
-  getChilddWithoutSeatCount,
+  getChildWithoutSeatCount,
   type PersonName,
 } from '@entities/seats';
+
 import {
-  useAppDispatch,
-  useAppSelector,
-} from '@shared/lib/hooks/useReduxHooks';
-import {
-  adultOptions,
-  childOptions,
-  childWithoutSeat,
+  initialAdultOptions,
+  initialChildOptions,
+  initialChildWithoutSeatOptions,
   getCurrentOptions,
+  Option,
+  PersonCountOptions,
 } from '../helpers/getCurrentOptions';
+
+const addId = (options: Omit<Option, 'id'>[]): Option[] =>
+  options.map((option) => ({ ...option, id: uuidv4() }));
 
 export const usePersonCount = ({ direction }: { direction: Direction }) => {
   const dispatch = useAppDispatch();
-  const adult = useAppSelector(getAdultCount(direction));
-  const child = useAppSelector(getChildCount(direction));
-  const childdWithoutSeat = useAppSelector(
-    getChilddWithoutSeatCount(direction),
+  const adultCount = useAppSelector(getAdultCount(direction));
+  const childCount = useAppSelector(getChildCount(direction));
+  const childWithoutSeatCount = useAppSelector(
+    getChildWithoutSeatCount(direction),
   );
-  const [currentOptions, setCurrentOptions] = useState({
-    adultOptions,
-    childOptions,
-    childWithoutSeat,
+
+  const [currentOptions, setCurrentOptions] = useState<PersonCountOptions>({
+    adultOptions: addId(initialAdultOptions),
+    childOptions: addId(initialChildOptions),
+    childWithoutSeatOptions: addId(initialChildWithoutSeatOptions),
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -47,18 +52,18 @@ export const usePersonCount = ({ direction }: { direction: Direction }) => {
 
   useEffect(() => {
     const updatedOptions = getCurrentOptions(currentOptions, {
-      adult,
-      child,
-      childdWithoutSeat,
+      adultCount,
+      childCount,
+      childWithoutSeatCount,
     });
     setCurrentOptions(updatedOptions);
-  }, [adult, child, childdWithoutSeat]);
+  }, [adultCount, childCount, childWithoutSeatCount]);
 
   return {
     handleChange,
-    adult,
-    child,
-    childdWithoutSeat,
+    adultCount,
+    childCount,
+    childWithoutSeatCount,
     options: currentOptions,
   };
 };

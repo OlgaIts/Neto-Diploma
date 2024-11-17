@@ -27,7 +27,7 @@ const routesSlice = createSlice({
     },
     setRouteFilters: (state, action: PayloadAction<Partial<RouteFilters>>) => {
       state.routeFilters = { ...state.routeFilters, ...action.payload };
-      
+
       if (action.payload.offset === undefined) {
         delete state.routeFilters.offset;
       }

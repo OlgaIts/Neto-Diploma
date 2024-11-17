@@ -1,26 +1,32 @@
-import { v4 as uuidv4 } from 'uuid';
+import { type PersonSeatsCount } from '@entities/seats';
 
-interface Option {
+export interface Option {
   value: string;
   id: string;
   disabled?: boolean;
 }
 
-export const adultOptions = Array.from({ length: 4 }, (_, index) => ({
+export interface PersonCountOptions {
+  adultOptions: Option[];
+  childOptions: Option[];
+  childWithoutSeatOptions: Option[];
+}
+
+export const initialAdultOptions = Array.from({ length: 4 }, (_, index) => ({
   value: (index + 1).toString(),
-  id: uuidv4(),
 }));
 
-export const childOptions = Array.from({ length: 4 }, (_, index) => ({
+export const initialChildOptions = Array.from({ length: 4 }, (_, index) => ({
   value: (index + 1).toString(),
-  id: uuidv4(),
 }));
 
-export const childWithoutSeat = Array.from({ length: 2 }, (_, index) => ({
-  value: (index + 1).toString(),
-  id: uuidv4(),
-  disabled: true,
-}));
+export const initialChildWithoutSeatOptions = Array.from(
+  { length: 2 },
+  (_, index) => ({
+    value: (index + 1).toString(),
+    disabled: true,
+  }),
+);
 
 const getUpdatedAdultChildOptions = (
   options: Option[],
@@ -38,9 +44,12 @@ const getUpdatedChildWithoutSeatOptions = (
   currentCount: number,
   availableCountPassenger: number,
   adultCount: number,
-) => {
+): Option[] => {
   if (!adultCount) {
-    return childWithoutSeat;
+    return childWithoutSeatOptions.map((option) => ({
+      ...option,
+      disabled: true,
+    }));
   }
 
   return childWithoutSeatOptions.map((item) => {
@@ -60,43 +69,33 @@ const getUpdatedChildWithoutSeatOptions = (
 };
 
 export const getCurrentOptions = (
-  {
-    adultOptions,
-    childOptions,
-    childWithoutSeat,
-  }: {
-    adultOptions: Option[];
-    childOptions: Option[];
-    childWithoutSeat: Option[];
-  },
-  {
-    adult,
-    child,
-    childdWithoutSeat,
-  }: { adult: number; child: number; childdWithoutSeat: number },
-) => {
+  options: PersonCountOptions,
+  personCount: PersonSeatsCount,
+): PersonCountOptions => {
+  const { adultOptions, childOptions, childWithoutSeatOptions } = options;
+  const { adultCount, childCount, childWithoutSeatCount } = personCount;
   const maxPassengers = 4;
   const availableCountPassenger =
-    maxPassengers - (adult + child + childdWithoutSeat);
+    maxPassengers - (adultCount + childCount + childWithoutSeatCount);
   const updatedAdultOptions = getUpdatedAdultChildOptions(
     adultOptions,
-    adult,
+    adultCount,
     availableCountPassenger,
   );
   const updatedChildOptions = getUpdatedAdultChildOptions(
     childOptions,
-    child,
+    childCount,
     availableCountPassenger,
   );
   const updatedChildWithoutSeatOptions = getUpdatedChildWithoutSeatOptions(
-    childWithoutSeat,
-    childdWithoutSeat,
+    childWithoutSeatOptions,
+    childWithoutSeatCount,
     availableCountPassenger,
-    adult,
+    adultCount,
   );
   return {
     adultOptions: updatedAdultOptions,
     childOptions: updatedChildOptions,
-    childWithoutSeat: updatedChildWithoutSeatOptions,
+    childWithoutSeatOptions: updatedChildWithoutSeatOptions,
   };
 };

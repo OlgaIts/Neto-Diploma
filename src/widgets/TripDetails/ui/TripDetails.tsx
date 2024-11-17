@@ -3,12 +3,18 @@ import classNames from 'classnames';
 import { Title } from '@shared/ui/Title';
 import { TripDetailFilters } from '@features/TripFilters/ui/TripDetailFilters/TripDetailFilters';
 import { TotalFilter } from '@features/TripFilters/ui/TotalFilter/TotalFilter';
+import { useAppSelector } from '@shared/lib/hooks';
+import { getTotalTicketPrice } from '@entities/seats';
 import styles from './TripDetails.module.scss';
 
 interface TripDetailsProps {
   className?: string;
 }
 export const TripDetails = memo(({ className }: TripDetailsProps) => {
+  const totalDeparturePrice = useAppSelector(getTotalTicketPrice('departure'));
+  const totalArrivalPrice = useAppSelector(getTotalTicketPrice('arrival'));
+  const totalPrice = totalDeparturePrice + totalArrivalPrice;
+
   return (
     <section className={classNames(styles.component, className)}>
       <Title weight='medium' color='light' uppercase className={styles.title}>
@@ -21,6 +27,8 @@ export const TripDetails = memo(({ className }: TripDetailsProps) => {
           iconName='icon-arrow-fat-right'
           direction='departure'
         />
+      </article>
+      <article className={styles.article}>
         <TripDetailFilters
           title='Обратно'
           iconName='icon-arrow-fat-left'
@@ -28,7 +36,7 @@ export const TripDetails = memo(({ className }: TripDetailsProps) => {
         />
       </article>
       <article>
-        <TotalFilter />
+        <TotalFilter totalPrice={totalPrice} />
       </article>
     </section>
   );

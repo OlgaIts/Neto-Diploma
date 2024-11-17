@@ -7,7 +7,7 @@ export const getAdultCount = (direction: Direction) => (state: RootState) =>
 export const getChildCount = (direction: Direction) => (state: RootState) =>
   state.ticketInfo[`${direction}Ticket`].childCount;
 
-export const getChilddWithoutSeatCount =
+export const getChildWithoutSeatCount =
   (direction: Direction) => (state: RootState) =>
     state.ticketInfo[`${direction}Ticket`].childWithoutSeatCount;
 

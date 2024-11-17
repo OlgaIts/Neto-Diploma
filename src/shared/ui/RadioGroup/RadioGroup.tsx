@@ -2,13 +2,14 @@ import { ChangeEvent, memo } from 'react';
 import classNames from 'classnames';
 import { Icon } from '../Icon';
 import styles from './RadioGroup.module.scss';
+import { IconName } from '../Icon/Icon';
 
 interface RadioGroupProps {
   className?: string;
   name: string;
   title: string;
   value: string;
-  iconName?: string;
+  iconName?: IconName;
   options: { value: string; id: string; disabled?: boolean }[];
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   clearFunction?: (name: string) => void;
@@ -27,7 +28,7 @@ export const RadioGroup = memo(
     return (
       <fieldset className={classNames(className, styles.fieldset)}>
         <legend className={styles.legend}>
-          <Icon iconName={iconName} fontSize='28px' />
+          {iconName && <Icon iconName={iconName} fontSize='28px' />}
           <span className={styles.title}>{title}</span>
         </legend>
         {options.map(({ value: optionValue, id, disabled }) => (

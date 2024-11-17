@@ -303,6 +303,7 @@ export const changePersonCount =
 
     if (currentCoach && coaches[currentCoach]) {
       const { tickets } = coaches[currentCoach];
+
       tickets &&
         Object.tsKeys(tickets).length &&
         dispatch(clearActiveSeats({ direction, data: Object.tsKeys(tickets) }));

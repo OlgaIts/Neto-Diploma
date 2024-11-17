@@ -76,7 +76,8 @@
   color: var(--bg-header-form);
 }
 
-.station {
+.station,
+.date {
   font: var(--fw-regular) var(--fs-xs) var(--ff);
   color: var(--text-dark-gray);
 }

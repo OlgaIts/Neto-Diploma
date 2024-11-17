@@ -19,8 +19,13 @@ interface SeatsTicketTypeProps {
 export const SeatsTicketType = memo(({ direction }: SeatsTicketTypeProps) => {
   const dispatch = useAppDispatch();
   const [openTooltip, setOpenTooltip] = useState(false);
-  const { options, handleChange, adult, child, childdWithoutSeat } =
-    usePersonCount({ direction });
+  const {
+    options,
+    handleChange,
+    adultCount,
+    childCount,
+    childWithoutSeatCount,
+  } = usePersonCount({ direction });
 
   const clearState = (name: string) => {
     dispatch(
@@ -64,7 +69,7 @@ export const SeatsTicketType = memo(({ direction }: SeatsTicketTypeProps) => {
           onChange={handleChange}
           options={options.adultOptions}
           title='Взрослый'
-          value={adult.toString()}
+          value={adultCount.toString()}
           iconName='icon-person'
           clearFunction={clearState}
         />
@@ -73,17 +78,17 @@ export const SeatsTicketType = memo(({ direction }: SeatsTicketTypeProps) => {
           options={options.childOptions}
           name='child'
           title='Детский'
-          value={child.toString()}
+          value={childCount.toString()}
           onChange={handleChange}
           iconName='icon-person-kid'
           clearFunction={clearState}
         />
 
         <RadioGroup
-          options={options.childWithoutSeat}
+          options={options.childWithoutSeatOptions}
           name='childWithoutSeat'
           title='Младенец «без места»'
-          value={childdWithoutSeat.toString()}
+          value={childWithoutSeatCount.toString()}
           onChange={handleChange}
           iconName='icon-person-baby'
           clearFunction={clearState}

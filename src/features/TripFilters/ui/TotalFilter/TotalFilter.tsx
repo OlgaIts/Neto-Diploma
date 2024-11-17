@@ -6,18 +6,23 @@ import styles from './TotalFilter.module.scss';
 
 interface TotalFilterProps {
   className?: string;
+  totalPrice: number;
 }
-export const TotalFilter = memo(({ className }: TotalFilterProps) => {
-  return (
-    <div className={classNames(styles.component, className)}>
-      <Title color='light' weight='bold' uppercase>
-        Итог
-      </Title>
-      <div>
-        <span className={styles.price}>7 760</span>
-        <Icon iconName='icon-ruble' color='primary' fontSize='28px' />
+export const TotalFilter = memo(
+  ({ className, totalPrice }: TotalFilterProps) => {
+    return (
+      <div className={classNames(styles.component, className)}>
+        <Title color='light' weight='bold' uppercase>
+          Итог
+        </Title>
+        <div>
+          <span className={styles.price}>
+            {totalPrice.toLocaleString('ru-RU')}
+          </span>
+          <Icon iconName='icon-ruble' color='primary' fontSize='28px' />
+        </div>
       </div>
-    </div>
-  );
-});
+    );
+  },
+);
 TotalFilter.displayName = 'TotalFilter';

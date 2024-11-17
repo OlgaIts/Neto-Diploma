@@ -3,12 +3,18 @@ import classNames from 'classnames';
 import { Title } from '@shared/ui/Title';
 import { Icon } from '@shared/ui/Icon';
 import styles from './PassengerSeatFilter.module.scss';
+import { Direction } from '@shared/types';
+import { useAppSelector } from '@shared/lib/hooks';
+import { getCurrentWagonInfo } from '@entities/seats';
 
 interface PassengerSeatFilterProps {
   className?: string;
+  direction: Direction;
 }
 export const PassengerSeatFilter = memo(
-  ({ className }: PassengerSeatFilterProps) => {
+  ({ className, direction }: PassengerSeatFilterProps) => {
+    const wagonInfo = useAppSelector(getCurrentWagonInfo(direction));
+
     return (
       <div className={classNames(className)}>
         <div className={styles.title_wrapper}>
@@ -17,16 +23,15 @@ export const PassengerSeatFilter = memo(
             Места
           </Title>
         </div>
-        {}
         <>
           <div className={styles.wrapper}>
             <p>Тип вагона</p>
-            <span>купе</span>
+            <span>{wagonInfo?.wagonClass}</span>
           </div>
 
           <div className={styles.wrapper}>
             <p>Номер вагона</p>
-            <span className={styles.wagon}>08</span>
+            <span className={styles.wagon}>{}</span>
           </div>
 
           <div className={styles.wrapper}>

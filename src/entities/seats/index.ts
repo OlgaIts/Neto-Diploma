@@ -25,12 +25,13 @@ export {
   saveServicesPrice,
   saveSeatPrice,
   clearTicketState,
+  type PersonSeatsCount,
   type PersonName,
 } from './model/slice/ticketInfoSlice';
 export {
   getAdultCount,
   getChildCount,
-  getChilddWithoutSeatCount,
+  getChildWithoutSeatCount,
   getArrivalTicket,
   getDepartureTicket,
   getTotalTicketPrice,

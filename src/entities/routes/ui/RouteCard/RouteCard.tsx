@@ -5,6 +5,7 @@ import { Route } from '@entities/routes/model/types/route';
 import { formatDatetime } from '@shared/lib/helpers/formatDatetime';
 import { WagonTypes } from '../WagonTypes/WagonTypes';
 import styles from './RouteCard.module.scss';
+import { formatDate } from '@shared/lib/helpers';
 interface RouteCardProps {
   className?: string;
   item: Route;
@@ -34,6 +35,9 @@ export const RouteCard = memo(({ className, item }: RouteCardProps) => {
               <span className={styles.time}>
                 {formatDatetime(item.departure.from.datetime)}
               </span>
+              <span className={styles.date}>
+                {formatDate(item.departure.from.datetime)}
+              </span>
               <span className={styles.city}>
                 {item.departure.from.city.name}
               </span>
@@ -52,6 +56,9 @@ export const RouteCard = memo(({ className, item }: RouteCardProps) => {
             <div className={styles.route_direction}>
               <span className={styles.time}>
                 {formatDatetime(item.departure.to.datetime)}
+              </span>
+              <span className={styles.date}>
+                {formatDate(item.departure.to.datetime)}
               </span>
               <span className={styles.city}>{item.departure.to.city.name}</span>
               <span className={styles.station}>

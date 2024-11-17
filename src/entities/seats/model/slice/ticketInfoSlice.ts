@@ -8,6 +8,12 @@ export interface Services {
   total: number;
 }
 
+export interface PersonSeatsCount {
+  adultCount: number;
+  childCount: number;
+  childWithoutSeatCount: number;
+}
+
 interface ServicePayload extends Partial<Services> {
   wagonNumber: number;
 }
@@ -24,10 +30,7 @@ interface CoachTicketInfo {
   wagonClass: WagonClass | null;
 }
 
-interface DirectionTicketInfo {
-  adultCount: number;
-  childCount: number;
-  childWithoutSeatCount: number;
+interface DirectionTicketInfo extends PersonSeatsCount {
   coaches: Record<number, CoachTicketInfo>;
   totalPrice: number;
   totalSeatsCount: number;
