@@ -1,7 +1,7 @@
 import { memo, useEffect, useState } from 'react';
 import { Title } from '@shared/ui/Title';
 import { RangeSlider } from '@shared/ui/RangeSlider';
-import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
+import { useAppDispatch } from '@shared/lib/hooks';
 import { setRouteFilters } from '@entities/routes';
 import styles from './RoutePriceFilter.module.scss';
 

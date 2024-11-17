@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
-import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
 import { RouteSortType, setRouteFilters } from '@entities/routes';
+import { useAppDispatch } from '@shared/lib/hooks';
 import { sortList } from '../../consts/sortList';
 import styles from './RouteSortFilter.module.scss';
 
@@ -19,7 +19,7 @@ export const RouteSortFilter = memo(() => {
     <div className={styles.sort_wrapper}>
       <div>
         <span className={styles.sort}>сортировать по:</span>
-        <span onClick={() => setOpen(!open)} className={styles.active}>
+        <span onClick={() => setOpen(!open)}>
           {sortList.find((item) => item.type === sortType)?.name}
         </span>
       </div>

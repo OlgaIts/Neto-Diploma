@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import classNames from 'classnames';
-import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
+import { useAppSelector } from '@shared/lib/hooks';
 import { getTotalCount } from '@entities/routes';
 import { RouteSortFilter } from '../RouteSortFilter/RouteSortFilter';
 import { RouteCardsView } from '../RouteCardsView/RouteCardsView';

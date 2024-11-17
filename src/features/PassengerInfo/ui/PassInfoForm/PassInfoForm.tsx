@@ -1,5 +1,5 @@
 import { memo, useState } from 'react';
-import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
+import { useAppDispatch } from '@shared/lib/hooks';
 import { DropdownButton } from '@shared/ui/DropdownButton';
 import { CustomInput } from '@shared/ui/CustomInput';
 import {

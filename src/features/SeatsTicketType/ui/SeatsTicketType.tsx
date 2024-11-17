@@ -3,13 +3,10 @@ import classNames from 'classnames';
 import { Title } from '@shared/ui/Title';
 import { Icon } from '@shared/ui/Icon';
 import { RadioGroup } from '@shared/ui/RadioGroup';
-import { usePersonCount } from '../lib/hooks/usePersonCount';
-import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
-import {
-  PersonName,
-  setPersonCount,
-} from '@entities/seats/model/slice/ticketInfoSlice';
+import { useAppDispatch } from '@shared/lib/hooks';
+import { type PersonName, setPersonCount } from '@entities/seats';
 import { type Direction } from '@shared/types';
+import { usePersonCount } from '../lib/hooks/usePersonCount';
 import styles from './SeatsTicketType.module.scss';
 
 interface SeatsTicketTypeProps {

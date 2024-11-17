@@ -6,10 +6,7 @@ import {
   getRouteDateStart,
   setRouteFilters,
 } from '@entities/routes';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '@shared/lib/hooks/useReduxHooks';
+import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import { TicketFormState, initialState } from '../model/slice/ticketFormSlice';
 
 export const useTicketForm = () => {

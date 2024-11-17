@@ -1,10 +1,7 @@
 import { memo, useCallback } from 'react';
 import { Title } from '@shared/ui/Title';
 import { CustomDatePicker } from '@shared/ui/CustomDatePicker';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '@shared/lib/hooks/useReduxHooks';
+import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import {
   getRouteDateEnd,
   getRouteDateStart,

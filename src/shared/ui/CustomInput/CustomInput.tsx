@@ -9,7 +9,10 @@ interface CustomInputProps {
   type: string;
   label: string;
   value?: string;
-  onChange: (id: string, value: string) => void;
+  onChange: (
+    id: string,
+    value: string,
+  ) => (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const CustomInput = memo(
@@ -27,7 +30,7 @@ export const CustomInput = memo(
     };
 
     return (
-      <div className={classNames(styles.component, className)}>
+      <div className={classNames(className)}>
         <label className={styles.label} htmlFor={id}>
           {label}
         </label>

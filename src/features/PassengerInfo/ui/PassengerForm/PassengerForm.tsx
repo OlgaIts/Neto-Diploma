@@ -4,7 +4,7 @@ import { CustomInput } from '@shared/ui/CustomInput';
 import { Checkbox } from '@shared/ui/Checkbox';
 import { DropdownButton } from '@shared/ui/DropdownButton';
 import { Button } from '@shared/ui/Button';
-import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
+import { useAppDispatch } from '@shared/lib/hooks';
 import { setBirthday, setFullName } from '../../model/slice/passengerInfoSlice';
 import { PassInfoForm } from '../PassInfoForm/PassInfoForm';
 import styles from './PassengerForm.module.scss';

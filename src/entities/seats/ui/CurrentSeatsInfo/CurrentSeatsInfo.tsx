@@ -1,9 +1,7 @@
 import { memo } from 'react';
-import {
-  withOneSeatType,
-  type CurrentInfo,
-  type WagonClass,
-} from '../../index';
+import { withOneSeatType } from '../../lib/withOneSeatType';
+import { type CurrentInfo } from '../../model/slice/currentDirectionInfo';
+import { type WagonClass } from '../../model/types/wagonClass';
 import styles from './CurrentSeatsInfo.module.scss';
 
 interface CurrentSeatsInfoProps {

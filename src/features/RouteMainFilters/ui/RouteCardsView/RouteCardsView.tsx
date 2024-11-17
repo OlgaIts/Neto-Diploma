@@ -1,10 +1,7 @@
 import { memo } from 'react';
 import classNames from 'classnames';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '@shared/lib/hooks/useReduxHooks';
 import { setRouteFilters } from '@entities/routes';
+import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import styles from './RouteCardsView.module.scss';
 
 const limitList: number[] = [5, 10, 20];

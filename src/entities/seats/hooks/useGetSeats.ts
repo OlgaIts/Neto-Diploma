@@ -1,8 +1,5 @@
 import { useEffect } from 'react';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '@shared/lib/hooks/useReduxHooks';
+import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import {
   getArrivalInfo,
   getDepartureInfo,

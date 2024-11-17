@@ -2,13 +2,12 @@ import { memo } from 'react';
 import classNames from 'classnames';
 import { DirectionFilterHeader } from '@shared/ui/DirectionFilterHeader';
 import { Icon } from '@shared/ui/Icon';
-import { PassengerFilter } from '../PassengerFilter/PassengerFilter';
-import { PassengerSeatFilter } from '../PassengerSeatFilter/PassengerSeatFilter';
-import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
+import { useAppSelector } from '@shared/lib/hooks';
 import { getArrivalInfo, getDepartureInfo } from '@entities/seats';
-//TODO: поправить пути везде в проекте
 import { formatDate, formatDatetime } from '@shared/lib/helpers';
 import { type Direction } from '@shared/types';
+import { PassengerFilter } from '../PassengerFilter/PassengerFilter';
+import { PassengerSeatFilter } from '../PassengerSeatFilter/PassengerSeatFilter';
 import styles from './TripDetailFilters.module.scss';
 
 interface TripDetailFiltersProps {

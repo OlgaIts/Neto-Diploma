@@ -1,14 +1,12 @@
 import { memo, useCallback } from 'react';
 import classNames from 'classnames';
 import {
-  useAppDispatch,
-  useAppSelector,
-} from '@shared/lib/hooks/useReduxHooks';
-import {
   CoachInfo,
   TrainSchema,
   getCurrentWagonInfo,
   getCurrentWagonSeats,
+  getSeatCount,
+  getSeatsLimit,
   getTotalTicketPrice,
   getWagonClass,
   getWagonList,
@@ -18,12 +16,9 @@ import {
 } from '@entities/seats';
 import { addZero } from '@shared/lib/helpers/addZero';
 import { Icon } from '@shared/ui/Icon';
+import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import { type Direction } from '@shared/types';
 import styles from './ChooseWagonSeat.module.scss';
-import {
-  getSeatCount,
-  getSeatsLimit,
-} from '@entities/seats/model/selectors/ticketInfoSelector';
 
 interface ChooseWagonSeatProps {
   className?: string;

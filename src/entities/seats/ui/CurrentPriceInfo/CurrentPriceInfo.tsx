@@ -1,10 +1,8 @@
 import { memo } from 'react';
 import { Icon } from '@shared/ui/Icon';
-import {
-  withOneSeatType,
-  type CurrentInfo,
-  type WagonClass,
-} from '../../index';
+import { withOneSeatType } from '../../lib/withOneSeatType';
+import { type CurrentInfo } from '../../model/slice/currentDirectionInfo';
+import { type WagonClass } from '../../model/types/wagonClass';
 import styles from './CurrentPriceInfo.module.scss';
 
 interface CurrentPriceInfoProps {

@@ -10,7 +10,7 @@ import { Title } from '@shared/ui/Title';
 import { Button } from '@shared/ui/Button';
 import { Icon } from '@shared/ui/Icon';
 import { CustomDatePicker } from '@shared/ui/CustomDatePicker';
-import { useAppDispatch } from '@shared/lib/hooks/useReduxHooks';
+import { useAppDispatch } from '@shared/lib/hooks';
 import styles from './TicketForm.module.scss';
 
 registerLocale('ru', ru);

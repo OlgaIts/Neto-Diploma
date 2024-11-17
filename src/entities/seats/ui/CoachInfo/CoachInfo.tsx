@@ -1,11 +1,11 @@
 import { memo } from 'react';
-import { addZero } from '@shared/lib/helpers/addZero';
-import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
+import { useAppSelector } from '@shared/lib/hooks';
+import { addZero } from '@shared/lib/helpers';
+import { type Direction } from '@shared/types';
 import { ServiceIcons } from '../ServiceIcons/ServiceIcons';
 import { getCurrentWagonInfo } from '../../model/selectors/currentWagonInfoSelector';
 import { CurrentSeatsInfo } from '../CurrentSeatsInfo/CurrentSeatsInfo';
 import { CurrentPriceInfo } from '../CurrentPriceInfo/CurrentPriceInfo';
-import { type Direction } from '@shared/types';
 import styles from './CoachInfo.module.scss';
 
 interface CoachInfoProps {

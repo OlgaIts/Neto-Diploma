@@ -2,8 +2,8 @@ import { memo } from 'react';
 import moment from 'moment';
 import classNames from 'classnames';
 import { Icon } from '@shared/ui/Icon';
-import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
-import { formatDatetime } from '@shared/lib/helpers/formatDatetime';
+import { useAppSelector } from '@shared/lib/hooks';
+import { formatDatetime } from '@shared/lib/helpers';
 import {
   getArrivalInfo,
   getDepartureInfo,
@@ -51,7 +51,7 @@ export const RouteInfo = memo(({ direction }: RouteInfoProps) => {
       </div>
 
       <div className={styles.box}>
-        <div className={styles.citys}>
+        <div className={styles.cities}>
           <div>
             <p className={styles.time}>
               {formatDatetime(routeInfo?.from.datetime)}

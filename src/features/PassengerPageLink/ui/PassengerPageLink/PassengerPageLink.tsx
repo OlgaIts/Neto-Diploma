@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { getArrivalInfo, getSeatCount, getSeatsLimit } from '@entities/seats';
 import { Button } from '@shared/ui/Button';
-import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
+import { useAppSelector } from '@shared/lib/hooks';
 import styles from './PassengerPageLink.module.scss';
 
 export const PassengerPageLink = memo(() => {

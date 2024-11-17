@@ -5,7 +5,7 @@ import { SelectWagonType } from '@features/SelectWagonType';
 import { ChooseWagonSeat } from '@features/ChooseWagonSeat';
 import { getSeatsInfo, RouteInfo } from '@entities/seats';
 import { Title } from '@shared/ui/Title';
-import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
+import { useAppSelector } from '@shared/lib/hooks';
 import { type Direction } from '@shared/types';
 import styles from './WagonSeats.module.scss';
 

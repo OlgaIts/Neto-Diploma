@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { useAppSelector } from '@shared/lib/hooks/useReduxHooks';
+import { useAppSelector } from '@shared/lib/hooks';
 import { getRoutesData } from '../../model/selectors/selector';
 import { RouteCard } from '../RouteCard/RouteCard';
 import styles from './RouteCardList.module.scss';

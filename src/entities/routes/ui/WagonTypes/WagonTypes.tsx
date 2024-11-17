@@ -4,12 +4,11 @@ import { v4 as uuidv4 } from 'uuid';
 import classNames from 'classnames';
 import { Icon } from '@shared/ui/Icon';
 import { Button } from '@shared/ui/Button';
-import { useClickOutside } from '@shared/lib/hooks/useClickOutside';
-import { type Route } from '@entities/routes/model/types/route';
 import {
   useAppDispatch,
   useAppSelector,
-} from '@shared/lib/hooks/useReduxHooks';
+  useClickOutside,
+} from '@shared/lib/hooks';
 import {
   clearCurrentInfoState,
   clearTicketState,
@@ -17,10 +16,11 @@ import {
   setDeparture,
 } from '@entities/seats';
 import { setSavedRouteFilters } from '@entities/seats/model/slice/seatsSlice';
-import { getRouteFilter } from '@entities/routes/model/selectors/selector';
 import { Tooltip } from '../Tooltip/Tooltip';
+import { getRouteFilter } from '../../model/selectors/selector';
 import { wagonType } from '../../model/consts/wagonType';
 import { RouteCardServiceIcons } from '../RouteCardServiceIcons/RouteCardServiceIcons';
+import { type Route } from '../../model/types/route';
 import styles from './WagonTypes.module.scss';
 
 interface WagonTypesProps {

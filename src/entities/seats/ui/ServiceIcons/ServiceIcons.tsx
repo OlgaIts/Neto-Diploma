@@ -1,11 +1,8 @@
 import { memo, useState } from 'react';
 import classNames from 'classnames';
 import { Icon } from '@shared/ui/Icon';
+import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import { type Direction } from '@shared/types';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '@shared/lib/hooks/useReduxHooks';
 import { getCurrentServicesInfo } from '../../model/selectors/currentWagonInfoSelector';
 import { updateService } from '../../model/slice/currentDirectionInfo';
 import styles from './ServiceIcons.module.scss';
