@@ -16,16 +16,18 @@ export interface PersonSeatsCount {
 
 interface ServicePayload extends Partial<Services> {
   wagonNumber: number;
+  wagonClass: WagonClass;
 }
 
 interface SeatPricePayload {
   wagonNumber: number;
+  wagonClass: WagonClass;
   seat: Record<number, number>;
 }
 
 interface CoachTicketInfo {
   coachNumber: number;
-  tickets: Record<number, number>; //седушка и цена
+  tickets: Record<number, number>; //сидушка и цена
   services: Services;
   wagonClass: WagonClass | null;
 }
@@ -78,14 +80,14 @@ const seatsTicketInfoSlice = createSlice({
     },
     saveServicesPrice(state, action: PayloadActionDirection<ServicePayload>) {
       const { data, direction } = action.payload;
-      const { wagonNumber, ...servicesPrice } = data;
+      const { wagonNumber, wagonClass, ...servicesPrice } = data;
 
       if (!state[`${direction}Ticket`].coaches?.[wagonNumber]) {
         state[`${direction}Ticket`].coaches[wagonNumber] = {
           coachNumber: wagonNumber,
           services: initialServiceState,
           tickets: {},
-          wagonClass: 'first',
+          wagonClass,
         };
       }
       const prevState =
@@ -105,14 +107,14 @@ const seatsTicketInfoSlice = createSlice({
     },
     saveSeatPrice(state, action: PayloadActionDirection<SeatPricePayload>) {
       const { data, direction } = action.payload;
-      const { seat, wagonNumber } = data;
+      const { seat, wagonNumber, wagonClass } = data;
 
       if (!state[`${direction}Ticket`].coaches?.[wagonNumber]) {
         state[`${direction}Ticket`].coaches[wagonNumber] = {
           coachNumber: wagonNumber,
           services: initialServiceState,
           tickets: {},
-          wagonClass: 'first',
+          wagonClass,
         };
       }
 

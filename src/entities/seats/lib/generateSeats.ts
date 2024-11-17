@@ -59,12 +59,16 @@ export const generateSeats = (seatsInfo: Seats[]) => {
 
       info.seats.map((seat) => {
         const { index: seatIndex, available } = seat;
+        const placement = seatPlacementFunctions[class_type](seatIndex);
 
         if (available) {
           availableSeats[seatIndex] = {
             available,
-            placement: seatPlacementFunctions[class_type](seatIndex),
+            placement,
           };
+          if (placement) {
+            seatsCount[placement] += 1;
+          }
         }
       });
 

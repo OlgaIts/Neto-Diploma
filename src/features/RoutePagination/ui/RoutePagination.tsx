@@ -1,9 +1,6 @@
 import { memo } from 'react';
 import { Pagination, PaginationItem } from '@shared/ui/Pagination';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '@shared/lib/hooks/useReduxHooks';
+import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import {
   getLimit,
   getOffset,
@@ -17,11 +14,10 @@ interface RoutePaginationProps {
 
 export const RoutePagination = memo(({ className }: RoutePaginationProps) => {
   const dispatch = useAppDispatch();
-
   const limit = useAppSelector(getLimit);
   const totalCount = useAppSelector(getTotalCount);
   const offset = useAppSelector(getOffset);
-  
+
   const pageCount = Math.ceil(totalCount / limit);
   const forcePage = (offset || 0) / limit;
 

@@ -1,8 +1,5 @@
 import { useEffect } from 'react';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '@shared/lib/hooks/useReduxHooks';
+import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import { RouteRequestData } from '../model/services/services';
 import { services as RouteServices } from '../model/services/services';
 import { getRouteFilter } from '../model/selectors/selector';

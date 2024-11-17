@@ -1,3 +1,5 @@
+export { withOneSeatType } from './lib/withOneSeatType';
+
 export {
   getCurrentWagonInfo,
   getCurrentServicesInfo,
@@ -11,6 +13,7 @@ export {
   updateSeatState,
   updateSeat,
   changePersonCount,
+  type CurrentInfo,
 } from './model/slice/currentDirectionInfo';
 export { ServiceIcons } from './ui/ServiceIcons/ServiceIcons';
 export { TrainSchema } from './ui/TrainSchema/TrainSchema';
@@ -37,6 +40,7 @@ export {
   getTotalTicketPrice,
   getSeatsLimit,
   getSeatCount,
+  getTicketInfo,
 } from './model/selectors/ticketInfoSelector';
 export {
   getDepartureSeats,

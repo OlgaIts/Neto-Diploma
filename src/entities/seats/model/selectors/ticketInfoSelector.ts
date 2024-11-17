@@ -11,9 +11,13 @@ export const getChildWithoutSeatCount =
   (direction: Direction) => (state: RootState) =>
     state.ticketInfo[`${direction}Ticket`].childWithoutSeatCount;
 
+export const getTicketInfo = (direction: Direction) => (state: RootState) =>
+  state.ticketInfo[`${direction}Ticket`];
+
+//TODO: заменить везде на getTicketInfo
 export const getDepartureTicket = (state: RootState) =>
   state.ticketInfo.departureTicket;
-
+//TODO: заменить везде на getTicketInfo
 export const getArrivalTicket = (state: RootState) =>
   state.ticketInfo.arrivalTicket;
 

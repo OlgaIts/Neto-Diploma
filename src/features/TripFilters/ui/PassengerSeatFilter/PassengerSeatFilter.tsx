@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import { Title } from '@shared/ui/Title';
 import { Icon } from '@shared/ui/Icon';
 import { useAppSelector } from '@shared/lib/hooks';
-import { getCurrentWagonInfo } from '@entities/seats';
-import { translateWagonClass } from '@shared/lib/helpers';
+import { getTicketInfo } from '@entities/seats';
+import { wagonClassTranslations } from '@shared/lib/helpers';
 import { type Direction } from '@shared/types';
 import styles from './PassengerSeatFilter.module.scss';
 
@@ -14,7 +14,7 @@ interface PassengerSeatFilterProps {
 }
 export const PassengerSeatFilter = memo(
   ({ className, direction }: PassengerSeatFilterProps) => {
-    const wagonInfo = useAppSelector(getCurrentWagonInfo(direction));
+    const ticketInfo = useAppSelector(getTicketInfo(direction));
 
     return (
       <div className={classNames(className)}>
@@ -24,26 +24,28 @@ export const PassengerSeatFilter = memo(
             Места
           </Title>
         </div>
-        <>
-          <div className={styles.wrapper}>
-            <p>Тип вагона</p>
-            <span>{translateWagonClass(wagonInfo?.wagonClass)}</span>
-          </div>
+        {Object.tsValues(ticketInfo.coaches).map(
+          ({ wagonClass, coachNumber, tickets }) => (
+            <>
+              <div className={styles.wrapper}>
+                <p>Тип вагона</p>
+                <span>{wagonClass && wagonClassTranslations[wagonClass]}</span>
+              </div>
 
-          <div className={styles.wrapper}>
-            <p>Номер вагона</p>
-            <span className={styles.wagon}>{}</span>
-          </div>
+              <div className={styles.wrapper}>
+                <p>Номер вагона</p>
+                <span className={styles.wagon}>{coachNumber}</span>
+              </div>
 
-          <div className={styles.wrapper}>
-            <p>Места</p>
-            <div className={styles.seats}>
-              <span>верхнее 12</span>
-              <span>нижнее 45</span>
-              <span>боковое 55</span>
-            </div>
-          </div>
-        </>
+              <div className={styles.wrapper}>
+                <p>Места</p>
+                <div className={styles.seats}>
+                  <span>{Object.tsKeys(tickets).join(', ')}</span>
+                </div>
+              </div>
+            </>
+          ),
+        )}
       </div>
     );
   },

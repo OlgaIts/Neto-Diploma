@@ -24,7 +24,6 @@ export const Pagination = memo(
             iconName={'icon-chevron-left'}
             fontSize='20px'
             color='dark_gray'
-            className={classNames(styles.prev_icon, styles.icon)}
           />
         }
         nextLabel={
@@ -32,7 +31,6 @@ export const Pagination = memo(
             iconName={'icon-chevron-right'}
             fontSize='20px'
             color='dark_gray'
-            className={styles.next_icon}
           />
         }
         onPageChange={onPageChange}

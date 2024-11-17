@@ -11,8 +11,9 @@ import { type SpecificPlace, type Direction } from '@shared/types';
 import { type PayloadActionDirection } from '@shared/types/directionPayload';
 import { type Options } from '../types/serviceOptions';
 import { type WagonClass } from '../types/wagonClass';
+import { withOneSeatType } from '@entities/seats/lib/withOneSeatType';
 
-interface CurrentInfo {
+export interface CurrentInfo {
   wagonNumber?: number;
   available_seats?: number;
   top?: number;
@@ -216,6 +217,7 @@ export const updateService =
     }
 
     const wagonNumber = currentInfo.wagonNumber;
+    const wagonClass = currentInfo.wagonClass;
     const price = currentService.price;
 
     if (!price || !wagonNumber) {
@@ -238,6 +240,7 @@ export const updateService =
         data: {
           [service]: booleanActive ? currentService.price : 0,
           wagonNumber,
+          wagonClass,
         },
       }),
     );
@@ -252,6 +255,7 @@ export const updateSeat =
   ({ direction, seatNumber }: updateSeat) =>
   (dispatch: AppDispatch, getState: () => RootState) => {
     const currentInfo = getState().currentWagonInfo[direction];
+    const ticketInfo = getState().ticketInfo[`${direction}Ticket`];
     const wagonNumber = currentInfo?.wagonNumber;
     const seatPlacement = currentInfo?.seats?.[seatNumber].placement;
     const wagonClass = currentInfo?.wagonClass;
@@ -261,26 +265,35 @@ export const updateSeat =
     }
 
     const onePersonsClassesPrice =
-      ['first', 'fourth'].includes(wagonClass) && currentInfo.price;
-    const recentsClassesPrice =
+      withOneSeatType(wagonClass) && currentInfo.price;
+    const recentClassesPrice =
       seatPlacement && currentInfo[`${seatPlacement}_price`];
-    const seatPrice = onePersonsClassesPrice || recentsClassesPrice;
+    const seatPrice = onePersonsClassesPrice || recentClassesPrice;
 
     if (!seatPrice) {
       return;
     }
 
     const newSeatActiveState = !currentInfo?.seats?.[seatNumber].active;
+    const { adultCount, totalSeatsCount } = ticketInfo;
+    const currentPrice =
+      totalSeatsCount + 1 > adultCount
+        ? (seatPrice * 0.55).toFixed(2)
+        : seatPrice;
+
+    console.log(currentPrice);
 
     dispatch(
       saveSeatPrice({
         direction,
         data: {
           wagonNumber,
-          seat: { [seatNumber]: newSeatActiveState ? seatPrice : 0 },
+          wagonClass,
+          seat: { [seatNumber]: newSeatActiveState ? Number(currentPrice) : 0 },
         },
       }),
     );
+
     dispatch(
       updateSeatState({
         direction,
@@ -322,50 +335,3 @@ export const changePersonCount =
   };
 
 export const currentWagonInfoReducer = currentWagonInfoSlice.reducer;
-
-/*
-
-
-  priceServices: ...
-  priceSeats: 3200 + 3400 + (2600)*0.6 = 8000
-  count: {
-    adults: 2
-    children: 1
-    childrenWithout: 0
-  }
-
-  ticketsInfo : {
-    coaches: {
-      3: { 
-        services: {
-          wifi: 200  
-          lineans: 300
-          total: 500
-        },
-        tickets: {
-          18: 3600,
-          20: 3600,
-        }
-        price: Object.keys(state.).reduce((totalPrice, ticketKey) => tickets[ticketKey] +  state.services.total)
-      }
-      5: { 
-        services: {}, 
-        tickets: { 
-          19: 2400
-        }
-        price: 
-      }
-    },
-    choosenAdult:
-    choosenChild:  
-    persons: { 
-      adult: 7
-      child:3 
-      childWithout:
-      total: 7+3
-    }
-  }
-
-)
-
-*/
