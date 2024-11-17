@@ -15,7 +15,7 @@ export const SeatsPage = memo(() => {
   return (
     <div className={classNames(styles.component)}>
       <Header />
-      <ProgressSteps />
+      <ProgressSteps step='step_1' />
       <div className={styles.container}>
         <main className={styles.main}>
           <aside>

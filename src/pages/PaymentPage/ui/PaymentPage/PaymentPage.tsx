@@ -4,6 +4,7 @@ import { Header } from '@widgets/Header';
 import { Title } from '@shared/ui/Title';
 import styles from './PaymentPage.module.scss';
 import { TripDetails } from '@widgets/TripDetails';
+import { ProgressSteps } from '@shared/ui/ProgressSteps';
 
 interface PaymentPageProps {
   className?: string;
@@ -12,6 +13,8 @@ export const PaymentPage = memo(({ className }: PaymentPageProps) => {
   return (
     <div className={classNames(styles.component, className)}>
       <Header />
+      <ProgressSteps step='step_3' />
+
       <div className={styles.container}>
         <main className={styles.main}>
           <aside>

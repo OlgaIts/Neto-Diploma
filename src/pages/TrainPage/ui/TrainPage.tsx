@@ -10,7 +10,7 @@ export const TrainPage = memo(() => {
   return (
     <div className={styles.component}>
       <Header />
-      <ProgressSteps />
+      <ProgressSteps step='step_1' />
       <div className={styles.container}>
         <main className={styles.main}>
           <aside>

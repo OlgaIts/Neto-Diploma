@@ -16,7 +16,7 @@ interface TripDetailFiltersProps {
   iconName?: string;
   direction: Direction;
 }
-//TODO: TripDetailsSidebar
+
 export const TripDetailFilters = memo(
   ({ className, iconName, title, direction }: TripDetailFiltersProps) => {
     const isDeparture = direction === 'departure';

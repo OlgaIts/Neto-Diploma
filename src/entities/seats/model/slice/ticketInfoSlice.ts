@@ -35,6 +35,8 @@ interface CoachTicketInfo {
 interface DirectionTicketInfo extends PersonSeatsCount {
   coaches: Record<number, CoachTicketInfo>;
   totalPrice: number;
+  adultPrice: number;
+  childPrice: number;
   totalSeatsCount: number;
 }
 
@@ -60,6 +62,8 @@ const initialTicketState: DirectionTicketInfo = {
   childCount: 0,
   childWithoutSeatCount: 0,
   coaches: {},
+  adultPrice: 0,
+  childPrice: 0,
   totalPrice: 0,
   totalSeatsCount: 0,
 };

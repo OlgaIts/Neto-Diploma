@@ -281,8 +281,6 @@ export const updateSeat =
         ? (seatPrice * 0.55).toFixed(2)
         : seatPrice;
 
-    console.log(currentPrice);
-
     dispatch(
       saveSeatPrice({
         direction,

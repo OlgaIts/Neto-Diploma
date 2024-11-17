@@ -16,7 +16,8 @@ export const PassengerPage = memo(({ className }: PassengerPageProps) => {
   return (
     <div className={classNames(styles.component, className)}>
       <Header />
-      <ProgressSteps />
+      <ProgressSteps step='step_2' />
+
       <div className={styles.container}>
         <main className={styles.main}>
           <aside>

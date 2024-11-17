@@ -11,7 +11,7 @@ export const CheckPage = memo(() => {
   return (
     <div className={styles.component}>
       <Header />
-      <ProgressSteps />
+      <ProgressSteps step='step_4' />
       <div className={styles.container}>
         <main className={styles.main}>
           <aside>

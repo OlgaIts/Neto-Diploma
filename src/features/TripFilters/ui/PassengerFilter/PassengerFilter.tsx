@@ -14,7 +14,7 @@ export const PassengerFilter = memo(({ direction }: PassengerFilterProps) => {
   const adultCount = useAppSelector(getAdultCount(direction));
   const childCount = useAppSelector(getChildCount(direction));
 
-  const getAdiltPlural = (adultCount: number) => {
+  const getAdultPlural = (adultCount: number) => {
     return adultCount === 1 ? 'Взрослый' : 'Взрослых';
   };
 
@@ -34,7 +34,7 @@ export const PassengerFilter = memo(({ direction }: PassengerFilterProps) => {
       <div className={styles.wrapper}>
         <p className={styles.text}>
           <span className={styles.count}>{adultCount}</span>
-          <span>{getAdiltPlural(adultCount)}</span>
+          <span>{getAdultPlural(adultCount)}</span>
         </p>
         <div>
           <span className={styles.price}>3456</span>
