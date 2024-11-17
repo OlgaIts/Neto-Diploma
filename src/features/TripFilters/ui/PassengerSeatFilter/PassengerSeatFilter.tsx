@@ -2,10 +2,11 @@ import { memo } from 'react';
 import classNames from 'classnames';
 import { Title } from '@shared/ui/Title';
 import { Icon } from '@shared/ui/Icon';
-import styles from './PassengerSeatFilter.module.scss';
-import { Direction } from '@shared/types';
 import { useAppSelector } from '@shared/lib/hooks';
 import { getCurrentWagonInfo } from '@entities/seats';
+import { translateWagonClass } from '@shared/lib/helpers';
+import { type Direction } from '@shared/types';
+import styles from './PassengerSeatFilter.module.scss';
 
 interface PassengerSeatFilterProps {
   className?: string;
@@ -26,7 +27,7 @@ export const PassengerSeatFilter = memo(
         <>
           <div className={styles.wrapper}>
             <p>Тип вагона</p>
-            <span>{wagonInfo?.wagonClass}</span>
+            <span>{translateWagonClass(wagonInfo?.wagonClass)}</span>
           </div>
 
           <div className={styles.wrapper}>

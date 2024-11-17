@@ -2,7 +2,7 @@ export { SeatsSchema } from './SeatsSchema/SeatsSchema';
 export {
   firstClassSeats,
   secondClassSeats,
-  thridClassSeats,
+  thirdClassSeats,
   fourthClassSeats,
 } from './consts/seatsParams';
 export { FirstClassSchema } from './FirstClassSchema/FirstClassSchema';

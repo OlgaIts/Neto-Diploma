@@ -24,7 +24,7 @@ const secondSeatsSizes = {
   height: 29,
 };
 
-const thirdSeadsSizes = {
+const thirdSeatsSizes = {
   startX: 133,
   width: 25,
   height: 31,
@@ -47,7 +47,7 @@ export const secondClassSeats = {
   top: Array.from({ length: seatsInRow }, (v, i) => 2 * i + 1),
 };
 
-export const thridClassSeats = {
+export const thirdClassSeats = {
   bottom: Array.from({ length: seatsInRow }, (v, i) => i * 2 + 2),
   top: Array.from({ length: seatsInRow }, (v, i) => i * 2 + 1),
   side: Array.from({ length: seatsInRow }, (v, i) => i * 1 + 33),
@@ -120,23 +120,23 @@ export const ThirdClassSeatsParams: SeatsParams = {
   row1: {
     y: 30,
     gap: getRoomSeatsGap,
-    seats: thridClassSeats.bottom,
-    width: thirdSeadsSizes.width,
-    height: thirdSeadsSizes.height,
+    seats: thirdClassSeats.bottom,
+    width: thirdSeatsSizes.width,
+    height: thirdSeatsSizes.height,
   },
   row2: {
     y: 61,
     gap: getRoomSeatsGap,
-    seats: thridClassSeats.top,
-    width: thirdSeadsSizes.width,
-    height: thirdSeadsSizes.height,
+    seats: thirdClassSeats.top,
+    width: thirdSeatsSizes.width,
+    height: thirdSeatsSizes.height,
   },
   row3: {
     y: 116,
     gap: getSideSeatsGap,
-    seats: thridClassSeats.side,
-    width: thirdSeadsSizes.sideWidth,
-    height: thirdSeadsSizes.sideHeight,
+    seats: thirdClassSeats.side,
+    width: thirdSeatsSizes.sideWidth,
+    height: thirdSeatsSizes.sideHeight,
   },
 };
 

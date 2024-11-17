@@ -1,18 +1,11 @@
 import {
   secondClassSeats,
-  thridClassSeats,
+  thirdClassSeats,
 } from '@shared/ui/WagonClassSchemes';
 import { NormalizedCoachData } from '../model/slice/seatsSlice';
 import { Seats } from '../model/types/seats';
 import { type WagonClass } from '../model/types/wagonClass';
 import { type SpecificPlace } from '@shared/types';
-
-const countSeatsByClass = {
-  first: 18,
-  second: 32,
-  third: 48,
-  fourth: 62,
-};
 
 const randomInteger = (min: number, max: number) => {
   const rand = min + Math.random() * (max + 1 - min);
@@ -27,9 +20,9 @@ const seatPlacementFunctions: Record<
   second: (seatNumber) =>
     secondClassSeats.bottom.includes(seatNumber) ? 'bottom' : 'top',
   third: (seatNumber) =>
-    thridClassSeats.bottom.includes(seatNumber)
+    thirdClassSeats.bottom.includes(seatNumber)
       ? 'bottom'
-      : thridClassSeats.top.includes(seatNumber)
+      : thirdClassSeats.top.includes(seatNumber)
         ? 'top'
         : 'side',
   fourth: () => null,
@@ -61,22 +54,19 @@ export const generateSeats = (seatsInfo: Seats[]) => {
         available_seats,
       } = info.coach;
 
-      const allSeats = Array.from(
-        { length: countSeatsByClass[class_type] },
-        (v, index) => index + 1,
-      );
       const seatsCount = { top: 0, bottom: 0, side: 0, total: available_seats };
       const availableSeats: Record<number, SpecificPlace> = {};
-      for (let i = 1; i <= available_seats; i++) {
-        const randomSeatIndex = randomInteger(0, allSeats.length - 1);
-        const seat = allSeats.splice(randomSeatIndex, 1)[0];
-        const seatPlacement =
-          seatPlacementFunctions[class_type](randomSeatIndex);
-        availableSeats[seat] = { available: true, placement: seatPlacement };
-        if (seatPlacement) {
-          seatsCount[seatPlacement] += 1;
+
+      info.seats.map((seat) => {
+        const { index: seatIndex, available } = seat;
+
+        if (available) {
+          availableSeats[seatIndex] = {
+            available,
+            placement: seatPlacementFunctions[class_type](seatIndex),
+          };
         }
-      }
+      });
 
       const randomCoachIndex = randomInteger(
         0,
