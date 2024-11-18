@@ -1,0 +1,24 @@
+.form {
+  margin-bottom: 44px;
+  display: flex;
+  gap: var(--padding-lg);
+}
+
+.input {
+  width: 447px;
+  padding: var(--padding-sm);
+  font: var(--fw-regular) var(--fs-md) var(--ff);
+  border: 1px solid var(--color-light);
+  border-radius: var(--radius);
+  outline: none;
+
+  &::placeholder {
+    font-size: var(--fs-text);
+    font-family: var(--ff);
+    color: var(--color-footer);
+  }
+
+  &:focus {
+    border: 1px solid var(--bg-accent-color);
+  }
+}

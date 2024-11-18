@@ -44,7 +44,7 @@ export const ConfirmWidget = memo(({ className }: ConfirmWidgetProps) => {
               <Icon iconName='icon-conductor' fontSize='130px' />
             </div>
             <p className={styles.text}>
-              <span>предьявите</span> распечатанные билеты при посадке
+              <span>предъявите</span> распечатанные билеты при посадке
             </p>
           </div>
         </section>

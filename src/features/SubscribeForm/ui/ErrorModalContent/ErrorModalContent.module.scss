@@ -1,0 +1,11 @@
+.component {
+  padding: var(--padding-lg);
+  background-color: var(--color-light);
+  font: var(--fw-regular) var--fs-text/1.7 var(--ff);
+  color: var(--bg-header-form);
+  text-align: center;
+}
+
+.error {
+  padding-top: var(--padding-xs);
+}

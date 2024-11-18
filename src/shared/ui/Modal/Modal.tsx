@@ -36,6 +36,7 @@ export const Modal = memo(
           onClick={(e) => e.stopPropagation()}
         >
           <Icon
+            fontSize='18px'
             iconName='icon-close'
             onClick={handleClose}
             className={styles.close_btn}

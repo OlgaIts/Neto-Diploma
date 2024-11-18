@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { Element, scroller } from 'react-scroll';
 import { Title } from '@shared/ui/Title';
-import { TransparentButton } from '@shared/ui/TransparentButton';
 import { Icon } from '@shared/ui/Icon';
+import { SubscribeForm } from '@features/SubscribeForm';
 import { socialLinks } from '../../consts/socialLinks';
 import { contactInfo } from '../../consts/contactInfo';
 import styles from './Footer.module.scss';
@@ -40,23 +40,7 @@ export const Footer = memo(() => {
                 Подписка
               </Title>
               <p className={styles.text}>Будьте в курсе событий</p>
-              <form action='' className={styles.form}>
-                <input
-                  type='email'
-                  name='email'
-                  id='email'
-                  placeholder='e-mail'
-                  className={styles.input}
-                />
-                <TransparentButton
-                  tag='button'
-                  size='small'
-                  weight='regular'
-                  uppercase
-                >
-                  отправить
-                </TransparentButton>
-              </form>
+              <SubscribeForm />
               <section className={styles.subscribe_section}>
                 <Title weight='medium' color='light'>
                   Подписывайтесь на нас
