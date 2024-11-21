@@ -2,6 +2,7 @@ import { memo } from 'react';
 import classNames from 'classnames';
 import { Title } from '@shared/ui/Title';
 import { Icon } from '@shared/ui/Icon';
+import { toLocalString } from '@shared/lib/utils';
 import styles from './TotalFilter.module.scss';
 
 interface TotalFilterProps {
@@ -16,9 +17,7 @@ export const TotalFilter = memo(
           Итог
         </Title>
         <div>
-          <span className={styles.price}>
-            {totalPrice.toLocaleString('ru-RU')}
-          </span>
+          <span className={styles.price}>{toLocalString(totalPrice)}</span>
           <Icon iconName='icon-ruble' color='primary' fontSize='26px' />
         </div>
       </div>

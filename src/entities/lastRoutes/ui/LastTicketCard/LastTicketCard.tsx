@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import classNames from 'classnames';
 import { Icon } from '@shared/ui/Icon';
+import { toLocalString } from '@shared/lib/utils';
 import { RouteCardServiceIcons } from '@entities/routes';
 import { type Route } from '../../../routes/model/types/route';
 import styles from './LastTicketCard.module.scss';
@@ -28,9 +29,7 @@ export const LastTicketCard = memo(({ item }: LastTicketCardProps) => {
         <RouteCardServiceIcons />
         <div className={styles.price_wrapper}>
           <span>от</span>
-          <span className={styles.price}>
-            {Number(item.min_price).toLocaleString('ru-RU')}
-          </span>
+          <span className={styles.price}>{toLocalString(item.min_price)}</span>
           <Icon iconName={'icon-ruble'} color='dark_gray' fontSize='28px' />
         </div>
       </div>

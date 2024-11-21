@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import classNames from 'classnames';
 import { Icon } from '@shared/ui/Icon';
 import { Button } from '@shared/ui/Button';
+import { toLocalString } from '@shared/lib/utils';
 import {
   useAppDispatch,
   useAppSelector,
@@ -95,9 +96,9 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
                   <p className={styles.price}>
                     от
                     <span>
-                      {Number(
-                        priceByClass[key](item.departure.price_info[key]),
-                      ).toLocaleString('ru-RU')}
+                      {toLocalString(
+                        priceByClass[key](item.departure.price_info[key]) ?? 0,
+                      )}
                     </span>
                     <Icon iconName={'icon-ruble'} fontSize='22px' />
                   </p>

@@ -17,6 +17,7 @@ import {
 import { addZero } from '@shared/lib/utils/addZero';
 import { Icon } from '@shared/ui/Icon';
 import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
+import { toLocalString } from '@shared/lib/utils';
 import { type Direction } from '@shared/types';
 import styles from './ChooseWagonSeat.module.scss';
 
@@ -103,9 +104,7 @@ export const ChooseWagonSeat = memo(({ direction }: ChooseWagonSeatProps) => {
       </div>
 
       <div className={styles.price_wrapper}>
-        <span className={styles.price}>
-          {Number(totalPrice).toLocaleString('ru-RU')}
-        </span>
+        <span className={styles.price}>{toLocalString(totalPrice)}</span>
         <Icon iconName={'icon-ruble'} fontSize='18px' color='dark_gray' />
       </div>
     </div>

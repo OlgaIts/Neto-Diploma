@@ -3,6 +3,7 @@ import { Icon } from '@shared/ui/Icon';
 import { Title } from '@shared/ui/Title';
 import { useAppSelector } from '@shared/lib/hooks';
 import { getAdultCount, getChildCount, getTicketInfo } from '@entities/seats';
+import { toLocalString } from '@shared/lib/utils';
 import { type Direction } from '@shared/types';
 import styles from './PassengerFilter.module.scss';
 
@@ -39,7 +40,7 @@ export const PassengerFilter = memo(({ direction }: PassengerFilterProps) => {
         </p>
         <div>
           <span className={styles.price}>
-            {Number(ticketInfo.adultPrice).toLocaleString('ru')}
+            {toLocalString(ticketInfo.adultPrice)}
           </span>
           <Icon iconName='icon-ruble' color='primary' fontSize='18px' />
         </div>
@@ -52,7 +53,7 @@ export const PassengerFilter = memo(({ direction }: PassengerFilterProps) => {
           </p>
           <div>
             <span className={styles.price}>
-              {Number(ticketInfo.childPrice).toLocaleString('ru')}
+              {toLocalString(ticketInfo.childPrice)}
             </span>
             <Icon iconName='icon-ruble' color='primary' fontSize='18px' />
           </div>
