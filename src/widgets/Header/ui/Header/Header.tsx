@@ -8,7 +8,7 @@ export const Header = memo(() => {
     <header className={styles.header}>
       <HeaderNav />
       <div className={styles.container}>
-        <TicketForm  className={styles.form}/>
+        <TicketForm className={styles.form} />
       </div>
     </header>
   );

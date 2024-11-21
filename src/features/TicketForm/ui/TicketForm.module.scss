@@ -40,3 +40,16 @@
 .icon {
   cursor: pointer;
 }
+
+.rotated {
+  animation: rotate 1s ease-in-out;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-180deg);
+  }
+}

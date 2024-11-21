@@ -14,11 +14,9 @@ const wagonType = ['Взрослый', 'Детский'];
 export const PassengerForm = memo(() => {
   const dispatch = useAppDispatch();
 
-  const fullNameChange =
-    (id: 'lastName' | 'firstName' | 'middleName') =>
-    (event: ChangeEvent<HTMLInputElement>) => {
-      dispatch(setFullName({ [id]: event.target.value }));
-    };
+  const fullNameChange = (id: string, value: string) => {
+    dispatch(setFullName({ [id]: value }));
+  };
 
   const birthdayChange = (event: ChangeEvent<HTMLInputElement>) => {
     dispatch(setBirthday(event.target.value));
@@ -37,21 +35,21 @@ export const PassengerForm = memo(() => {
             label='Фамилия'
             type='text'
             placeholder='Фамилия'
-            onChange={fullNameChange('lastName')}
+            onChange={fullNameChange}
           />
           <CustomInput
             id='firstName'
             label='Имя'
             type='text'
             placeholder='Имя'
-            onChange={fullNameChange('firstName')}
+            onChange={fullNameChange}
           />
           <CustomInput
             id='middleName'
             label='Отчество'
             type='text'
             placeholder='Отчество'
-            onChange={fullNameChange('middleName')}
+            onChange={fullNameChange}
           />
         </div>
 
@@ -63,6 +61,7 @@ export const PassengerForm = memo(() => {
             type='text'
             placeholder='ДД/ММ/ГГ'
             onChange={birthdayChange}
+            // TODO: типизировать и исправить ошибку
           />
         </div>
 

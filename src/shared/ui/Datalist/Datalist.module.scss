@@ -1,7 +1,12 @@
+.component {
+  position: relative;
+}
+
 .input {
-  width: 325px;
   padding: var(--gap-sm);
+  width: 325px;
   font: var(--fw-regular) var(--fs-sm) var(--ff);
+  text-transform: uppercase;
   color: var(--bg-header-form);
   border-radius: 3px;
   border: none;
@@ -11,4 +16,42 @@
 .input::placeholder {
   font: var(--fw-regular) var(--fs-sm) var(--ff);
   color: var(--color-footer);
+}
+
+.datalist {
+  position: absolute;
+  top: 67px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  border-radius: 3px;
+  z-index: 99;
+}
+
+.item {
+  padding: var(--padding-xs) var(--margin-md);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--bg-focus-btn);
+  }
+}
+
+.icon_close {
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: var(--bg-focus-btn);
+  }
+}
+
+.icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
 }

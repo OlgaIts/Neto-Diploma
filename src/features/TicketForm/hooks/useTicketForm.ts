@@ -15,7 +15,7 @@ export const useTicketForm = () => {
   const dateEnd = useAppSelector(getRouteDateEnd);
   const location = useLocation();
   const navigate = useNavigate();
-  const { register, handleSubmit, setValue, watch } = useForm({
+  const { register, handleSubmit, setValue, getValues, watch } = useForm({
     defaultValues: initialState,
   });
   const fromCity = watch('from');
@@ -57,6 +57,7 @@ export const useTicketForm = () => {
     register,
     handleSubmit,
     setValue,
+    getValues,
     fromCityName: fromCity?.name || '',
     toCityName: toCity?.name || '',
     onSubmit,

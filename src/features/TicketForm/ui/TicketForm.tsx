@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { registerLocale } from 'react-datepicker';
@@ -20,20 +20,33 @@ interface TicketFormProps {
 }
 
 export const TicketForm = memo(({ className }: TicketFormProps) => {
+  const dispatch = useAppDispatch();
   const location = useLocation();
   const isMainPage = location.pathname === '/';
   const {
     register,
     handleSubmit,
     setValue,
+    getValues,
     fromCityName,
     toCityName,
     onSubmit,
     returnDate,
     departureDate,
   } = useTicketForm();
+  const [isRotated, setIsRotated] = useState(false);
 
-  const dispatch = useAppDispatch();
+  const handleSwitch = () => {
+    setIsRotated(true);
+
+    const fromCity = getValues('from');
+    const toCity = getValues('to');
+
+    if (fromCity && toCity) {
+      setValue('from', toCity);
+      setValue('to', fromCity);
+    }
+  };
 
   const handleFromCitySelect = (city: { id: string; name: string }) => {
     dispatch(setFromCity(city));
@@ -75,9 +88,9 @@ export const TicketForm = memo(({ className }: TicketFormProps) => {
             iconName={'icon-arrow-loop'}
             color='grey'
             fontSize='16px'
-            className={styles.icon}
-            //TODO: дописать логику
-            onClick={() => console.log('work')}
+            className={classNames(styles.icon, { [styles.rotated]: isRotated })}
+            onClick={handleSwitch}
+            onAnimationEnd={() => setIsRotated(false)}
           />
           <CitySelect
             register={register}

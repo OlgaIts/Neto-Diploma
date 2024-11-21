@@ -7,10 +7,11 @@ interface DirectionInfo {
   datetime: number;
 }
 
-interface SeatsPrice {
+export interface SeatsPrice {
   top_price?: number;
   bottom_price?: number;
   side_price?: number;
+  price?: number;
 }
 
 export interface BaseRoute {

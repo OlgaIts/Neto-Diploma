@@ -1,6 +1,5 @@
 .calendar {
   font-size: var(--fs-xs);
-  z-index: 999;
 }
 
 .input {
@@ -29,14 +28,12 @@
 :global(.react-datepicker) {
   font: var(--fw-regular) var(--fs-md) var(--ff);
   border: none;
-
 }
 
 :global(.react-datepicker__month-container) {
   width: 330px;
   box-shadow: var(--shadow);
   border-radius: var(--radius);
-
 }
 
 :global(.react-datepicker__header) {
@@ -45,7 +42,6 @@
   display: grid;
   place-content: center;
   border-bottom: 2px solid var(--color-footer);
-
 }
 
 :global(.react-datepicker__day-names) {

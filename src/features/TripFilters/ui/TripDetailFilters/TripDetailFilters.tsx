@@ -4,7 +4,7 @@ import { DirectionFilterHeader } from '@shared/ui/DirectionFilterHeader';
 import { Icon } from '@shared/ui/Icon';
 import { useAppSelector } from '@shared/lib/hooks';
 import { getArrivalInfo, getDepartureInfo } from '@entities/seats';
-import { formatDate, formatDatetime } from '@shared/lib/helpers';
+import { formatDate, formatDatetime } from '@shared/lib/utils';
 import { type Direction } from '@shared/types';
 import { PassengerFilter } from '../PassengerFilter/PassengerFilter';
 import { PassengerSeatFilter } from '../PassengerSeatFilter/PassengerSeatFilter';

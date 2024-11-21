@@ -19,10 +19,19 @@ interface IconProps {
   color?: IconColor;
   fontSize?: string;
   onClick?: () => void;
+  onAnimationEnd?: () => void;
 }
 
 export const Icon = memo(
-  ({ children, className, iconName, color, fontSize, onClick }: IconProps) => {
+  ({
+    children,
+    className,
+    iconName,
+    color,
+    fontSize,
+    onClick,
+    onAnimationEnd,
+  }: IconProps) => {
     const iconStyle = classNames(
       iconStyles[iconName],
       color && styles[color],
@@ -36,6 +45,7 @@ export const Icon = memo(
           fontSize,
         }}
         onClick={onClick}
+        onAnimationEnd={onAnimationEnd}
       >
         {children}
       </i>

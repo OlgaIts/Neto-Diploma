@@ -4,7 +4,7 @@ import { Title } from '@shared/ui/Title';
 import { Icon } from '@shared/ui/Icon';
 import { useAppSelector } from '@shared/lib/hooks';
 import { getTicketInfo } from '@entities/seats';
-import { wagonClassTranslations } from '@shared/lib/helpers';
+import { wagonClassTranslations } from '@shared/lib/utils';
 import { type Direction } from '@shared/types';
 import styles from './PassengerSeatFilter.module.scss';
 

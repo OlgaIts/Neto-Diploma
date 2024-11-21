@@ -3,7 +3,7 @@ import moment from 'moment';
 import classNames from 'classnames';
 import { Icon } from '@shared/ui/Icon';
 import { useAppSelector } from '@shared/lib/hooks';
-import { formatDatetime } from '@shared/lib/helpers';
+import { formatDatetime } from '@shared/lib/utils';
 import {
   getArrivalInfo,
   getDepartureInfo,

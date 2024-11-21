@@ -14,7 +14,7 @@ import {
   updateSeat,
   type Seats,
 } from '@entities/seats';
-import { addZero } from '@shared/lib/helpers/addZero';
+import { addZero } from '@shared/lib/utils/addZero';
 import { Icon } from '@shared/ui/Icon';
 import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import { type Direction } from '@shared/types';

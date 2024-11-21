@@ -2,10 +2,10 @@ import { memo } from 'react';
 import classNames from 'classnames';
 import { Icon } from '@shared/ui/Icon';
 import { Route } from '@entities/routes/model/types/route';
-import { formatDatetime } from '@shared/lib/helpers/formatDatetime';
+import { formatDatetime } from '@shared/lib/utils/formatDatetime';
 import { WagonTypes } from '../WagonTypes/WagonTypes';
 import styles from './RouteCard.module.scss';
-import { formatDate } from '@shared/lib/helpers';
+import { formatDate } from '@shared/lib/utils';
 interface RouteCardProps {
   className?: string;
   item: Route;

@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { useAppSelector } from '@shared/lib/hooks';
-import { addZero } from '@shared/lib/helpers';
+import { addZero } from '@shared/lib/utils';
 import { type Direction } from '@shared/types';
 import { ServiceIcons } from '../ServiceIcons/ServiceIcons';
 import { getCurrentWagonInfo } from '../../model/selectors/currentWagonInfoSelector';

@@ -19,7 +19,7 @@ export const TotalFilter = memo(
           <span className={styles.price}>
             {totalPrice.toLocaleString('ru-RU')}
           </span>
-          <Icon iconName='icon-ruble' color='primary' fontSize='28px' />
+          <Icon iconName='icon-ruble' color='primary' fontSize='26px' />
         </div>
       </div>
     );

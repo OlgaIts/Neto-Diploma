@@ -53,7 +53,7 @@ export const CustomDatePicker = memo(
         selected={selected}
         onChange={onChange}
         dateFormat='dd.MM.yyyy'
-        className={classNames(styles.datepicker, className)}
+        className={className}
       />
     );
   },

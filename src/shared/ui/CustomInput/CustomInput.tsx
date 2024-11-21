@@ -2,17 +2,14 @@ import { ChangeEvent, memo } from 'react';
 import classNames from 'classnames';
 import styles from './CustomInput.module.scss';
 
-interface CustomInputProps {
+interface CustomInputProps<T = string> {
   className?: string;
   id: string;
   placeholder?: string;
   type: string;
   label: string;
-  value?: string;
-  onChange: (
-    id: string,
-    value: string,
-  ) => (event: ChangeEvent<HTMLInputElement>) => void;
+  value?: T;
+  onChange: (id: string, value: T) => void;
 }
 
 export const CustomInput = memo(
@@ -39,7 +36,7 @@ export const CustomInput = memo(
           id={id}
           type={type}
           placeholder={placeholder}
-          value={value}
+          value={value as string}
           onChange={handleChange}
         />
       </div>

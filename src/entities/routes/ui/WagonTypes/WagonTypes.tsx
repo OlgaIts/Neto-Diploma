@@ -21,6 +21,7 @@ import { getRouteFilter } from '../../model/selectors/selector';
 import { wagonType } from '../../model/consts/wagonType';
 import { RouteCardServiceIcons } from '../RouteCardServiceIcons/RouteCardServiceIcons';
 import { type Route } from '../../model/types/route';
+import { type SeatsPrice } from '@shared/types/direction';
 import styles from './WagonTypes.module.scss';
 
 interface WagonTypesProps {
@@ -47,6 +48,15 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
     ref: tooltipRef,
     handleClickOutside: () => setOpenTooltipIndex(null),
   });
+
+  const priceByClass = {
+    first: (price_info: SeatsPrice) => price_info.price,
+    second: ({ bottom_price, top_price }: SeatsPrice) =>
+      Math.min(bottom_price || 0, top_price || 0),
+    third: ({ bottom_price, top_price, side_price }: SeatsPrice) =>
+      Math.min(bottom_price || 0, top_price || 0, side_price || 0),
+    fourth: (price_info: SeatsPrice) => price_info.price,
+  };
 
   const redirectSeats = useCallback(() => {
     dispatch(setDeparture(item.departure));
@@ -81,15 +91,17 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
                     <Tooltip item={item} seatsClass={key} />
                   )}
                 </div>
-                <p className={styles.price}>
-                  от
-                  <span>
-                    {Number(
-                      item.departure.price_info[key]?.top_price,
-                    ).toLocaleString('ru-RU')}
-                  </span>
-                  <Icon iconName={'icon-ruble'} fontSize='22px' />
-                </p>
+                {item.departure.price_info[key] && (
+                  <p className={styles.price}>
+                    от
+                    <span>
+                      {Number(
+                        priceByClass[key](item.departure.price_info[key]),
+                      ).toLocaleString('ru-RU')}
+                    </span>
+                    <Icon iconName={'icon-ruble'} fontSize='22px' />
+                  </p>
+                )}
               </li>
             ))}
         </ul>

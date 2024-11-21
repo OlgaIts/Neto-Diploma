@@ -276,10 +276,10 @@ export const updateSeat =
 
     const newSeatActiveState = !currentInfo?.seats?.[seatNumber].active;
     const { adultCount, totalSeatsCount } = ticketInfo;
-    const currentPrice =
-      totalSeatsCount + 1 > adultCount
-        ? (seatPrice * 0.55).toFixed(2)
-        : seatPrice;
+    const isChildSeat = totalSeatsCount + 1 > adultCount;
+    const currentPrice = isChildSeat
+      ? (seatPrice * 0.55).toFixed(2)
+      : seatPrice;
 
     dispatch(
       saveSeatPrice({
@@ -287,7 +287,12 @@ export const updateSeat =
         data: {
           wagonNumber,
           wagonClass,
-          seat: { [seatNumber]: newSeatActiveState ? Number(currentPrice) : 0 },
+          seat: {
+            [seatNumber]: {
+              price: newSeatActiveState ? Number(currentPrice) : 0,
+              isChildSeat,
+            },
+          },
         },
       }),
     );

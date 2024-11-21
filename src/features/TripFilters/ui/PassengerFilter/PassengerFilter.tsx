@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { Icon } from '@shared/ui/Icon';
 import { Title } from '@shared/ui/Title';
 import { useAppSelector } from '@shared/lib/hooks';
-import { getAdultCount, getChildCount } from '@entities/seats';
+import { getAdultCount, getChildCount, getTicketInfo } from '@entities/seats';
 import { type Direction } from '@shared/types';
 import styles from './PassengerFilter.module.scss';
 
@@ -13,6 +13,7 @@ interface PassengerFilterProps {
 export const PassengerFilter = memo(({ direction }: PassengerFilterProps) => {
   const adultCount = useAppSelector(getAdultCount(direction));
   const childCount = useAppSelector(getChildCount(direction));
+  const ticketInfo = useAppSelector(getTicketInfo(direction));
 
   const getAdultPlural = (adultCount: number) => {
     return adultCount === 1 ? 'Взрослый' : 'Взрослых';
@@ -37,7 +38,9 @@ export const PassengerFilter = memo(({ direction }: PassengerFilterProps) => {
           <span>{getAdultPlural(adultCount)}</span>
         </p>
         <div>
-          <span className={styles.price}>3456</span>
+          <span className={styles.price}>
+            {Number(ticketInfo.adultPrice).toLocaleString('ru')}
+          </span>
           <Icon iconName='icon-ruble' color='primary' fontSize='18px' />
         </div>
       </div>
@@ -48,7 +51,9 @@ export const PassengerFilter = memo(({ direction }: PassengerFilterProps) => {
             <span>{getChildPlural(childCount)}</span>
           </p>
           <div>
-            <span className={styles.price}>3456</span>
+            <span className={styles.price}>
+              {Number(ticketInfo.childPrice).toLocaleString('ru')}
+            </span>
             <Icon iconName='icon-ruble' color='primary' fontSize='18px' />
           </div>
         </div>
