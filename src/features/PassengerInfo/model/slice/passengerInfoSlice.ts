@@ -1,70 +1,27 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { type Passenger } from '../../types/passenger';
 
-interface FullNamePayload {
-  lastName?: string;
-  firstName?: string;
-  middleName?: string;
+interface PassengerState {
+  passengers: Record<number, Passenger>;
 }
 
-interface passengerInfoState {
-  passengerType: string;
-  fullName: FullNamePayload;
-  birthday: string;
-  documentType: string;
-  passSeries: string;
-  passNumber: string;
-  birthNumber: string;
-}
-
-const initialState: passengerInfoState = {
-  passengerType: '',
-  fullName: {
-    lastName: '',
-    firstName: '',
-    middleName: '',
-  },
-  birthday: '',
-  documentType: '',
-  passSeries: '',
-  passNumber: '',
-  birthNumber: '',
+const initialState: PassengerState = {
+  passengers: {},
 };
 
 const passengerInfoSlice = createSlice({
   name: 'passengerInfo',
   initialState,
   reducers: {
-    setPassengerType: (state, action: PayloadAction<string>) => {
-      state.passengerType = action.payload;
-    },
-    setFullName: (state, action: PayloadAction<FullNamePayload>) => {
-      state.fullName = { ...state.fullName, ...action.payload };
-    },
-    setBirthday: (state, action: PayloadAction<string>) => {
-      state.birthday = action.payload;
-    },
-    setDocumentType: (state, action: PayloadAction<string>) => {
-      state.documentType = action.payload;
-    },
-    setPassSeries: (state, action: PayloadAction<string>) => {
-      state.passSeries = action.payload;
-    },
-    setPassNumber: (state, action: PayloadAction<string>) => {
-      state.passNumber = action.payload;
-    },
-    setBirthNumber: (state, action: PayloadAction<string>) => {
-      state.birthNumber = action.payload;
+    savePassengers: (
+      state,
+      action: PayloadAction<{ id: number; passenger: Passenger }>,
+    ) => {
+      const { id, passenger } = action.payload;
+      state.passengers[id] = passenger;
     },
   },
 });
 
-export const {
-  setPassengerType,
-  setFullName,
-  setBirthday,
-  setDocumentType,
-  setPassSeries,
-  setPassNumber,
-  setBirthNumber,
-} = passengerInfoSlice.actions;
+export const { savePassengers } = passengerInfoSlice.actions;
 export const passengerInfoReducer = passengerInfoSlice.reducer;

@@ -17,13 +17,6 @@ export const DropdownButton = memo(
     const [openModal, setOpenModal] = useState(false);
     const [value, setValue] = useState(list[0]);
 
-    // const handleSelect = (index: number) => {
-    //   setValue(list[index]);
-    //   setOpenModal(false);
-    //   if (onSelect) {
-    //     onSelect(list[index]);
-    //   }
-    // };
     const handleSelect = (index: number) => {
       const selectedValue = list[index];
       setValue(selectedValue);

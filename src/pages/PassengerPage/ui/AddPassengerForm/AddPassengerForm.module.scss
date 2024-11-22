@@ -1,4 +1,10 @@
-.component {
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.item {
   box-shadow: var(--shadow);
 }
 

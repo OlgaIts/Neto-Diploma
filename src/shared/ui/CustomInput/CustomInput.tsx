@@ -1,30 +1,27 @@
-import { ChangeEvent, memo } from 'react';
+import { ForwardedRef, forwardRef, memo } from 'react';
 import classNames from 'classnames';
 import styles from './CustomInput.module.scss';
+import { FieldValues, Path } from 'react-hook-form';
 
-interface CustomInputProps<T = string> {
-  className?: string;
+interface CustomInputProps<T extends FieldValues> {
   id: string;
   placeholder?: string;
-  type: string;
   label: string;
-  value?: T;
-  onChange: (id: string, value: T) => void;
+  // onChange: (id: string, value: T) => void;
+  name: Path<T>;
+  autoComplete?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown?: (e: KeyboardEvent) => void;
+  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  className?: string;
 }
 
 export const CustomInput = memo(
-  ({
-    className,
-    id,
-    placeholder,
-    type = 'text',
-    label,
-    value,
-    onChange,
-  }: CustomInputProps) => {
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-      onChange(id, event.target.value);
-    };
+  forwardRef(function CustomInput<T extends FieldValues>(
+    props: CustomInputProps<T>,
+    ref: ForwardedRef<HTMLInputElement | null>,
+  ) {
+    const { id, label, name, className, onChange, placeholder } = props;
 
     return (
       <div className={classNames(className)}>
@@ -32,15 +29,17 @@ export const CustomInput = memo(
           {label}
         </label>
         <input
+          name={name}
           className={styles.input}
           id={id}
-          type={type}
+          type='text'
           placeholder={placeholder}
-          value={value as string}
-          onChange={handleChange}
+          ref={ref}
+          onChange={onChange}
         />
       </div>
     );
-  },
+  }),
 );
+
 CustomInput.displayName = 'CustomInput';

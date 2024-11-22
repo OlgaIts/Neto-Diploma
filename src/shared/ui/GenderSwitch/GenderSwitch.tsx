@@ -1,13 +1,9 @@
 import { memo } from 'react';
-import classNames from 'classnames';
 import styles from './GenderSwitch.module.scss';
 
-interface GenderSwitchProps {
-  className?: string;
-}
-export const GenderSwitch = memo(({ className }: GenderSwitchProps) => {
+export const GenderSwitch = memo(() => {
   return (
-    <div className={className}>
+    <div>
       <label className={styles.gender}>Пол</label>
       <fieldset className={styles.switch}>
         <input

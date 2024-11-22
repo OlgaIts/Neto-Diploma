@@ -25,7 +25,7 @@ export const PassengerPage = memo(({ className }: PassengerPageProps) => {
           </aside>
           <section className={styles.section}>
             {/* TODO: отдельный компонент */}
-            <div className={styles.add_wrapper}>
+            {/* <div className={styles.add_wrapper}>
               <Title color='dark' weight='regular'>
                 Добавить пассажира
               </Title>
@@ -35,7 +35,7 @@ export const PassengerPage = memo(({ className }: PassengerPageProps) => {
                 onClick={() => console.log('add')}
                 color='accent'
               />
-            </div>
+            </div> */}
             <AddPassengerForm />
           </section>
         </main>

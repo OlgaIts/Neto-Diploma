@@ -1,25 +1,38 @@
-import { ChangeEvent, memo } from 'react';
+import { memo, useState } from 'react';
 import { GenderSwitch } from '@shared/ui/GenderSwitch';
 import { CustomInput } from '@shared/ui/CustomInput';
 import { Checkbox } from '@shared/ui/Checkbox';
 import { DropdownButton } from '@shared/ui/DropdownButton';
 import { Button } from '@shared/ui/Button';
 import { useAppDispatch } from '@shared/lib/hooks';
-import { setBirthday, setFullName } from '../../model/slice/passengerInfoSlice';
+import { type Passenger } from '@features/PassengerInfo/types/passenger';
 import { PassInfoForm } from '../PassInfoForm/PassInfoForm';
 import styles from './PassengerForm.module.scss';
+import { savePassengers } from '@features/PassengerInfo/model/slice/passengerInfoSlice';
+import { useForm } from 'react-hook-form';
 
 const wagonType = ['Взрослый', 'Детский'];
 
-export const PassengerForm = memo(() => {
+const initialValues: Passenger = {
+  isAdult: true,
+  firstName: '',
+  lastName: '',
+  middleName: '',
+  isMan: true,
+  birthday: '',
+  documentType: 'Паспорт РФ',
+  passSeries: '',
+  passNumber: '',
+  birthNumber: '',
+};
+
+export const PassengerForm = memo(({ id }: { id: number }) => {
   const dispatch = useAppDispatch();
+  const { register, handleSubmit } = useForm({ defaultValues: initialValues });
 
-  const fullNameChange = (id: string, value: string) => {
-    dispatch(setFullName({ [id]: value }));
-  };
-
-  const birthdayChange = (event: ChangeEvent<HTMLInputElement>) => {
-    dispatch(setBirthday(event.target.value));
+  const onSubmit = (data: Passenger) => {
+    dispatch(savePassengers({ id, passenger: data }));
+    console.log(data);
   };
 
   return (
@@ -28,28 +41,20 @@ export const PassengerForm = memo(() => {
         <DropdownButton list={wagonType} />
       </div>
 
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.name_wrapper}>
           <CustomInput
             id='lastName'
             label='Фамилия'
-            type='text'
             placeholder='Фамилия'
-            onChange={fullNameChange}
+            {...register('lastName')}
           />
-          <CustomInput
-            id='firstName'
-            label='Имя'
-            type='text'
-            placeholder='Имя'
-            onChange={fullNameChange}
-          />
+          <CustomInput id='firstName' label='Имя' placeholder='Имя' name='' />
           <CustomInput
             id='middleName'
             label='Отчество'
-            type='text'
             placeholder='Отчество'
-            onChange={fullNameChange}
+            {...register('middleName')}
           />
         </div>
 
@@ -58,10 +63,8 @@ export const PassengerForm = memo(() => {
           <CustomInput
             id='birthday'
             label='Дата рождения'
-            type='text'
             placeholder='ДД/ММ/ГГ'
-            onChange={birthdayChange}
-            // TODO: типизировать и исправить ошибку
+            {...register('birthday')}
           />
         </div>
 
@@ -69,12 +72,30 @@ export const PassengerForm = memo(() => {
           <Checkbox labelText='ограниченная подвижность' id='mobility' />
         </div>
       </form>
-      <PassInfoForm />
+      {/* <PassInfoForm formData={formData.documentType} onChange={handleChange} /> */}
 
-      <Button className={styles.btn} color='black' tag='button' bgColor='light'>
+      <Button
+        className={styles.btn}
+        color='black'
+        tag='button'
+        bgColor='light'
+        type='submit'
+        onClick={handleSubmit(onSubmit)}
+      >
         Следующий пассажир
       </Button>
     </section>
   );
 });
 PassengerForm.displayName = 'PassengerForm';
+
+// const handleChange = (field: keyof Passenger, value: string | boolean) => {
+//   setFormData((prev) => ({
+//     ...prev,
+//     [field]: value,
+//   }));
+// };
+
+// const handleSubmit = () => {
+//   dispatch(savePassengers());
+// };
