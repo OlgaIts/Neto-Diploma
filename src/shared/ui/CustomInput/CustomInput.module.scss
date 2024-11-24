@@ -15,3 +15,13 @@
     border: 1px solid var(--bg-accent-color);
   }
 }
+
+.error {
+  border: 1px solid var(--error);
+  outline: 1px solid var(--error);
+  color: var(--error);
+
+  &:focus {
+    border: 1px solid var(--error);
+  }
+}

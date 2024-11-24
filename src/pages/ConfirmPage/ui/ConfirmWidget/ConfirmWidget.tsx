@@ -71,6 +71,7 @@ export const ConfirmWidget = memo(({ className }: ConfirmWidgetProps) => {
             color='black'
             uppercase
             className={styles.btn}
+            onClick={() => scroll(0, 0)}
           >
             вернуться на главную
           </Button>

@@ -1,10 +1,9 @@
 import { memo } from 'react';
 import classNames from 'classnames';
-import { Header } from '@widgets/Header';
+import { Button } from '@shared/ui/Button';
 import { ProgressSteps } from '@shared/ui/ProgressSteps';
+import { Header } from '@widgets/Header';
 import { TripDetails } from '@widgets/TripDetails';
-import { Icon } from '@shared/ui/Icon';
-import { Title } from '@shared/ui/Title';
 import { AddPassengerForm } from './AddPassengerForm/AddPassengerForm';
 import styles from './PassengerPage.module.scss';
 
@@ -24,19 +23,10 @@ export const PassengerPage = memo(({ className }: PassengerPageProps) => {
             <TripDetails />
           </aside>
           <section className={styles.section}>
-            {/* TODO: отдельный компонент */}
-            {/* <div className={styles.add_wrapper}>
-              <Title color='dark' weight='regular'>
-                Добавить пассажира
-              </Title>
-              <Icon
-                className={styles.add_icon}
-                iconName={'icon-plus'}
-                onClick={() => console.log('add')}
-                color='accent'
-              />
-            </div> */}
             <AddPassengerForm />
+            <Button color='white' tag='Link' bgColor='primary' to='/payment'>
+              Далее
+            </Button>
           </section>
         </main>
       </div>

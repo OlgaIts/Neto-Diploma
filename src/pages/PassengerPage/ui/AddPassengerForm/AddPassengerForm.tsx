@@ -8,8 +8,26 @@ import { getSeatCount } from '@entities/seats';
 import styles from './AddPassengerForm.module.scss';
 
 export const AddPassengerForm = memo(() => {
+  //TODO: выбрать максимальное число из двух направлений.
   const totalSeatsCount = useAppSelector(getSeatCount('departure'));
-  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  // const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const [openForms, setOpenForms] = useState<boolean[]>(() =>
+    Array(totalSeatsCount)
+      .fill(false)
+      .map((_, i) => i === 0),
+  );
+
+  const toggleForm = (index: number) => {
+    setOpenForms((prev) =>
+      prev.map((isOpen, i) => (i === index ? !isOpen : isOpen)),
+    );
+  };
+
+  const openNextForm = (index: number) => {
+    setOpenForms((prev) =>
+      prev.map((isOpen, i) => (i === index + 1 ? true : isOpen)),
+    );
+  };
 
   return (
     <ul className={styles.list}>
@@ -20,15 +38,16 @@ export const AddPassengerForm = memo(() => {
               <div
                 className={classNames(
                   styles.icon_wrapper,
-                  activeIndex === index ? styles.icon_active : '',
+                  openForms[index] ? styles.icon_active : '',
                 )}
                 onClick={() =>
-                  setActiveIndex((prev) => (prev === index ? null : index))
+                  // setActiveIndex((prev) => (prev === index ? null : index))
+                  toggleForm(index)
                 }
               >
                 <Icon
-                  iconName={activeIndex === index ? 'icon-minus' : 'icon-plus'}
-                  color={activeIndex === index ? 'dark_gray' : 'accent'}
+                  iconName={openForms[index] ? 'icon-minus' : 'icon-plus'}
+                  color={openForms[index] ? 'dark_gray' : 'accent'}
                   fontSize='16px'
                 />
               </div>
@@ -36,14 +55,13 @@ export const AddPassengerForm = memo(() => {
                 Пассажир <span>{index + 1}</span>
               </Title>
             </div>
-            <Icon
-              iconName={'icon-close'}
-              fontSize='12px'
-              color='grey'
-              className={styles.passenger_icon}
-            />
           </header>
-          {activeIndex === index && <PassengerForm id={index} />}
+          {openForms[index] && (
+            <PassengerForm
+              id={index}
+              openNextForm={() => openNextForm(index)}
+            />
+          )}
         </li>
       ))}
     </ul>

@@ -7,13 +7,13 @@ interface CustomInputProps<T extends FieldValues> {
   id: string;
   placeholder?: string;
   label: string;
-  // onChange: (id: string, value: T) => void;
   name: Path<T>;
   autoComplete?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: (e: KeyboardEvent) => void;
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
   className?: string;
+  error?: boolean;
 }
 
 export const CustomInput = memo(
@@ -21,7 +21,7 @@ export const CustomInput = memo(
     props: CustomInputProps<T>,
     ref: ForwardedRef<HTMLInputElement | null>,
   ) {
-    const { id, label, name, className, onChange, placeholder } = props;
+    const { id, label, name, className, onChange, placeholder, error } = props;
 
     return (
       <div className={classNames(className)}>
@@ -30,7 +30,7 @@ export const CustomInput = memo(
         </label>
         <input
           name={name}
-          className={styles.input}
+          className={classNames(styles.input, error ? styles.error : '')}
           id={id}
           type='text'
           placeholder={placeholder}

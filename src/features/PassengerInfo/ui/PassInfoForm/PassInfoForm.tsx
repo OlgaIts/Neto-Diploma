@@ -4,25 +4,24 @@ import { CustomInput } from '@shared/ui/CustomInput';
 import { Passenger } from '@features/PassengerInfo/types/passenger';
 import styles from './PassInfoForm.module.scss';
 import { register } from 'react-scroll/modules/mixins/scroller';
+import { UseFormRegister } from 'react-hook-form';
 
 const pass = ['Паспорт РФ', 'Свидетельство о рождении'];
 
 type DocumentType = (typeof pass)[number];
 const documentConfig: Record<
   DocumentType,
-  { id: string; label: string; type: string; placeholder: string }[]
+  { id: string; label: string; placeholder: string }[]
 > = {
   'Паспорт РФ': [
     {
       id: 'passSeries',
       label: 'Серия',
-      type: 'text',
       placeholder: '__ __ __ __',
     },
     {
       id: 'passNumber',
       label: 'Номер',
-      type: 'text',
       placeholder: '__ __ __ __ __ __',
     },
   ],
@@ -30,7 +29,6 @@ const documentConfig: Record<
     {
       id: 'birthNumber',
       label: 'Номер',
-      type: 'text',
       placeholder: '12 символов',
     },
   ],
@@ -39,31 +37,16 @@ const documentConfig: Record<
 interface PassInfoFormProps {
   formData: Passenger;
   onChange: (field: keyof Passenger, value: string) => void;
+  register: UseFormRegister<Passenger>;
 }
 
 export const PassInfoForm = memo(
   ({ formData, onChange }: PassInfoFormProps) => {
     const [changeDocument, setChangeDocument] = useState(pass[0]);
 
-    // const handleChangeDocument = (value: string) => {
-    //   setChangeDocument(value);
-    // };
-
-    // const addValue = (value: string) => {
-    //   dispatch(setDocumentType(value));
-    // };
-
-    // const handleInputChange = (id: string, value: string) => {
-    //   const actionMap: Record<string, (value: string) => void> = {
-    //     passSeries: (value) => dispatch(setPassSeries(value)),
-    //     passNumber: (value) => dispatch(setPassNumber(value)),
-    //     birthNumber: (value) => dispatch(setBirthNumber(value)),
-    //   };
-
-    //   actionMap[id]?.(value);
-    // };
-
-    const documentFields = documentConfig[formData.documentType];
+    const handleChangeDocument = (value: string) => {
+      setChangeDocument(value);
+    };
 
     return (
       <article className={styles.component}>
@@ -76,20 +59,18 @@ export const PassInfoForm = memo(
               list={pass}
               id='pass'
               className={styles.pass}
-              onSelect={}
+              onSelect={handleChangeDocument}
             />
           </div>
           <div className={styles.pass_wrapper}>
-            {documentFields &&
-              documentFields.map(({ id, label, placeholder }) => (
-                <CustomInput
-                  key={id}
-                  id={id}
-                  label={label}
-                  placeholder={placeholder}
-                  // {...register('')}
-                />
-              ))}
+            {documentConfig.map(({ id, label, placeholder }) => (
+              <CustomInput
+                key={id}
+                id={id}
+                label={label}
+                placeholder={placeholder}
+              />
+            ))}
             {changeDocument === 'Паспорт РФ' && (
               <div className={styles.pass_wrapper}>
                 <CustomInput
@@ -127,3 +108,5 @@ export const PassInfoForm = memo(
   },
 );
 PassInfoForm.displayName = 'PassInfoForm';
+
+//TODO: удалить

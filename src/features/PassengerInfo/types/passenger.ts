@@ -3,10 +3,11 @@ export interface Passenger {
   firstName: string;
   lastName: string;
   middleName: string;
-  isMan: boolean;
+  gender: 'man' | 'woman';
   birthday: string;
   documentType: 'Паспорт РФ' | 'Свидетельство о рождении';
   passSeries: string;
   passNumber: string;
   birthNumber: string;
+  mobility: boolean;
 }
