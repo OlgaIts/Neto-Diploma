@@ -14,7 +14,7 @@ export const RouteSortFilter = memo(() => {
     dispatch(setRouteFilters({ sort: type }));
     setOpen(false);
   };
-
+  //TODO: переделать стили
   return (
     <div className={styles.sort_wrapper}>
       <div>

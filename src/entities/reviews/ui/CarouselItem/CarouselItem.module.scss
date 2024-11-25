@@ -2,16 +2,16 @@
   width: 640px;
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: var(--gap-md);
 }
 
 .img {
-  border-radius: 50%;
+  border-radius: var(--radius-round);
 }
 
 .name {
   font: var(--fw-medium) var(--fs-text) var(--ff);
-  margin-bottom: 24px;
+  margin-bottom: var(--padding-md);
 }
 
 .reviews_desc {
@@ -20,23 +20,22 @@
 }
 
 .text {
-  font: var(--fw-light) italic 18px var(--ff);
-  color: #928F94;
+  font: var(--fw-light) italic var(--fs-sm) var(--ff);
+  color: var(--text-dark-gray);
   position: relative;
 
   &::before {
-    content: "\201c";
+    content: '\201c';
     position: absolute;
     top: -2%;
     left: -5%;
-    font-size: 36px;
-    font-weight: 500;
-
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-medium);
   }
   &::after {
-    content: "\201d";
+    content: '\201d';
     position: absolute;
-    font-size: 36px;
-    font-weight: 500;
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-medium);
   }
 }

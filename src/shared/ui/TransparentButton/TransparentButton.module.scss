@@ -22,12 +22,12 @@
 }
 
 .small {
-  padding: 16px;
+  padding: var(--padding-sm);
 }
 
 .big {
   width: 325px;
-  padding: 16px;
+  padding: var(--padding-sm);
 }
 
 .uppercase {

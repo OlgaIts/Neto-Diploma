@@ -89,7 +89,8 @@
 
 //
 .footer {
-  padding: 40px 80px 30px 80px;
+  padding: var(--margin-xl) calc(var(--margin-xl) * 2) var(--margin-lg)
+    calc(var(--margin-xl) * 2);
   display: flex;
   justify-content: space-between;
   align-items: center;

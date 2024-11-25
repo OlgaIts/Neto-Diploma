@@ -6,13 +6,13 @@
 
 .container {
   @include mixins.container;
-  padding-top: 96px;
+  padding-top: calc(var(--padding-lg) * 3);
 }
 
 .main {
-  padding-bottom: 120px;
+  padding-bottom: calc(var(--margin-xl) * 3);
   display: flex;
-  gap: 50px;
+  gap: var(--margin-xxl);
 }
 
 .section {

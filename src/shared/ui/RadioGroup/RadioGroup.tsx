@@ -1,8 +1,8 @@
 import { ChangeEvent, memo } from 'react';
 import classNames from 'classnames';
 import { Icon } from '../Icon';
+import { type IconName } from '../Icon/Icon';
 import styles from './RadioGroup.module.scss';
-import { IconName } from '../Icon/Icon';
 
 interface RadioGroupProps {
   className?: string;

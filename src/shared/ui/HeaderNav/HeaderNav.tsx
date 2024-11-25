@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-scroll';
+import { navItems } from '../../consts/';
 import styles from './HeaderNav.module.scss';
 
 export const HeaderNav = memo(() => {
@@ -16,26 +17,13 @@ export const HeaderNav = memo(() => {
       <nav className={styles.nav}>
         <div className={styles.container}>
           <ul className={styles.nav_list}>
-            <li className={styles.nav_item}>
-              <Link to='about' smooth='linear' duration={800}>
-                О нас
-              </Link>
-            </li>
-            <li className={styles.nav_item}>
-              <Link to='how-it-works' smooth='linear' duration={800}>
-                Как это работает
-              </Link>
-            </li>
-            <li className={styles.nav_item}>
-              <Link to='reviews' smooth='linear' duration={700}>
-                Отзывы
-              </Link>
-            </li>
-            <li className={styles.nav_item}>
-              <Link to='contact' smooth='linear' duration={700}>
-                Контакты
-              </Link>
-            </li>
+            {navItems.map((item) => (
+              <li className={styles.nav_item} key={item.id}>
+                <Link to={item.to} smooth='linear' duration={item.duration}>
+                  {item.title}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>

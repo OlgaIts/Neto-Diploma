@@ -1,7 +1,7 @@
+@use '@app/styles/_mixins' as mixins;
+
 .container {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding-inline: var(--gap-sm);
+  @include mixins.container;
 }
 
 .logo_wrap {
@@ -21,14 +21,14 @@
 
 .nav_list {
   display: flex;
-  gap: 88px;
+  gap: calc(var(--gap-md) * 2);
 }
 
 .nav_item {
-  color: #fff;
+  color: var(--color-light);
   font: var(--fw-light) var(--fs-title) var(--ff);
   cursor: pointer;
-  
+
   &:hover {
     color: var(--bg-accent-color);
   }

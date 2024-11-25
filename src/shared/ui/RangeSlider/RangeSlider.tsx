@@ -52,21 +52,21 @@ export const RangeSlider = memo(
       };
     }, [rangeValues, min, max]);
 
-    const debaunceHandleChange = useDebounce(onChange, 1500);
+    const debounceHandleChange = useDebounce(onChange, 1500);
 
     const handleChange = useCallback(
       (type: 'min' | 'max') => (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = Number(e.target.value);
         if (type === 'min' && value <= rangeValues.maxValue) {
           setRangeValues((prev) => ({ ...prev, minValue: value }));
-          debaunceHandleChange?.([value, rangeValues.maxValue]);
+          debounceHandleChange?.([value, rangeValues.maxValue]);
         }
         if (type === 'max' && value >= rangeValues.minValue) {
           setRangeValues((prev) => ({ ...prev, maxValue: value }));
-          debaunceHandleChange?.([rangeValues.minValue, value]);
+          debounceHandleChange?.([rangeValues.minValue, value]);
         }
       },
-      [rangeValues, debaunceHandleChange],
+      [rangeValues, debounceHandleChange],
     );
 
     return (
@@ -76,7 +76,7 @@ export const RangeSlider = memo(
       >
         <div className={styles.track} style={trackStyles.track} />
         <input
-          className={classNames(styles.input, styles.input_min)}
+          className={styles.input}
           type='range'
           name='min'
           max={max}
@@ -92,7 +92,7 @@ export const RangeSlider = memo(
           }}
         />
         <input
-          className={classNames(styles.input, styles.input_max)}
+          className={styles.input}
           type='range'
           name='max'
           max={max}

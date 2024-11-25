@@ -3,9 +3,9 @@ import classNames from 'classnames';
 import { Icon } from '@shared/ui/Icon';
 import { Route } from '@entities/routes/model/types/route';
 import { formatDatetime } from '@shared/lib/utils/formatDatetime';
+import { formatDate } from '@shared/lib/utils';
 import { WagonTypes } from '../WagonTypes/WagonTypes';
 import styles from './RouteCard.module.scss';
-import { formatDate } from '@shared/lib/utils';
 interface RouteCardProps {
   className?: string;
   item: Route;
@@ -45,7 +45,7 @@ export const RouteCard = memo(({ className, item }: RouteCardProps) => {
                 {item.departure.from.railway_station_name} вокзал
               </span>
             </div>
-            <div className={styles.trevel_time}>
+            <div className={styles.travel_time}>
               <span>{formatDatetime(item.departure.duration)}</span>
               <Icon
                 iconName={'icon-arrow-fat-right'}
@@ -80,7 +80,7 @@ export const RouteCard = memo(({ className, item }: RouteCardProps) => {
                   {item.arrival?.to.railway_station_name} вокзал
                 </span>
               </div>
-              <div className={styles.trevel_time}>
+              <div className={styles.travel_time}>
                 <span>{formatDatetime(item.arrival?.duration)}</span>
                 <Icon
                   iconName={'icon-arrow-fat-left'}

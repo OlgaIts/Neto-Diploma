@@ -1,6 +1,5 @@
 .available.disabled {
   rect {
-    // fill: var(--color-light-grey);
     fill: #e0e0e0;
   }
   text {
@@ -28,7 +27,6 @@
   pointer-events: all;
   rect {
     stroke: var(--bg-accent-color);
-    // fill: #dfdfdf;
     fill: #fdf3df;
   }
 

@@ -1,5 +1,5 @@
 .component {
-  padding: 32px;
+  padding: var(--padding-lg);
   min-width: 30vw;
   min-height: 30vh;
   background-color: var(--page-bg);

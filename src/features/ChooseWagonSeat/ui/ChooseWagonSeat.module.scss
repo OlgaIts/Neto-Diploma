@@ -63,12 +63,12 @@
 }
 
 .seat_count {
-  padding: 0 50px 16px 0;
+  padding: 0 var(--margin-xxl) var(--padding-sm) 0;
   display: flex;
   justify-content: end;
   font: var(--fw-regular) var(--fs-text) var(--ff);
 }
 
 .count {
-  padding-left: 10px;
+  padding-left: var(--margin-sm);
 }

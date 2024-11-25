@@ -1,14 +1,15 @@
+@use '@app/styles/_mixins' as mixins;
+
 .component {
   background-color: var(--page-bg);
 }
 
 .container {
-  max-width: 1440px;
-  margin: 96px auto 0 auto;
-  padding-inline: 20px;
+  @include mixins.container;
+  margin-top: calc(var(--padding-lg) * 3);
 }
 
 .main {
   display: flex;
-  gap: 50px;
+  gap: var(--margin-xxl);
 }

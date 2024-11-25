@@ -65,7 +65,7 @@ export const SeatsSchema = memo(
                       y={y}
                       width={width}
                       height={height}
-                      className={classNames(styles.default, {
+                      className={classNames({
                         [styles.available]: availableSeats?.[seat],
                         [styles.active]: availableSeats?.[seat]?.active,
                         [styles.not_available]: !availableSeats?.[seat],

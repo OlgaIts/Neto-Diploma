@@ -11,9 +11,6 @@ export const getLimit = (state: RootState) =>
 
 export const getOffset = (state: RootState) => state.routes.routeFilters.offset;
 
-// export const getRouteDateStart = (state: RootState) =>
-//   state.routes.routeFilters.date_start;
-
 export const getRouteDateStart = (state: RootState) => {
   const dateStart = state.routes.routeFilters.date_start;
   if (!dateStart) {
@@ -24,9 +21,6 @@ export const getRouteDateStart = (state: RootState) => {
 
   return date.toISOString();
 };
-
-// export const getRouteDateEnd = (state: RootState) =>
-//   state.routes.routeFilters.date_end;
 
 export const getRouteDateEnd = (state: RootState) => {
   const dateEndArrival = state.routes.routeFilters.date_end;

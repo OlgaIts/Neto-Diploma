@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { Header } from '@widgets/Header';
 import { ArrivalWagonSeats, DepartureWagonSeats } from '@widgets/WagonSeats';
 import { RoutesFilters } from '@widgets/RoutesFilters';
-import { PassengerPageLink } from '@features/PassengerPageLink/insex';
+import { PassengerPageLink } from '@features/PassengerPageLink';
 import { useGetSeats } from '@entities/seats';
 import { ProgressSteps } from '@shared/ui/ProgressSteps';
 import { Title } from '@shared/ui/Title';

@@ -21,7 +21,7 @@ export const ReviewsCarousel = memo(() => {
         swipeDelta={20}
         autoPlay
         autoPlayInterval={3000}
-        autoPlayStrategy="default"
+        autoPlayStrategy='default'
         responsive={responsive}
         mouseTracking
       >

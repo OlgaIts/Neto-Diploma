@@ -17,6 +17,7 @@ export const NotFound = memo(() => {
         className={styles.btn}
         uppercase
         size='m'
+        onClick={() => scroll(0, 0)}
       >
         На главную
       </Button>
