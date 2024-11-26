@@ -1,5 +1,10 @@
 import { memo } from 'react';
-import { getArrivalInfo, getSeatCount, getSeatsLimit } from '@entities/seats';
+import {
+  getArrivalInfo,
+  getDepartureInfo,
+  getSeatCount,
+  getSeatsLimit,
+} from '@entities/seats';
 import { Button } from '@shared/ui/Button';
 import { useAppSelector } from '@shared/lib/hooks';
 import styles from './PassengerPageLink.module.scss';
@@ -10,9 +15,10 @@ export const PassengerPageLink = memo(() => {
   const arrivalSeatLimit = useAppSelector(getSeatsLimit('arrival'));
   const arrivalSeatsCount = useAppSelector(getSeatCount('arrival'));
   const arrivalInfo = useAppSelector(getArrivalInfo);
+  const departureInfo = useAppSelector(getDepartureInfo);
 
   const isDisabled =
-    departureSeatLimit !== departureSeatsCount ||
+    (departureInfo !== null && departureSeatLimit !== departureSeatsCount) ||
     (arrivalInfo !== null && arrivalSeatLimit !== arrivalSeatsCount);
 
   return (
@@ -24,6 +30,7 @@ export const PassengerPageLink = memo(() => {
       uppercase
       color='white'
       className={styles.btn}
+      onClick={() => scroll(0, 0)}
     >
       Далее
     </Button>

@@ -1,1 +1,1 @@
-export { PassengerPage } from './ui/PassengerPage';
+export { PassengerPage } from './ui/PassengerPage/PassengerPage';

@@ -1,0 +1,20 @@
+.component {
+  padding-top: var(--padding-lg);
+  background-color: var(--color-light);
+  border-bottom: var(--dashed);
+}
+
+.name_wrapper {
+  padding-bottom: var(--margin-xxl);
+  padding-inline: var(--padding-lg);
+  display: flex;
+  gap: var(--padding-md);
+}
+
+.contact {
+  padding-bottom: calc(var(--padding-lg) * 3);
+  padding-inline: var(--padding-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+}

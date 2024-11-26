@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { type Passenger } from '../../types/passenger';
+import { type Passenger } from '../../../PassengerForm/types/passenger';
 
 interface PassengerState {
   passengers: Record<number, Passenger>;

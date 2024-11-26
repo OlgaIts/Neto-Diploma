@@ -2,15 +2,14 @@ import { memo, useState } from 'react';
 import classNames from 'classnames';
 import { Title } from '@shared/ui/Title';
 import { Icon } from '@shared/ui/Icon';
-import { PassengerForm } from '@features/PassengerInfo';
+import { PassengerForm } from '@features/PassengerForm';
 import { useAppSelector } from '@shared/lib/hooks';
 import { getSeatCount } from '@entities/seats';
-import styles from './AddPassengerForm.module.scss';
+import styles from './PassengerFormList.module.scss';
 
-export const AddPassengerForm = memo(() => {
+export const PassengerFormList = memo(() => {
   //TODO: выбрать максимальное число из двух направлений.
   const totalSeatsCount = useAppSelector(getSeatCount('departure'));
-  // const [activeIndex, setActiveIndex] = useState<number | null>(0);
   const [openForms, setOpenForms] = useState<boolean[]>(() =>
     Array(totalSeatsCount)
       .fill(false)
@@ -40,10 +39,7 @@ export const AddPassengerForm = memo(() => {
                   styles.icon_wrapper,
                   openForms[index] ? styles.icon_active : '',
                 )}
-                onClick={() =>
-                  // setActiveIndex((prev) => (prev === index ? null : index))
-                  toggleForm(index)
-                }
+                onClick={() => toggleForm(index)}
               >
                 <Icon
                   iconName={openForms[index] ? 'icon-minus' : 'icon-plus'}
@@ -67,4 +63,4 @@ export const AddPassengerForm = memo(() => {
     </ul>
   );
 });
-AddPassengerForm.displayName = 'AddPassengerForm';
+PassengerFormList.displayName = 'PassengerFormList';

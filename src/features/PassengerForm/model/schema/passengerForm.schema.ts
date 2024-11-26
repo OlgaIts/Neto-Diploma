@@ -121,23 +121,3 @@ export const PassengerFormSchema = z
       path: ['passSeries', 'passNumber', 'birthNumber'],
     },
   );
-
-//   const ValidationErrors = {
-//     email: 'Некорректный email',
-//     pass_required: 'Пароль обязателен для заполнения',
-//     pass_length: 'Длина пароля должна быть не меньше 6 символов',
-//     pass_capital: 'Пароль должен содержать хотя бы одну заглавную букву',
-//     pass_number: 'Пароль должен содержать хотя бы одну цифру',
-//     name_required: 'Имя пользователя обязательно',
-//     name_length: 'Длина имени не менее 4 символов',
-//   };
-
-// export const LoginSchema = z.object({
-//   email: z.string().email({ message: ValidationErrors.email }),
-//   password: z
-//     .string()
-//     .regex(/^.+$/, { message: ValidationErrors.pass_required })
-//     .regex(/[A-Z]/, { message: ValidationErrors.pass_capital })
-//     .regex(/\d/, { message: ValidationErrors.pass_number })
-//     .min(6, { message: ValidationErrors.pass_length }),
-// });

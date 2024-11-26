@@ -1,0 +1,26 @@
+.component {
+  background-color: var(--color-light);
+}
+
+.list {
+  padding-block: calc(var(--padding-md) * 2);
+  display: flex;
+  gap: var(--gap-sm);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.img {
+  width: 100px;
+}
+
+.wrapper_online {
+  padding-top: var(--margin-xxl);
+  padding-inline: var(--padding-lg);
+}
+
+.wrapper_cash {
+  padding-inline: var(--padding-lg);
+  padding-block: var(--margin-xxl);
+  border-top: var(--dashed);
+}

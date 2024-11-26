@@ -106,7 +106,7 @@ export const PassengerForm = memo(
             <CustomInput
               id='birthday'
               label='Дата рождения'
-              placeholder='ДД/ММ/ГГ'
+              placeholder='ДД.ММ.ГГ'
               {...register('birthday')}
               error={!!birthday}
             />
