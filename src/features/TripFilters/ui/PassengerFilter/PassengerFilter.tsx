@@ -33,18 +33,21 @@ export const PassengerFilter = memo(({ direction }: PassengerFilterProps) => {
         </Title>
       </div>
 
-      <div className={styles.wrapper}>
-        <p className={styles.text}>
-          <span className={styles.count}>{adultCount}</span>
-          <span>{getAdultPlural(adultCount)}</span>
-        </p>
-        <div>
-          <span className={styles.price}>
-            {toLocalString(ticketInfo.adultPrice)}
-          </span>
-          <Icon iconName='icon-ruble' color='primary' fontSize='18px' />
+      {adultCount !== 0 && (
+        <div className={styles.wrapper}>
+          <p className={styles.text}>
+            <span className={styles.count}>{adultCount}</span>
+            <span>{getAdultPlural(adultCount)}</span>
+          </p>
+          <div>
+            <span className={styles.price}>
+              {toLocalString(ticketInfo.adultPrice)}
+            </span>
+            <Icon iconName='icon-ruble' color='primary' fontSize='18px' />
+          </div>
         </div>
-      </div>
+      )}
+
       {childCount !== 0 && (
         <div className={styles.wrapper}>
           <p className={styles.text}>

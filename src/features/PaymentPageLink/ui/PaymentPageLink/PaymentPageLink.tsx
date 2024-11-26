@@ -11,6 +11,8 @@ export const PaymentPageLink = memo(() => {
       color='white'
       tag='Link'
       bgColor='primary'
+      uppercase
+      size='s'
       to='/payment'
       onClick={() => scroll(0, 0)}
     >

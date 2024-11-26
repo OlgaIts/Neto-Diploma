@@ -1,19 +1,13 @@
 import { memo } from 'react';
-import classNames from 'classnames';
 import { Header } from '@widgets/Header';
-import { Title } from '@shared/ui/Title';
-import styles from './PaymentPage.module.scss';
 import { TripDetails } from '@widgets/TripDetails';
+import { PaymentForm } from '@widgets/PaymentForm';
 import { ProgressSteps } from '@shared/ui/ProgressSteps';
-import { PaymentPersonForm } from '@features/PaymentPersonForm';
-import { PaymentMethodForm } from '@features/PaymentPersonForm/ui/PaymentMethodForm/PaymentMethodForm';
+import styles from './PaymentPage.module.scss';
 
-interface PaymentPageProps {
-  className?: string;
-}
-export const PaymentPage = memo(({ className }: PaymentPageProps) => {
+export const PaymentPage = memo(() => {
   return (
-    <div className={classNames(styles.component, className)}>
+    <div className={styles.component}>
       <Header />
       <ProgressSteps step='step_3' />
 
@@ -23,22 +17,8 @@ export const PaymentPage = memo(({ className }: PaymentPageProps) => {
             <TripDetails />
           </aside>
 
-          {/* //TODO: вынести в виджет */}
-          <section className={styles.section}>
-            <div className={styles.title_wrapper}>
-              <Title color='dark' weight='regular'>
-                Персональные данные
-              </Title>
-            </div>
+            <PaymentForm />
 
-            <PaymentPersonForm />
-            <div className={styles.title_wrapper}>
-              <Title color='dark' weight='regular'>
-                Способ оплаты
-              </Title>
-            </div>
-            <PaymentMethodForm />
-          </section>
         </main>
       </div>
     </div>

@@ -6,22 +6,10 @@
 
 .container {
   @include mixins.container;
-  margin-top: 96px;
+  margin-top: calc(var(--padding-lg) * 3);
 }
 
 .main {
   display: flex;
-  gap: 50px;
-}
-
-.section {
-  width: 100%;
-  height: fit-content;
-  box-shadow: var(--card-shadow);
-}
-
-.title_wrapper {
-  padding: 32px;
-  background-color: #f9f9f9;
-  border-bottom: var(--dashed);
+  gap: var(--margin-xxl);
 }

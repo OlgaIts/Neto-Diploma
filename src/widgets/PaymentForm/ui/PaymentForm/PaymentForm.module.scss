@@ -1,0 +1,16 @@
+.section {
+  width: 100%;
+  height: fit-content;
+  box-shadow: var(--card-shadow);
+}
+
+.title_wrapper {
+  padding: var(--padding-lg);
+  background-color: var(--bg-passenger);
+  border-bottom: var(--dashed);
+}
+
+.btn {
+  margin-top: 100px;
+  margin-left: auto;
+}
