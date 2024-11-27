@@ -1,8 +1,12 @@
 import { memo } from 'react';
 import classNames from 'classnames';
+import { StarRating } from '@features/StarRating';
+import { getPaymentPerson } from '@features/PassengerForm';
+import { getRoutesTotalPrice } from '@entities/seats';
 import { Icon } from '@shared/ui/Icon';
 import { Button } from '@shared/ui/Button';
-import { StarRating } from '@features/StarRating';
+import { toLocalString } from '@shared/lib/utils';
+import { useAppSelector } from '@shared/lib/hooks';
 import styles from './ConfirmWidget.module.scss';
 
 interface ConfirmWidgetProps {
@@ -10,6 +14,9 @@ interface ConfirmWidgetProps {
 }
 
 export const ConfirmWidget = memo(({ className }: ConfirmWidgetProps) => {
+  const totalPrice = useAppSelector(getRoutesTotalPrice);
+  const paymentPerson = useAppSelector(getPaymentPerson);
+
   return (
     <div className={classNames(styles.component, className)}>
       <section>
@@ -17,7 +24,7 @@ export const ConfirmWidget = memo(({ className }: ConfirmWidgetProps) => {
           <p className={styles.order}>№Заказа 285АА</p>
           <div className={styles.price_wrapper}>
             <p>сумма</p>
-            <span>7 760</span>
+            <span>{toLocalString(totalPrice)}</span>
             <Icon iconName='icon-ruble' color='dark_gray' fontSize='26px' />
           </div>
         </header>
@@ -50,7 +57,9 @@ export const ConfirmWidget = memo(({ className }: ConfirmWidgetProps) => {
         </section>
 
         <section className={styles.main_section}>
-          <p className={styles.name}>Ирина Эдуардовна!</p>
+          <p
+            className={styles.name}
+          >{`${paymentPerson.firstName} ${paymentPerson.middleName}!`}</p>
           <p>Ваш заказ успешно оформлен.</p>
           <p>
             В ближайшее время с вами свяжется наш оператор для подтверждения.

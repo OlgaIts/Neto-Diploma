@@ -1,8 +1,8 @@
 .card {
-  padding: 32px;
+  padding: var(--padding-lg);
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: var(--padding-lg);
   border-right: var(--dashed);
 
   &:nth-child(n) {
@@ -10,7 +10,7 @@
   }
 
   &:last-child {
-    padding-bottom: 80px;
+    padding-bottom: calc(var(--margin-xl) * 2);
     border-bottom: none;
   }
 }
@@ -18,7 +18,7 @@
 .type {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--padding-sm);
   align-items: center;
 }
 
@@ -28,17 +28,21 @@
   display: grid;
   place-content: center;
   background-color: var(--bg-accent-color);
-  border-radius: 50%;
+  border-radius: var(--radius-round);
 }
 
 .desc {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--padding-xs);
   color: var(--text-dark-gray);
 }
 
 .name {
-  padding-bottom: 5px;
+  padding-bottom: var(--margin-xs);
   color: var(--bg-header-form);
+}
+
+.doc_type {
+  padding-left: var(--margin-xs);
 }

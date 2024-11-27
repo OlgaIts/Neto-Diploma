@@ -42,6 +42,7 @@ export {
   getSeatsLimit,
   getSeatCount,
   getTicketInfo,
+  getRoutesTotalPrice,
 } from './model/selectors/ticketInfoSelector';
 export {
   getDepartureSeats,

@@ -1,3 +1,4 @@
+export { priceByClass } from './lib/helpers/priceByClass';
 export { RouteCardServiceIcons } from './ui/RouteCardServiceIcons/RouteCardServiceIcons';
 export {
   getRouteDateEnd,

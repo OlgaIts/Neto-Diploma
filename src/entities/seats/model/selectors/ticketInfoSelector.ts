@@ -31,3 +31,7 @@ export const getSeatsLimit = (direction: Direction) => (state: RootState) =>
 
 export const getSeatCount = (direction: Direction) => (state: RootState) =>
   state.ticketInfo[`${direction}Ticket`].totalSeatsCount;
+
+export const getRoutesTotalPrice = (state: RootState) =>
+  state.ticketInfo.departureTicket.totalPrice +
+  state.ticketInfo.arrivalTicket.totalPrice;

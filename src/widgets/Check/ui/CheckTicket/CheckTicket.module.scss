@@ -1,0 +1,10 @@
+.section {
+  width: 100%;
+  display: grid;
+  gap: var(--margin-lg);
+}
+
+.btn {
+  margin-block: calc(var(--margin-xxl) * 2);
+  margin-left: auto;
+}

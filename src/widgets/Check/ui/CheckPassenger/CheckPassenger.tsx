@@ -1,11 +1,16 @@
 import { memo } from 'react';
+import { getRoutesTotalPrice } from '@entities/seats';
 import { Title } from '@shared/ui/Title';
 import { Button } from '@shared/ui/Button';
 import { Icon } from '@shared/ui/Icon';
+import { useAppSelector } from '@shared/lib/hooks';
+import { toLocalString } from '@shared/lib/utils';
 import { PassengerList } from '../PassengerList/PassengerList';
 import styles from './CheckPassenger.module.scss';
 
 export const CheckPassenger = memo(() => {
+  const totalPrice = useAppSelector(getRoutesTotalPrice);
+
   return (
     <article className={styles.component}>
       <div className={styles.title_wrapper}>
@@ -19,7 +24,7 @@ export const CheckPassenger = memo(() => {
           <div className={styles.price_wrapper}>
             <p>Всего</p>
             <p>
-              <span className={styles.price}>7 760</span>
+              <span className={styles.price}>{toLocalString(totalPrice)}</span>
               <Icon iconName='icon-ruble' color='dark_gray' fontSize='24px' />
             </p>
           </div>

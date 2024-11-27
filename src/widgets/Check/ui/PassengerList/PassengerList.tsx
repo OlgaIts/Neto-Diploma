@@ -1,5 +1,7 @@
 import { memo } from 'react';
 import { Icon } from '@shared/ui/Icon';
+import { useAppSelector } from '@shared/lib/hooks';
+import { getPassengers } from '@features/PassengerForm/model/selector/passengerInfoSelector';
 import styles from './PassengerList.module.scss';
 
 interface PassengerListProps {
@@ -7,27 +9,43 @@ interface PassengerListProps {
 }
 
 export const PassengerList = memo(({ className }: PassengerListProps) => {
+  const passengers = useAppSelector(getPassengers);
+
   return (
     <ul className={className}>
-      {[...Array(3)].map((item, index) => (
-        <li key={index} className={styles.card}>
+      {Object.tsKeys(passengers).map((key) => (
+        <li key={key} className={styles.card}>
           <div className={styles.type}>
             <div className={styles.icon_wrapper}>
               <Icon iconName='icon-person' color='white' fontSize='34px' />
             </div>
-            <p>Взрослый</p>
+            <p>{passengers[key].isAdult ? 'Взрослый' : 'Детский'}</p>
           </div>
           <div className={styles.desc}>
-            <p className={styles.name}>Мартынюк Ирина Эдуардовна</p>
-            <p>
-              Пол <span>женский</span>
+            <p className={styles.name}>
+              {`${passengers[key].lastName} ${passengers[key].firstName} ${passengers[key].middleName}`}
             </p>
             <p>
-              Дата рождения <span>17.02.1985</span>
+              Пол <span>{passengers[key].gender}</span>
             </p>
             <p>
-              Паспорт <span>РФ 4204 380694</span>
+              Дата рождения <span>{passengers[key].birthday}</span>
             </p>
+            {passengers[key].documentType === 'Паспорт РФ' ? (
+              <p>
+                Паспорт РФ
+                <span
+                  className={styles.doc_type}
+                >{`${passengers[key].passSeries} ${passengers[key].passNumber}`}</span>
+              </p>
+            ) : (
+              <p>
+                Свидетельство о рождении
+                <span className={styles.doc_type}>
+                  {passengers[key].birthNumber}
+                </span>
+              </p>
+            )}
           </div>
         </li>
       ))}

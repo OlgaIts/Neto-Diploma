@@ -17,9 +17,14 @@ export const PassengerPageLink = memo(() => {
   const arrivalInfo = useAppSelector(getArrivalInfo);
   const departureInfo = useAppSelector(getDepartureInfo);
 
-  const isDisabled =
-    (departureInfo !== null && departureSeatLimit !== departureSeatsCount) ||
-    (arrivalInfo !== null && arrivalSeatLimit !== arrivalSeatsCount);
+  const departureCondition =
+    !!departureInfo &&
+    (departureSeatLimit === 0 || departureSeatLimit !== departureSeatsCount);
+  const arrivalCondition =
+    !!arrivalInfo &&
+    (arrivalSeatLimit === 0 || arrivalSeatLimit !== arrivalSeatsCount);
+
+  const isDisabled = departureCondition || arrivalCondition;
 
   return (
     <Button

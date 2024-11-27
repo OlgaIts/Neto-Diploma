@@ -21,8 +21,8 @@ import { Tooltip } from '../Tooltip/Tooltip';
 import { getRouteFilter } from '../../model/selectors/selector';
 import { wagonType } from '../../model/consts/wagonType';
 import { RouteCardServiceIcons } from '../RouteCardServiceIcons/RouteCardServiceIcons';
+import { priceByClass } from '../../lib/helpers/priceByClass';
 import { type Route } from '../../model/types/route';
-import { type SeatsPrice } from '@shared/types/direction';
 import styles from './WagonTypes.module.scss';
 
 interface WagonTypesProps {
@@ -50,15 +50,6 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
     handleClickOutside: () => setOpenTooltipIndex(null),
   });
 
-  const priceByClass = {
-    first: (price_info: SeatsPrice) => price_info.price,
-    second: ({ bottom_price, top_price }: SeatsPrice) =>
-      Math.min(bottom_price || 0, top_price || 0),
-    third: ({ bottom_price, top_price, side_price }: SeatsPrice) =>
-      Math.min(bottom_price || 0, top_price || 0, side_price || 0),
-    fourth: (price_info: SeatsPrice) => price_info.price,
-  };
-
   const redirectSeats = useCallback(() => {
     dispatch(setDeparture(item.departure));
     if (item.arrival) {
@@ -74,7 +65,7 @@ export const WagonTypes = memo(({ className, item }: WagonTypesProps) => {
     <section className={classNames(styles.component, className)}>
       <div className={styles.content}>
         <ul className={styles.wagons_types}>
-          {Object.tsKeys(item.available_seats_info)
+          {Object.tsKeys(item.departure.available_seats_info)
             .reverse()
             .map((key) => (
               <li className={styles.type_wrap} key={uuidv4()}>
