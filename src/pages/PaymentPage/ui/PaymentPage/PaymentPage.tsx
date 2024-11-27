@@ -17,8 +17,7 @@ export const PaymentPage = memo(() => {
             <TripDetails />
           </aside>
 
-            <PaymentForm />
-
+          <PaymentForm />
         </main>
       </div>
     </div>

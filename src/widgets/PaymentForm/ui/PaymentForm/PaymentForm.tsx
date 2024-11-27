@@ -1,13 +1,16 @@
 import { memo } from 'react';
-import { Title } from '@shared/ui/Title';
 import {
   PaymentMethodForm,
   PaymentPersonForm,
 } from '@features/PaymentPersonForm';
+import { Title } from '@shared/ui/Title';
 import { Button } from '@shared/ui/Button';
+import { useAppDispatch } from '@shared/lib/hooks';
 import styles from './PaymentForm.module.scss';
 
 export const PaymentForm = memo(() => {
+  const dispatch = useAppDispatch();
+
   return (
     <div>
       <section className={styles.section}>

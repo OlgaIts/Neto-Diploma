@@ -73,7 +73,7 @@ export const PassengerFormSchema = z
 
     passSeries: z
       .string()
-      .regex(new RegExp('[0-9]{4}'), {
+      .regex(new RegExp('^[0-9]{4}$'), {
         message: 'Серия паспорта указана не корректно',
       })
       .optional()
@@ -81,7 +81,7 @@ export const PassengerFormSchema = z
 
     passNumber: z
       .string()
-      .regex(new RegExp('[0-9]{6}'), {
+      .regex(new RegExp('^[0-9]{6}$'), {
         message: 'Номер паспорта указан не корректно',
       })
       .optional()

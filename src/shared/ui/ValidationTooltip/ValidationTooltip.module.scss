@@ -1,0 +1,13 @@
+.not_valid {
+  padding: 32px;
+  background-color: var(--bg-error);
+  z-index: 10;
+}
+.valid {
+  padding: 32px;
+  background-color: var(--bg-success);
+}
+
+.text {
+  font: 400 18px var(--ff);
+}

@@ -6,13 +6,13 @@ import { CustomInput } from '@shared/ui/CustomInput';
 import { Checkbox } from '@shared/ui/Checkbox';
 import { DropdownButton } from '@shared/ui/DropdownButton';
 import { Button } from '@shared/ui/Button';
-import { ErrorTooltip } from '@shared/ui/ErrorTooltip';
 import { useAppDispatch } from '@shared/lib/hooks';
 import { savePassengers } from '../../model/slice/passengerInfoSlice';
 import { PassengerFormSchema } from '../../model/schema/passengerForm.schema';
 import { initialValues } from '../../model/consts/initialValues';
 import { type Passenger } from '../../types/passenger';
 import styles from './PassengerForm.module.scss';
+import { ValidationTooltip } from '@shared/ui/ValidationTooltip/ValidationTooltip';
 
 const wagonType = ['Взрослый', 'Детский'];
 const pass = ['Паспорт РФ', 'Свидетельство о рождении'];
@@ -106,7 +106,7 @@ export const PassengerForm = memo(
             <CustomInput
               id='birthday'
               label='Дата рождения'
-              placeholder='ДД.ММ.ГГ'
+              placeholder='ДД.ММ.ГГГГ'
               {...register('birthday')}
               error={!!birthday}
             />
@@ -189,7 +189,7 @@ export const PassengerForm = memo(
           </Button>
         </form>
         {!isValid && (
-          <ErrorTooltip
+          <ValidationTooltip
             message={
               lastName?.message ||
               passSeries?.message ||
@@ -202,6 +202,7 @@ export const PassengerForm = memo(
             }
           />
         )}
+        {isValid && <ValidationTooltip message='Готово' isValid={isValid} />}
       </section>
     );
   },

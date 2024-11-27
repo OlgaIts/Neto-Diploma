@@ -11,6 +11,6 @@
 }
 
 .btn {
-  margin-top: 100px;
+  margin-block: calc(var(--margin-xxl) * 2);
   margin-left: auto;
 }

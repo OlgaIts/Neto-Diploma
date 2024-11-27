@@ -1,7 +1,7 @@
 import { memo } from 'react';
+import classNames from 'classnames';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import classNames from 'classnames';
 import { Checkbox } from '@shared/ui/Checkbox';
 import { initialValues } from '@features/PaymentPersonForm/model/consts/initialValues';
 import { paymentMethods } from '../../model/consts/paymentMethodList';
