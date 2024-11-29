@@ -82,21 +82,14 @@ export const generateSeats = (seatsInfo: Seats[]) => {
         _id,
         coachNumber,
         seatsCount,
-        bottom_price:
-          class_type !== 'first' && class_type !== 'fourth' ? bottom_price : 0,
-        price: class_type === 'fourth' ? bottom_price : price,
+        bottom_price,
+        price,
         have_air_conditioning,
         have_wifi,
         is_linens_included,
         linens_price,
-        side_price:
-          class_type !== 'first' &&
-          class_type !== 'fourth' &&
-          class_type !== 'second'
-            ? side_price
-            : 0,
-        top_price:
-          class_type !== 'first' && class_type !== 'fourth' ? top_price : 0,
+        side_price,
+        top_price,
         wifi_price,
         available_seats,
       };
