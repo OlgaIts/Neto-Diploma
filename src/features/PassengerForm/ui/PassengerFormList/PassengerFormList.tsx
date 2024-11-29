@@ -8,8 +8,9 @@ import { getSeatCount } from '@entities/seats';
 import styles from './PassengerFormList.module.scss';
 
 export const PassengerFormList = memo(() => {
-  //TODO: выбрать максимальное число из двух направлений.
-  const totalSeatsCount = useAppSelector(getSeatCount('departure'));
+  const arrivalSeatsCount = useAppSelector(getSeatCount('arrival'));
+  const departureSeatsCount = useAppSelector(getSeatCount('departure'));
+  const totalSeatsCount = Math.max(departureSeatsCount, arrivalSeatsCount);
   const [openForms, setOpenForms] = useState<boolean[]>(() =>
     Array(totalSeatsCount)
       .fill(false)

@@ -7,14 +7,14 @@ import { Checkbox } from '@shared/ui/Checkbox';
 import { DropdownButton } from '@shared/ui/DropdownButton';
 import { Button } from '@shared/ui/Button';
 import { useAppDispatch } from '@shared/lib/hooks';
+import { ValidationTooltip } from '@shared/ui/ValidationTooltip';
 import { savePassengers } from '../../model/slice/passengerInfoSlice';
 import { PassengerFormSchema } from '../../model/schema/passengerForm.schema';
 import { initialValues } from '../../model/consts/initialValues';
 import { type Passenger } from '../../types/passenger';
 import styles from './PassengerForm.module.scss';
-import { ValidationTooltip } from '@shared/ui/ValidationTooltip/ValidationTooltip';
 
-const wagonType = ['Взрослый', 'Детский'];
+const ticketType = ['Взрослый', 'Детский'];
 const pass = ['Паспорт РФ', 'Свидетельство о рождении'];
 
 interface PassengerFormProps {
@@ -58,10 +58,10 @@ export const PassengerForm = memo(
       <section className={styles.section}>
         <div className={styles.select_gender}>
           <Controller
-            name='isAdult'
+            name='ticketType'
             control={control}
             render={({ field }) => (
-              <DropdownButton list={wagonType} onChange={field.onChange} />
+              <DropdownButton list={ticketType} onChange={field.onChange} />
             )}
           />
         </div>
@@ -92,17 +92,14 @@ export const PassengerForm = memo(
           </div>
 
           <div className={styles.wrapper}>
-            <Controller
-              name='gender'
-              control={control}
-              render={({ field }) => (
-                <GenderSwitch
-                  className={styles.gender_wrapper}
-                  onChange={field.onChange}
-                />
-              )}
+            <GenderSwitch
+              prefix={id}
+              {...register('gender')}
+              className={styles.gender_wrapper}
             />
 
+            {/* //TODO: сделать проверку на взрослый и детский тип билета */}
+            {/* {isAdult ? ( */}
             <CustomInput
               id='birthday'
               label='Дата рождения'
@@ -110,6 +107,15 @@ export const PassengerForm = memo(
               {...register('birthday')}
               error={!!birthday}
             />
+            {/* ) : (
+              <CustomInput
+                id='childBirthday'
+                label='Дата рождения'
+                placeholder='ДД.ММ.ГГГГ'
+                {...register('childBirthday')}
+                error={!!childBirthday}
+              />
+            )} */}
           </div>
 
           <div className={styles.mobility_wrapper}>
@@ -167,7 +173,7 @@ export const PassengerForm = memo(
                     <CustomInput
                       id='birthNumber'
                       label='Номер'
-                      placeholder='12 символов'
+                      placeholder='VIII-ЫП-123456'
                       {...register('birthNumber')}
                       error={!!birthNumber}
                     />
@@ -188,8 +194,9 @@ export const PassengerForm = memo(
             Следующий пассажир
           </Button>
         </form>
-        {!isValid && (
+        {Object.tsKeys(errors).length > 0 && (
           <ValidationTooltip
+            isValid={false}
             message={
               lastName?.message ||
               passSeries?.message ||
@@ -202,7 +209,8 @@ export const PassengerForm = memo(
             }
           />
         )}
-        {isValid && <ValidationTooltip message='Готово' isValid={isValid} />}
+
+        {isValid && <ValidationTooltip message={'Готово!'} isValid={true} />}
       </section>
     );
   },

@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { Fragment, memo } from 'react';
 import classNames from 'classnames';
 import { Title } from '@shared/ui/Title';
 import { Icon } from '@shared/ui/Icon';
@@ -26,7 +26,7 @@ export const PassengerSeatFilter = memo(
         </div>
         {Object.tsValues(ticketInfo.coaches).map(
           ({ wagonClass, coachNumber, tickets }) => (
-            <>
+            <Fragment key={wagonClass}>
               <div className={styles.wrapper}>
                 <p>Тип вагона</p>
                 <span>{wagonClass && wagonClassTranslations[wagonClass]}</span>
@@ -43,7 +43,7 @@ export const PassengerSeatFilter = memo(
                   <span>{Object.tsKeys(tickets).join(', ')}</span>
                 </div>
               </div>
-            </>
+            </Fragment>
           ),
         )}
       </div>

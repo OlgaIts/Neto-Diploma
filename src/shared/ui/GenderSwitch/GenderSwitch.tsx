@@ -1,39 +1,49 @@
-import { memo } from 'react';
+import { ChangeEvent, ForwardedRef, forwardRef, memo } from 'react';
+import { FieldValues, Path } from 'react-hook-form';
 import styles from './GenderSwitch.module.scss';
 
-interface GenderSwitchProps {
+interface GenderSwitchProps<T extends FieldValues> {
   className?: string;
-  onChange: (value: string) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  name: Path<T>;
+  prefix: number;
 }
 
 export const GenderSwitch = memo(
-  ({ className, onChange }: GenderSwitchProps) => {
+  forwardRef(function GenderSwitch<T extends FieldValues>(
+    props: GenderSwitchProps<T>,
+    ref: ForwardedRef<HTMLInputElement | null>,
+  ) {
+    const { name, onChange, className, prefix } = props;
+
     return (
       <div className={className}>
         <label className={styles.gender}>Пол</label>
         <fieldset className={styles.switch}>
           <input
-            id='man'
-            name='view'
+            id={`${prefix}-man`}
+            name={name}
             type='radio'
+            value='man'
             defaultChecked
             className={styles.input}
-            value='man'
-            onChange={() => onChange('man')}
+            onChange={onChange}
+            ref={ref}
           />
-          <label className={styles.label} htmlFor='man'>
+          <label className={styles.label} htmlFor={`${prefix}-man`}>
             М
           </label>
 
           <input
-            id='woman'
-            name='view'
+            id={`${prefix}-woman`}
+            name={name}
             type='radio'
             className={styles.input}
             value='woman'
-            onChange={() => onChange('woman')}
+            onChange={onChange}
+            ref={ref}
           />
-          <label className={styles.label} htmlFor='woman'>
+          <label className={styles.label} htmlFor={`${prefix}-woman`}>
             Ж
           </label>
 
@@ -41,6 +51,7 @@ export const GenderSwitch = memo(
         </fieldset>
       </div>
     );
-  },
+  }),
 );
+
 GenderSwitch.displayName = 'GenderSwitch';

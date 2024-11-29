@@ -1,13 +1,41 @@
+.component {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
 .not_valid {
   padding: 32px;
   background-color: var(--bg-error);
-  z-index: 10;
+  margin-top: -80px;
+  z-index: 90;
 }
+
 .valid {
   padding: 32px;
+  margin-top: -80px;
   background-color: var(--bg-success);
+  z-index: 0;
+}
+
+.icon_wrapper {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: grid;
+  place-content: center;
+}
+
+.icon_valid {
+  color: var(--bg-success);
+}
+
+.icon_not_valid {
+  color: var(--bg-error);
 }
 
 .text {
+  width: 500px;
   font: 400 18px var(--ff);
 }

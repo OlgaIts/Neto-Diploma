@@ -1,11 +1,13 @@
 import { type Passenger } from '../../types/passenger';
 
 export const initialValues: Passenger = {
-  isAdult: true,
+  ticketType: 'Взрослый',
   firstName: '',
   lastName: '',
   middleName: '',
   gender: 'man',
+  // adultBirthday: '',
+  // childBirthday: '',
   birthday: '',
   documentType: 'Паспорт РФ',
   passSeries: '',

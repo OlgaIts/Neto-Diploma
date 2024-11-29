@@ -3,9 +3,9 @@ import classNames from 'classnames';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Checkbox } from '@shared/ui/Checkbox';
-import { initialValues } from '@features/PaymentPersonForm/model/consts/initialValues';
+import { initialValues } from '../../model/consts/initialValues';
 import { paymentMethods } from '../../model/consts/paymentMethodList';
-import { paymentPersonSchema } from '@features/PaymentPersonForm/model/schema/paymentPerson.schema';
+import { paymentPersonSchema } from '../../model/schema/paymentPerson.schema';
 import styles from './PaymentMethodForm.module.scss';
 
 interface PaymentMethodFormProps {

@@ -91,7 +91,7 @@ export const PassengerFormSchema = z
       .string()
       .regex(new RegExp(birthNumberRegex), {
         message:
-          'Номер свидетельства о рождении указан некорректно. Пример: VIII-ЫП-123456',
+          'Номер свидетельства о рождении указан некорректно. \nПример: VIII-ЫП-123456',
       })
       .optional()
       .or(z.literal('')),
@@ -105,19 +105,33 @@ export const PassengerFormSchema = z
         },
       )
       .optional(),
+    gender: z.string(),
+    ticketType: z.string(),
   })
   .refine(
-    (data) => {
-      if (data.documentType === 'Свидетельство о рождении') {
-        return !!data.birthNumber && birthNumberRegex.test(data.birthNumber);
-      }
-      if (data.documentType === 'Паспорт РФ') {
-        return !!data.passSeries && !!data.passNumber;
-      }
-      return true;
-    },
+    (data) =>
+      data.documentType !== 'Свидетельство о рождении' ||
+      (!!data.birthNumber && birthNumberRegex.test(data.birthNumber)),
     {
-      message: 'Необходимо заполнить необходимые поля для выбранного документа',
-      path: ['passSeries', 'passNumber', 'birthNumber'],
+      message: 'Номер свидетельства о рождении обязательно для заполнения.',
+      path: ['birthNumber'],
+    },
+  )
+  .refine(
+    (data) =>
+      data.documentType !== 'Паспорт РФ' ||
+      (!!data.passSeries && /^[0-9]{4}$/.test(data.passSeries)),
+    {
+      message: 'Серия паспорта обязательно для заполнения.',
+      path: ['passSeries'],
+    },
+  )
+  .refine(
+    (data) =>
+      data.documentType !== 'Паспорт РФ' ||
+      (!!data.passNumber && /^[0-9]{6}$/.test(data.passNumber)),
+    {
+      message: 'Номер паспорта обязательно для заполнения.',
+      path: ['passNumber'],
     },
   );

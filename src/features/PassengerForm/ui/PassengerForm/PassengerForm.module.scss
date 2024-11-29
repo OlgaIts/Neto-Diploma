@@ -32,12 +32,6 @@
   padding-inline: var(--padding-lg);
 }
 
-.btn {
-  margin-left: auto;
-  margin-top: var(--margin-xl);
-  margin-right: var(--padding-md);
-}
-
 .article {
   margin-top: var(--margin-xl);
   padding-block: var(--margin-lg);
@@ -64,4 +58,12 @@
 .pass_wrapper {
   display: flex;
   gap: var(--padding-md);
+}
+
+.btn {
+  margin-left: auto;
+  margin-top: var(--margin-xl);
+  margin-right: var(--padding-md);
+  position: relative;
+
 }

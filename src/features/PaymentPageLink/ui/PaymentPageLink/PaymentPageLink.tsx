@@ -1,12 +1,21 @@
 import { memo } from 'react';
+import { getPassengers } from '@features/PassengerForm';
+import { getSeatCount } from '@entities/seats';
+import { useAppSelector } from '@shared/lib/hooks';
 import { Button } from '@shared/ui/Button';
 import styles from './PaymentPageLink.module.scss';
 
 export const PaymentPageLink = memo(() => {
-  //TODO: условие, при котором кнопка будет активна или не активна
+  const departureSeatsCount = useAppSelector(getSeatCount('departure'));
+  const arrivalSeatsCount = useAppSelector(getSeatCount('arrival'));
+  const totalSeatsCount = Math.max(departureSeatsCount, arrivalSeatsCount);
+  const passengers = useAppSelector(getPassengers);
+
+  const isDisabled = Object.tsKeys(passengers).length !== totalSeatsCount;
 
   return (
     <Button
+      disabled={isDisabled}
       className={styles.btn}
       color='white'
       tag='Link'
