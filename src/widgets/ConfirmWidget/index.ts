@@ -1,0 +1,1 @@
+export { ConfirmWidget } from './ConfirmWidget';

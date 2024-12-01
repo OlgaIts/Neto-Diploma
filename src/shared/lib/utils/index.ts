@@ -1,3 +1,4 @@
+export { parseDate } from './parseDate';
 export { wagonClassTranslations } from './translateWagonClass';
 export { formatDate } from './formatDate';
 export { formatDatetime } from './formatDatetime';

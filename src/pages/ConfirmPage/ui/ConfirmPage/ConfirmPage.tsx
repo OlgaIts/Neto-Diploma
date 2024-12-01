@@ -1,6 +1,6 @@
 import { memo } from 'react';
+import { ConfirmWidget } from '@widgets/ConfirmWidget';
 import { HeaderNav } from '@shared/ui/HeaderNav';
-import { ConfirmWidget } from '../ConfirmWidget/ConfirmWidget';
 import styles from './ConfirmPage.module.scss';
 
 export const ConfirmPage = memo(() => {

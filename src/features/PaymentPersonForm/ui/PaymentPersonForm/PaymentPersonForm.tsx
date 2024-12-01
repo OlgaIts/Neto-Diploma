@@ -1,81 +1,80 @@
 import { memo } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import classNames from 'classnames';
 import { CustomInput } from '@shared/ui/CustomInput';
-import { initialValues } from '../../model/consts/initialValues';
-import { paymentPersonSchema } from '../../model/schema/paymentPerson.schema';
 import styles from './PaymentPersonForm.module.scss';
 
 interface PaymentPersonFormProps {
-  className?: string;
+  errors: any;
+  isValid: boolean;
+  register: any;
 }
-export const PaymentPersonForm = memo(
-  ({ className }: PaymentPersonFormProps) => {
-    const {
-      register,
-      handleSubmit,
-      formState: { errors, isValid },
-    } = useForm({
-      defaultValues: initialValues,
-      resolver: zodResolver(paymentPersonSchema),
-    });
+export const PaymentPersonForm = ({
+  errors,
+  isValid,
+  register,
+}: PaymentPersonFormProps) => {
+  const lastNameError = errors?.lastName?.message;
 
-    const { lastName, firstName, middleName, phone, email } = errors;
-
-    const onSubmit = () => {
-      console.log('work');
-    };
-
-    return (
-      <form
-        className={classNames(styles.component, className)}
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div className={styles.name_wrapper}>
+  console.log(lastNameError);
+  return (
+    <>
+      <div className={styles.name_wrapper}>
+        <div>
           <CustomInput
             id='lastName'
             label='Фамилия'
             placeholder='Фамилия'
             {...register('lastName')}
-            error={!!lastName}
+            error={!!errors?.lastName}
           />
-          {!isValid && <p>{errors.lastName?.message}</p>}
+          {!isValid ? <p>{lastNameError}</p> : null}
+        </div>
 
+        <div>
           <CustomInput
             id='firstName'
             label='Имя'
             placeholder='Имя'
             {...register('firstName')}
-            error={!!firstName}
+            error={!!errors?.firstName}
           />
+          {!isValid ? <p>{errors?.firstName?.message}</p> : ''}
+        </div>
+
+        <div>
           <CustomInput
             id='middleName'
             label='Отчество'
             placeholder='Отчество'
             {...register('middleName')}
-            error={!!middleName}
+            error={!!errors?.middleName}
           />
+          {!isValid ? <p>{errors?.middleName?.message}</p> : ''}
         </div>
+      </div>
 
-        <div className={styles.contact}>
+      <div className={styles.contact}>
+        <div>
           <CustomInput
             id='phone'
             label='Контактный телефон'
             placeholder='+7 __ __ __ __'
             {...register('phone')}
-            error={!!phone}
+            error={!!errors?.phone}
           />
+          {!isValid ? <p>{errors.phone?.message}</p> : ''}
+        </div>
+        <div>
           <CustomInput
             id='email'
             label='E-mail'
             placeholder='inbox@gmail.ru'
             {...register('email')}
-            error={!!email}
+            error={!!errors?.email}
           />
         </div>
-      </form>
-    );
-  },
-);
-PaymentPersonForm.displayName = 'PaymentPersonForm';
+      </div>
+    </>
+  );
+};
+
+// PaymentPersonForm.displayName = 'PaymentPersonForm';

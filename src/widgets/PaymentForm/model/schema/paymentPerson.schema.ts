@@ -36,4 +36,5 @@ export const paymentPersonSchema = z.object({
       message: 'Введите корректный номер телефона.',
     }),
   email: z.string().email({ message: 'Введите корректный email-адрес.' }),
+  payment_method: z.string(),
 });

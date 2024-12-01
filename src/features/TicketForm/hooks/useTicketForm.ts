@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { format } from 'date-fns';
 import {
   getRouteDateEnd,
   getRouteDateStart,
@@ -25,12 +26,18 @@ export const useTicketForm = () => {
 
   const onSubmit = async (data: TicketFormState) => {
     if (data.from && data.to) {
+      const date_start =
+        data.departureDate && format(data.departureDate, 'yyyy-MM-dd');
+      const date_end = data.returnDate && format(data.returnDate, 'yyyy-MM-dd');
+      localStorage.setItem('date_start', date_start);
+      localStorage.setItem('date_end', date_end);
+
       dispatch(
         setRouteFilters({
           from_city_id: data.from.id,
           to_city_id: data.to.id,
-          date_start: data.departureDate.split('T')[0],
-          date_end: data.returnDate.split('T')[0],
+          date_start,
+          date_end,
         }),
       );
 

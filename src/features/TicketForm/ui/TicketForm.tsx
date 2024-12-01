@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { registerLocale } from 'react-datepicker';
 import { ru } from 'date-fns/locale';
+import { format } from 'date-fns';
 import { useTicketForm } from '../hooks/useTicketForm';
 import { setFromCity, setToCity } from '../model/slice/ticketFormSlice';
 import { CitySelect } from '@entities/cities';
@@ -11,6 +12,7 @@ import { Button } from '@shared/ui/Button';
 import { Icon } from '@shared/ui/Icon';
 import { CustomDatePicker } from '@shared/ui/CustomDatePicker';
 import { useAppDispatch } from '@shared/lib/hooks';
+import { parseDate } from '@shared/lib/utils';
 import styles from './TicketForm.module.scss';
 
 registerLocale('ru', ru);
@@ -56,11 +58,6 @@ export const TicketForm = memo(({ className }: TicketFormProps) => {
   const handleToCitySelect = (city: { id: string; name: string }) => {
     dispatch(setToCity(city));
     setValue('to', city);
-  };
-
-  // Функция для преобразования строки в дату
-  const parseDate = (dateString: string): Date | null => {
-    return dateString ? new Date(dateString) : null;
   };
 
   return (
@@ -109,14 +106,14 @@ export const TicketForm = memo(({ className }: TicketFormProps) => {
         <div className={styles.input_wrapper}>
           <CustomDatePicker
             onChange={(date) =>
-              setValue('departureDate', date ? date.toISOString() : '')
+              setValue('departureDate', date ? format(date, 'yyyy-MM-dd') : '')
             }
             selected={parseDate(departureDate)}
           />
 
           <CustomDatePicker
             onChange={(date) =>
-              setValue('returnDate', date ? date.toISOString() : '')
+              setValue('returnDate', date ? format(date, 'yyyy-MM-dd') : '')
             }
             selected={parseDate(returnDate)}
           />

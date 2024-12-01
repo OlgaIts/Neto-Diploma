@@ -1,17 +1,26 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
+interface City {
+  id: string;
+  name: string;
+}
 export interface TicketFormState {
-  from: { id: string; name: string } | null;
-  to: { id: string; name: string } | null;
+  from: City | null;
+  to: City | null;
   departureDate: string;
   returnDate: string;
 }
 
+const localFrom = localStorage.getItem('from');
+const localTo = localStorage.getItem('to');
+const date_start = localStorage.getItem('date_start');
+const date_end = localStorage.getItem('date_end');
+
 export const initialState: TicketFormState = {
-  from: null,
-  to: null,
-  departureDate: '',
-  returnDate: '',
+  from: localFrom ? JSON.parse(localFrom) : null,
+  to: localTo ? JSON.parse(localTo) : null,
+  departureDate: date_start || '',
+  returnDate: date_end || '',
 };
 
 const ticketFormSlice = createSlice({
@@ -28,10 +37,12 @@ const ticketFormSlice = createSlice({
       action: PayloadAction<{ id: string; name: string }>,
     ) => {
       state.from = action.payload;
+      localStorage.setItem('from', JSON.stringify(action.payload));
     },
 
     setToCity: (state, action: PayloadAction<{ id: string; name: string }>) => {
       state.to = action.payload;
+      localStorage.setItem('to', JSON.stringify(action.payload));
     },
   },
 });

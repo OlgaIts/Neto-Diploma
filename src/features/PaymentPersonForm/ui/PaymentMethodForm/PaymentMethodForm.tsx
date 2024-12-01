@@ -1,39 +1,29 @@
 import { memo } from 'react';
-import classNames from 'classnames';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Checkbox } from '@shared/ui/Checkbox';
-import { initialValues } from '../../model/consts/initialValues';
 import { paymentMethods } from '../../model/consts/paymentMethodList';
-import { paymentPersonSchema } from '../../model/schema/paymentPerson.schema';
 import styles from './PaymentMethodForm.module.scss';
 
 interface PaymentMethodFormProps {
-  className?: string;
+  register: any;
 }
 
 export const PaymentMethodForm = memo(
-  ({ className }: PaymentMethodFormProps) => {
-    const { register, handleSubmit } = useForm({
-      defaultValues: initialValues,
-      resolver: zodResolver(paymentPersonSchema),
-    });
-
-    const onSubmit = () => {
-      console.log('work');
-    };
-
+  ({ register }: PaymentMethodFormProps) => {
     return (
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className={classNames(styles.component, className)}
-      >
+      <>
         <div className={styles.wrapper_online}>
-          <Checkbox
+          <label htmlFor='online'>Онлайн</label>
+          <input
+            type='radio'
+            id='online'
+            {...register('payment_method')}
+            value='Онлайн'
+            defaultChecked
+          />
+          {/* <Checkbox
             id='online'
             labelText='Онлайн'
             {...register('payment_method')}
-          />
+          /> */}
           <ul className={styles.list}>
             {paymentMethods.map((item) => (
               <li key={item.id}>
@@ -48,13 +38,20 @@ export const PaymentMethodForm = memo(
           </ul>
         </div>
         <div className={styles.wrapper_cash}>
-          <Checkbox
+          <label htmlFor='cash'>Наличными</label>
+          <input
+            type='radio'
+            {...register('payment_method')}
+            id='cash'
+            value='Наличными'
+          />
+          {/* <Checkbox
             id='cash'
             labelText='Наличными'
             {...register('payment_method')}
-          />
+          /> */}
         </div>
-      </form>
+      </>
     );
   },
 );

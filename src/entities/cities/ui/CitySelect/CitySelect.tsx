@@ -39,6 +39,7 @@ export const CitySelect = memo(
     useEffect(() => {
       if (cityName) {
         getCities(cityName);
+        setInputValue(cityName);
       }
     }, [cityName]);
 

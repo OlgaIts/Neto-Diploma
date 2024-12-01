@@ -1,4 +1,6 @@
 import { memo, useCallback } from 'react';
+import { format } from 'date-fns';
+import { parseDate } from '@shared/lib/utils';
 import { Title } from '@shared/ui/Title';
 import { CustomDatePicker } from '@shared/ui/CustomDatePicker';
 import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
@@ -17,19 +19,14 @@ export const RouteDateFilter = memo(() => {
   const onDateChange = useCallback(
     (filterKey: string) => (date: Date | null) => {
       if (date) {
-        dispatch(
-          setRouteFilters({ [filterKey]: date.toISOString().split('T')[0] }),
-        );
+        const formatDate = format(date, 'yyyy-MM-dd');
+        localStorage.setItem(filterKey, formatDate);
+
+        dispatch(setRouteFilters({ [filterKey]: formatDate }));
       }
     },
     [],
   );
-
-  //TODO: переделать дату, чтобы в редаксе и в инпуте были одинаковые даты
-  // Функция для преобразования строки в дату
-  const parseDate = (dateString: string): Date | null => {
-    return dateString ? new Date(dateString) : null;
-  };
 
   return (
     <>

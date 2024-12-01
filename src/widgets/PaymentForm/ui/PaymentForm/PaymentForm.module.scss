@@ -10,7 +10,22 @@
   border-bottom: var(--dashed);
 }
 
+.person_wrapper {
+  padding-top: var(--padding-lg);
+  background-color: var(--color-light);
+  border-bottom: var(--dashed);
+}
+
+.method_wrapper {
+  background-color: var(--color-light);
+}
+
 .btn {
   margin-block: calc(var(--margin-xxl) * 2);
   margin-left: auto;
+  position: relative;
+}
+
+.tooltip {
+  margin-top: -180px;
 }
