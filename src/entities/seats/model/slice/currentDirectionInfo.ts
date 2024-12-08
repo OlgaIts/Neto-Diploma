@@ -15,6 +15,7 @@ import { withOneSeatType } from '@entities/seats/lib/withOneSeatType';
 
 export interface CurrentInfo {
   wagonNumber?: number;
+  wagonId?: string;
   available_seats?: number;
   top?: number;
   side?: number;
@@ -134,6 +135,9 @@ export const setDirectionInfo =
       return;
     }
     const wagonNumber = coachNumber || Object.tsKeys(currentWagonsData)[0];
+    const wagonId =
+      seatsData[`${direction}Seats`]?.[wagonClass][wagonNumber]?.coach._id;
+
     const currentSeats = currentWagonsData[wagonNumber];
     if (currentSeats) {
       const { coach, seats } = currentSeats;
@@ -143,6 +147,7 @@ export const setDirectionInfo =
           direction,
           data: {
             wagonClass,
+            wagonId,
             wagonList: Object.tsKeys(currentWagonsData),
             wagonNumber,
             available_seats: coach.available_seats,
@@ -217,10 +222,11 @@ export const updateService =
     }
 
     const wagonNumber = currentInfo.wagonNumber;
+    const wagonId = currentInfo.wagonId;
     const wagonClass = currentInfo.wagonClass;
     const price = currentService.price;
 
-    if (!price || !wagonNumber) {
+    if (!price || !wagonNumber || !wagonId) {
       return;
     }
 
@@ -240,6 +246,7 @@ export const updateService =
         data: {
           [service]: booleanActive ? currentService.price : 0,
           wagonNumber,
+          wagonId,
           wagonClass,
         },
       }),
@@ -259,8 +266,9 @@ export const updateSeat =
     const wagonNumber = currentInfo?.wagonNumber;
     const seatPlacement = currentInfo?.seats?.[seatNumber].placement;
     const wagonClass = currentInfo?.wagonClass;
+    const wagonId = currentInfo?.wagonId;
 
-    if (!wagonNumber || !wagonClass) {
+    if (!wagonNumber || !wagonClass || !wagonId) {
       return;
     }
 
@@ -286,6 +294,7 @@ export const updateSeat =
         direction,
         data: {
           wagonNumber,
+          wagonId,
           wagonClass,
           seat: {
             [seatNumber]: {

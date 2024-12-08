@@ -29,6 +29,7 @@ export {
   saveSeatPrice,
   clearTicketState,
   setPersonCount,
+  type DirectionTicketInfo,
   type PersonSeatsCount,
   type PersonName,
 } from './model/slice/ticketInfoSlice';

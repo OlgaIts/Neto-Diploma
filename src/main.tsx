@@ -6,7 +6,9 @@ import App from './app/App';
 Object.tsKeys = function getObjectKeys<Obj>(obj: Obj): (keyof Obj)[] {
   return Object.keys(obj!) as (keyof Obj)[];
 };
+
 Object.tsValues = Object.values;
+Object.tsEntries = Object.entries;
 
 const rootElement = document.getElementById('root');
 

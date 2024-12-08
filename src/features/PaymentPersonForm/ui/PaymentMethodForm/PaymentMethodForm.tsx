@@ -1,10 +1,14 @@
 import { memo } from 'react';
+import { UseFormRegister } from 'react-hook-form';
 import { paymentMethods } from '../../model/consts/paymentMethodList';
+import { type PaymentPerson } from '../../types/paymentPerson';
 import styles from './PaymentMethodForm.module.scss';
 
 interface PaymentMethodFormProps {
-  register: any;
+  register: UseFormRegister<PaymentPerson>;
 }
+
+//TODO: стилизовать инпуты
 
 export const PaymentMethodForm = memo(
   ({ register }: PaymentMethodFormProps) => {
@@ -16,7 +20,7 @@ export const PaymentMethodForm = memo(
             type='radio'
             id='online'
             {...register('payment_method')}
-            value='Онлайн'
+            value='online'
             defaultChecked
           />
           {/* <Checkbox
@@ -43,7 +47,7 @@ export const PaymentMethodForm = memo(
             type='radio'
             {...register('payment_method')}
             id='cash'
-            value='Наличными'
+            value='cash'
           />
           {/* <Checkbox
             id='cash'

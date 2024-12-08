@@ -1,7 +1,7 @@
 import { memo } from 'react';
+import { getPassengers } from '@features/PassengerForm';
 import { Icon } from '@shared/ui/Icon';
 import { useAppSelector } from '@shared/lib/hooks';
-import { getPassengers } from '@features/PassengerForm/model/selector/passengerInfoSelector';
 import styles from './PassengerList.module.scss';
 
 interface PassengerListProps {
@@ -11,6 +11,9 @@ interface PassengerListProps {
 export const PassengerList = memo(({ className }: PassengerListProps) => {
   const passengers = useAppSelector(getPassengers);
 
+  const translateGender = (gender: string) =>
+    gender === 'man' ? 'мужской' : 'женский';
+
   return (
     <ul className={className}>
       {Object.tsKeys(passengers).map((key) => (
@@ -19,14 +22,14 @@ export const PassengerList = memo(({ className }: PassengerListProps) => {
             <div className={styles.icon_wrapper}>
               <Icon iconName='icon-person' color='white' fontSize='34px' />
             </div>
-            <p>{passengers[key].isAdult ? 'Взрослый' : 'Детский'}</p>
+            <p>{passengers[key].ticketType}</p>
           </div>
           <div className={styles.desc}>
             <p className={styles.name}>
               {`${passengers[key].lastName} ${passengers[key].firstName} ${passengers[key].middleName}`}
             </p>
             <p>
-              Пол <span>{passengers[key].gender}</span>
+              Пол <span>{translateGender(passengers[key].gender)}</span>
             </p>
             <p>
               Дата рождения <span>{passengers[key].birthday}</span>

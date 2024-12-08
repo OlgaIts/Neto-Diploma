@@ -12,15 +12,16 @@ interface CustomDatePickerProps {
 }
 
 interface CustomInputProps {
+  className?: string;
   value: string;
   onClick: () => void;
-  className?: string;
+  onClear?: () => void;
 }
 
 const CustomInput: ForwardRefRenderFunction<
   HTMLDivElement,
   CustomInputProps
-> = ({ value, onClick, className }, ref) => (
+> = ({ value, onClick, className, onClear }, ref) => (
   <div
     className={classNames('custom-input-container', className)}
     onClick={onClick}
@@ -32,12 +33,22 @@ const CustomInput: ForwardRefRenderFunction<
       placeholder='ДД/ММ/ГГ'
       readOnly
     />
-    <Icon
-      iconName={'icon-calendar'}
-      color='primary'
-      fontSize='22px'
-      className={styles.icon}
-    />
+    {value ? (
+      <Icon
+        iconName='icon-close'
+        color='dark_gray'
+        fontSize='18px'
+        className={classNames(styles.icon, styles.icon_close)}
+        onClick={onClear}
+      />
+    ) : (
+      <Icon
+        iconName={'icon-calendar'}
+        color='primary'
+        fontSize='22px'
+        className={styles.icon}
+      />
+    )}
   </div>
 );
 
@@ -45,10 +56,22 @@ const ForwardedCustomInput = forwardRef(CustomInput);
 
 export const CustomDatePicker = memo(
   ({ className, selected, onChange }: CustomDatePickerProps) => {
+    const clearValue = () => {
+      if (onChange) {
+        onChange(null);
+      }
+    };
+
     return (
       <DatePicker
         locale='ru'
-        customInput={<ForwardedCustomInput value='' onClick={() => {}} />}
+        customInput={
+          <ForwardedCustomInput
+            value=''
+            onClick={() => {}}
+            onClear={clearValue}
+          />
+        }
         calendarStartDay={1}
         selected={selected}
         onChange={onChange}

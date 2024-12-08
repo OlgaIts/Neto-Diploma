@@ -1,11 +1,12 @@
-import { memo } from 'react';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import { CustomInput } from '@shared/ui/CustomInput';
+import { type PaymentPerson } from '../../types/paymentPerson';
 import styles from './PaymentPersonForm.module.scss';
 
 interface PaymentPersonFormProps {
-  errors: any;
+  errors: FieldErrors<PaymentPerson>;
   isValid: boolean;
-  register: any;
+  register: UseFormRegister<PaymentPerson>;
 }
 export const PaymentPersonForm = ({
   errors,
@@ -14,7 +15,6 @@ export const PaymentPersonForm = ({
 }: PaymentPersonFormProps) => {
   const lastNameError = errors?.lastName?.message;
 
-  console.log(lastNameError);
   return (
     <>
       <div className={styles.name_wrapper}>
@@ -76,5 +76,3 @@ export const PaymentPersonForm = ({
     </>
   );
 };
-
-// PaymentPersonForm.displayName = 'PaymentPersonForm';

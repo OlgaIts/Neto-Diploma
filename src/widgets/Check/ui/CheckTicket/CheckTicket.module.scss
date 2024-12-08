@@ -1,10 +1,6 @@
 .section {
   width: 100%;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: var(--margin-lg);
-}
-
-.btn {
-  margin-block: calc(var(--margin-xxl) * 2);
-  margin-left: auto;
 }

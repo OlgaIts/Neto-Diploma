@@ -16,6 +16,7 @@ export interface PersonSeatsCount {
 
 interface ServicePayload extends Partial<Services> {
   wagonNumber: number;
+  wagonId: string;
   wagonClass: WagonClass;
 }
 
@@ -32,18 +33,20 @@ interface TotalPriceInfo {
 }
 interface SeatPricePayload {
   wagonNumber: number;
+  wagonId: string;
   wagonClass: WagonClass;
   seat: Record<number, Seat>;
 }
 
 interface CoachTicketInfo {
   coachNumber: number;
+  coachId: string;
   tickets: Record<number, Seat>; //сидушка и цена
   services: Services;
   wagonClass: WagonClass | null;
 }
 
-interface DirectionTicketInfo extends PersonSeatsCount, TotalPriceInfo {
+export interface DirectionTicketInfo extends PersonSeatsCount, TotalPriceInfo {
   coaches: Record<number, CoachTicketInfo>;
 }
 
@@ -91,11 +94,12 @@ const seatsTicketInfoSlice = createSlice({
     },
     saveServicesPrice(state, action: PayloadActionDirection<ServicePayload>) {
       const { data, direction } = action.payload;
-      const { wagonNumber, wagonClass, ...servicesPrice } = data;
+      const { wagonNumber, wagonId, wagonClass, ...servicesPrice } = data;
 
       if (!state[`${direction}Ticket`].coaches?.[wagonNumber]) {
         state[`${direction}Ticket`].coaches[wagonNumber] = {
           coachNumber: wagonNumber,
+          coachId: wagonId,
           services: initialServiceState,
           tickets: {},
           wagonClass,
@@ -118,11 +122,12 @@ const seatsTicketInfoSlice = createSlice({
     },
     saveSeatPrice(state, action: PayloadActionDirection<SeatPricePayload>) {
       const { data, direction } = action.payload;
-      const { seat, wagonNumber, wagonClass } = data;
+      const { seat, wagonNumber, wagonId, wagonClass } = data;
 
       if (!state[`${direction}Ticket`].coaches?.[wagonNumber]) {
         state[`${direction}Ticket`].coaches[wagonNumber] = {
           coachNumber: wagonNumber,
+          coachId: wagonId,
           services: initialServiceState,
           tickets: {},
           wagonClass,

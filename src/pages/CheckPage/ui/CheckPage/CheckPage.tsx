@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import { Header } from '@widgets/Header';
-import { ProgressSteps } from '@shared/ui/ProgressSteps';
 import { TripDetails } from '@widgets/TripDetails';
 import { CheckTicket } from '@widgets/Check';
+import { ProgressSteps } from '@shared/ui/ProgressSteps';
 import styles from './CheckPage.module.scss';
 
 export const CheckPage = memo(() => {
