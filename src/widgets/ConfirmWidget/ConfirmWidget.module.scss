@@ -107,12 +107,3 @@
     color: var(--bg-header-form);
   }
 }
-
-.btn {
-  border: 1px solid var(--color-dark);
-
-  &:hover {
-    border: 1px solid var(--color-light);
-    background-color: var(--color-light);
-  }
-}

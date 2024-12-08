@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import classNames from 'classnames';
 import { StarRating } from '@features/StarRating';
+import { GoHomeButton } from '@features/GoHomeButton';
 import { getPaymentPerson } from '@features/PassengerForm';
 import { getRoutesTotalPrice } from '@entities/seats';
 import { Icon } from '@shared/ui/Icon';
-import { Button } from '@shared/ui/Button';
 import { toLocalString } from '@shared/lib/utils';
 import { useAppSelector } from '@shared/lib/hooks';
 import styles from './ConfirmWidget.module.scss';
@@ -73,17 +73,7 @@ export const ConfirmWidget = memo(({ className }: ConfirmWidgetProps) => {
             <p>Оценить сервис</p>
             <StarRating count={5} />
           </div>
-          <Button
-            tag='Link'
-            to='/'
-            bgColor='primary'
-            color='black'
-            uppercase
-            className={styles.btn}
-            onClick={() => scroll(0, 0)}
-          >
-            вернуться на главную
-          </Button>
+          <GoHomeButton />
         </footer>
       </section>
     </div>
