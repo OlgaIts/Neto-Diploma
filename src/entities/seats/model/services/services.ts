@@ -9,17 +9,28 @@ interface SeatsRequestData {
 
 export const services = {
   getSeats: async (data: SeatsRequestData): Promise<Seats[]> => {
-    const queryParams = Object.keys(data.filters)
-      .map((key) => {
-        const dataKey = key as keyof SeatsFilters;
-        const isValidValue = !!data.filters[dataKey];
-        return isValidValue && `${key}=${data.filters[dataKey]}`;
-      })
-      .filter(Boolean);
-    const params = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
-    const response = await fetch(`${url}/routes/${data.id}/seats${params}`);
-    const routes = response.json();
-    return routes;
+    try {
+      const queryParams = Object.keys(data.filters)
+        .map((key) => {
+          const dataKey = key as keyof SeatsFilters;
+          const isValidValue = !!data.filters[dataKey];
+          return isValidValue && `${key}=${data.filters[dataKey]}`;
+        })
+        .filter(Boolean);
+      const params = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
+      const response = await fetch(`${url}/routes/${data.id}/seats${params}`);
+
+      if (!response.ok) {
+        throw new Error(
+          `Ошибка загрузки данных: ${response.status} ${response.statusText}`,
+        );
+      }
+
+      const routes = response.json();
+      return routes;
+    } catch (error) {
+      console.error('Произошла ошибка при получении данных:', error);
+      throw new Error('Не удалось загрузить данные. Повторите попытку позже.');
+    }
   },
-  //TODO: try catch с обработкой ошибок или axios
 };

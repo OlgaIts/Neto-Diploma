@@ -40,12 +40,25 @@ export interface OrderData {
 
 export const services = {
   postOrderData: async (data: OrderData) => {
-    const response = await fetch(`${url}/order`, {
-      method: 'POST',
-      body: JSON.stringify(data),
-    });
-    return response.json();
+    try {
+      const response = await fetch(`${url}/order`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Ошибка запроса: ${response.status} ${errorText}`);
+      }
+      return response.json();
+    } catch (error) {
+      console.error('Произошла ошибка при отправке данных:', error);
+      throw new Error(
+        'Не удалось отправить данные. Проверьте подключение и повторите попытку позже.',
+      );
+    }
   },
 };
-
-//TODO try catch
