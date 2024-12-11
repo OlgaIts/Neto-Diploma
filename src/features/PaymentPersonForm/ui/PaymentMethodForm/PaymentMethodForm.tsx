@@ -8,26 +8,22 @@ interface PaymentMethodFormProps {
   register: UseFormRegister<PaymentPerson>;
 }
 
-//TODO: стилизовать инпуты
-
 export const PaymentMethodForm = memo(
   ({ register }: PaymentMethodFormProps) => {
     return (
       <>
         <div className={styles.wrapper_online}>
-          <label htmlFor='online'>Онлайн</label>
+          <label htmlFor='online' className={styles.label}>
+            Онлайн
+          </label>
           <input
+            className={styles.input}
             type='radio'
             id='online'
-            {...register('payment_method')}
             value='online'
+            {...register('payment_method')}
             defaultChecked
           />
-          {/* <Checkbox
-            id='online'
-            labelText='Онлайн'
-            {...register('payment_method')}
-          /> */}
           <ul className={styles.list}>
             {paymentMethods.map((item) => (
               <li key={item.id}>
@@ -42,18 +38,16 @@ export const PaymentMethodForm = memo(
           </ul>
         </div>
         <div className={styles.wrapper_cash}>
-          <label htmlFor='cash'>Наличными</label>
+          <label htmlFor='cash' className={styles.label}>
+            Наличными
+          </label>
           <input
+            className={styles.input}
             type='radio'
-            {...register('payment_method')}
             id='cash'
             value='cash'
-          />
-          {/* <Checkbox
-            id='cash'
-            labelText='Наличными'
             {...register('payment_method')}
-          /> */}
+          />
         </div>
       </>
     );

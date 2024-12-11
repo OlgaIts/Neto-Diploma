@@ -20,3 +20,38 @@
   padding-block: var(--margin-xxl);
   border-top: var(--dashed);
 }
+
+.label {
+  position: relative;
+  font: var(--fw-regular) var(--fs-text) var(--ff);
+  color: var(--text-dark-gray);
+}
+
+.input {
+  position: relative;
+  margin-left: var(--margin-md);
+  height: 28px;
+  width: 28px;
+  background-color: var(--color-light);
+  border: 1px solid var(--text-dark-gray);
+  border-radius: var(--radius);
+  vertical-align: text-bottom;
+  appearance: none;
+}
+
+.input::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.input:checked::before {
+  left: 4px;
+  top: 4px;
+  width: 28px;
+  height: 10px;
+  border-radius: 1px;
+  border-left: 4px solid var(--bg-accent-color);
+  border-bottom: 4px solid var(--bg-accent-color);
+  transform: rotate(-45deg);
+}
