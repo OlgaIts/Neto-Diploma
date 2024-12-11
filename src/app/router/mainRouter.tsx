@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { StartPage } from '@pages/StartPage';
+import { InfoPage } from '@pages/InfoPage';
 import { TrainPage } from '@pages/TrainPage';
 import { SeatsPage } from '@pages/SeatsPage';
 import { PassengerPage } from '@pages/PassengerPage';
@@ -21,6 +22,10 @@ export const mainRouter = () => {
     {
       path: '/',
       element: withFooter(<StartPage />),
+    },
+    {
+      path: '/info',
+      element: withFooter(<InfoPage />),
     },
     {
       path: '/train',

@@ -1,21 +1,22 @@
 import { memo } from 'react';
-import { ConfirmWidget } from '@widgets/ConfirmWidget';
 import { HeaderNav } from '@shared/ui/HeaderNav';
-import styles from './ConfirmPage.module.scss';
+import styles from './InfoPage.module.scss';
+import { InfoPageContent } from '@widgets/InfoPageContent';
 
-export const ConfirmPage = memo(() => {
+export const InfoPage = memo(() => {
   return (
     <div className={styles.component}>
       <header className={styles.header}>
         <HeaderNav />
         <div className={styles.container}>
-          <h1 className={styles.title}>Благодарим Вас за заказ!</h1>
+          <h1 className={styles.title}>Процедура совершения покупки</h1>
         </div>
       </header>
       <main className={styles.container}>
-        <ConfirmWidget />
+        <InfoPageContent />
       </main>
     </div>
   );
 });
-ConfirmPage.displayName = 'ConfirmPage';
+
+InfoPage.displayName = 'InfoPage';

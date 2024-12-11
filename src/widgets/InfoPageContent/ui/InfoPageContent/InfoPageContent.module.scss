@@ -1,0 +1,14 @@
+.component {
+  position: relative;
+  padding: var(--padding-lg);
+  margin-top: -150px;
+  background-color: var(--color-light);
+  box-shadow: var(--shadow);
+  z-index: 2;
+}
+
+.title {
+  margin-bottom: 80px;
+  text-align: center;
+}
+
