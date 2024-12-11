@@ -7,13 +7,17 @@
   padding-right: var(--padding-sm);
 }
 
+.sorted_item {
+  cursor: pointer;
+}
+
 .list {
   position: absolute;
   top: 0;
   left: 50%;
-  transform: rotate(-50%);
   background-color: var(--page-bg);
   box-shadow: var(--shadow);
+  transform: rotate(-50%);
 }
 
 .item {
@@ -32,5 +36,9 @@
 
   &:first-child {
     padding-top: 0;
+  }
+
+  &:hover {
+    background-color: var(--bg-focus-btn);
   }
 }

@@ -5,25 +5,24 @@ import { sortList } from '../../consts/sortList';
 import styles from './RouteSortFilter.module.scss';
 
 export const RouteSortFilter = memo(() => {
+  const dispatch = useAppDispatch();
   const [sortType, setSortType] = useState('date');
   const [open, setOpen] = useState(false);
-  const dispatch = useAppDispatch();
 
   const changeSortType = (type: RouteSortType) => {
     setSortType(type);
     dispatch(setRouteFilters({ sort: type }));
     setOpen(false);
   };
-  //TODO: переделать стили
+
   return (
     <div className={styles.sort_wrapper}>
       <div>
         <span className={styles.sort}>сортировать по:</span>
-        <span onClick={() => setOpen(!open)}>
+        <span onClick={() => setOpen(!open)} className={styles.sorted_item}>
           {sortList.find((item) => item.type === sortType)?.name}
         </span>
       </div>
-      {/* TODO: неплохо бы сделать компонент модалки отдельно*/}
       {open && (
         <ul className={styles.list}>
           {sortList.map((item) => (
