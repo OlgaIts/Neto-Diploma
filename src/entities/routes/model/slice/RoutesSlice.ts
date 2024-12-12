@@ -6,12 +6,17 @@ interface RoutesState {
   routes: Route[];
   totalCount: number;
   routeFilters: Partial<RouteFilters>;
+  routesLoading?: boolean;
 }
 
 const initialState: RoutesState = {
   routes: [],
   totalCount: 0,
-  routeFilters: {},
+  routeFilters: {
+    price_from: 0,
+    price_to: 7000,
+  },
+  routesLoading: false,
 };
 
 const routesSlice = createSlice({
@@ -32,8 +37,13 @@ const routesSlice = createSlice({
         delete state.routeFilters.offset;
       }
     },
+    setRoutesLoading: (state, action: PayloadAction<boolean>) => {
+      state.routesLoading = action.payload;
+      console.log(action.payload);
+    },
   },
 });
 
-export const { setRoutes, setCount, setRouteFilters } = routesSlice.actions;
+export const { setRoutes, setCount, setRouteFilters, setRoutesLoading } =
+  routesSlice.actions;
 export const routesReducer = routesSlice.reducer;

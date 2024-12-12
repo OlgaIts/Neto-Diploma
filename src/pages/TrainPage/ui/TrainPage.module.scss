@@ -13,3 +13,22 @@
   display: flex;
   gap: var(--margin-xxl);
 }
+
+.preloader {
+  min-height: 500px;
+  display: grid;
+  place-content: center;
+  background-color: var(--bg-filter);
+  font: var(--fw-bold) var(--fs-text) var(--ff);
+  color: var(--text-dark-gray);
+  text-transform: uppercase;
+}
+
+.wrapper {
+  text-align: center;
+  width: 800px;
+
+  p {
+    margin-bottom: calc(var(--margin-xxl) * 2);
+  }
+}

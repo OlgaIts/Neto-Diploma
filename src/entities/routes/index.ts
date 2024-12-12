@@ -7,6 +7,7 @@ export {
   getLimit,
   getTotalCount,
   getOffset,
+  getRoutesLoading,
 } from './model/selectors/selector';
 export { wagonType } from './model/consts/wagonType';
 export { useGetRoutes } from './hooks/useGetRoutes';

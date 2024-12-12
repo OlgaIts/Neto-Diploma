@@ -1,6 +1,6 @@
 import { useCallback, useRef } from 'react';
 
-type CallbackFunc = (...args: unknown[]) => void;
+type CallbackFunc = (...args: any[]) => void;
 
 export default function useDebounce<T extends CallbackFunc>(
   callback: T,

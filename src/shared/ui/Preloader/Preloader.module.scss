@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  height: 100%;
 }
 .iconContainer {
   position: relative;
@@ -17,7 +18,7 @@
   top: 0;
   left: 0;
   color: var(--bg-focus-btn);
-  animation: trainAnimation 3s linear infinite;
+  animation: trainAnimation 2s linear infinite;
 }
 
 .line {
@@ -27,7 +28,7 @@
   height: 2px;
   width: 320px;
   background-color: var(--bg-focus-btn);
-  animation: lineAnimation 3s linear infinite reverse;
+  animation: lineAnimation 2s linear infinite reverse;
 }
 
 @keyframes trainAnimation {

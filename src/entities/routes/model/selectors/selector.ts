@@ -32,3 +32,6 @@ export const getRouteDateEnd = (state: RootState) => {
 
   return date.toISOString();
 };
+
+export const getRoutesLoading = (state: RootState) =>
+  state.routes.routesLoading;

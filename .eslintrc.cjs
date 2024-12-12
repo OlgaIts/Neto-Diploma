@@ -30,5 +30,6 @@ module.exports = {
     ],
     quotes: ['error', 'single', { avoidEscape: true }],
     '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/no-explicit-any': ['error', { ignoreRestArgs: true }],
   },
 };

@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { memo, useState } from 'react';
 import classNames from 'classnames';
 import { RangeSlider } from '@shared/ui/RangeSlider';
 import styles from './TimeSlider.module.scss';
@@ -19,12 +19,9 @@ export const TimeSlider = memo(
     };
 
     const handleRangeChange = (newRange: [number, number]) => {
+      func?.(newRange);
       setRange(newRange);
     };
-
-    useEffect(() => {
-      func?.(range);
-    }, [range]);
 
     return (
       <div className={classNames(styles.component, className)}>

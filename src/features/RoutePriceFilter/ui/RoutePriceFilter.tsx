@@ -1,13 +1,14 @@
-import { memo, useEffect, useState } from 'react';
+import { memo } from 'react';
+import { getRouteFilter } from '@entities/routes';
+import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import { Title } from '@shared/ui/Title';
 import { RangeSlider } from '@shared/ui/RangeSlider';
-import { useAppDispatch } from '@shared/lib/hooks';
-import { setRouteFilters } from '@entities/routes';
 import styles from './RoutePriceFilter.module.scss';
+import { setRouteFilters } from '@entities/routes/model/slice/RoutesSlice';
 
 export const RoutePriceFilter = memo(() => {
-  const [range, setRange] = useState([0, 7000]);
   const dispatch = useAppDispatch();
+  const { price_from, price_to } = useAppSelector(getRouteFilter);
 
   const getRoutes = (priceRange: number[]) => {
     const priceFilter = {
@@ -16,10 +17,6 @@ export const RoutePriceFilter = memo(() => {
     };
     dispatch(setRouteFilters(priceFilter));
   };
-
-  useEffect(() => {
-    getRoutes(range);
-  }, [range]);
 
   return (
     <>
@@ -34,9 +31,9 @@ export const RoutePriceFilter = memo(() => {
         height={'19px'}
         max={7000}
         min={0}
-        onChange={setRange}
+        onChange={getRoutes}
         step={100}
-        value={range}
+        value={[price_from!, price_to!]}
         className={styles.slider}
       />
     </>
