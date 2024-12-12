@@ -5,3 +5,12 @@
   font: var(--fw-regular) var(--fs-sm) var(--ff);
   color: var(--text-dark-gray);
 }
+
+.not_found {
+  justify-items: center;
+  font: var(--fw-regular) var(--fs-text) var(--ff);
+}
+
+.text {
+  padding-bottom: var(--padding-sm);
+}

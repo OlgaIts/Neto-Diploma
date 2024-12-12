@@ -28,7 +28,7 @@ export const TrainPage = memo(() => {
                   <LastTickets />
                 </section>
               </aside>
-              <section>
+              <section className={styles.section}>
                 <RoutesTicketsPanel />
               </section>
             </main>
