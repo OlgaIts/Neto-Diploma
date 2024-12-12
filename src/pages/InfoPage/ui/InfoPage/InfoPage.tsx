@@ -1,7 +1,7 @@
 import { memo } from 'react';
+import { InfoPageContent } from '@widgets/InfoPageContent';
 import { HeaderNav } from '@shared/ui/HeaderNav';
 import styles from './InfoPage.module.scss';
-import { InfoPageContent } from '@widgets/InfoPageContent';
 
 export const InfoPage = memo(() => {
   return (

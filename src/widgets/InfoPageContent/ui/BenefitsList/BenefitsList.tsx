@@ -1,20 +1,20 @@
 import { memo } from 'react';
-import classNames from 'classnames';
-import styles from './BenefitsList.module.scss';
-import { benefits } from '@widgets/InfoPageContent/consts/benefits';
 import { Icon } from '@shared/ui/Icon';
+import { benefits } from '../../consts/benefits';
+import styles from './BenefitsList.module.scss';
 
-interface BenefitsListProps {
-  className?: string;
-}
-
-export const BenefitsList = memo(({ className }: BenefitsListProps) => {
+export const BenefitsList = memo(() => {
   return (
-    <ul>
+    <ul className={styles.list}>
       {benefits.map((item) => (
-        <li key={item.id} className={styles.benefits_item}>
-          <Icon iconName={item.iconName} />
-          <h3>{item.title}</h3>
+        <li key={item.id} className={styles.item}>
+          <Icon
+            iconName={item.iconName}
+            fontSize='90px'
+            color='accent'
+            className={styles.icon}
+          />
+          <h3 className={styles.title}>{item.title}</h3>
           <p>{item.text}</p>
         </li>
       ))}

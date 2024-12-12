@@ -1,8 +1,8 @@
 @use '@app/styles/_mixins' as mixins;
 
 .component {
-  background-color: var(--page-bg);
   padding-bottom: 175px;
+  background-color: var(--page-bg);
 }
 
 .container {

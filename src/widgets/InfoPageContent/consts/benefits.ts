@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 export const benefits = [
   {
     id: uuidv4(),
-    iconName: 'icon-time',
+    iconName: 'icon-Time',
     title: 'Моментальная покупка',
     text: 'Купить и оформить ЖД билеты на сайте можно всего за две минуты.',
   },

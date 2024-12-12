@@ -12,11 +12,13 @@ export const Benefits = memo(() => {
           Как это работает
         </Title>
         <Button
-          tag='button'
+          tag='Link'
+          to='/info'
           size='m'
           color='white'
           bgColor='primary'
           className={styles.btn}
+          onClick={() => scroll(0, 0)}
         >
           Узнать больше
         </Button>

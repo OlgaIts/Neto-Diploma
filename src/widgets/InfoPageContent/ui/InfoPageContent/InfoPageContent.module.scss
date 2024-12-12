@@ -8,7 +8,16 @@
 }
 
 .title {
-  margin-bottom: 80px;
+  margin-bottom: calc(var(--margin-xl) * 2);
   text-align: center;
 }
 
+.text {
+  padding-bottom: var(--padding-md);
+  font: var(--fw-regular) var(--fs-sm) var(--ff);
+}
+
+.list_item {
+  display: flex;
+  gap: var(--gap-sm);
+}

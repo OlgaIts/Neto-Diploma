@@ -1,5 +1,5 @@
 .steps {
-  padding-bottom: 80px;
+  padding-bottom: calc(var(--margin-xl) * 2);
   display: flex;
   justify-content: space-between;
   align-items: start;
