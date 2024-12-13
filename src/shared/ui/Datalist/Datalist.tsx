@@ -53,6 +53,7 @@ export const Datalist = memo(
 
       onChange(event);
       setIsOpen(false);
+      localStorage.removeItem(name);
     };
 
     return (

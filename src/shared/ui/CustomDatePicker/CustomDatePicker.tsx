@@ -1,4 +1,4 @@
-import { ForwardRefRenderFunction, forwardRef, memo } from 'react';
+import { ForwardRefRenderFunction, forwardRef, memo, useCallback } from 'react';
 import classNames from 'classnames';
 import DatePicker from 'react-datepicker';
 import { Icon } from '../Icon';
@@ -9,6 +9,7 @@ interface CustomDatePickerProps {
   className?: string;
   selected?: Date | null;
   onChange?: (date: Date | null) => void;
+  localStorageKey?: string;
 }
 
 interface CustomInputProps {
@@ -55,12 +56,18 @@ const CustomInput: ForwardRefRenderFunction<
 const ForwardedCustomInput = forwardRef(CustomInput);
 
 export const CustomDatePicker = memo(
-  ({ className, selected, onChange }: CustomDatePickerProps) => {
-    const clearValue = () => {
+  ({
+    className,
+    selected,
+    onChange,
+    localStorageKey,
+  }: CustomDatePickerProps) => {
+    const clearValue = useCallback(() => {
       if (onChange) {
         onChange(null);
       }
-    };
+      localStorageKey && localStorage.removeItem(localStorageKey);
+    }, [localStorageKey]);
 
     return (
       <DatePicker

@@ -21,14 +21,14 @@ export const useTicketForm = () => {
   });
   const fromCity = watch('from');
   const toCity = watch('to');
-  const departureDate = watch('departureDate');
-  const returnDate = watch('returnDate');
+  const departureDate = watch('date_start');
+  const returnDate = watch('date_end');
 
   const onSubmit = async (data: TicketFormState) => {
     if (data.from && data.to) {
       const date_start =
-        data.departureDate && format(data.departureDate, 'yyyy-MM-dd');
-      const date_end = data.returnDate && format(data.returnDate, 'yyyy-MM-dd');
+        data.date_start && format(data.date_start, 'yyyy-MM-dd');
+      const date_end = data.date_end && format(data.date_end, 'yyyy-MM-dd');
       localStorage.setItem('date_start', date_start);
       localStorage.setItem('date_end', date_end);
 
@@ -47,16 +47,16 @@ export const useTicketForm = () => {
     }
   };
 
-  // при изменении date_start, который получает useAppSelector, меняет значение departureDate в стейте формы
+  // при изменении date_start, который получает useAppSelector, меняет значение date_start в стейте формы
   useEffect(() => {
     if (dateStart) {
-      setValue('departureDate', dateStart);
+      setValue('date_start', dateStart);
     }
   }, [dateStart]);
 
   useEffect(() => {
     if (dateEnd) {
-      setValue('returnDate', dateEnd);
+      setValue('date_end', dateEnd);
     }
   }, [dateEnd]);
 

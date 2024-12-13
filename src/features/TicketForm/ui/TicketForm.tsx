@@ -106,16 +106,18 @@ export const TicketForm = memo(({ className }: TicketFormProps) => {
         <div className={styles.input_wrapper}>
           <CustomDatePicker
             onChange={(date) =>
-              setValue('departureDate', date ? format(date, 'yyyy-MM-dd') : '')
+              setValue('date_start', date ? format(date, 'yyyy-MM-dd') : '')
             }
             selected={parseDate(departureDate)}
+            localStorageKey='date_start'
           />
 
           <CustomDatePicker
             onChange={(date) =>
-              setValue('returnDate', date ? format(date, 'yyyy-MM-dd') : '')
+              setValue('date_end', date ? format(date, 'yyyy-MM-dd') : '')
             }
             selected={parseDate(returnDate)}
+            localStorageKey='date_end'
           />
         </div>
         <Button

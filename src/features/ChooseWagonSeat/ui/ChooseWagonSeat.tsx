@@ -74,7 +74,9 @@ export const ChooseWagonSeat = memo(({ direction }: ChooseWagonSeatProps) => {
           Вагоны
           {wagonList.map((key) => (
             <span
-              className={classNames(styles.coach)}
+              className={classNames(styles.coach, {
+                [styles.active]: key === wagonInfo?.wagonNumber,
+              })}
               key={key}
               onClick={() => saveWagonNumber(direction, key)}
             >

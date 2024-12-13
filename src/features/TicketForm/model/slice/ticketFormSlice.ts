@@ -7,8 +7,8 @@ interface City {
 export interface TicketFormState {
   from: City | null;
   to: City | null;
-  departureDate: string;
-  returnDate: string;
+  date_start: string;
+  date_end: string;
 }
 
 const localFrom = localStorage.getItem('from');
@@ -19,8 +19,8 @@ const date_end = localStorage.getItem('date_end');
 export const initialState: TicketFormState = {
   from: localFrom ? JSON.parse(localFrom) : null,
   to: localTo ? JSON.parse(localTo) : null,
-  departureDate: date_start || '',
-  returnDate: date_end || '',
+  date_start: date_start || '',
+  date_end: date_end || '',
 };
 
 const ticketFormSlice = createSlice({
