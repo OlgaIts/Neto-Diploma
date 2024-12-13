@@ -7,16 +7,17 @@ import {
   PaymentPersonForm,
   type PaymentPerson,
 } from '@features/PaymentPersonForm';
-import { savePaymentPerson } from '@features/PassengerForm';
+import { getPaymentPerson, savePaymentPerson } from '@features/PassengerForm';
 import { Title } from '@shared/ui/Title';
 import { Button } from '@shared/ui/Button';
-import { useAppDispatch } from '@shared/lib/hooks';
+import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import { paymentFormValues } from '../../model/consts/paymentFormValues';
 import { paymentPersonSchema } from '../../model/schema/paymentPerson.schema';
 import styles from './PaymentForm.module.scss';
 
 export const PaymentForm = memo(() => {
   const dispatch = useAppDispatch();
+  const paymentPerson = useAppSelector(getPaymentPerson);
   const navigate = useNavigate();
   const {
     register,
@@ -24,10 +25,9 @@ export const PaymentForm = memo(() => {
     formState: { errors, isValid },
   } = useForm({
     mode: 'onChange',
-    defaultValues: paymentFormValues,
+    defaultValues: paymentPerson || paymentFormValues,
     resolver: zodResolver(paymentPersonSchema),
   });
-  // const { lastName, firstName, middleName, phone, email } = errors;
 
   const onSubmit = (data: PaymentPerson) => {
     dispatch(savePaymentPerson(data));

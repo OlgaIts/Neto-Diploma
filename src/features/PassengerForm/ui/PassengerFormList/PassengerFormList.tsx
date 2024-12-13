@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 import classNames from 'classnames';
-import { PassengerForm } from '@features/PassengerForm';
+import { getPassengers, PassengerForm } from '@features/PassengerForm';
 import { getSeatCount } from '@entities/seats';
 import { Title } from '@shared/ui/Title';
 import { Icon } from '@shared/ui/Icon';
@@ -10,6 +10,8 @@ import styles from './PassengerFormList.module.scss';
 export const PassengerFormList = memo(() => {
   const arrivalSeatsCount = useAppSelector(getSeatCount('arrival'));
   const departureSeatsCount = useAppSelector(getSeatCount('departure'));
+  const passengerInfo = useAppSelector(getPassengers);
+
   const totalSeatsCount = Math.max(departureSeatsCount, arrivalSeatsCount);
   const [openForms, setOpenForms] = useState<boolean[]>(() =>
     Array(totalSeatsCount)
@@ -56,6 +58,7 @@ export const PassengerFormList = memo(() => {
           {openForms[index] && (
             <PassengerForm
               id={index}
+              passenger={passengerInfo[index]}
               openNextForm={() => openNextForm(index)}
             />
           )}

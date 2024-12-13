@@ -25,7 +25,7 @@ export const CheckPay = memo(() => {
             bgColor='light'
             size='xs'
             onClick={() => {
-              navigate('7payment');
+              navigate('/payment');
               scroll(0, 0);
             }}
           >

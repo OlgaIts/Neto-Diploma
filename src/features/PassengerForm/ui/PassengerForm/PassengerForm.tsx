@@ -20,18 +20,20 @@ const pass = ['Паспорт РФ', 'Свидетельство о рожден
 interface PassengerFormProps {
   id: number;
   openNextForm: () => void;
+  passenger?: Passenger;
 }
 
 export const PassengerForm = memo(
-  ({ id, openNextForm }: PassengerFormProps) => {
+  ({ id, openNextForm, passenger }: PassengerFormProps) => {
     const dispatch = useAppDispatch();
+
     const {
       register,
       handleSubmit,
       control,
       formState: { errors, isValid },
     } = useForm({
-      defaultValues: initialValues,
+      defaultValues: passenger || initialValues,
       resolver: zodResolver(PassengerFormSchema),
     });
     const [changeDocument, setChangeDocument] = useState(pass[0]);
