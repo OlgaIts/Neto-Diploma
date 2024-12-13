@@ -1,3 +1,6 @@
+export { setDirectionInfo } from './model/thunks/setDirectionInfo';
+export { updateSeat } from './model/thunks/updateSeat';
+export { changePersonCount } from './model/thunks/changePersonCount';
 export { withOneSeatType } from './lib/withOneSeatType';
 export {
   getCurrentWagonInfo,
@@ -7,11 +10,8 @@ export {
   getCurrentWagonSeats,
 } from './model/selectors/currentWagonInfoSelector';
 export {
-  setDirectionInfo,
   clearCurrentInfoState,
   updateSeatState,
-  updateSeat,
-  changePersonCount,
   currentWagonInfoReducer,
   type CurrentInfo,
 } from './model/slice/currentDirectionInfo';

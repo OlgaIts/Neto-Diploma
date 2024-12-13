@@ -1,5 +1,7 @@
+import { IconName } from '@shared/ui/Icon';
+
 export interface Options {
-  name: string;
+  name: IconName;
   tooltip: string;
   active?: boolean;
   included: boolean;
