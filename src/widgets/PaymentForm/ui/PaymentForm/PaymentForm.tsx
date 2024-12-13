@@ -38,7 +38,7 @@ export const PaymentForm = memo(() => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <div className={styles.section}>
           <div className={styles.title_wrapper}>
             <Title color='dark' weight='regular'>

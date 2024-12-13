@@ -1,6 +1,14 @@
 import { v4 as uuidv4 } from 'uuid';
+import { type IconName } from '@shared/ui/Icon';
 
-export const benefits = [
+interface Benefit {
+  id: string;
+  iconName: IconName;
+  title: string;
+  text: string;
+}
+
+export const benefits: Benefit[] = [
   {
     id: uuidv4(),
     iconName: 'icon-Time',

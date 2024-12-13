@@ -1,13 +1,14 @@
 import { memo } from 'react';
 import classNames from 'classnames';
 import { Icon } from '@shared/ui/Icon';
+import { type IconName } from '@shared/ui/Icon';
 import styles from './RouteCardServiceIcons.module.scss';
 
 interface RouteCardServiceIconsProps {
   className?: string;
 }
 
-const icons = ['icon-wi-fi', 'icon-express', 'icon-caffee'];
+const icons: IconName[] = ['icon-wi-fi', 'icon-express', 'icon-caffee'];
 
 export const RouteCardServiceIcons = memo(
   ({ className }: RouteCardServiceIconsProps) => {

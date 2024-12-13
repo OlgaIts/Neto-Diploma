@@ -1,21 +1,23 @@
 import { memo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import { Button } from '@shared/ui/Button';
-import { Title } from '@shared/ui/Title';
-import { Icon } from '@shared/ui/Icon';
-import { useAppSelector } from '@shared/lib/hooks';
-import { formatDatetime, toLocalString } from '@shared/lib/utils';
+import { getArrivalInfo, getDepartureInfo } from '@entities/seats';
 import {
   priceByClass,
   RouteCardServiceIcons,
   wagonType,
 } from '@entities/routes';
-import { getArrivalInfo, getDepartureInfo } from '@entities/seats';
+import { Button } from '@shared/ui/Button';
+import { Title } from '@shared/ui/Title';
+import { Icon } from '@shared/ui/Icon';
+import { useAppSelector } from '@shared/lib/hooks';
+import { formatDatetime, toLocalString } from '@shared/lib/utils';
 import styles from './CheckTrain.module.scss';
 
 export const CheckTrain = memo(() => {
   const departureInfo = useAppSelector(getDepartureInfo);
   const arrivalInfo = useAppSelector(getArrivalInfo);
+  const navigate = useNavigate();
 
   if (!departureInfo) {
     return null;
@@ -141,7 +143,15 @@ export const CheckTrain = memo(() => {
           </ul>
           <div>
             <RouteCardServiceIcons className={styles.service_icons} />
-            <Button color='black' tag='button' bgColor='light' size='xs'>
+            <Button
+              color='black'
+              tag='button'
+              bgColor='light'
+              size='xs'
+              onClick={() => {
+                navigate('/train');
+              }}
+            >
               Изменить
             </Button>
           </div>

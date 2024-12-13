@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import classNames from 'classnames';
-import { DirectionFilterHeader } from '@shared/ui/DirectionFilterHeader';
-import { Icon } from '@shared/ui/Icon';
-import { useAppSelector } from '@shared/lib/hooks';
 import { getArrivalInfo, getDepartureInfo } from '@entities/seats';
+import { DirectionFilterHeader } from '@shared/ui/DirectionFilterHeader';
+import { useAppSelector } from '@shared/lib/hooks';
 import { formatDate, formatDatetime } from '@shared/lib/utils';
+import { Icon, type IconName } from '@shared/ui/Icon';
 import { type Direction } from '@shared/types';
 import { PassengerFilter } from '../PassengerFilter/PassengerFilter';
 import { PassengerSeatFilter } from '../PassengerSeatFilter/PassengerSeatFilter';
@@ -13,7 +13,7 @@ import styles from './TripDetailFilters.module.scss';
 interface TripDetailFiltersProps {
   className?: string;
   title?: string;
-  iconName?: string;
+  iconName: IconName;
   direction: Direction;
 }
 

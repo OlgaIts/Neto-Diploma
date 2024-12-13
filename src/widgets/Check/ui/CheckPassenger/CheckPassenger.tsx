@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getRoutesTotalPrice } from '@entities/seats';
 import { Title } from '@shared/ui/Title';
 import { Button } from '@shared/ui/Button';
@@ -10,6 +11,7 @@ import styles from './CheckPassenger.module.scss';
 
 export const CheckPassenger = memo(() => {
   const totalPrice = useAppSelector(getRoutesTotalPrice);
+  const navigate = useNavigate();
 
   return (
     <article className={styles.component}>
@@ -28,7 +30,16 @@ export const CheckPassenger = memo(() => {
               <Icon iconName='icon-ruble' color='dark_gray' fontSize='24px' />
             </p>
           </div>
-          <Button tag='button' color='black' bgColor='light' size='xs'>
+          <Button
+            tag='button'
+            color='black'
+            bgColor='light'
+            size='xs'
+            onClick={() => {
+              navigate('/passenger');
+              scroll(0, 0);
+            }}
+          >
             Изменить
           </Button>
         </div>

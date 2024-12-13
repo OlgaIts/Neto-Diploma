@@ -1,12 +1,12 @@
 import { memo } from 'react';
 import classNames from 'classnames';
-import { Icon } from '@shared/ui/Icon';
 import { Button } from '@shared/ui/Button';
+import { Icon, type IconName } from '@shared/ui/Icon';
 import styles from './ChangeTrain.module.scss';
 
 interface ChangeTrainProps {
   className?: string;
-  iconName: string;
+  iconName: IconName;
 }
 
 export const ChangeTrain = memo(({ className, iconName }: ChangeTrainProps) => {

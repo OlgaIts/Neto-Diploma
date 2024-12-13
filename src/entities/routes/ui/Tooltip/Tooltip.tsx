@@ -1,6 +1,7 @@
 import { RefObject, memo } from 'react';
 import classNames from 'classnames';
 import { Icon } from '@shared/ui/Icon';
+import { seatsLabels } from '../../model/consts/seatsLabels';
 import { type Route } from '../../model/types/route';
 import styles from './Tooltip.module.scss';
 
@@ -10,20 +11,21 @@ interface TooltipProps {
   seatsClass: string;
   item: Route;
 }
-// TODO: вынести, будет переиспользоваться
-const seatsLabels: { [key: string]: string } = {
-  top_price: 'верхние',
-  bottom_price: 'нижние',
-  side_price: 'боковые',
-};
-//TODO: типизировать по человечески
+
 export const Tooltip = memo(
   ({ className, ref, seatsClass, item }: TooltipProps) => {
-    const prices = item.departure.price_info[seatsClass];
+    const prices =
+      item.departure.price_info[
+        seatsClass as keyof typeof item.departure.price_info
+      ];
+
+    if (!prices) {
+      return null;
+    }
 
     return (
       <div ref={ref} className={classNames(styles.tooltip, className)}>
-        {Object.keys(prices).map((priceKey) => (
+        {Object.tsKeys(prices).map((priceKey) => (
           <div className={styles.wrapper} key={priceKey}>
             <p className={styles.desc}>{seatsLabels[priceKey]}</p>
             <div className={styles.price_wrapper}>

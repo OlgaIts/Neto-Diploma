@@ -1,7 +1,7 @@
 import { memo, ReactNode, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import classNames from 'classnames';
-import { Icon } from '../Icon';
+import { Icon, type IconName } from '../Icon';
 import { Title } from '../Title';
 import styles from './DirectionFilterHeader.module.scss';
 
@@ -9,7 +9,7 @@ interface DirectionFilterHeaderProps {
   className?: string;
   children: ReactNode;
   title?: string;
-  iconName?: string;
+  iconName: IconName;
   date?: number | string;
 }
 

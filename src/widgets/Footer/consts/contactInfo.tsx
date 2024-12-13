@@ -1,6 +1,14 @@
+import { ReactNode } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { type IconName } from '@shared/ui/Icon';
 
-export const contactInfo = [
+interface ContactInfo {
+  id: string;
+  iconName: IconName;
+  text: string | ReactNode;
+}
+
+export const contactInfo: ContactInfo[] = [
   {
     id: uuidv4(),
     iconName: 'icon-tel',

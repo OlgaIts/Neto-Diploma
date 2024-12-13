@@ -1,6 +1,14 @@
 import { v4 as uuidv4 } from 'uuid';
+import { type IconName } from '@shared/ui/Icon';
 
-export const socialLinks = [
+interface SocialLink {
+  id: string;
+  href: string;
+  iconName: IconName;
+  fontSize: string;
+}
+
+export const socialLinks: SocialLink[] = [
   {
     id: uuidv4(),
     href: 'https://www.youtube.com/',

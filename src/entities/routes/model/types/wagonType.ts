@@ -1,6 +1,8 @@
+import { type IconName } from '@shared/ui/Icon';
+
 interface WagonTypeItem {
   label: string;
-  iconName: string;
+  iconName: IconName;
 }
 
 export interface WagonType {

@@ -1,14 +1,15 @@
 import { memo } from 'react';
 import classNames from 'classnames';
 import { DirectionFilterHeader } from '@shared/ui/DirectionFilterHeader';
-import { Icon } from '@shared/ui/Icon';
+import { Icon, type IconName } from '@shared/ui/Icon';
 import styles from './TripFilters.module.scss';
 
 interface TripDetailFiltersProps {
   className?: string;
-  iconName?: string;
+  iconName: IconName;
   title?: string;
 }
+
 export const TripFilters = memo(
   ({ className, iconName, title }: TripDetailFiltersProps) => {
     return (
