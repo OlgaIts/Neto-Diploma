@@ -1,10 +1,10 @@
 import { FormEvent, memo, useState } from 'react';
-import { TransparentButton } from '@shared/ui/TransparentButton';
-import { Modal } from '@shared/ui/Modal';
 import { subscribe } from '@features/SubscribeForm/model/services/service';
+import { Modal } from '@shared/ui/Modal';
+import { TransparentButton } from '@shared/ui/TransparentButton';
 import { SubscribeModalContent } from '../SubscribeModalContent/SubscribeModalContent';
-import styles from './SubscribeForm.module.scss';
 import { ErrorModalContent } from '../ErrorModalContent/ErrorModalContent';
+import styles from './SubscribeForm.module.scss';
 
 export const SubscribeForm = memo(() => {
   const [email, setEmail] = useState('');

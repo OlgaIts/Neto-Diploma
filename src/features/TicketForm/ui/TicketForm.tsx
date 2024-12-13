@@ -4,8 +4,6 @@ import classNames from 'classnames';
 import { registerLocale } from 'react-datepicker';
 import { ru } from 'date-fns/locale';
 import { format } from 'date-fns';
-import { useTicketForm } from '../hooks/useTicketForm';
-import { setFromCity, setToCity } from '../model/slice/ticketFormSlice';
 import { CitySelect } from '@entities/cities';
 import { Title } from '@shared/ui/Title';
 import { Button } from '@shared/ui/Button';
@@ -13,6 +11,8 @@ import { Icon } from '@shared/ui/Icon';
 import { CustomDatePicker } from '@shared/ui/CustomDatePicker';
 import { useAppDispatch } from '@shared/lib/hooks';
 import { parseDate } from '@shared/lib/utils';
+import { useTicketForm } from '../hooks/useTicketForm';
+import { setFromCity, setToCity } from '../model/slice/ticketFormSlice';
 import styles from './TicketForm.module.scss';
 
 registerLocale('ru', ru);

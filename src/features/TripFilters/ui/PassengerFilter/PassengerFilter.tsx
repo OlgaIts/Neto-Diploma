@@ -1,8 +1,8 @@
 import { memo } from 'react';
+import { getAdultCount, getChildCount, getTicketInfo } from '@entities/seats';
 import { Icon } from '@shared/ui/Icon';
 import { Title } from '@shared/ui/Title';
 import { useAppSelector } from '@shared/lib/hooks';
-import { getAdultCount, getChildCount, getTicketInfo } from '@entities/seats';
 import { toLocalString } from '@shared/lib/utils';
 import { type Direction } from '@shared/types';
 import styles from './PassengerFilter.module.scss';

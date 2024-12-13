@@ -1,5 +1,4 @@
 export { withOneSeatType } from './lib/withOneSeatType';
-
 export {
   getCurrentWagonInfo,
   getCurrentServicesInfo,
@@ -13,6 +12,7 @@ export {
   updateSeatState,
   updateSeat,
   changePersonCount,
+  currentWagonInfoReducer,
   type CurrentInfo,
 } from './model/slice/currentDirectionInfo';
 export { ServiceIcons } from './ui/ServiceIcons/ServiceIcons';
@@ -57,4 +57,5 @@ export {
   seatsReducer,
   setDeparture,
   setArrival,
+  setSavedRouteFilters,
 } from './model/slice/seatsSlice';

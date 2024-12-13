@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -6,15 +7,13 @@ import {
   PaymentPersonForm,
   type PaymentPerson,
 } from '@features/PaymentPersonForm';
-import { savePaymentPerson } from '@features/PassengerForm/model/slice/passengerInfoSlice';
+import { savePaymentPerson } from '@features/PassengerForm';
 import { Title } from '@shared/ui/Title';
 import { Button } from '@shared/ui/Button';
 import { useAppDispatch } from '@shared/lib/hooks';
-
 import { paymentFormValues } from '../../model/consts/paymentFormValues';
 import { paymentPersonSchema } from '../../model/schema/paymentPerson.schema';
 import styles from './PaymentForm.module.scss';
-import { useNavigate } from 'react-router-dom';
 
 export const PaymentForm = memo(() => {
   const dispatch = useAppDispatch();

@@ -1,9 +1,9 @@
 import { Fragment, memo } from 'react';
 import classNames from 'classnames';
+import { getTicketInfo } from '@entities/seats';
 import { Title } from '@shared/ui/Title';
 import { Icon } from '@shared/ui/Icon';
 import { useAppSelector } from '@shared/lib/hooks';
-import { getTicketInfo } from '@entities/seats';
 import { wagonClassTranslations } from '@shared/lib/utils';
 import { type Direction } from '@shared/types';
 import styles from './PassengerSeatFilter.module.scss';

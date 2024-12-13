@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import classNames from 'classnames';
-import { ProgressSteps } from '@shared/ui/ProgressSteps';
+import { TripDetails } from '@widgets/TripDetails';
+import { Header } from '@widgets/Header';
 import { PassengerFormList } from '@features/PassengerForm';
 import { PaymentPageLink } from '@features/PaymentPageLink';
-import { Header } from '@widgets/Header';
-import { TripDetails } from '@widgets/TripDetails';
+import { ProgressSteps } from '@shared/ui/ProgressSteps';
 import styles from './PassengerPage.module.scss';
 
 interface PassengerPageProps {

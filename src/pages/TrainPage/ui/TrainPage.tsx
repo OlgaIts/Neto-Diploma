@@ -3,11 +3,11 @@ import { Header } from '@widgets/Header';
 import { RoutesFilters } from '@widgets/RoutesFilters';
 import { RoutesTicketsPanel } from '@widgets/RoutesTicketsPanel';
 import { LastTickets } from '@entities/lastRoutes';
-import { ProgressSteps } from '@shared/ui/ProgressSteps';
-import styles from './TrainPage.module.scss';
-import { useAppSelector } from '@shared/lib/hooks';
 import { getRoutesLoading, useGetRoutes } from '@entities/routes';
+import { ProgressSteps } from '@shared/ui/ProgressSteps';
+import { useAppSelector } from '@shared/lib/hooks';
 import { Preloader } from '@shared/ui/Preloader';
+import styles from './TrainPage.module.scss';
 
 export const TrainPage = memo(() => {
   useGetRoutes();

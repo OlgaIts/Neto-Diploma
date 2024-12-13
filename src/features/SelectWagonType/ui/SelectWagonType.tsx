@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Icon } from '@shared/ui/Icon';
-import { wagonType } from '@entities/routes';
-import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import { getWagonClass, setDirectionInfo } from '@entities/seats';
+import { wagonType } from '@entities/routes';
+import { Icon } from '@shared/ui/Icon';
+import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import { type Direction } from '@shared/types';
 import styles from './SelectWagonType.module.scss';
 

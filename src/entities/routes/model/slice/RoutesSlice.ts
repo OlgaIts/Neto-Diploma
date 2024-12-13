@@ -39,7 +39,6 @@ const routesSlice = createSlice({
     },
     setRoutesLoading: (state, action: PayloadAction<boolean>) => {
       state.routesLoading = action.payload;
-      console.log(action.payload);
     },
   },
 });

@@ -1,10 +1,9 @@
 import { memo } from 'react';
-import { getRouteFilter } from '@entities/routes';
+import { getRouteFilter, setRouteFilters } from '@entities/routes';
 import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import { Title } from '@shared/ui/Title';
 import { RangeSlider } from '@shared/ui/RangeSlider';
 import styles from './RoutePriceFilter.module.scss';
-import { setRouteFilters } from '@entities/routes/model/slice/RoutesSlice';
 
 export const RoutePriceFilter = memo(() => {
   const dispatch = useAppDispatch();

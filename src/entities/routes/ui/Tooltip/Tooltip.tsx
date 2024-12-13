@@ -27,7 +27,11 @@ export const Tooltip = memo(
       <div ref={ref} className={classNames(styles.tooltip, className)}>
         {Object.tsKeys(prices).map((priceKey) => (
           <div className={styles.wrapper} key={priceKey}>
-            <p className={styles.desc}>{seatsLabels[priceKey]}</p>
+            {seatsClass === 'first' || seatsClass === 'fourth' ? (
+              <p className={styles.desc}>место</p>
+            ) : (
+              <p className={styles.desc}>{seatsLabels[priceKey]}</p>
+            )}
             <div className={styles.price_wrapper}>
               <p className={styles.price}>{prices[priceKey]}</p>
               <Icon iconName={'icon-ruble'} color='dark_gray' fontSize='20px' />

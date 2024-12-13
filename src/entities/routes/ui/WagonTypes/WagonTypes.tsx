@@ -2,6 +2,13 @@ import { memo, useCallback, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import classNames from 'classnames';
+import {
+  clearCurrentInfoState,
+  clearTicketState,
+  setArrival,
+  setDeparture,
+  setSavedRouteFilters,
+} from '@entities/seats';
 import { Icon } from '@shared/ui/Icon';
 import { Button } from '@shared/ui/Button';
 import { toLocalString } from '@shared/lib/utils';
@@ -10,13 +17,6 @@ import {
   useAppSelector,
   useClickOutside,
 } from '@shared/lib/hooks';
-import {
-  clearCurrentInfoState,
-  clearTicketState,
-  setArrival,
-  setDeparture,
-} from '@entities/seats';
-import { setSavedRouteFilters } from '@entities/seats/model/slice/seatsSlice';
 import { Tooltip } from '../Tooltip/Tooltip';
 import { getRouteFilter } from '../../model/selectors/selector';
 import { wagonType } from '../../model/consts/wagonType';

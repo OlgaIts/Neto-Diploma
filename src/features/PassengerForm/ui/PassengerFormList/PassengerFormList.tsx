@@ -1,10 +1,10 @@
 import { memo, useState } from 'react';
 import classNames from 'classnames';
+import { PassengerForm } from '@features/PassengerForm';
+import { getSeatCount } from '@entities/seats';
 import { Title } from '@shared/ui/Title';
 import { Icon } from '@shared/ui/Icon';
-import { PassengerForm } from '@features/PassengerForm';
 import { useAppSelector } from '@shared/lib/hooks';
-import { getSeatCount } from '@entities/seats';
 import styles from './PassengerFormList.module.scss';
 
 export const PassengerFormList = memo(() => {

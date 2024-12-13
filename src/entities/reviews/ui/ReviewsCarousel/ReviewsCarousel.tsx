@@ -1,8 +1,8 @@
 import { memo } from 'react';
-import 'react-alice-carousel/lib/scss/alice-carousel.scss';
 import AliceCarousel from 'react-alice-carousel';
 import { reviews } from '../../model/consts/reviewsData';
 import { CarouselItem } from '../CarouselItem/CarouselItem';
+import 'react-alice-carousel/lib/scss/alice-carousel.scss';
 import styles from './ReviewsCarousel.module.scss';
 
 export const ReviewsCarousel = memo(() => {

@@ -1,12 +1,11 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
-import classNames from 'classnames';
 import { Element, scroller } from 'react-scroll';
+import classNames from 'classnames';
 import { SubscribeForm } from '@features/SubscribeForm';
 import { Title } from '@shared/ui/Title';
 import { Icon } from '@shared/ui/Icon';
-import { socialLinks } from '../../consts/socialLinks';
-import { contactInfo } from '../../consts/contactInfo';
+import { contactInfo, socialLinks } from '../../consts';
 import styles from './Footer.module.scss';
 
 export const Footer = memo(() => {

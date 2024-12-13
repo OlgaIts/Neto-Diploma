@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { Icon } from '@shared/ui/Icon';
-import { benefits } from '../../consts/benefits';
+import { benefits } from '../../consts/';
 import styles from './BenefitsList.module.scss';
 
 export const BenefitsList = memo(() => {

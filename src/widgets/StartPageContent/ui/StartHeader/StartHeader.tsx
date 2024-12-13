@@ -1,6 +1,6 @@
 import { memo } from 'react';
-import { HeaderNav } from '@shared/ui/HeaderNav';
 import { TicketForm } from '@features/TicketForm';
+import { HeaderNav } from '@shared/ui/HeaderNav';
 import styles from './StartHeader.module.scss';
 
 export const StartHeader = memo(() => {

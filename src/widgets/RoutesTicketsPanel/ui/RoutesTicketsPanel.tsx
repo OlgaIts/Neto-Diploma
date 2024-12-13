@@ -1,7 +1,7 @@
 import { memo } from 'react';
-import { RouteCardList } from '@entities/routes';
 import { RoutePagination } from '@features/RoutePagination';
 import { RouteMainFilters } from '@features/RouteMainFilters';
+import { RouteCardList } from '@entities/routes';
 import styles from './RoutesTicketsPanel.module.scss';
 
 export const RoutesTicketsPanel = memo(() => {

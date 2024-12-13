@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { orderInfo } from '../../consts/orderInfo';
+import { orderInfo } from '../../consts';
 import styles from './OrderInfoList.module.scss';
 
 export const OrderInfoList = memo(() => {

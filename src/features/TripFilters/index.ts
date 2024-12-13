@@ -1,1 +1,1 @@
-export { TripFilters } from './ui/TripFilters/TripFilters';
+export { TripDetailFilters } from './ui/TripDetailFilters/TripDetailFilters';

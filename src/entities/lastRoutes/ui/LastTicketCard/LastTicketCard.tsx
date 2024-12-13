@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import classNames from 'classnames';
+import { RouteCardServiceIcons } from '@entities/routes';
 import { Icon } from '@shared/ui/Icon';
 import { toLocalString } from '@shared/lib/utils';
-import { RouteCardServiceIcons } from '@entities/routes';
 import { type Route } from '../../../routes/model/types/route';
 import styles from './LastTicketCard.module.scss';
 

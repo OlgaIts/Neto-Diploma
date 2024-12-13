@@ -1,14 +1,14 @@
 import { memo, useCallback } from 'react';
 import { format } from 'date-fns';
-import { parseDate } from '@shared/lib/utils';
-import { Title } from '@shared/ui/Title';
-import { CustomDatePicker } from '@shared/ui/CustomDatePicker';
-import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import {
   getRouteDateEnd,
   getRouteDateStart,
   setRouteFilters,
 } from '@entities/routes';
+import { parseDate } from '@shared/lib/utils';
+import { Title } from '@shared/ui/Title';
+import { CustomDatePicker } from '@shared/ui/CustomDatePicker';
+import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import styles from './RouteDateFilter.module.scss';
 
 export const RouteDateFilter = memo(() => {

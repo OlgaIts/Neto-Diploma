@@ -1,8 +1,8 @@
 import { memo, useCallback } from 'react';
-import { TimeSlider } from '@shared/ui/TimeSlider';
-import { setRouteFilters } from '@entities/routes';
-import { useAppDispatch } from '@shared/lib/hooks';
 import { RouteDirection, TimeRange } from '@features/RouteTimeFilter';
+import { setRouteFilters } from '@entities/routes';
+import { TimeSlider } from '@shared/ui/TimeSlider';
+import { useAppDispatch } from '@shared/lib/hooks';
 import styles from './RoundTripTime.module.scss';
 
 const excludeValues = [0, 24];

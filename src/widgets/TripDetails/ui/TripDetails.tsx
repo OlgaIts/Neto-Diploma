@@ -1,10 +1,10 @@
 import { memo } from 'react';
 import classNames from 'classnames';
-import { Title } from '@shared/ui/Title';
-import { TripDetailFilters } from '@features/TripFilters/ui/TripDetailFilters/TripDetailFilters';
+import { TripDetailFilters } from '@features/TripFilters';
 import { TotalFilter } from '@features/TripFilters/ui/TotalFilter/TotalFilter';
-import { useAppSelector } from '@shared/lib/hooks';
 import { getSeatCount, getTotalTicketPrice } from '@entities/seats';
+import { useAppSelector } from '@shared/lib/hooks';
+import { Title } from '@shared/ui/Title';
 import styles from './TripDetails.module.scss';
 
 interface TripDetailsProps {

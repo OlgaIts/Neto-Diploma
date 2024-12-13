@@ -1,12 +1,12 @@
 import { memo } from 'react';
-import { Pagination, PaginationItem } from '@shared/ui/Pagination';
-import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import {
   getLimit,
   getOffset,
   getTotalCount,
   setRouteFilters,
 } from '@entities/routes';
+import { Pagination, PaginationItem } from '@shared/ui/Pagination';
+import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 
 interface RoutePaginationProps {
   className?: string;

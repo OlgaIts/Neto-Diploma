@@ -1,7 +1,5 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
-import { type Direction } from '@shared/types';
 import {
   changePersonCount,
   getAdultCount,
@@ -9,7 +7,8 @@ import {
   getChildWithoutSeatCount,
   type PersonName,
 } from '@entities/seats';
-
+import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
+import { type Direction } from '@shared/types';
 import {
   initialAdultOptions,
   initialChildOptions,

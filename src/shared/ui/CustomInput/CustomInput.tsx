@@ -1,7 +1,7 @@
 import { ForwardedRef, forwardRef, memo } from 'react';
+import { FieldValues, Path } from 'react-hook-form';
 import classNames from 'classnames';
 import styles from './CustomInput.module.scss';
-import { FieldValues, Path } from 'react-hook-form';
 
 interface CustomInputProps<T extends FieldValues> {
   id: string;

@@ -1,7 +1,7 @@
 import { Element } from 'react-scroll';
-import { Title } from '@shared/ui/Title';
-import { ReviewsCarousel } from '@entities/reviews';
 import { About, Benefits, StartHeader } from '@widgets/StartPageContent';
+import { ReviewsCarousel } from '@entities/reviews';
+import { Title } from '@shared/ui/Title';
 import styles from './StartPage.module.scss';
 
 export const StartPage = () => {

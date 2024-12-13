@@ -1,8 +1,8 @@
 import { ChangeEvent, memo, useRef } from 'react';
-import { Icon } from '@shared/ui/Icon';
-import { Switch } from '@shared/ui/Switch';
 import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import { getRouteFilter, setRouteFilters } from '@entities/routes';
+import { Icon } from '@shared/ui/Icon';
+import { Switch } from '@shared/ui/Switch';
 import { options } from '../consts/filterConfig';
 import styles from './RouteAmenitiesFilter.module.scss';
 

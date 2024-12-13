@@ -4,7 +4,7 @@ import { Title } from '@shared/ui/Title';
 import { Icon } from '@shared/ui/Icon';
 import { OrderInfoList } from '../OrderInfoList/OrderInfoList';
 import { BenefitsList } from '../BenefitsList/BenefitsList';
-import { infoTexts } from '../../consts/infoTexts';
+import { infoTexts } from '../../consts';
 import styles from './InfoPageContent.module.scss';
 
 interface InfoPageContentProps {

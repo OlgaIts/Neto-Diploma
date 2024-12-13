@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { getPassengers } from '@features/PassengerForm';
-import { Icon } from '@shared/ui/Icon';
 import { useAppSelector } from '@shared/lib/hooks';
+import { Icon } from '@shared/ui/Icon';
 import styles from './PassengerList.module.scss';
 
 interface PassengerListProps {
