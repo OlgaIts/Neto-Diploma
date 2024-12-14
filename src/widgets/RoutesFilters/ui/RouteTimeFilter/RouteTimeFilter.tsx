@@ -1,9 +1,8 @@
 import { memo } from 'react';
-//TODO: рефактор архитектуры
-import { RoundTripTime } from '@widgets/RoutesFilters';
+import { RoundTripTime } from '@features/RoundTripTime';
 import { DirectionFilterHeader } from '@shared/ui/DirectionFilterHeader';
 import { type IconName } from '@shared/ui/Icon';
-import { timeFiltersQueryParams } from '../consts/timeFiltersQueryParams';
+import { timeFiltersQueryParams } from '../../consts/timeFiltersQueryParams';
 
 interface RouteTimeFilterProps {
   className?: string;

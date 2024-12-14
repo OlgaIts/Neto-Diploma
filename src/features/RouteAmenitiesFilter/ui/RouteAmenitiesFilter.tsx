@@ -1,6 +1,6 @@
 import { ChangeEvent, memo, useRef } from 'react';
-import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import { getRouteFilter, setRouteFilters } from '@entities/routes';
+import { useAppDispatch, useAppSelector } from '@shared/lib/hooks';
 import { Icon } from '@shared/ui/Icon';
 import { Switch } from '@shared/ui/Switch';
 import { options } from '../consts/filterConfig';
@@ -20,12 +20,14 @@ export const RouteAmenitiesFilter = memo(() => {
       {Object.tsKeys(options).map((key) => (
         <div className={styles.option} key={key}>
           <div className={styles.wrapper}>
-            <Icon
-              iconName={options[key].iconName}
-              color='primary'
-              fontSize='24px'
-            />
-            <span>{options[key].label}</span>
+            {options[key]?.iconName && (
+              <Icon
+                iconName={options[key].iconName}
+                color='primary'
+                fontSize='24px'
+              />
+            )}
+            <span>{options[key]?.label}</span>
           </div>
           <Switch
             className={styles.switch}

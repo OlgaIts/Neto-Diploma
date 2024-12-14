@@ -1,4 +1,12 @@
-export const options = {
+import { type RouteFilters } from '@entities/routes';
+import { type IconName } from '@shared/ui/Icon';
+
+interface Option {
+  iconName: IconName;
+  label: string;
+}
+
+export const options: Partial<Record<keyof RouteFilters, Option>> = {
   have_second_class: {
     iconName: 'icon-coupe',
     label: 'Купе',

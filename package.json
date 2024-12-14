@@ -6,7 +6,6 @@
   "license": "ISC",
   "private": true,
   "type": "module",
-  "homepage": "https://OlgaIts.github.io/FE-Diploma/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

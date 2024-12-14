@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { RouteAmenitiesFilter } from '@features/RouteAmenitiesFilter';
 import { RouteDateFilter } from '@features/RouteDateFilter';
 import { RoutePriceFilter } from '@features/RoutePriceFilter';
-import { RouteTimeFilter } from '@features/RouteTimeFilter';
+import { RouteTimeFilter } from '../RouteTimeFilter/RouteTimeFilter';
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from './RoutesFilters.module.scss';
 

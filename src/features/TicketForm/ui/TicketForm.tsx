@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { registerLocale } from 'react-datepicker';
 import { ru } from 'date-fns/locale';
 import { format } from 'date-fns';
-import { CitySelect } from '@entities/cities';
+import { CitySelect } from '@features/CitySelect';
 import { Title } from '@shared/ui/Title';
 import { Button } from '@shared/ui/Button';
 import { Icon } from '@shared/ui/Icon';

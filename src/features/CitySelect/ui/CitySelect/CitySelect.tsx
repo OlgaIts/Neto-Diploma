@@ -1,12 +1,11 @@
 import { ChangeEvent, memo, useEffect, useState } from 'react';
 import { UseFormRegister } from 'react-hook-form';
-import { Datalist, DatalistProps } from '@shared/ui/Datalist';
-// TODO: проверь по архитектурным правилам
-import { TicketFormState } from '@features/TicketForm/model/slice/ticketFormSlice';
+import { Datalist, type DatalistProps } from '@shared/ui/Datalist';
+import { type TicketFormState } from '@features/TicketForm';
 import { services } from '../../model/services/services';
 import { type City } from '../../model/types/city';
 
-interface CitySelectProps<T extends string> extends Partial<DatalistProps> {
+interface CitySelectProps extends Partial<DatalistProps> {
   name: keyof TicketFormState;
   register: (
     name: keyof TicketFormState,
@@ -15,13 +14,13 @@ interface CitySelectProps<T extends string> extends Partial<DatalistProps> {
   onCitySelect: (city: { id: string; name: string }) => void;
 }
 export const CitySelect = memo(
-  <T extends string>({
+  ({
     name,
     register,
     cityName,
     placeholder,
     onCitySelect,
-  }: CitySelectProps<T>) => {
+  }: CitySelectProps) => {
     const [cities, setCities] = useState<{ id: string; value: string }[]>([]);
     const [inputValue, setInputValue] = useState(cityName); // состояние для хранения введенного значения
 

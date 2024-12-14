@@ -1,12 +1,4 @@
-export interface TimeRange {
-  start: string;
-  end: string;
-}
-
-export interface RouteDirection {
-  from: TimeRange;
-  to: TimeRange;
-}
+import { type RouteDirection } from '@features/RoundTripTime/types/RouteDirection';
 
 export interface TimeFiltersQueryParams {
   departure: RouteDirection;
