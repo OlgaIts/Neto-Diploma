@@ -1,13 +1,14 @@
 .component {
   position: relative;
-  padding: var(--padding-lg);
-  margin-top: -120px;
+  // padding: var(--padding-lg);
+  margin-top: -80px;
   background-color: var(--color-light);
   box-shadow: var(--shadow);
   z-index: 2;
 }
 
 .title {
+  padding-top: var(--padding-lg);
   margin-bottom: calc(var(--margin-xl) * 2);
   text-align: center;
 }
@@ -15,6 +16,10 @@
 .text {
   padding-bottom: var(--padding-md);
   font: var(--fw-regular) var(--fs-sm) var(--ff);
+}
+
+.list {
+  padding: 0 var(--padding-lg) var(--padding-lg);
 }
 
 .list_item {

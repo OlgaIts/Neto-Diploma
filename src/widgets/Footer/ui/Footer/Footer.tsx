@@ -67,9 +67,9 @@ export const Footer = memo(() => {
           <div className={styles.footer_bottom}>
             <Link to={'/'}>
               <Icon
-                iconName='icon-logo-3'
+                iconName='icon-logo'
                 color='white'
-                fontSize='60px'
+                fontSize='80px'
                 className={styles.logo}
               />
             </Link>

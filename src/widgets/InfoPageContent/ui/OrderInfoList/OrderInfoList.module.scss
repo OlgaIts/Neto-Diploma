@@ -1,9 +1,11 @@
 .steps {
-  padding-bottom: calc(var(--margin-xl) * 2);
+  padding: 0 var(--padding-lg);
+  margin-bottom: calc(var(--margin-xl) * 2);
   display: flex;
   justify-content: space-between;
   align-items: start;
   gap: var(--gap-md);
+  background-color: #f4f3f6;
   text-align: center;
 }
 

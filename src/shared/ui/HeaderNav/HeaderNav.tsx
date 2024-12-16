@@ -11,7 +11,7 @@ export const HeaderNav = memo(() => {
       <div className={styles.logo_wrap}>
         <div className={styles.container}>
           <NavLink to='/'>
-            <Icon iconName='icon-logo-3' color='white' fontSize='80px' />
+            <Icon iconName='icon-logo' color='white' fontSize='120px' />
           </NavLink>
         </div>
       </div>

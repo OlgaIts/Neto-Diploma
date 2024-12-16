@@ -22,7 +22,7 @@ export const InfoPageContent = memo(({ className }: InfoPageContentProps) => {
         Преимущества бронирования билетов у нас
       </Title>
       <BenefitsList />
-      <ul>
+      <ul className={styles.list}>
         {infoTexts.map((item) => (
           <li key={item.id} className={styles.list_item}>
             <Icon iconName='icon-check' color='accent' fontSize='20px' />
