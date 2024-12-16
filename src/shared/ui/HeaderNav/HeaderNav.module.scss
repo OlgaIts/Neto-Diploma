@@ -5,13 +5,8 @@
 }
 
 .logo_wrap {
-  padding: var(--padding-xs) 0;
+  padding: var(--padding-md) 0 var(--padding-xs) 0;
   background-color: rgba(0, 0, 0, 0.6);
-}
-
-.logo {
-  font: var(--fw-black) var(--fs-lg) var(--ff);
-  color: var(--color-footer);
 }
 
 .nav {

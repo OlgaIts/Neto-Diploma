@@ -65,6 +65,7 @@
   padding: var(--padding-lg) 0 var(--margin-xl) 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   p {
     font: var(--fw-light) var(--fs-text) var(--ff);
     color: var(--color-footer);
@@ -72,8 +73,11 @@
 }
 
 .logo {
-  font: var(--fw-black) var(--fs-lg) var(--ff);
-  color: var(--color-footer);
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: var(--bg-accent-color);
+  }
 }
 
 .scroller_btn {
