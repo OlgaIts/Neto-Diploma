@@ -50,7 +50,13 @@ export const SubscribeForm = memo(() => {
           onChange={(e) => setEmail(e.target.value)}
           className={styles.input}
         />
-        <TransparentButton tag='button' size='small' weight='regular' uppercase>
+        <TransparentButton
+          tag='button'
+          size='small'
+          weight='regular'
+          uppercase
+          color='white'
+        >
           отправить
         </TransparentButton>
       </form>

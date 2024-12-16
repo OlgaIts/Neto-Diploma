@@ -12,6 +12,8 @@ interface TransparentButtonProps {
   onClick?: () => void;
   tag: 'button' | 'Link';
   to?: string;
+  color: 'accent' | 'white';
+  type?: 'button' | 'submit';
 }
 
 export const TransparentButton = memo(
@@ -24,11 +26,14 @@ export const TransparentButton = memo(
     onClick,
     tag = 'button',
     to,
+    color,
+    type,
   }: TransparentButtonProps) => {
     const allStyles = classNames(
       styles.component,
       styles[size],
       styles[weight],
+      styles[color],
       { [styles.uppercase]: uppercase },
       className,
     );
@@ -40,7 +45,7 @@ export const TransparentButton = memo(
             {children}
           </Link>
         ) : (
-          <button className={allStyles} onClick={onClick}>
+          <button className={allStyles} onClick={onClick} type={type}>
             {children}
           </button>
         )}

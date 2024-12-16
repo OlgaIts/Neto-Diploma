@@ -6,7 +6,7 @@ import { ru } from 'date-fns/locale';
 import { format } from 'date-fns';
 import { CitySelect } from '@features/CitySelect';
 import { Title } from '@shared/ui/Title';
-import { Button } from '@shared/ui/Button';
+import { TransparentButton } from '@shared/ui/TransparentButton';
 import { Icon } from '@shared/ui/Icon';
 import { CustomDatePicker } from '@shared/ui/CustomDatePicker';
 import { useAppDispatch } from '@shared/lib/hooks';
@@ -120,17 +120,17 @@ export const TicketForm = memo(({ className }: TicketFormProps) => {
             localStorageKey='date_end'
           />
         </div>
-        <Button
+        <TransparentButton
+          size='big'
           tag='button'
-          color='black'
-          bgColor='primary'
+          weight='bold'
           uppercase
-          size='m'
+          color='accent'
           type='submit'
           className={styles.btn}
         >
           найти билеты
-        </Button>
+        </TransparentButton>
       </div>
     </form>
   );
