@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-scroll';
-import { Icon } from '../Icon';
 import { navItems } from '../../consts/';
+import logo from '../../assets/img/Logo_chu-chUh.png';
 import styles from './HeaderNav.module.scss';
 
 export const HeaderNav = memo(() => {
@@ -11,7 +11,7 @@ export const HeaderNav = memo(() => {
       <div className={styles.logo_wrap}>
         <div className={styles.container}>
           <NavLink to='/'>
-            <Icon iconName='icon-logo' color='white' fontSize='120px' />
+            <img src={logo} alt='логотип компании' className={styles.logo} />
           </NavLink>
         </div>
       </div>

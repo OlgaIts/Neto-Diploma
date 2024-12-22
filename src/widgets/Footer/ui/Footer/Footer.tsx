@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { SubscribeForm } from '@features/SubscribeForm';
 import { Title } from '@shared/ui/Title';
 import { Icon } from '@shared/ui/Icon';
+import logo from '@shared/assets/img/Logo_chu-chUh.png';
 import { contactInfo, socialLinks } from '../../consts';
 import styles from './Footer.module.scss';
 
@@ -66,12 +67,7 @@ export const Footer = memo(() => {
         <div className={styles.container}>
           <div className={styles.footer_bottom}>
             <Link to={'/'}>
-              <Icon
-                iconName='icon-logo'
-                color='white'
-                fontSize='80px'
-                className={styles.logo}
-              />
+              <img src={logo} alt='логотип компании' className={styles.logo} />
             </Link>
             <Icon
               iconName={'icon-chevron-circle'}

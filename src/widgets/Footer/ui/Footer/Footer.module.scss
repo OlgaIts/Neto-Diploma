@@ -73,11 +73,7 @@
 }
 
 .logo {
-  transition: color 0.3s ease-in-out;
-
-  &:hover {
-    color: var(--bg-accent-color);
-  }
+  width: 250px;
 }
 
 .scroller_btn {

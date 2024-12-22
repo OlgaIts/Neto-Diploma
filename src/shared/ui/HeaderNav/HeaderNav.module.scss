@@ -5,8 +5,12 @@
 }
 
 .logo_wrap {
-  padding: var(--padding-md) 0 var(--padding-xs) 0;
+  padding-top: var(--padding-sm);
   background-color: rgba(0, 0, 0, 0.6);
+}
+
+.logo {
+  width: 250px;
 }
 
 .nav {
